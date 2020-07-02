@@ -23,23 +23,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         
-        if Auth.auth().currentUser != nil {
-             DispatchQueue.main.async {
-                self.window = UIWindow(windowScene: windowScene)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                //let homeViewController = (storyboard.instantiateViewController(identifier: "MainController"))
-                guard let rootVC = storyboard.instantiateViewController(identifier: "MainController") as? ViewController else {
-                    print("ViewController not found")
-                    return
-                }
-                let rootNC = UINavigationController(rootViewController: rootVC)
-                self.window?.rootViewController = rootNC
-                self.window?.makeKeyAndVisible()
-//                 self.view.window?.rootViewController = homeViewController
-//                 self.present(homeViewController!, animated: true)
-                
-             }
-         }
+//        if Auth.auth().currentUser != nil {
+//             DispatchQueue.main.async {
+//                self.window = UIWindow(windowScene: windowScene)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                //let homeViewController = (storyboard.instantiateViewController(identifier: "MainController"))
+//                guard let rootVC = storyboard.instantiateViewController(identifier: "MainController") as? ViewController else {
+//                    print("ViewController not found")
+//                    return
+//                }
+//                let rootNC = UINavigationController(rootViewController: rootVC)
+//                self.window?.rootViewController = rootNC
+//                self.window?.makeKeyAndVisible()
+////                 self.view.window?.rootViewController = homeViewController
+////                 self.present(homeViewController!, animated: true)
+//
+//             }
+//         }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
