@@ -96,7 +96,7 @@ class DataManager: NSObject {
                     var task = Task(id: "", name: "", description: "", startTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "")
 
                     if let id = document.documentID as? String {
-                        print("document ID: \(document.documentID)")
+                        //print("document ID: \(document.documentID)")
                         task.taskID = id
                     }
                     
@@ -108,22 +108,34 @@ class DataManager: NSObject {
                         task.taskDesc = description
                     }
                     
-                    if let startTime = document.data()["taskStartTime"] as? String {
-                        let dateAsString = startTime
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
-                        let dateCurrent = dateFormatter.date(from: dateAsString)
-                        //print("Changed date: \(startTime)")
-                        task.taskStartTime = dateCurrent!
+                    if let startTime = document.data()["taskStartTime"] as? Timestamp {
+//                        let dateAsString = startTime
+//                        let dateFormatter = DateFormatter()
+//                        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+//                        let dateCurrent = dateFormatter.date(from: dateAsString)
+//                        //print("Changed date: \(startTime)")
+//                        print("Start time: \(document.data()["taskStartTime"])")
+
+                        //print(startTime)
+                        //task.taskStartTime = startTime
+                        //let date = Date(timeIntervalSince1970: startTime.seconds)
+                        let date = startTime.dateValue()
+                        //print(date)
+                        task.taskStartTime = date
                     }
                     
-                    if let endtime = document.data()["taskEndTime"] as? String {
-                        let dateAsString = endtime
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
-                        let dateCurrent = dateFormatter.date(from: dateAsString)
+                    if let endtime = document.data()["taskEndTime"] as? Timestamp {
+//                        let dateAsString = endtime
+//                        let dateFormatter = DateFormatter()
+//                        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+//                        let dateCurrent = dateFormatter.date(from: dateAsString)
                         //print("Changed date: \(endtime)")
-                        task.taskEndTime = dateCurrent!
+//                        var parsedEndTime = endtime.dateValue()
+//                        task.taskEndTime = endtime as! Date
+                        
+                        let date = endtime.dateValue()
+                        //print(date)
+                        task.taskEndTime = date
                     }
                     
                     if let repeatType = document.data()["repeatType"] as? String {

@@ -12,7 +12,8 @@ class TaskCell: UITableViewCell {
     
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var taskDescLabel: UILabel!
-    @IBOutlet weak var taskRuntimeLabel: UILabel!
+    //@IBOutlet weak var taskRuntimeLabel: UILabel!
+    @IBOutlet weak var taskEndDateTimeLabel: UILabel!
     @IBOutlet weak var taskDateTimeLabel: UILabel!
     @IBOutlet weak var taskView: UIView!
     

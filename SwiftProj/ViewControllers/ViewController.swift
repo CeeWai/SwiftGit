@@ -10,7 +10,7 @@ import UIKit
 import FSCalendar
 import FirebaseAuth
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource {
 
     @IBOutlet weak var breakButton: UIButton!
 
@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var taskList : [Task] = []
     
     override func viewDidLoad() {
+        //print("print works")
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // Make the navigation bar background clear
@@ -28,13 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.isTranslucent = true
         
         tableView.layer.cornerRadius = 10;
-        
-//        // Change the date on the top
-//        updateToCurrentTime()
-//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-//                self.updateToCurrentTime()
-//            }
-        
+    
         // temp add date value to the to do listings
         
         // Specify date components
@@ -69,6 +64,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        calendarView.layer.shadowRadius = 4.0
        calendarView.layer.masksToBounds = false
        //calendarView.layer.cornerRadius = 4.0
+        
+        calendar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +95,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let taskFormatTime = getFormattedDate(date: p.taskStartTime, format: formatDateTime)
         cell.taskDateTimeLabel.text = taskFormatTime
 
+        let formatDateTimeEnd = "h:mm a"
+        let taskFormatTimeEnd = getFormattedDate(date: p.taskEndTime, format: formatDateTime)
+        cell.taskEndDateTimeLabel.text = taskFormatTimeEnd
+
         return cell
     }
 
@@ -120,21 +121,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        //print("This Ran")
+        loadTaskListFromDate(date: date)
+    }
     
+    func loadTaskListFromDate(date: Date) {
+        self.taskList = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE MM-dd-YYYY h:mm a"
+        let string = formatter.string(from: date)
+        print("Loading tasks that are set on: \(string)")
+        //var userTaskList: [Task] = []
+        
+        DataManager.loadTasks { fullUserTaskList in
+            //userTaskList = fullUserTaskList
+            
+            for task in fullUserTaskList {
+                //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
+                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
+                    print("\(date) is the same day as \(task.taskStartTime)")
+                    self.taskList.append(task)
+                }
+            }
+            
+            print(self.taskList)
+            self.tableView.reloadData()
+
+        }
     
-    // removed this feature
-//    func updateToCurrentTime(){
-//        let date = Date()
-//        let format = DateFormatter()
-//        format.dateFormat = "MMM dd EEEE"
-//        let formattedDate = format.string(from: date)
-//
-//        day_month_label.text = "\(formattedDate)"
-//
-//        format.dateFormat = "h:mm a"
-//        let formattedDate2 = format.string(from: date)
-//        time_label.text = "\(formattedDate2)"
-//    }
+    }
     
     
     
