@@ -11,12 +11,19 @@ import UIKit
 class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var projectList : [Project] = []
     @IBOutlet var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden=true
         ProjectDataManager.createDatabase()
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
         projectList = ProjectDataManager.loadProjects()
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden=false
     }
     func tableView(_ tableView: UITableView,
     numberOfRowsInSection section: Int) -> Int {

@@ -17,7 +17,6 @@
 		89517C81247233AC00503219 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89517C80247233AC00503219 /* BreakViewController.swift */; };
 		895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895EE02E247696B400F2C109 /* TimeViewController.swift */; };
 		89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89672C04247E34EA008F3C13 /* startScreenViewController.swift */; };
-		89672C0C247E450F008F3C13 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 89672C0B247E450F008F3C13 /* startScreenVid.mp4 */; };
 		898646E72464626F00A5C752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646E62464626F00A5C752 /* AppDelegate.swift */; };
 		898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646E82464626F00A5C752 /* SceneDelegate.swift */; };
 		898646EB2464626F00A5C752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646EA2464626F00A5C752 /* ViewController.swift */; };
@@ -48,16 +47,22 @@
 		89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17017247A58DE004C3F45 /* RegisterViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
-		9E567DB624AAFBDB00DE6CDA /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DB024AAFBDA00DE6CDA /* createproject2ViewController.swift */; };
-		9E567DB724AAFBDB00DE6CDA /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DB124AAFBDA00DE6CDA /* createprojectViewController.swift */; };
-		9E567DB824AAFBDB00DE6CDA /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DB224AAFBDA00DE6CDA /* projectdetail1ViewController.swift */; };
-		9E567DB924AAFBDB00DE6CDA /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DB324AAFBDA00DE6CDA /* ProjectViewController.swift */; };
-		9E567DBA24AAFBDB00DE6CDA /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DB424AAFBDA00DE6CDA /* addprojectpageviewcontrollerViewController.swift */; };
-		9E567DBB24AAFBDB00DE6CDA /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DB524AAFBDB00DE6CDA /* ProjectCellTableViewCell.swift */; };
 		9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */; };
-		9E567DC224AAFC3200DE6CDA /* seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DBE24AAFC3200DE6CDA /* seb_Main.storyboard */; };
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
-		9E567DC524AAFD6000DE6CDA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DC424AAFD6000DE6CDA /* Project.swift */; };
+		9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */; };
+		9E5C369A24AEF703006F16B5 /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */; };
+		9E5C369B24AEF703006F16B5 /* addroleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369324AEF701006F16B5 /* addroleViewController.swift */; };
+		9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369424AEF702006F16B5 /* createprojectViewController.swift */; };
+		9E5C369D24AEF703006F16B5 /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */; };
+		9E5C369E24AEF703006F16B5 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */; };
+		9E5C369F24AEF703006F16B5 /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369724AEF702006F16B5 /* createproject2ViewController.swift */; };
+		9E5C36A024AEF703006F16B5 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369824AEF703006F16B5 /* ProjectViewController.swift */; };
+		9E5C36A324AEF753006F16B5 /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */; };
+		9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */; };
+		9E5C36A824AEF790006F16B5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A524AEF790006F16B5 /* Role.swift */; };
+		9E5C36A924AEF790006F16B5 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A624AEF790006F16B5 /* Project.swift */; };
+		9E5C36AA24AEF790006F16B5 /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A724AEF790006F16B5 /* Projectgroup.swift */; };
+		9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C36AB24AEF7AB006F16B5 /* Seb_Main.storyboard */; };
 		F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +85,6 @@
 		89517C80247233AC00503219 /* BreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
 		895EE02E247696B400F2C109 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		89672C04247E34EA008F3C13 /* startScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startScreenViewController.swift; sourceTree = "<group>"; };
-		89672C0B247E450F008F3C13 /* startScreenVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startScreenVid.mp4; sourceTree = "<group>"; };
 		898646E32464626F00A5C752 /* SwiftProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898646E62464626F00A5C752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		898646E82464626F00A5C752 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,16 +120,22 @@
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9756D15B81A97C8003BA9E16 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
-		9E567DB024AAFBDA00DE6CDA /* createproject2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createproject2ViewController.swift; sourceTree = "<group>"; };
-		9E567DB124AAFBDA00DE6CDA /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
-		9E567DB224AAFBDA00DE6CDA /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
-		9E567DB324AAFBDA00DE6CDA /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
-		9E567DB424AAFBDA00DE6CDA /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
-		9E567DB524AAFBDB00DE6CDA /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
 		9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
-		9E567DBF24AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/seb_Main.storyboard; sourceTree = "<group>"; };
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9E567DC424AAFD6000DE6CDA /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
+		9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
+		9E5C369324AEF701006F16B5 /* addroleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addroleViewController.swift; sourceTree = "<group>"; };
+		9E5C369424AEF702006F16B5 /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
+		9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
+		9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
+		9E5C369724AEF702006F16B5 /* createproject2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createproject2ViewController.swift; sourceTree = "<group>"; };
+		9E5C369824AEF703006F16B5 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectgroupDataManager.swift; sourceTree = "<group>"; };
+		9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
+		9E5C36A524AEF790006F16B5 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		9E5C36A624AEF790006F16B5 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		9E5C36A724AEF790006F16B5 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
+		9E5C36AC24AEF7AB006F16B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_Main.storyboard; sourceTree = "<group>"; };
 		E34ED4966392AEB617678FB0 /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
 		F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dom_Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */,
-				89E17019247A6DFE004C3F45 /* Media */,
 				895EE02D2476968400F2C109 /* ViewControllers */,
 				8992194F246E459C0029BFF5 /* SQLiteDB.swift */,
 				8992194A246E453C0029BFF5 /* Helpers */,
@@ -216,7 +225,7 @@
 				898646EC2464626F00A5C752 /* Main.storyboard */,
 				898646F22464627000A5C752 /* Assets.xcassets */,
 				9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */,
-				9E567DBE24AAFC3200DE6CDA /* seb_Main.storyboard */,
+				9E5C36AB24AEF7AB006F16B5 /* Seb_Main.storyboard */,
 				898646F42464627000A5C752 /* LaunchScreen.storyboard */,
 				898646F72464627000A5C752 /* Info.plist */,
 				89E17013247A55CE004C3F45 /* GoogleService-Info.plist */,
@@ -232,6 +241,8 @@
 		8992193D246E44E00029BFF5 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */,
+				9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */,
 				9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */,
 				8992193E246E450A0029BFF5 /* CaseDataManager.swift */,
 				89921941246E450A0029BFF5 /* CountryDataManager.swift */,
@@ -259,18 +270,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		89E17019247A6DFE004C3F45 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				89672C0B247E450F008F3C13 /* startScreenVid.mp4 */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
 		89F8DA9B2464FEF700B54354 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9E567DC424AAFD6000DE6CDA /* Project.swift */,
+				9E5C36A624AEF790006F16B5 /* Project.swift */,
+				9E5C36A724AEF790006F16B5 /* Projectgroup.swift */,
+				9E5C36A524AEF790006F16B5 /* Role.swift */,
 				89921947246E45290029BFF5 /* Case.swift */,
 				89921946246E45290029BFF5 /* SavedCountry.swift */,
 				89FE2A5C246477720006F595 /* Task.swift */,
@@ -284,12 +289,14 @@
 		9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9E567DB424AAFBDA00DE6CDA /* addprojectpageviewcontrollerViewController.swift */,
-				9E567DB024AAFBDA00DE6CDA /* createproject2ViewController.swift */,
-				9E567DB124AAFBDA00DE6CDA /* createprojectViewController.swift */,
-				9E567DB524AAFBDB00DE6CDA /* ProjectCellTableViewCell.swift */,
-				9E567DB224AAFBDA00DE6CDA /* projectdetail1ViewController.swift */,
-				9E567DB324AAFBDA00DE6CDA /* ProjectViewController.swift */,
+				9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */,
+				9E5C369324AEF701006F16B5 /* addroleViewController.swift */,
+				9E5C369724AEF702006F16B5 /* createproject2ViewController.swift */,
+				9E5C369424AEF702006F16B5 /* createprojectViewController.swift */,
+				9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */,
+				9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */,
+				9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */,
+				9E5C369824AEF703006F16B5 /* ProjectViewController.swift */,
 			);
 			path = Seb_ViewControllers;
 			sourceTree = "<group>";
@@ -364,13 +371,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */,
 				F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */,
-				9E567DC224AAFC3200DE6CDA /* seb_Main.storyboard in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
-				89672C0C247E450F008F3C13 /* startScreenVid.mp4 in Resources */,
 				898646EE2464626F00A5C752 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,44 +430,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E567DB924AAFBDB00DE6CDA /* ProjectViewController.swift in Sources */,
 				8992194D246E45760029BFF5 /* HTTP.swift in Sources */,
 				89921942246E450A0029BFF5 /* CaseDataManager.swift in Sources */,
 				898646EB2464626F00A5C752 /* ViewController.swift in Sources */,
+				9E5C369E24AEF703006F16B5 /* ProjectCellTableViewCell.swift in Sources */,
+				9E5C369F24AEF703006F16B5 /* createproject2ViewController.swift in Sources */,
 				898646FE2464651C00A5C752 /* EntryViewController.swift in Sources */,
+				9E5C369D24AEF703006F16B5 /* addprojectpageviewcontrollerViewController.swift in Sources */,
 				89921950246E459C0029BFF5 /* SQLiteDB.swift in Sources */,
-				9E567DB724AAFBDB00DE6CDA /* createprojectViewController.swift in Sources */,
-				9E567DC524AAFD6000DE6CDA /* Project.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
+				9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
+				9E5C36A824AEF790006F16B5 /* Role.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
 				898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */,
-				9E567DB824AAFBDB00DE6CDA /* projectdetail1ViewController.swift in Sources */,
+				9E5C369A24AEF703006F16B5 /* projectdetail1ViewController.swift in Sources */,
 				89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */,
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
-				8911F6AB24AEDCA400F1B5BB /* ImportanceTableViewController.swift in Sources */,
-				9E567DBA24AAFBDB00DE6CDA /* addprojectpageviewcontrollerViewController.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
+				9E5C369B24AEF703006F16B5 /* addroleViewController.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,
+				9E5C36A324AEF753006F16B5 /* ProjectgroupDataManager.swift in Sources */,
+				9E5C36A024AEF703006F16B5 /* ProjectViewController.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
 				89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */,
 				8920000424A7458F00EE47FA /* RepeatViewController.swift in Sources */,
-				9E567DB624AAFBDB00DE6CDA /* createproject2ViewController.swift in Sources */,
-				9E567DBB24AAFBDB00DE6CDA /* ProjectCellTableViewCell.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
 				89517C81247233AC00503219 /* BreakViewController.swift in Sources */,
 				8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */,
+				9E5C36A924AEF790006F16B5 /* Project.swift in Sources */,
+				9E5C36AA24AEF790006F16B5 /* Projectgroup.swift in Sources */,
 				89921948246E45290029BFF5 /* SavedCountry.swift in Sources */,
+				9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,
+				9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
 				89E17010247A538A004C3F45 /* User.swift in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
@@ -488,20 +499,20 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		9E567DBE24AAFC3200DE6CDA /* seb_Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9E567DBF24AAFC3200DE6CDA /* Base */,
-			);
-			name = seb_Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9E567DC124AAFC3200DE6CDA /* Base */,
 			);
 			name = Seb_LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9E5C36AB24AEF7AB006F16B5 /* Seb_Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E5C36AC24AEF7AB006F16B5 /* Base */,
+			);
+			name = Seb_Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
