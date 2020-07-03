@@ -11,7 +11,7 @@ import AVFoundation
 import AVKit
 import FirebaseAuth
 
-class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat {
+class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance {
     var repeatData: String = ""
     func passRepeatDataBack(data: String) {
         repeatData = data
@@ -51,6 +51,15 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         print("You have picked: \(chosenEndTime)")
     }
     
+    var chosenImportance: String = ""
+    func passImportanceDataBack(data: String) {
+        chosenImportance = data
+        //pickTimeButton.setTite("Time: \(chosenTime)", for: .normal)
+        //endTimeLabel.text! += ": \(chosenEndTime)"
+        importanceLabel.text! = "\(chosenImportance)"
+        print("You have picked: \(chosenImportance)")
+    }
+    
     @IBOutlet weak var scheduleEndTimeCell: UITableViewCell!
     @IBOutlet weak var chosenRepeatLabel: UILabel!
     @IBOutlet weak var chosenEndTimeLabel: UILabel!
@@ -64,6 +73,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     //@IBOutlet weak var topTaskView: UIView!
     @IBOutlet weak var entryTaskView: UIView!
     @IBOutlet weak var errLabel: UILabel!
+    @IBOutlet weak var importanceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +128,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
 //        print(chosenEndTimeLabel.text!.isEmpty)
 //        print(chosenRepeatLabel.text!.isEmpty)
         
-        if titleTextField.text!.isEmpty || descTextView.text!.isEmpty || descTextView.text == "Your description goes here!" || chosenStartTimeLabel.text!.isEmpty || chosenEndTimeLabel.text!.isEmpty || chosenRepeatLabel.text!.isEmpty {
+        if titleTextField.text!.isEmpty || descTextView.text!.isEmpty || descTextView.text == "Your description goes here!" || chosenStartTimeLabel.text!.isEmpty || chosenEndTimeLabel.text!.isEmpty || chosenRepeatLabel.text!.isEmpty || importanceLabel.text!.isEmpty {
                 errLabel.text = "Enter all fields!"
                 errLabel.isHidden = false
         } else
@@ -150,7 +160,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                     taskListLength = taskListFromFirestore.count
                 }
                 
-                var task = Task(id: user!.uid + "\(taskListLength)", name: self.titleTextField.text!, description: self.descTextView.text, startTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!)
+                var task = Task(taskID: user!.uid + "\(taskListLength)", taskName: self.titleTextField.text!, taskDesc: self.descTextView.text, taskStartTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!, importance: self.importanceLabel.text!)
                 
                 print("name: \(self.titleTextField.text!), description: \(self.descTextView!.text!), startTime: \(dateStartCurrent!), taskEndTime: \(dateEndCurrent!), repeatType: \(self.chosenRepeatLabel.text!), taskOwner: \(user!.email!)")
                 
@@ -185,7 +195,10 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         } else if segue.identifier == "repeatSegue" {
            let pickRepeatVC = segue.destination as! RepeatTableViewController
            pickRepeatVC.delegate = self
-       }
+        } else if segue.identifier == "pickImportanceSegue" {
+            let pickImportanceVC = segue.destination as! ImportanceTableViewController
+            pickImportanceVC.delegate = self
+        }
 
     }
 

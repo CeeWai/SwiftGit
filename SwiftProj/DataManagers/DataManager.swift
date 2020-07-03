@@ -93,7 +93,7 @@ class DataManager: NSObject {
             } else {
                 for document in querySnapshot!.documents
                 {
-                    var task = Task(id: "", name: "", description: "", startTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "")
+                    var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "")
 
                     if let id = document.documentID as? String {
                         //print("document ID: \(document.documentID)")
@@ -144,6 +144,10 @@ class DataManager: NSObject {
                     
                     if let taskOwner = document.data()["taskOwner"] as? String {
                         task.taskOwner = taskOwner
+                    }
+                    
+                    if let importance = document.data()["importance"] as? String {
+                        task.importance = importance
                     }
                     
                     //print(task)

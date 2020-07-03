@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		552040932519EAFB422F0E81 /* Pods_SwiftProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7CF0D5E2119F9907DE1786 /* Pods_SwiftProj.framework */; };
+		8911F6AB24AEDCA400F1B5BB /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911F6AA24AEDCA400F1B5BB /* ImportanceTableViewController.swift */; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
 		8920000424A7458F00EE47FA /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000324A7458F00EE47FA /* RepeatViewController.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		1F7CF0D5E2119F9907DE1786 /* Pods_SwiftProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8911F6AA24AEDCA400F1B5BB /* ImportanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceTableViewController.swift; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
 		8920000324A7458F00EE47FA /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
 		8920000724A75ACC00EE47FA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				8920000124A642CC00EE47FA /* EndTimeViewController.swift */,
 				8920000324A7458F00EE47FA /* RepeatViewController.swift */,
 				8920000724A75ACC00EE47FA /* MainViewController.swift */,
+				8911F6AA24AEDCA400F1B5BB /* ImportanceTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */,
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
+				8911F6AB24AEDCA400F1B5BB /* ImportanceTableViewController.swift in Sources */,
 				9E567DBA24AAFBDB00DE6CDA /* addprojectpageviewcontrollerViewController.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,

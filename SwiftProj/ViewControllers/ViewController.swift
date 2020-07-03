@@ -43,8 +43,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         let datetime2 = formatter2.date(from: "10-05-2020 15:00:00")!
         
-        taskList.append(Task(id: "OoWftREGKR4VQU0UNpss", name: "CGIS Practical", description: "Practical at 1PM on May 28", startTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com"))
-        taskList.append(Task(id: "EoWftREGKc4VQU0UNpss", name: "FAI Tutorial", description: "Tutorial at 3PM on May 28", startTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com"))
+        taskList.append(Task(taskID: "OoWftREGKR4VQU0UNpss", taskName: "CGIS Practical", taskDesc: "Practical at 1PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Important"))
+        taskList.append(Task(taskID: "EoWftREGKc4VQU0UNpss", taskName: "FAI Tutorial", taskDesc: "Tutorial at 3PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Secondary"))
         
         tableView.tableFooterView = UIView()
         //breakButton.layer.cornerRadius = 10
@@ -89,6 +89,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taskTitleLabel.text = p.taskName
         cell.taskDescLabel.text = p.taskDesc
         //cell.taskRuntimeLabel.text = "\(p.runtime/60) Hrs \(p.runtime%60) Mins"
+        if p.importance == "Important" {
+            cell.taskTitleLabel.textColor = UIColor.red
+        } else {
+            cell.taskTitleLabel.textColor = UIColor { tc in
+                switch tc.userInterfaceStyle {
+                case .dark:
+                    return UIColor.white
+                default:
+                    return UIColor.black
+                }
+            }
+
+        }
         
         // format for the time to do the task
         let formatDateTime = "h:mm a"
