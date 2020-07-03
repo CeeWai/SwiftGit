@@ -74,96 +74,123 @@ class TimeViewController: UIViewController {
 //        contentView.translatesAutoresizingMaskIntoConstraints = false
         
         setTimeButtonArray()
-        for (index, element) in myButtonArray.enumerated() {
-            var oneBtn : UIButton {
-                let button = UIButton()
-                button.setTitle(element, for: .normal)
-                button.backgroundColor = UIColor.black
-                button.layer.borderColor = UIColor.black.cgColor
-                button.setTitleColor(UIColor.white, for: .normal)
-//                button.translatesAutoresizingMaskIntoConstraints = false
-                button.contentHorizontalAlignment = .center
-                button.contentVerticalAlignment = .center
-                button.titleLabel?.font = UIFont(name: "Arial", size: 16)
-                button.layer.cornerRadius = 5
-                button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-                button.clipsToBounds = true
-                //button.frame.size = CGSize(width: 82, height: 35)
-                //button.widthAnchor.constraint(equalToConstant: 200).isActive = true
-                //button.heightAnchor.constraint(equalToConstant: 35).isActive = true
-                //print(index)
-                button.tag = index
-                return button
-            };()
+        DataManager.loadTasks { fullUserTaskList in
+            var todayTask: [Task] = []
             
-//            var view: UIView! = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 35))
-//            view.backgroundColor = UIColor.black
-//            view.addSubview(oneBtn)
-            
-            if stack1Count < 4 {
-                buttonStackView1.addArrangedSubview(oneBtn)
-                stack1Count += 1
-            } else if stack2Count < 4 {
-                buttonStackView2.addArrangedSubview(oneBtn)
-                stack2Count += 1
-            } else if stack3Count < 4 {
-                buttonStackView3.addArrangedSubview(oneBtn)
-                stack3Count += 1
-            } else if stack4Count < 4 {
-                buttonStackView4.addArrangedSubview(oneBtn)
-                stack4Count += 1
-            } else if stack5Count < 4 {
-                buttonStackView5.addArrangedSubview(oneBtn)
-                stack5Count += 1
-            } else if stack6Count < 4 {
-                buttonStackView6.addArrangedSubview(oneBtn)
-                stack6Count += 1
-            } else if stack7Count < 4 {
-                buttonStackView7.addArrangedSubview(oneBtn)
-                stack7Count += 1
-            } else if stack4Count < 4 {
-                buttonStackView7.addArrangedSubview(oneBtn)
-                stack7Count += 1
-            } else if stack8Count < 4 {
-                buttonStackView8.addArrangedSubview(oneBtn)
-                stack8Count += 1
-            } else if stack9Count < 4 {
-               buttonStackView9.addArrangedSubview(oneBtn)
-               stack9Count += 1
-           } else if stack10Count < 4 {
-               buttonStackView10.addArrangedSubview(oneBtn)
-               stack10Count += 1
-           } else if stack11Count < 4 {
-               buttonStackView11.addArrangedSubview(oneBtn)
-               stack11Count += 1
-           } else if stack12Count < 4 {
-               buttonStackView12.addArrangedSubview(oneBtn)
-               stack12Count += 1
-           } else if stack13Count < 4 {
-               buttonStackView13.addArrangedSubview(oneBtn)
-               stack13Count += 1
-           }
-            //print(buttonStackView.frame.height)
+            for task in fullUserTaskList {
+                //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
+                if Calendar.current.isDate(Date(), inSameDayAs: task.taskStartTime) {
+                    todayTask.append(task)
+                }
+            }
+        
+            for (index, element) in self.myButtonArray.enumerated() {
+                var oneBtn : UIButton {
+                    
+                    let button = UIButton()
+                    button.setTitle(element, for: .normal)
+                    button.backgroundColor = UIColor.black
+                    button.layer.borderColor = UIColor.black.cgColor
+                    button.setTitleColor(UIColor.white, for: .normal)
+                    //button.translatesAutoresizingMaskIntoConstraints = false
+                    button.contentHorizontalAlignment = .center
+                    button.contentVerticalAlignment = .center
+                    button.titleLabel?.font = UIFont(name: "Arial", size: 16)
+                    button.layer.cornerRadius = 5
+                    button.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
+                    button.clipsToBounds = true
+
+                    button.tag = index
+                    print("element = \(element)")
+                    for task in todayTask {
+                        let taskStartDate = task.taskStartTime
+                        let dateFormatterStart = DateFormatter()
+                        dateFormatterStart.dateFormat = "h:mm a"
+                        let startDateString = dateFormatterStart.string(from: taskStartDate)
+                        let startDate = dateFormatterStart.date(from:startDateString)!
+                        
+                        let taskEndDate = task.taskEndTime
+                        let dateFormatterEnd = DateFormatter()
+                        dateFormatterEnd.dateFormat = "h:mm a"
+                        let endDateString = dateFormatterEnd.string(from: taskEndDate)
+                        let endDate = dateFormatterEnd.date(from:endDateString)!
+
+                        let isoDate = "\(element)"
+                        //print("isoDate \(isoDate)")
+                        
+                        let dateFormatter = DateFormatter()
+                        //dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                        dateFormatter.dateFormat = "h:mm a"
+                        let date = dateFormatter.date(from:isoDate)!
+                        
+                        print("date = \(date)")
+                        if date == startDate || date == endDate {
+                            print("\(date) is equal to \(startDate) or \(endDate)")
+                             button.backgroundColor = UIColor.lightGray
+                             button.isEnabled = false
+                        }
+                        
+                        if date >= startDate && date <= endDate {
+                            print("\(date) is in between \(startDate) and \(endDate)")
+                            button.backgroundColor = UIColor.lightGray
+                            button.isEnabled = false
+                        }
+                    }
+
+                    return button
+                };()
+                
+                if self.stack1Count < 4 {
+                    self.buttonStackView1.addArrangedSubview(oneBtn)
+                    self.stack1Count += 1
+                } else if self.stack2Count < 4 {
+                    self.buttonStackView2.addArrangedSubview(oneBtn)
+                    self.stack2Count += 1
+                } else if self.stack3Count < 4 {
+                    self.buttonStackView3.addArrangedSubview(oneBtn)
+                    self.stack3Count += 1
+                } else if self.stack4Count < 4 {
+                    self.buttonStackView4.addArrangedSubview(oneBtn)
+                    self.stack4Count += 1
+                } else if self.stack5Count < 4 {
+                    self.buttonStackView5.addArrangedSubview(oneBtn)
+                    self.stack5Count += 1
+                } else if self.stack6Count < 4 {
+                    self.buttonStackView6.addArrangedSubview(oneBtn)
+                    self.stack6Count += 1
+                } else if self.stack7Count < 4 {
+                    self.buttonStackView7.addArrangedSubview(oneBtn)
+                    self.stack7Count += 1
+                } else if self.stack4Count < 4 {
+                    self.buttonStackView7.addArrangedSubview(oneBtn)
+                    self.stack7Count += 1
+                } else if self.stack8Count < 4 {
+                    self.buttonStackView8.addArrangedSubview(oneBtn)
+                    self.stack8Count += 1
+                } else if self.stack9Count < 4 {
+                   self.buttonStackView9.addArrangedSubview(oneBtn)
+                   self.stack9Count += 1
+               } else if self.stack10Count < 4 {
+                   self.buttonStackView10.addArrangedSubview(oneBtn)
+                   self.stack10Count += 1
+               } else if self.stack11Count < 4 {
+                   self.buttonStackView11.addArrangedSubview(oneBtn)
+                   self.stack11Count += 1
+               } else if self.stack12Count < 4 {
+                   self.buttonStackView12.addArrangedSubview(oneBtn)
+                   self.stack12Count += 1
+               } else if self.stack13Count < 4 {
+                   self.buttonStackView13.addArrangedSubview(oneBtn)
+                   self.stack13Count += 1
+               }
+                //print(buttonStackView.frame.height)
+            }
+
         }
-        
-        //buttonScrollView.contentSize = contentView.frame.size
-//        buttonScrollView.sizeToFit()
-//        buttonStackView.layoutIfNeeded()
-        
-        //buttonScrollView.contentSize.height = 1500
-        //buttonStackView.center.x = contentView.center.x // for horizontal
-        //buttonStackView.center.y = self.view.center.y // for vertical
-//        buttonStackView.subviews.forEach { (view) in
-//            if count < 34 {
-//                print(view)
-//                view.removeFromSuperview()
-//                count += 1
-//            }
-//        }
-        //print("scrollview size \(buttonScrollView.contentSize)")
-        print("buttonstackview1 size \(buttonStackView1.frame.size)")
-        print("buttonstackview2 size \(buttonStackView2.frame.size)")
-        print("buttonstackview3 size \(buttonStackView3.frame.size)")
+
+//        print("buttonstackview1 size \(buttonStackView1.frame.size)")
+//        print("buttonstackview2 size \(buttonStackView2.frame.size)")
+//        print("buttonstackview3 size \(buttonStackView3.frame.size)")
         //print(myButtonTestArray.count + 1)
     }
     
