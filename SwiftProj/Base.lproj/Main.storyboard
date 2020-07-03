@@ -459,7 +459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syl-Hv-1hq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3126" y="1732"/>
+            <point key="canvasLocation" x="-2546" y="1732"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bXF-4T-MIB">
@@ -801,7 +801,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="NPh-k4-ZBd">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="JUm-Mh-Kid" kind="relationship" relationship="rootViewController" id="I1t-BA-zfA"/>
