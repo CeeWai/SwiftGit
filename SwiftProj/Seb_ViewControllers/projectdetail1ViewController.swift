@@ -49,17 +49,14 @@ class projectdetail1ViewController: UIViewController {
         label1.layer.borderWidth = 2;
         label1.layer.cornerRadius = 7
         label1.layer.borderColor = UIColor.systemRed.cgColor
-        label1.backgroundColor = UIColor.black
         label1.clipsToBounds = true
         label2.layer.borderWidth = 2;
         label2.layer.cornerRadius = 7
         label2.layer.borderColor = UIColor.systemRed.cgColor
-        label2.backgroundColor = UIColor.black
         label2.clipsToBounds = true
         label3.layer.borderWidth = 2;
         label3.layer.cornerRadius = 7
         label3.layer.borderColor = UIColor.systemRed.cgColor
-        label3.backgroundColor = UIColor.black
         label3.clipsToBounds = true
         view1.layer.borderWidth = 2;
         view1.layer.cornerRadius = 7

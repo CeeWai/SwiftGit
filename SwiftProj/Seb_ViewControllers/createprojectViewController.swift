@@ -14,6 +14,7 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
     @IBOutlet var titlefield: UITextField!
     @IBOutlet var descriptionfield: UITextView!
     @IBOutlet var createBtn: UIButton!
+    @IBOutlet var navBar: UINavigationItem!
     
 
     
@@ -26,9 +27,16 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
             self.descriptionfield.layer.borderWidth = 2.0
             let bottomline = CALayer()
             bottomline.frame = CGRect(x:0,y:titlefield.frame.height - 2, width: titlefield.frame.width,height: 2)
-            bottomline.backgroundColor =		 UIColor.init(red:48/255,green:178/255,blue: 99/255,alpha: 1).cgColor
+            bottomline.backgroundColor =		 UIColor.systemRed.cgColor
             titlefield.borderStyle = .none
             titlefield.layer.addSublayer(bottomline)
+            descriptionfield.layer.borderWidth = 2;
+            descriptionfield.layer.cornerRadius = 7
+            descriptionfield.layer.borderColor = UIColor.systemRed.cgColor
+            createBtn.layer.borderWidth = 2;
+            createBtn.layer.cornerRadius = 7
+            createBtn.layer.borderColor = UIColor.systemRed.cgColor
+
         }
     
     }

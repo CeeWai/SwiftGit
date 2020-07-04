@@ -19,6 +19,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         ProjectDataManager.createDatabase()
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
         projectList = ProjectDataManager.loadProjects()
+
         
     }
     

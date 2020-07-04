@@ -18,6 +18,15 @@ class createproject2ViewController: UIViewController, UIImagePickerControllerDel
     var projectitem : Project?
     override func viewDidLoad() {
         super.viewDidLoad()
+        Camera.layer.borderWidth = 2;
+        Camera.layer.cornerRadius = 7
+        Camera.layer.borderColor = UIColor.systemRed.cgColor
+        gallery.layer.borderWidth = 2;
+        gallery.layer.cornerRadius = 7
+        gallery.layer.borderColor = UIColor.systemRed.cgColor
+        skip.layer.borderWidth = 2;
+        skip.layer.cornerRadius = 7
+        skip.layer.borderColor = UIColor.systemRed.cgColor
         if !(UIImagePickerController.isSourceTypeAvailable(
         .camera)) {
         // If not, we will just hide the takePicture button //
