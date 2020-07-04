@@ -10,11 +10,17 @@ import UIKit
 
 class projectdetail1ViewController: UIViewController {
 
+ 
+    @IBOutlet var label1: UILabel!
+    @IBOutlet var label2: UILabel!
+    @IBOutlet var label3: UILabel!
+    @IBOutlet var scrollview1: UIScrollView!
+    @IBOutlet var scrollview2: UIScrollView!
+    @IBOutlet var scrollview3: UIScrollView!
     @IBOutlet var view1: UIView!
-    
     @IBOutlet var view2: UIView!
     @IBOutlet var view3: UIView!
-    @IBOutlet var addrole: UIButton!
+    @IBOutlet var addtask: UIButton!
     @IBOutlet var board: UIButton!
     @IBOutlet var ganttchart: UIButton!
     
@@ -24,19 +30,47 @@ class projectdetail1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navtitle.title=projectItem?.projectName
-        addrole.layer.cornerRadius = 10
-        view1.layer.borderWidth = 2;
+        addtask.layer.cornerRadius = 10
+        addtask.layer.borderColor = UIColor.systemRed.cgColor
+        addtask.layer.borderWidth = 2;
+        addtask.layer.backgroundColor = UIColor.black.cgColor
+        /*view1.layer.borderWidth = 2;
         view1.layer.cornerRadius = 10
         view2.layer.borderWidth = 2;
         view2.layer.cornerRadius = 10
         view3.layer.borderWidth = 2;
-        view3.layer.cornerRadius = 10
+        view3.layer.cornerRadius = 10*/
         board.layer.borderWidth = 2;
-        board.layer.cornerRadius = 10
+        board.layer.cornerRadius = 7
         board.layer.borderColor = UIColor.systemRed.cgColor
         ganttchart.layer.borderWidth = 2;
-        ganttchart.layer.cornerRadius = 10
+        ganttchart.layer.cornerRadius = 7
         ganttchart.layer.borderColor = UIColor.systemRed.cgColor
+        label1.layer.borderWidth = 2;
+        label1.layer.cornerRadius = 7
+        label1.layer.borderColor = UIColor.systemRed.cgColor
+        label1.backgroundColor = UIColor.black
+        label1.clipsToBounds = true
+        label2.layer.borderWidth = 2;
+        label2.layer.cornerRadius = 7
+        label2.layer.borderColor = UIColor.systemRed.cgColor
+        label2.backgroundColor = UIColor.black
+        label2.clipsToBounds = true
+        label3.layer.borderWidth = 2;
+        label3.layer.cornerRadius = 7
+        label3.layer.borderColor = UIColor.systemRed.cgColor
+        label3.backgroundColor = UIColor.black
+        label3.clipsToBounds = true
+        view1.layer.borderWidth = 2;
+        view1.layer.cornerRadius = 7
+        view1.layer.borderColor = UIColor.systemRed.cgColor
+        view2.layer.borderWidth = 2;
+        view2.layer.cornerRadius = 7
+        view2.layer.borderColor = UIColor.systemRed.cgColor
+        view3.layer.borderWidth = 2;
+        view3.layer.cornerRadius = 7
+        view3.layer.borderColor = UIColor.systemRed.cgColor
+        
         
     }
     
