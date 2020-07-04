@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sio-5b-cFw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sio-5b-cFw">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -384,12 +384,14 @@
                                         <leftBarButtonItems>
                                             <barButtonItem id="aa6-Dp-LIf"/>
                                             <barButtonItem title="Item" image="chevron.left" catalog="system" id="QmA-Zw-3S4">
+                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="sio-5b-cFw" kind="presentation" modalPresentationStyle="fullScreen" id="KqO-bF-oeQ"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="WWK-DP-DFL">
+                                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="popovermenu:" destination="lCv-NL-OtH" id="mtK-z6-c46"/>
                                             </connections>
@@ -398,41 +400,42 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MOj-vp-wPM">
-                                <rect key="frame" x="0.0" y="44" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkq-y0-Tdt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oy-7m-eKY">
-                                                <rect key="frame" x="15" y="0.0" width="65" height="30"/>
-                                                <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Members">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-Hd-gCU">
+                                                <rect key="frame" x="30" y="0.0" width="157" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Board">
+                                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oy-7m-eKY">
+                                                <rect key="frame" x="188" y="0.0" width="157" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Gantt Chart">
+                                                    <color key="titleColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="ak8-jN-mGq" kind="presentation" modalPresentationStyle="fullScreen" id="xAK-cd-C5y"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-Hd-gCU">
-                                                <rect key="frame" x="-0.5" y="0.0" width="187.5" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Board">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="5Oy-7m-eKY" firstAttribute="leading" secondItem="Hkq-y0-Tdt" secondAttribute="leading" constant="15" id="yK3-Qp-tkL"/>
+                                            <constraint firstItem="n3M-Hd-gCU" firstAttribute="leading" secondItem="Hkq-y0-Tdt" secondAttribute="leading" constant="30" id="aRM-YG-1Mz"/>
+                                            <constraint firstAttribute="trailing" secondItem="5Oy-7m-eKY" secondAttribute="trailing" constant="30" id="iyw-kj-1G9"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uhG-NC-Ez8"/>
+                                    <constraint firstAttribute="height" constant="40" id="uhG-NC-Ez8"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWu-sJ-rHT">
-                                <rect key="frame" x="15" y="79" width="345" height="40"/>
+                                <rect key="frame" x="15" y="89" width="345" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-On-Xqz">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="40"/>
@@ -592,6 +595,8 @@
                     <navigationItem key="navigationItem" id="mGl-9B-KzS"/>
                     <connections>
                         <outlet property="addrole" destination="e3C-On-Xqz" id="1Aj-rK-jTH"/>
+                        <outlet property="board" destination="n3M-Hd-gCU" id="Br3-Lh-Z4a"/>
+                        <outlet property="ganttchart" destination="5Oy-7m-eKY" id="gcs-7d-4wF"/>
                         <outlet property="navtitle" destination="Ac5-MU-rwY" id="Qw9-iv-lmH"/>
                         <outlet property="popover" destination="aFL-RA-reJ" id="xN0-7L-33K"/>
                         <outlet property="view1" destination="a9X-ez-wDB" id="H0r-TE-7B0"/>

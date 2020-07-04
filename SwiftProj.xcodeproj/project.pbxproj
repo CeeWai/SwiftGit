@@ -36,12 +36,6 @@
 		89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89921951246E45CB0029BFF5 /* MapViewController.swift */; };
 		89921958246E46870029BFF5 /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89921957246E46870029BFF5 /* BridgingHeader.m */; };
 		8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8992195A246E46CD0029BFF5 /* libsqlite3.tbd */; };
-		899C434E24AF034E000525C7 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 899C434C24AF034E000525C7 /* startScreenVid.mp4 */; };
-		899C434F24AF034E000525C7 /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = 899C434D24AF034E000525C7 /* startScreenVid.mp4.zip */; };
-		899C435424AF0421000525C7 /* student-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 899C435024AF0421000525C7 /* student-colour.svg */; };
-		899C435524AF0421000525C7 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 899C435124AF0421000525C7 /* student-colour-400px.png */; };
-		899C435624AF0421000525C7 /* student-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 899C435224AF0421000525C7 /* student-colour-800px.png */; };
-		899C435724AF0421000525C7 /* student-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 899C435324AF0421000525C7 /* student-colour-1200px.png */; };
 		89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A67B3F249BB35C006241C5 /* ProfileViewController.swift */; };
 		89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */; };
 		89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEFC247FE66B00F3F614 /* CommentCell.swift */; };
@@ -113,12 +107,6 @@
 		89921956246E46870029BFF5 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		89921957246E46870029BFF5 /* BridgingHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
 		8992195A246E46CD0029BFF5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		899C434C24AF034E000525C7 /* startScreenVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startScreenVid.mp4; sourceTree = "<group>"; };
-		899C434D24AF034E000525C7 /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
-		899C435024AF0421000525C7 /* student-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "student-colour.svg"; sourceTree = "<group>"; };
-		899C435124AF0421000525C7 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
-		899C435224AF0421000525C7 /* student-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-800px.png"; sourceTree = "<group>"; };
-		899C435324AF0421000525C7 /* student-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-1200px.png"; sourceTree = "<group>"; };
 		89A67B3F249BB35C006241C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommentViewController.swift; sourceTree = "<group>"; };
 		89C8AEFC247FE66B00F3F614 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -222,7 +210,6 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
-				899C434B24AF034E000525C7 /* Media */,
 				9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */,
 				895EE02D2476968400F2C109 /* ViewControllers */,
 				8992194F246E459C0029BFF5 /* SQLiteDB.swift */,
@@ -278,19 +265,6 @@
 				1F7CF0D5E2119F9907DE1786 /* Pods_SwiftProj.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		899C434B24AF034E000525C7 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				899C434C24AF034E000525C7 /* startScreenVid.mp4 */,
-				899C434D24AF034E000525C7 /* startScreenVid.mp4.zip */,
-				899C435124AF0421000525C7 /* student-colour-400px.png */,
-				899C435224AF0421000525C7 /* student-colour-800px.png */,
-				899C435324AF0421000525C7 /* student-colour-1200px.png */,
-				899C435024AF0421000525C7 /* student-colour.svg */,
-			);
-			path = Media;
 			sourceTree = "<group>";
 		};
 		89F8DA9B2464FEF700B54354 /* Models */ = {
@@ -394,18 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				899C435624AF0421000525C7 /* student-colour-800px.png in Resources */,
 				9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */,
 				F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */,
-				899C434E24AF034E000525C7 /* startScreenVid.mp4 in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
-				899C435424AF0421000525C7 /* student-colour.svg in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
-				899C435724AF0421000525C7 /* student-colour-1200px.png in Resources */,
-				899C434F24AF034E000525C7 /* startScreenVid.mp4.zip in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
-				899C435524AF0421000525C7 /* student-colour-400px.png in Resources */,
 				898646EE2464626F00A5C752 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

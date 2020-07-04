@@ -15,6 +15,8 @@ class projectdetail1ViewController: UIViewController {
     @IBOutlet var view2: UIView!
     @IBOutlet var view3: UIView!
     @IBOutlet var addrole: UIButton!
+    @IBOutlet var board: UIButton!
+    @IBOutlet var ganttchart: UIButton!
     
     @IBOutlet var navtitle: UINavigationItem!
     var popoverstatus = 0;
@@ -29,6 +31,12 @@ class projectdetail1ViewController: UIViewController {
         view2.layer.cornerRadius = 10
         view3.layer.borderWidth = 2;
         view3.layer.cornerRadius = 10
+        board.layer.borderWidth = 2;
+        board.layer.cornerRadius = 10
+        board.layer.borderColor = UIColor.systemRed.cgColor
+        ganttchart.layer.borderWidth = 2;
+        ganttchart.layer.cornerRadius = 10
+        ganttchart.layer.borderColor = UIColor.systemRed.cgColor
         
     }
     
