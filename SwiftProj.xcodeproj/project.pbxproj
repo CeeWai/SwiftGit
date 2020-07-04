@@ -30,6 +30,12 @@
 		898A79CE24B0AD1D003130FC /* student-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 898A79C824B0AD1D003130FC /* student-colour.svg */; };
 		898A79CF24B0AD1D003130FC /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = 898A79C924B0AD1D003130FC /* startScreenVid.mp4.zip */; };
 		898A79D024B0AD1D003130FC /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 898A79CA24B0AD1D003130FC /* student-colour-400px.png */; };
+		898A79D624B0D81B003130FC /* business-woman-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 898A79D124B0D81A003130FC /* business-woman-colour.svg */; };
+		898A79D724B0D81B003130FC /* business-woman-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 898A79D224B0D81B003130FC /* business-woman-colour-800px.png */; };
+		898A79D824B0D81B003130FC /* business-woman-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 898A79D324B0D81B003130FC /* business-woman-colour-400px.png */; };
+		898A79D924B0D81B003130FC /* business-woman-colour.psd in Resources */ = {isa = PBXBuildFile; fileRef = 898A79D424B0D81B003130FC /* business-woman-colour.psd */; };
+		898A79DA24B0D81B003130FC /* business-woman-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 898A79D524B0D81B003130FC /* business-woman-colour-1200px.png */; };
+		898A79DC24B0D9C1003130FC /* entryway-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 898A79DB24B0D9C1003130FC /* entryway-colour-1200px.png */; };
 		89921942246E450A0029BFF5 /* CaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8992193E246E450A0029BFF5 /* CaseDataManager.swift */; };
 		89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8992193F246E450A0029BFF5 /* FullCaseDataManager.swift */; };
 		89921944246E450A0029BFF5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89921940246E450A0029BFF5 /* DataManager.swift */; };
@@ -105,6 +111,12 @@
 		898A79C824B0AD1D003130FC /* student-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "student-colour.svg"; sourceTree = "<group>"; };
 		898A79C924B0AD1D003130FC /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
 		898A79CA24B0AD1D003130FC /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
+		898A79D124B0D81A003130FC /* business-woman-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "business-woman-colour.svg"; sourceTree = "<group>"; };
+		898A79D224B0D81B003130FC /* business-woman-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-800px.png"; sourceTree = "<group>"; };
+		898A79D324B0D81B003130FC /* business-woman-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-400px.png"; sourceTree = "<group>"; };
+		898A79D424B0D81B003130FC /* business-woman-colour.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "business-woman-colour.psd"; sourceTree = "<group>"; };
+		898A79D524B0D81B003130FC /* business-woman-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-1200px.png"; sourceTree = "<group>"; };
+		898A79DB24B0D9C1003130FC /* entryway-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "entryway-colour-1200px.png"; sourceTree = "<group>"; };
 		8992193E246E450A0029BFF5 /* CaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseDataManager.swift; sourceTree = "<group>"; };
 		8992193F246E450A0029BFF5 /* FullCaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullCaseDataManager.swift; sourceTree = "<group>"; };
 		89921940246E450A0029BFF5 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -251,6 +263,12 @@
 		898A79C424B0AD1D003130FC /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				898A79DB24B0D9C1003130FC /* entryway-colour-1200px.png */,
+				898A79D324B0D81B003130FC /* business-woman-colour-400px.png */,
+				898A79D224B0D81B003130FC /* business-woman-colour-800px.png */,
+				898A79D524B0D81B003130FC /* business-woman-colour-1200px.png */,
+				898A79D424B0D81B003130FC /* business-woman-colour.psd */,
+				898A79D124B0D81A003130FC /* business-woman-colour.svg */,
 				898A79C524B0AD1D003130FC /* student-colour-800px.png */,
 				898A79C624B0AD1D003130FC /* student-colour-1200px.png */,
 				898A79C724B0AD1D003130FC /* startScreenVid.mp4 */,
@@ -395,15 +413,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				898A79CB24B0AD1D003130FC /* student-colour-800px.png in Resources */,
+				898A79D624B0D81B003130FC /* business-woman-colour.svg in Resources */,
 				898A79D024B0AD1D003130FC /* student-colour-400px.png in Resources */,
+				898A79D924B0D81B003130FC /* business-woman-colour.psd in Resources */,
+				898A79D724B0D81B003130FC /* business-woman-colour-800px.png in Resources */,
 				9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */,
 				898A79CD24B0AD1D003130FC /* startScreenVid.mp4 in Resources */,
+				898A79DC24B0D9C1003130FC /* entryway-colour-1200px.png in Resources */,
 				898A79CC24B0AD1D003130FC /* student-colour-1200px.png in Resources */,
+				898A79D824B0D81B003130FC /* business-woman-colour-400px.png in Resources */,
 				898A79CE24B0AD1D003130FC /* student-colour.svg in Resources */,
 				F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
+				898A79DA24B0D81B003130FC /* business-woman-colour-1200px.png in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
 				898646EE2464626F00A5C752 /* Main.storyboard in Resources */,
 				898A79CF24B0AD1D003130FC /* startScreenVid.mp4.zip in Resources */,

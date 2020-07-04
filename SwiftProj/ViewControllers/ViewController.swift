@@ -10,15 +10,23 @@ import UIKit
 import FSCalendar
 import FirebaseAuth
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource {
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource, CanReceiveReload {
+    func passReloadDataBack(data: Date) {
+        DispatchQueue.main.async {
+            print("passed back reload data")
+            self.loadTaskListFromDate(date: data)
+        }
+    }
+    
     @IBOutlet weak var breakButton: UIButton!
-
+    @IBOutlet weak var addTaskButton: UIBarButtonItem!
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noFilterView: UIView!
+    @IBOutlet weak var noFilterLabel: UILabel!
     var taskList : [Task] = []
+    var userCurrentDate = Date()
     
     override func viewDidLoad() {
         //print("print works")
@@ -31,21 +39,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.layer.cornerRadius = 10;
     
-        // temp add date value to the to do listings
-        
-        // Specify date components
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-        let datetime = formatter.date(from: "10-05-2020 13:00:00")!
-
-        let formatter2 = DateFormatter()
-        formatter2.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-        let datetime2 = formatter2.date(from: "10-05-2020 15:00:00")!
-        
-        taskList.append(Task(taskID: "OoWftREGKR4VQU0UNpss", taskName: "CGIS Practical", taskDesc: "Practical at 1PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Important"))
-        taskList.append(Task(taskID: "EoWftREGKc4VQU0UNpss", taskName: "FAI Tutorial", taskDesc: "Tutorial at 3PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Secondary"))
+//        // temp add date value to the to do listings
+//
+//        // Specify date components
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+//
+//        let datetime = formatter.date(from: "10-05-2020 13:00:00")!
+//
+//        let formatter2 = DateFormatter()
+//        formatter2.dateFormat = "dd-MM-yyyy HH:mm:ss"
+//
+//        let datetime2 = formatter2.date(from: "10-05-2020 15:00:00")!
+//
+//        taskList.append(Task(taskID: "OoWftREGKR4VQU0UNpss", taskName: "CGIS Practical", taskDesc: "Practical at 1PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Important"))
+//        taskList.append(Task(taskID: "EoWftREGKc4VQU0UNpss", taskName: "FAI Tutorial", taskDesc: "Tutorial at 3PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Secondary"))
         
         tableView.tableFooterView = UIView()
         //breakButton.layer.cornerRadius = 10
@@ -67,7 +75,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        //calendarView.layer.cornerRadius = 4.0
         
         calendar.delegate = self
-        
+        tableView.delegate = self
         // instantiate default tasks (today's task)
         loadTaskListFromDate(date: Date())
     }
@@ -75,7 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -135,12 +143,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 detailViewController.taskItem = task
                 print(task.taskName)
             }
+        } else if segue.identifier == "addTaskSegue" {
+            let entryViewController = segue.destination as! EntryViewController
+            entryViewController.userCurrentDate = self.userCurrentDate
+            entryViewController.taskViewController = self
+            //print(self.userCurrentDate)
+            entryViewController.delegate = self
         }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         //print("This Ran")
+        self.taskList = []
+        self.userCurrentDate = date
+        print("Set userCurrentDate to \(self.userCurrentDate)")
         loadTaskListFromDate(date: date)
+        
+        if Calendar.current.isDate(date, inSameDayAs: Date()) {
+            print("Same Day")
+            addTaskButton.isEnabled = true
+        } else if date < Date() {
+            print("Less than today")
+            addTaskButton.isEnabled = false
+        } else {
+            print("More than today")
+            addTaskButton.isEnabled = true
+        }
     }
     
     func loadTaskListFromDate(date: Date) {
@@ -151,26 +179,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("Loading tasks that are set on: \(string)")
         //var userTaskList: [Task] = []
         
+        let currentWeekDayFormatter = DateFormatter()
+        currentWeekDayFormatter.dateFormat = "EEEE"
+        let currentWeekDayString = currentWeekDayFormatter.string(from: date)
+        
         DataManager.loadTasks { fullUserTaskList in
             //userTaskList = fullUserTaskList
-            
+            self.taskList = []
+
+            print(self.taskList.count)
             for task in fullUserTaskList {
+                
+                let weekDayFormatter = DateFormatter()
+                weekDayFormatter.dateFormat = "EEEE"
+                let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
                 //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
                 if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" {
                     print("\(date) is the same day as \(task.taskStartTime)")
                     self.taskList.append(task)
+                } else if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{
+                    print("Weekdaystring = \(weekDayString), currentweekdaystring = \(currentWeekDayString)")
+                    self.taskList.append(task)
                 }
             }
             
-            print(self.taskList)
+            //print(self.taskList)
             self.tableView.reloadData()
             
             if self.taskList.count == 0 {
-                print("tasklist count == \(self.taskList.count)")
-//                self.tableView.backgroundView = self.noFilterView
-                self.noFilterView.isHidden = false
+                if Calendar.current.isDate(date, inSameDayAs: Date()) {
+                    self.noFilterView.isHidden = false
+                    self.noFilterLabel.text = "No task for today! \n Add one by pressing the '+' button!"
+                } else if date < Date() {
+                    self.noFilterView.isHidden = false
+                    self.noFilterLabel.text = "No task scheduled on this day!"
+                } else {
+                    self.noFilterView.isHidden = false
+                    self.noFilterLabel.text = "No task for today! \n Add one by pressing the '+' button!"
+                }
             } else {
-                //self.tableView.backgroundView = nil
                 self.noFilterView.isHidden = true
 
             }
@@ -178,8 +225,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     
     }
-    
-    
     
 }
 

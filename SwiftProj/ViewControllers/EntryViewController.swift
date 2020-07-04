@@ -11,7 +11,13 @@ import AVFoundation
 import AVKit
 import FirebaseAuth
 
+protocol CanReceiveReload {
+    func passReloadDataBack(data: Date)
+}
+
 class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance {
+    
+    var delegate: CanReceiveReload?
     var repeatData: String = ""
     func passRepeatDataBack(data: String) {
         repeatData = data
@@ -74,6 +80,8 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var entryTaskView: UIView!
     @IBOutlet weak var errLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
+    var userCurrentDate: Date?
+    var taskViewController: ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +94,14 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         descTextView!.layer.borderColor = UIColor.lightGray.cgColor
         descTextView.layer.cornerRadius = 6.5
         
+        let taskDate = self.userCurrentDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM EEEE"
+        let parsedDate = dateFormatter.string(from: taskDate!)
+        //let startDate = dateFormatterStart.date(from:startDateString)!
+        print(parsedDate)
+
+        self.setTaskbutton.setTitle("Set Task on: \(parsedDate)", for: UIControl.State.normal)
     }
     
     // because swift doesnt have a placeholder function for textviews, i created one lol
@@ -138,7 +154,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 taskListFromFirestore in
                 //print("\(taskListFromFirestore)")
                 
-                let now = Date()
+                let now = self.userCurrentDate!
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy "
                 let date = dateFormatter.string(from: now)
@@ -165,33 +181,28 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 print("name: \(self.titleTextField.text!), description: \(self.descTextView!.text!), startTime: \(dateStartCurrent!), taskEndTime: \(dateEndCurrent!), repeatType: \(self.chosenRepeatLabel.text!), taskOwner: \(user!.email!)")
                 
                 DataManager.insertOrReplaceTask(task)
+                self.taskViewController?.tableView.reloadData() // reload the tableview before popping back
                 
+                self.delegate?.passReloadDataBack(data: self.userCurrentDate!)
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
-//                print(dateAsString)
-//                print(endDateAsString)
-//
-//                let df = DateFormatter()
-//                df.dateFormat = "yyyy-MM-dd h:mm a"
-//                let nowAF = df.string(from: Date())
-//                print("date: \(Date())")
-//                print(nowAF)
 
             }
         }
         
-
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pickTimeSegue" {
             let pickTimeVC = segue.destination as! TimeViewController
             pickTimeVC.delegate = self
+            pickTimeVC.userCurrentDate = self.userCurrentDate
         } else if segue.identifier == "pickEndTimeSegue" {
             let pickEndTimeVC = segue.destination as! EndTimeViewController
             pickEndTimeVC.delegate = self
             pickEndTimeVC.startTime = chosenStartTimeLabel.text
+            pickEndTimeVC.userCurrentDate = self.userCurrentDate
+
         } else if segue.identifier == "repeatSegue" {
            let pickRepeatVC = segue.destination as! RepeatTableViewController
            pickRepeatVC.delegate = self

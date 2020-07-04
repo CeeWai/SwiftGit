@@ -17,6 +17,8 @@ class TimeViewController: UIViewController {
 
     var delegate: CanRecieve?
     var data = ""
+    var userCurrentDate: Date?
+    @IBOutlet weak var hiddenView: UIView!
     //@IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var buttonStackView1: UIStackView!
     @IBOutlet weak var buttonStackView2: UIStackView!
@@ -53,6 +55,7 @@ class TimeViewController: UIViewController {
     var myButtonTestArray: [String] = ["1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM"]
     @IBOutlet weak var titleCardLabel: UILabel!
     override func viewDidLoad() {
+        print("userCurrentDate: \(self.userCurrentDate)")
         stack1Count = 0
         stack2Count = 0
         stack3Count = 0
@@ -69,19 +72,33 @@ class TimeViewController: UIViewController {
 
         super.viewDidLoad()
         
-//        buttonScrollView.translatesAutoresizingMaskIntoConstraints = false
-//        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
         setTimeButtonArray()
         DataManager.loadTasks { fullUserTaskList in
             var todayTask: [Task] = []
+            let currentWeekDayFormatter = DateFormatter()
+            currentWeekDayFormatter.dateFormat = "EEEE"
+            let currentWeekDayString = currentWeekDayFormatter.string(from: self.userCurrentDate!)
             
             for task in fullUserTaskList {
+                let weekDayFormatter = DateFormatter()
+                weekDayFormatter.dateFormat = "EEEE"
+                let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
                 //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
-                if Calendar.current.isDate(Date(), inSameDayAs: task.taskStartTime) {
+                if Calendar.current.isDate(self.userCurrentDate!, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" {
+                    print("\(Date()) is the same as \(task.taskStartTime)")
+                    todayTask.append(task)
+                } else if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && self.userCurrentDate! >= task.taskStartTime{
+                    print("Weekdaystring = \(weekDayString), currentweekdaystring = \(currentWeekDayString)")
                     todayTask.append(task)
                 }
+            }
+            
+            print(todayTask)
+            
+            if self.myButtonArray.count == 0 {
+                self.hiddenView.isHidden = false
+            } else {
+                self.hiddenView.isHidden = true
             }
         
             for (index, element) in self.myButtonArray.enumerated() {
@@ -119,11 +136,10 @@ class TimeViewController: UIViewController {
                         //print("isoDate \(isoDate)")
                         
                         let dateFormatter = DateFormatter()
-                        //dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
                         dateFormatter.dateFormat = "h:mm a"
                         let date = dateFormatter.date(from:isoDate)!
                         
-                        print("date = \(date)")
+                        //print("date = \(date)")
                         if date == startDate || date == endDate {
                             print("\(date) is equal to \(startDate) or \(endDate)")
                              button.backgroundColor = UIColor.lightGray
@@ -188,10 +204,6 @@ class TimeViewController: UIViewController {
 
         }
 
-//        print("buttonstackview1 size \(buttonStackView1.frame.size)")
-//        print("buttonstackview2 size \(buttonStackView2.frame.size)")
-//        print("buttonstackview3 size \(buttonStackView3.frame.size)")
-        //print(myButtonTestArray.count + 1)
     }
     
     @IBAction func buttonAction(sender: UIButton!) {
@@ -209,9 +221,7 @@ class TimeViewController: UIViewController {
         myButtonArray = []
         let date = Date()
         let calendar = Calendar.current
-    //        let year = calendar.component(.year, from: date)
-    //        let month = calendar.component(.month, from: date)
-    //        let day = calendar.component(.day, from: date)
+
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
         let second = calendar.component(.second, from: date)
@@ -222,50 +232,57 @@ class TimeViewController: UIViewController {
         
         formatter.dateFormat = "h:mm a"
         
-        if(minute < 29) {
-//            newDate.year = calendar.component(.year, from: date)
-//            newDate.month = calendar.component(.month, from: date)
-//            newDate.day = calendar.component(.day, from: date)
-//            newDate.hour = calendar.component(.hour, from: date)
-//            newDate.minute = 30
-            newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date), minute: 30, second: 0, of: date)
-        } else {
-//            newDate.year = calendar.component(.year, from: date)
-//            newDate.month = calendar.component(.month, from: date)
-//            newDate.day = calendar.component(.day, from: date)
-//            newDate.hour = calendar.component(.hour, from: date) + 1
-//            newDate.minute = 0
-
-            newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date) + 1, minute: 0, second: 0, of: date)
-
-        }
-        if newDate == nil {
-            titleCardLabel.isHidden = false
-            titleCardLabel.text = "You can't set a last minute task for today!"
-            return
-        } else {
-            titleCardLabel.isHidden = true
-        }
-        let dateString = formatter.string(from: newDate!)
-        print(dateString)
-        
-        myButtonArray.append(dateString)
-        
-        //newDate.minute! += 30
-        //print(newDate)
-        
-        var currentDateString = dateString
-        while (true) {
-            if (currentDateString != "11:30 PM") {
-                newDate = calendar.date(byAdding: .minute, value: 30, to: newDate!)
-                let dateString = formatter.string(from: newDate!)
-                myButtonArray.append(dateString)
-                print("Date string: \(dateString)")
-                currentDateString = dateString
+        if Calendar.current.isDate(Date(), inSameDayAs: self.userCurrentDate!) { //check if the current date is the same as the passed date
+            if(minute < 29) {
+                newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date), minute: 30, second: 0, of: date)
             } else {
-                break
+                newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date) + 1, minute: 0, second: 0, of: date)
+            }
+            if newDate == nil {
+                titleCardLabel.isHidden = false
+                titleCardLabel.text = "You can't set a last minute task for today!"
+                return
+            } else {
+                titleCardLabel.isHidden = true
+            }
+            let dateString = formatter.string(from: newDate!)
+            print(dateString)
+            
+            myButtonArray.append(dateString)
+            
+            var currentDateString = dateString
+            while (true) { // add all the timing that are in the same day
+                if (currentDateString != "11:30 PM") {
+                    newDate = calendar.date(byAdding: .minute, value: 30, to: newDate!)
+                    let dateString = formatter.string(from: newDate!)
+                    myButtonArray.append(dateString)
+                    print("Date string: \(dateString)")
+                    currentDateString = dateString
+                } else {
+                    break
+                }
+            }
+        } else { // the parsed date is different from today
+            newDate = calendar.date(bySettingHour: 0, minute: 30, second: 0, of: self.userCurrentDate!)
+            let dateString = formatter.string(from: newDate!)
+            print(dateString)
+            
+            myButtonArray.append(dateString)
+            
+            var currentDateString = dateString
+            while (true) {
+                if (currentDateString != "11:30 PM") {
+                    newDate = calendar.date(byAdding: .minute, value: 30, to: newDate!)
+                    let dateString = formatter.string(from: newDate!)
+                    myButtonArray.append(dateString)
+                    print("Date string: \(dateString)")
+                    currentDateString = dateString
+                } else {
+                    break
+                }
             }
         }
+
 
     }
     
