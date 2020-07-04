@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noFilterView: UIView!
     var taskList : [Task] = []
     
     override func viewDidLoad() {
@@ -66,6 +67,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        //calendarView.layer.cornerRadius = 4.0
         
         calendar.delegate = self
+        
+        // instantiate default tasks (today's task)
+        loadTaskListFromDate(date: Date())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,7 +156,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             for task in fullUserTaskList {
                 //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
-                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
+                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" {
                     print("\(date) is the same day as \(task.taskStartTime)")
                     self.taskList.append(task)
                 }
@@ -160,6 +164,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             print(self.taskList)
             self.tableView.reloadData()
+            
+            if self.taskList.count == 0 {
+                print("tasklist count == \(self.taskList.count)")
+//                self.tableView.backgroundView = self.noFilterView
+                self.noFilterView.isHidden = false
+            } else {
+                //self.tableView.backgroundView = nil
+                self.noFilterView.isHidden = true
+
+            }
 
         }
     
