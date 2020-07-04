@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		552040932519EAFB422F0E81 /* Pods_SwiftProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7CF0D5E2119F9907DE1786 /* Pods_SwiftProj.framework */; };
-		8911F6AB24AEDCA400F1B5BB /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911F6AA24AEDCA400F1B5BB /* ImportanceTableViewController.swift */; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
-		8920000424A7458F00EE47FA /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000324A7458F00EE47FA /* RepeatViewController.swift */; };
 		8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000724A75ACC00EE47FA /* MainViewController.swift */; };
 		892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B0B4224750E2800D3FE7E /* CalendarViewController.swift */; };
 		89517C81247233AC00503219 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89517C80247233AC00503219 /* BreakViewController.swift */; };
@@ -38,6 +36,12 @@
 		89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89921951246E45CB0029BFF5 /* MapViewController.swift */; };
 		89921958246E46870029BFF5 /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89921957246E46870029BFF5 /* BridgingHeader.m */; };
 		8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8992195A246E46CD0029BFF5 /* libsqlite3.tbd */; };
+		899C434E24AF034E000525C7 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 899C434C24AF034E000525C7 /* startScreenVid.mp4 */; };
+		899C434F24AF034E000525C7 /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = 899C434D24AF034E000525C7 /* startScreenVid.mp4.zip */; };
+		899C435424AF0421000525C7 /* student-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 899C435024AF0421000525C7 /* student-colour.svg */; };
+		899C435524AF0421000525C7 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 899C435124AF0421000525C7 /* student-colour-400px.png */; };
+		899C435624AF0421000525C7 /* student-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 899C435224AF0421000525C7 /* student-colour-800px.png */; };
+		899C435724AF0421000525C7 /* student-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 899C435324AF0421000525C7 /* student-colour-1200px.png */; };
 		89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A67B3F249BB35C006241C5 /* ProfileViewController.swift */; };
 		89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */; };
 		89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEFC247FE66B00F3F614 /* CommentCell.swift */; };
@@ -45,6 +49,7 @@
 		89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89E17013247A55CE004C3F45 /* GoogleService-Info.plist */; };
 		89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17015247A58BD004C3F45 /* LoginViewController.swift */; };
 		89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17017247A58DE004C3F45 /* RegisterViewController.swift */; };
+		89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
 		9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */; };
@@ -68,9 +73,7 @@
 
 /* Begin PBXFileReference section */
 		1F7CF0D5E2119F9907DE1786 /* Pods_SwiftProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8911F6AA24AEDCA400F1B5BB /* ImportanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceTableViewController.swift; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
-		8920000324A7458F00EE47FA /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
 		8920000724A75ACC00EE47FA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
 		8928F3282466C4330087C59F /* Proxima Nova Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Extrabold.otf"; sourceTree = "<group>"; };
@@ -110,6 +113,12 @@
 		89921956246E46870029BFF5 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		89921957246E46870029BFF5 /* BridgingHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
 		8992195A246E46CD0029BFF5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		899C434C24AF034E000525C7 /* startScreenVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startScreenVid.mp4; sourceTree = "<group>"; };
+		899C434D24AF034E000525C7 /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
+		899C435024AF0421000525C7 /* student-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "student-colour.svg"; sourceTree = "<group>"; };
+		899C435124AF0421000525C7 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
+		899C435224AF0421000525C7 /* student-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-800px.png"; sourceTree = "<group>"; };
+		899C435324AF0421000525C7 /* student-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-1200px.png"; sourceTree = "<group>"; };
 		89A67B3F249BB35C006241C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommentViewController.swift; sourceTree = "<group>"; };
 		89C8AEFC247FE66B00F3F614 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -117,6 +126,7 @@
 		89E17013247A55CE004C3F45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89E17015247A58BD004C3F45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		89E17017247A58DE004C3F45 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceTableViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9756D15B81A97C8003BA9E16 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,7 +186,6 @@
 				898646FD2464651C00A5C752 /* EntryViewController.swift */,
 				898646FF2464653600A5C752 /* TaskViewController.swift */,
 				89517C80247233AC00503219 /* BreakViewController.swift */,
-				895EE02E247696B400F2C109 /* TimeViewController.swift */,
 				892B0B4224750E2800D3FE7E /* CalendarViewController.swift */,
 				89E17015247A58BD004C3F45 /* LoginViewController.swift */,
 				89E17017247A58DE004C3F45 /* RegisterViewController.swift */,
@@ -184,10 +193,10 @@
 				89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */,
 				89A67B3F249BB35C006241C5 /* ProfileViewController.swift */,
 				8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */,
+				895EE02E247696B400F2C109 /* TimeViewController.swift */,
 				8920000124A642CC00EE47FA /* EndTimeViewController.swift */,
-				8920000324A7458F00EE47FA /* RepeatViewController.swift */,
 				8920000724A75ACC00EE47FA /* MainViewController.swift */,
-				8911F6AA24AEDCA400F1B5BB /* ImportanceTableViewController.swift */,
+				89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
+				899C434B24AF034E000525C7 /* Media */,
 				9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */,
 				895EE02D2476968400F2C109 /* ViewControllers */,
 				8992194F246E459C0029BFF5 /* SQLiteDB.swift */,
@@ -268,6 +278,19 @@
 				1F7CF0D5E2119F9907DE1786 /* Pods_SwiftProj.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		899C434B24AF034E000525C7 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				899C434C24AF034E000525C7 /* startScreenVid.mp4 */,
+				899C434D24AF034E000525C7 /* startScreenVid.mp4.zip */,
+				899C435124AF0421000525C7 /* student-colour-400px.png */,
+				899C435224AF0421000525C7 /* student-colour-800px.png */,
+				899C435324AF0421000525C7 /* student-colour-1200px.png */,
+				899C435024AF0421000525C7 /* student-colour.svg */,
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 		89F8DA9B2464FEF700B54354 /* Models */ = {
@@ -371,12 +394,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				899C435624AF0421000525C7 /* student-colour-800px.png in Resources */,
 				9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */,
 				F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */,
+				899C434E24AF034E000525C7 /* startScreenVid.mp4 in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
+				899C435424AF0421000525C7 /* student-colour.svg in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
+				899C435724AF0421000525C7 /* student-colour-1200px.png in Resources */,
+				899C434F24AF034E000525C7 /* startScreenVid.mp4.zip in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
+				899C435524AF0421000525C7 /* student-colour-400px.png in Resources */,
 				898646EE2464626F00A5C752 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +474,7 @@
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
 				9E5C36A824AEF790006F16B5 /* Role.swift in Sources */,
+				89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
@@ -461,7 +491,6 @@
 				9E5C36A024AEF703006F16B5 /* ProjectViewController.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
 				89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */,
-				8920000424A7458F00EE47FA /* RepeatViewController.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,

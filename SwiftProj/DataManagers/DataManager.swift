@@ -42,38 +42,6 @@ class DataManager: NSObject {
         return countries;
     }
     
-    // Insert a new movie record, or replace an existing with
-    // the same movie ID.
-    //
-    static func insertOrReplaceMovie(country: SavedCountry)
-    {
-        SQLiteDB.sharedInstance.execute(sql:
-            "INSERT OR REPLACE INTO SavedCountry (country) " +
-            "VALUES (?) ",
-                                        parameters: [
-                                            country.country
-            ]
-        )
-    }
-    
-    // Deletes an existing movie using the movie
-    // object's movieID.
-    //
-    static func deleteMovie(country: SavedCountry)
-    {
-        SQLiteDB.sharedInstance.execute(
-            sql: "DELETE FROM SavedCountry WHERE country = ?",
-            parameters: [country.country])
-    }
-    
-//    static func loadUsers(onComplete: (([User]) -> Void)?) {
-//        db.collection("users").getDocuments() {
-//            (querySnapshot, err) in
-//            
-//            var userList
-//        }
-//    }
-    
     static func loadTasks(onComplete: (([Task]) -> Void)?) {
         
         let user = Auth.auth().currentUser
