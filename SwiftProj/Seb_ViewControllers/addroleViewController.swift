@@ -35,25 +35,44 @@ class addroleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        manageowntaskyes.layer.borderColor = UIColor.blue.cgColor
-        manageowntaskno.layer.borderColor = UIColor.blue.cgColor
+        let bottomline = CALayer()
+                   bottomline.frame = CGRect(x:0,y:rolenamefield.frame.height - 2, width: rolenamefield.frame.width,height: 2)
+                   bottomline.backgroundColor =         UIColor.systemRed.cgColor
+                   rolenamefield.borderStyle = .none
+                   rolenamefield.layer.addSublayer(bottomline)
+        manageowntaskyes.layer.borderColor = UIColor.systemRed.cgColor
+        manageowntaskno.layer.borderColor = UIColor.systemRed.cgColor
         manageowntaskyes.layer.borderWidth = 2
-        removealltaskyes.layer.borderColor = UIColor.blue.cgColor
-        removealltaskno.layer.borderColor = UIColor.blue.cgColor
+        removealltaskyes.layer.borderColor = UIColor.systemRed.cgColor
+        removealltaskno.layer.borderColor = UIColor.systemRed.cgColor
         removealltaskyes.layer.borderWidth = 2
-        editalltaskyes.layer.borderColor = UIColor.blue.cgColor
-        editalltaskno.layer.borderColor = UIColor.blue.cgColor
+        editalltaskyes.layer.borderColor = UIColor.systemRed.cgColor
+        editalltaskno.layer.borderColor = UIColor.systemRed.cgColor
         editalltaskyes.layer.borderWidth = 2
-        invitememberyes.layer.borderColor = UIColor.blue.cgColor
-        invitememberno.layer.borderColor = UIColor.blue.cgColor
+        invitememberyes.layer.borderColor = UIColor.systemRed.cgColor
+        invitememberno.layer.borderColor = UIColor.systemRed.cgColor
         invitememberyes.layer.borderWidth = 2
-        removememberyes.layer.borderColor = UIColor.blue.cgColor
-        removememberno.layer.borderColor = UIColor.blue.cgColor
+        removememberyes.layer.borderColor = UIColor.systemRed.cgColor
+        removememberno.layer.borderColor = UIColor.systemRed.cgColor
         removememberyes.layer.borderWidth = 2
-        manageprojectyes.layer.borderColor = UIColor.blue.cgColor
-        manageprojectno.layer.borderColor = UIColor.blue.cgColor
+        manageprojectyes.layer.borderColor = UIColor.systemRed.cgColor
+        manageprojectno.layer.borderColor = UIColor.systemRed.cgColor
         manageprojectyes.layer.borderWidth = 2
+        createrole.layer.borderWidth = 2;
+        createrole.layer.cornerRadius = 7
+        createrole.layer.borderColor = UIColor.systemRed.cgColor
+        manageowntaskyes.layer.cornerRadius=5
+        manageowntaskno.layer.cornerRadius=5
+        removealltaskyes.layer.cornerRadius=5
+        removealltaskno.layer.cornerRadius=5
+        editalltaskyes.layer.cornerRadius=5
+        editalltaskno.layer.cornerRadius=5
+        invitememberyes.layer.cornerRadius=5
+        invitememberno.layer.cornerRadius=5
+        removememberyes.layer.cornerRadius=5
+        removememberno.layer.cornerRadius=5
+        manageprojectyes.layer.cornerRadius=5
+        manageprojectno.layer.cornerRadius=5
     }
     
 

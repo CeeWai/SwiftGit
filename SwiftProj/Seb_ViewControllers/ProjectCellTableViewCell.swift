@@ -17,6 +17,7 @@ class ProjectCellTableViewCell: UITableViewCell {
     
     @IBOutlet var projectleaderLabel: UILabel!
     
+    @IBOutlet var contentview: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +25,9 @@ class ProjectCellTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        contentview.layer.borderWidth = 2;
+        contentview.layer.borderColor = UIColor.systemRed.cgColor
+        projectnameLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
 
         // Configure the view for the selected state
     }
