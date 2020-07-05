@@ -31,6 +31,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         //print("print works")
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser == nil { // checks if user is logged in
+             DispatchQueue.main.async {
+                 let welcViewController = (self.storyboard?.instantiateViewController(identifier: "WelcomeController"))
+                 self.view.window?.rootViewController = welcViewController
+                 self.present(welcViewController!, animated: true)
+             }
+         }
+        
         // Do any additional setup after loading the view.
         // Make the navigation bar background clear
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -108,7 +117,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taskEndDateTimeLabel.text = taskFormatTimeEnd
         
         if Calendar.current.isDate(Date(), inSameDayAs: p.taskStartTime) {
-            print("==== today: \(Date()) same day as \(p.taskStartTime)")
             cell.taskDateTimeLabel.textColor = UIColor.label
             cell.taskEndDateTimeLabel.textColor = UIColor.label
             if Date() > p.taskEndTime {
@@ -124,7 +132,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
             }
         } else {
-            print("===== today: \(Date()) not the same same day as \(p.taskStartTime)")
             cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
             cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
             cell.taskDateTimeLabel.textColor = UIColor.systemGray

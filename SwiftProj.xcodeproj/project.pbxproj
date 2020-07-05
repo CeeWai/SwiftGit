@@ -56,6 +56,8 @@
 		89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17015247A58BD004C3F45 /* LoginViewController.swift */; };
 		89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17017247A58DE004C3F45 /* RegisterViewController.swift */; };
 		89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */; };
+		89F6534F24B1D522003C2B0A /* unlock-monochrome-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */; };
+		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
 		9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */; };
@@ -139,6 +141,8 @@
 		89E17015247A58BD004C3F45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		89E17017247A58DE004C3F45 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceTableViewController.swift; sourceTree = "<group>"; };
+		89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
+		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9756D15B81A97C8003BA9E16 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 		895EE02D2476968400F2C109 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */,
 				898646EA2464626F00A5C752 /* ViewController.swift */,
 				89921951246E45CB0029BFF5 /* MapViewController.swift */,
 				898646FD2464651C00A5C752 /* EntryViewController.swift */,
@@ -263,6 +268,7 @@
 		898A79C424B0AD1D003130FC /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */,
 				898A79DB24B0D9C1003130FC /* entryway-colour-1200px.png */,
 				898A79D324B0D81B003130FC /* business-woman-colour-400px.png */,
 				898A79D224B0D81B003130FC /* business-woman-colour-800px.png */,
@@ -415,6 +421,7 @@
 				898A79CB24B0AD1D003130FC /* student-colour-800px.png in Resources */,
 				898A79D624B0D81B003130FC /* business-woman-colour.svg in Resources */,
 				898A79D024B0AD1D003130FC /* student-colour-400px.png in Resources */,
+				89F6534F24B1D522003C2B0A /* unlock-monochrome-1200px.png in Resources */,
 				898A79D924B0D81B003130FC /* business-woman-colour.psd in Resources */,
 				898A79D724B0D81B003130FC /* business-woman-colour-800px.png in Resources */,
 				9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */,
@@ -515,6 +522,7 @@
 				9E5C36A024AEF703006F16B5 /* ProjectViewController.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
 				89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */,
+				89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
