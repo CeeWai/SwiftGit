@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    @IBOutlet weak var breakButton: UIButton!
+    @IBOutlet weak var breakButton: UIBarButtonItem!
     @IBOutlet weak var addTaskButton: UIBarButtonItem!
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
@@ -38,22 +38,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.isTranslucent = true
         
         tableView.layer.cornerRadius = 10;
-    
-//        // temp add date value to the to do listings
-//
-//        // Specify date components
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-//
-//        let datetime = formatter.date(from: "10-05-2020 13:00:00")!
-//
-//        let formatter2 = DateFormatter()
-//        formatter2.dateFormat = "dd-MM-yyyy HH:mm:ss"
-//
-//        let datetime2 = formatter2.date(from: "10-05-2020 15:00:00")!
-//
-//        taskList.append(Task(taskID: "OoWftREGKR4VQU0UNpss", taskName: "CGIS Practical", taskDesc: "Practical at 1PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Important"))
-//        taskList.append(Task(taskID: "EoWftREGKc4VQU0UNpss", taskName: "FAI Tutorial", taskDesc: "Tutorial at 3PM on May 28", taskStartTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com", importance: "Secondary"))
         
         tableView.tableFooterView = UIView()
         //breakButton.layer.cornerRadius = 10
@@ -101,8 +85,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taskTitleLabel.text = p.taskName
         cell.taskDescLabel.text = p.taskDesc
         //cell.taskRuntimeLabel.text = "\(p.runtime/60) Hrs \(p.runtime%60) Mins"
-        if p.importance == "Important" {
-            cell.taskTitleLabel.textColor = UIColor.red
+        if p.importance == "Important" { // Differenciate between important and secondary tasks
+            cell.taskTitleLabel.textColor = UIColor.systemRed
         } else {
             cell.taskTitleLabel.textColor = UIColor { tc in
                 switch tc.userInterfaceStyle {
@@ -112,7 +96,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     return UIColor.black
                 }
             }
-
         }
         
         // format for the time to do the task
@@ -123,6 +106,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let formatDateTimeEnd = "h:mm a"
         let taskFormatTimeEnd = getFormattedDate(date: p.taskEndTime, format: formatDateTime)
         cell.taskEndDateTimeLabel.text = taskFormatTimeEnd
+        
+        if Calendar.current.isDate(Date(), inSameDayAs: p.taskStartTime) {
+            print("==== today: \(Date()) same day as \(p.taskStartTime)")
+            cell.taskDateTimeLabel.textColor = UIColor.label
+            cell.taskEndDateTimeLabel.textColor = UIColor.label
+            if Date() > p.taskEndTime {
+                cell.taskEndDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+                cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
+                cell.taskDateTimeLabel.textColor = UIColor.systemGray
+                cell.taskEndDateTimeLabel.textColor = UIColor.systemGray
+            } else if Date() > p.taskStartTime && Date() < p.taskEndTime {
+                cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
+                cell.taskDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+            } else {
+                cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
+                cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
+            }
+        } else {
+            print("===== today: \(Date()) not the same same day as \(p.taskStartTime)")
+            cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
+            cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
+            cell.taskDateTimeLabel.textColor = UIColor.systemGray
+            cell.taskEndDateTimeLabel.textColor = UIColor.systemGray
+        }
 
         return cell
     }
@@ -161,12 +168,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if Calendar.current.isDate(date, inSameDayAs: Date()) {
             print("Same Day")
+            breakButton.isEnabled = true
             addTaskButton.isEnabled = true
         } else if date < Date() {
             print("Less than today")
+            breakButton.isEnabled = false
             addTaskButton.isEnabled = false
         } else {
             print("More than today")
+            breakButton.isEnabled = false
             addTaskButton.isEnabled = true
         }
     }

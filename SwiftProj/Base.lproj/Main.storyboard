@@ -1040,14 +1040,14 @@
                                                     <rect key="frame" x="-8" y="11" width="143" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="taskDateTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wts-Bz-gt5">
-                                                            <rect key="frame" x="16" y="18" width="119" height="24.666666666666671"/>
-                                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
+                                                            <rect key="frame" x="27.666666666666664" y="18" width="107.33333333333334" height="26"/>
+                                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="taskDateEndTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDz-5V-apR">
                                                             <rect key="frame" x="-20" y="50" width="155" height="25"/>
-                                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
+                                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1055,11 +1055,13 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="TDz-5V-apR" firstAttribute="leading" secondItem="8SS-OV-Wp6" secondAttribute="leading" constant="-20" id="6B2-p8-uOi"/>
+                                                        <constraint firstItem="wts-Bz-gt5" firstAttribute="top" secondItem="8SS-OV-Wp6" secondAttribute="top" constant="18" id="7hN-yq-9VB"/>
                                                         <constraint firstAttribute="bottom" secondItem="TDz-5V-apR" secondAttribute="bottom" constant="25" id="Gsu-Dy-r3T"/>
+                                                        <constraint firstItem="TDz-5V-apR" firstAttribute="top" secondItem="wts-Bz-gt5" secondAttribute="bottom" constant="6" id="W87-9u-Cee"/>
                                                         <constraint firstItem="TDz-5V-apR" firstAttribute="top" secondItem="8SS-OV-Wp6" secondAttribute="top" constant="50" id="Wih-MQ-St0"/>
                                                         <constraint firstItem="wts-Bz-gt5" firstAttribute="trailing" secondItem="TDz-5V-apR" secondAttribute="trailing" id="buH-5j-UwJ"/>
-                                                        <constraint firstItem="TDz-5V-apR" firstAttribute="top" secondItem="wts-Bz-gt5" secondAttribute="bottom" constant="7.3333333333333357" id="meE-vO-GgW"/>
                                                         <constraint firstAttribute="trailing" secondItem="TDz-5V-apR" secondAttribute="trailing" constant="8" id="v6b-Oo-YJx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wts-Bz-gt5" secondAttribute="trailing" constant="8" id="x7X-wa-HBF"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
@@ -1140,6 +1142,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addTaskButton" destination="FVZ-f3-G0g" id="A15-df-PE5"/>
+                        <outlet property="breakButton" destination="9Xg-Sw-1mj" id="gSR-3X-SYQ"/>
                         <outlet property="calendar" destination="ZKq-xx-kxU" id="X14-uL-Rt5"/>
                         <outlet property="calendarView" destination="gU4-18-TBt" id="yGw-F6-zIg"/>
                         <outlet property="noFilterLabel" destination="TZq-w3-yta" id="gck-L5-XZq"/>
