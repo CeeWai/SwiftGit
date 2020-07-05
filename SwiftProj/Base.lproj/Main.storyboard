@@ -172,6 +172,11 @@
                                             <constraint firstAttribute="height" constant="130" id="UYM-QS-LFC"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xH-rA-quk" customClass="GIDSignInButton">
+                                        <rect key="frame" x="79" y="350" width="190" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -220,11 +225,12 @@
                         <outlet property="forgotPasswordBttn" destination="hHz-lV-GdQ" id="wSX-SM-zBt"/>
                         <outlet property="loginBttn" destination="jVN-Mt-O86" id="hi3-OL-cGk"/>
                         <outlet property="passwordField" destination="v3z-Ad-FtJ" id="1rV-22-KeL"/>
+                        <outlet property="signInButton" destination="1xH-rA-quk" id="jF0-tC-zZA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPh-dc-WEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3154" y="994"/>
+            <point key="canvasLocation" x="-3155.072463768116" y="993.75"/>
         </scene>
         <!--Register-->
         <scene sceneID="VeX-72-YQv">

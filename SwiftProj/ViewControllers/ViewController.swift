@@ -9,6 +9,7 @@
 import UIKit
 import FSCalendar
 import FirebaseAuth
+import GoogleSignIn
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource, CanReceiveReload {
     func passReloadDataBack(data: Date) {
@@ -39,6 +40,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                  self.present(welcViewController!, animated: true)
              }
          }
+    
         
         // Do any additional setup after loading the view.
         // Make the navigation bar background clear
@@ -49,8 +51,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.layer.cornerRadius = 10;
         
         tableView.tableFooterView = UIView()
-        //breakButton.layer.cornerRadius = 10
-        //breakButton.clipsToBounds = true
         calendar.scope = .week
         self.calendar.today = nil
         self.calendar.select(Date())
@@ -60,9 +60,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        bottomBorder.frame = CGRect(x:0, y: self.calendarView.frame.size.height - thickness, width: self.calendarView.frame.size.width, height:thickness)
        bottomBorder.backgroundColor = UIColor.lightGray.cgColor
        calendarView.layer.addSublayer(bottomBorder)
-        calendarView.layer.shadowColor = UIColor.black.cgColor
+       calendarView.layer.shadowColor = UIColor.black.cgColor
        calendarView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        calendarView.layer.shadowOpacity = 0.2
+       calendarView.layer.shadowOpacity = 0.2
        calendarView.layer.shadowRadius = 4.0
        calendarView.layer.masksToBounds = false
        //calendarView.layer.cornerRadius = 4.0
@@ -236,7 +236,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             } else {
                 self.noFilterView.isHidden = true
-
+                self.taskList.sort(by: { $0.taskStartTime.compare($1.taskStartTime) == .orderedAscending })
             }
 
         }

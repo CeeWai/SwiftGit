@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class ProfileViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class ProfileViewController: UIViewController {
     }
     
     func signOut() {
+        GIDSignIn.sharedInstance()?.signOut()
         do {
             try Auth.auth().signOut()
             //let navController = UINavigationController(rootViewController: startScreenViewController())

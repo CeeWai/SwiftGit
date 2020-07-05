@@ -9,8 +9,10 @@
 import UIKit
 import FirebaseAuth
 import AVKit
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInDelegate {
+    
 
 //    var videoPlayer: AVPlayer?
 //    var videoPlayerLayer: AVPlayerLayer?
@@ -23,6 +25,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var LoginView: UIView!
     var passedFromRegister: Bool?
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,32 @@ class LoginViewController: UIViewController {
         LoginView.layer.masksToBounds = false
         LoginView.layer.cornerRadius = 6
         //LoginView.layer.borderColor = UIColor.gray.cgColor
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn() //Automatically signs in the user in
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
+        }
+        // Perform any operations on signed in user here.
+        let userId = user.userID                  // For client-side use only!
+        let idToken = user.authentication.idToken // Safe to send to the server
+        let fullName = user.profile.name
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName
+        let email = user.profile.email
+        // ...
+        print("========== THIS WORKS ==========")
+        
+
     }
     
     @IBAction func loginPressed(_ sender: Any) {
