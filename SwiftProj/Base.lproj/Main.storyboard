@@ -1000,7 +1000,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5B-Lm-wN3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072" y="235"/>
+            <point key="canvasLocation" x="1094" y="258"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="SLP-WN-ClQ">
@@ -1915,7 +1915,7 @@
         <scene sceneID="B3N-kh-ckT">
             <objects>
                 <navigationController title="Notes" automaticallyAdjustsScrollViewInsets="NO" id="G56-99-Gf5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="HMM-bw-IOT"/>
+                    <tabBarItem key="tabBarItem" title="Notes" id="HMM-bw-IOT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QD6-ln-5bd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
