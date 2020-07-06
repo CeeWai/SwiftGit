@@ -57,6 +57,8 @@
 		9E567DC224AAFC3200DE6CDA /* seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DBE24AAFC3200DE6CDA /* seb_Main.storyboard */; };
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
 		9E567DC524AAFD6000DE6CDA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DC424AAFD6000DE6CDA /* Project.swift */; };
+		F24BC02A24B266E400B8D1ED /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24BC02924B266E400B8D1ED /* AddNoteViewController.swift */; };
+		F24BC02C24B26B8B00B8D1ED /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24BC02B24B26B8B00B8D1ED /* NotesTableViewController.swift */; };
 		F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +127,8 @@
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E567DC424AAFD6000DE6CDA /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		E34ED4966392AEB617678FB0 /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
+		F24BC02924B266E400B8D1ED /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		F24BC02B24B26B8B00B8D1ED /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dom_Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +204,7 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
+				F24BC02824B266BA00B8D1ED /* dom_VC */,
 				9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */,
 				89E17019247A6DFE004C3F45 /* Media */,
 				895EE02D2476968400F2C109 /* ViewControllers */,
@@ -298,6 +303,15 @@
 				E34ED4966392AEB617678FB0 /* Pods-SwiftProj.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F24BC02824B266BA00B8D1ED /* dom_VC */ = {
+			isa = PBXGroup;
+			children = (
+				F24BC02924B266E400B8D1ED /* AddNoteViewController.swift */,
+				F24BC02B24B26B8B00B8D1ED /* NotesTableViewController.swift */,
+			);
+			path = dom_VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,10 +445,12 @@
 				9E567DC524AAFD6000DE6CDA /* Project.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
+				F24BC02C24B26B8B00B8D1ED /* NotesTableViewController.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
+				F24BC02A24B266E400B8D1ED /* AddNoteViewController.swift in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
 				898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */,
