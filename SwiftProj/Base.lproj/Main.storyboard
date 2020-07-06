@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K6p-oo-NpX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K6p-oo-NpX">
     <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -992,21 +992,15 @@
             </objects>
             <point key="canvasLocation" x="-291" y="258"/>
         </scene>
-        <!--Notes-->
-        <scene sceneID="jck-Ud-lJ8">
+        <!--Dom_Storyboard-->
+        <scene sceneID="uRw-hs-bkj">
             <objects>
-                <viewController id="fNa-J1-5ev" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ImZ-QA-8FM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="dci-BM-JNF"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Notes" image="paperclip" catalog="system" id="LzO-ft-MjJ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mkp-sN-yQu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Dom_Storyboard" id="WKC-LI-4qF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="w8A-DI-s3a"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5B-Lm-wN3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="414" y="258"/>
+            <point key="canvasLocation" x="1072" y="235"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="SLP-WN-ClQ">
@@ -1346,8 +1340,8 @@
                         <segue destination="Z6F-VX-Knu" kind="relationship" relationship="viewControllers" id="LVR-pe-blf"/>
                         <segue destination="BeB-BW-vYM" kind="relationship" relationship="viewControllers" id="WRt-2J-2Pq"/>
                         <segue destination="BI6-Hb-cYz" kind="relationship" relationship="viewControllers" id="dhh-Zz-xKs"/>
-                        <segue destination="fNa-J1-5ev" kind="relationship" relationship="viewControllers" id="51g-Ly-lwq"/>
                         <segue destination="gr7-Mx-JBB" kind="relationship" relationship="viewControllers" id="Be6-xz-Wpc"/>
+                        <segue destination="G56-99-Gf5" kind="relationship" relationship="viewControllers" id="pSd-f9-gmw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75v-vX-MCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1917,6 +1911,25 @@
             </objects>
             <point key="canvasLocation" x="-1025" y="2501"/>
         </scene>
+        <!--Notes-->
+        <scene sceneID="B3N-kh-ckT">
+            <objects>
+                <navigationController title="Notes" automaticallyAdjustsScrollViewInsets="NO" id="G56-99-Gf5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="HMM-bw-IOT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QD6-ln-5bd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WKC-LI-4qF" kind="relationship" relationship="rootViewController" id="yIL-u3-yrw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ejk-VW-YA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448" y="258"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HHA-cG-qB7"/>
@@ -1929,7 +1942,6 @@
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="logo" width="500" height="500"/>
         <image name="map" catalog="system" width="128" height="113"/>
-        <image name="paperclip" catalog="system" width="128" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="plus" catalog="system" width="128" height="113"/>
