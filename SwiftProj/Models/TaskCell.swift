@@ -29,6 +29,7 @@ class TaskCell: UITableViewCell {
 
         taskView.layer.masksToBounds = false
         taskDescLabel.sizeToFit()
+        taskDescLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

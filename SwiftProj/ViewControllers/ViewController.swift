@@ -122,20 +122,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if Date() > p.taskEndTime {
                 cell.taskEndDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
                 cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
-                cell.taskDateTimeLabel.textColor = UIColor.systemGray
-                cell.taskEndDateTimeLabel.textColor = UIColor.systemGray
+                cell.taskDateTimeLabel.textColor = UIColor.systemGray3
+                cell.taskEndDateTimeLabel.textColor = UIColor.systemGray3
             } else if Date() > p.taskStartTime && Date() < p.taskEndTime {
                 cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
                 cell.taskDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
             } else {
+                cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(20)
                 cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
-                cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
             }
         } else {
             cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
             cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
-            cell.taskDateTimeLabel.textColor = UIColor.systemGray
-            cell.taskEndDateTimeLabel.textColor = UIColor.systemGray
+            cell.taskDateTimeLabel.textColor = UIColor.systemGray3
+            cell.taskEndDateTimeLabel.textColor = UIColor.systemGray3
         }
 
         return cell
