@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B6C0C376A376A81AD14C328 /* Pods_SwiftProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD4C82CE5C0BD255BAFB486 /* Pods_SwiftProj.framework */; };
+		6B6C0C376A376A81AD14C328 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
 		8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000724A75ACC00EE47FA /* MainViewController.swift */; };
@@ -70,6 +70,7 @@
 		F24BC02A24B266E400B8D1ED /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24BC02924B266E400B8D1ED /* AddNoteViewController.swift */; };
 		F24BC02C24B26B8B00B8D1ED /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24BC02B24B26B8B00B8D1ED /* NotesTableViewController.swift */; };
 		F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */; };
+		FC71DEFBE7A7E36C9D15FA42 /* Pods_SwiftProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07FC4C8B2A6A225C71AF79F /* Pods_SwiftProj.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,7 +154,6 @@
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		9756D15B81A97C8003BA9E16 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
 		9E52C57924B2B90600444978 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +172,7 @@
 		9E5C36A524AEF790006F16B5 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		9E5C36A724AEF790006F16B5 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
 		9E5C36AC24AEF7AB006F16B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_Main.storyboard; sourceTree = "<group>"; };
+		E07FC4C8B2A6A225C71AF79F /* Pods_SwiftProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24BC02924B266E400B8D1ED /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		F24BC02B24B26B8B00B8D1ED /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dom_Storyboard.storyboard; sourceTree = "<group>"; };
@@ -184,7 +185,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */,
-				6B6C0C376A376A81AD14C328 /* Pods_SwiftProj.framework in Frameworks */,
+				6B6C0C376A376A81AD14C328 /* BuildFile in Frameworks */,
+				FC71DEFBE7A7E36C9D15FA42 /* Pods_SwiftProj.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				8992195A246E46CD0029BFF5 /* libsqlite3.tbd */,
-				8AD4C82CE5C0BD255BAFB486 /* Pods_SwiftProj.framework */,
+				E07FC4C8B2A6A225C71AF79F /* Pods_SwiftProj.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
