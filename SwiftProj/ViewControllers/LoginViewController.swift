@@ -9,8 +9,10 @@
 import UIKit
 import FirebaseAuth
 import AVKit
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInDelegate {
+    
 
 //    var videoPlayer: AVPlayer?
 //    var videoPlayerLayer: AVPlayerLayer?
@@ -19,22 +21,49 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginBttn: UIButton!
-    @IBOutlet weak var registerBttn: UIButton!
     @IBOutlet weak var forgotPasswordBttn: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var LoginView: UIView!
+    var passedFromRegister: Bool?
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-         LoginView.layer.shadowColor = UIColor.black.cgColor
+        LoginView.layer.shadowColor = UIColor.black.cgColor
         LoginView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-         LoginView.layer.shadowOpacity = 0.2
+        LoginView.layer.shadowOpacity = 0.2
         LoginView.layer.shadowRadius = 4.0
         LoginView.layer.masksToBounds = false
         LoginView.layer.cornerRadius = 6
         //LoginView.layer.borderColor = UIColor.gray.cgColor
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn() //Automatically signs in the user in
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
+        }
+        // Perform any operations on signed in user here.
+        let userId = user.userID                  // For client-side use only!
+        let idToken = user.authentication.idToken // Safe to send to the server
+        let fullName = user.profile.name
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName
+        let email = user.profile.email
+        // ...
+        print("========== THIS WORKS ==========")
+        
+
     }
     
     @IBAction func loginPressed(_ sender: Any) {
@@ -56,11 +85,24 @@ class LoginViewController: UIViewController {
                     self.errorLabel.alpha = 1
                 } else {
                     //UserDefaults.standard.set(true, forKey: "ISUSERLOGGEDIN")
-                    
-                    let homeViewController = (self.storyboard?.instantiateViewController(identifier: "MainController"))
-                    self.view.window?.rootViewController = homeViewController
-                    self.present(homeViewController!, animated: true)
-                    
+                    let user = result?.user
+
+                    if user!.isEmailVerified {
+                        print("User Is Email Verified")
+                        let homeViewController = (self.storyboard?.instantiateViewController(identifier: "MainController"))
+                        self.view.window?.rootViewController = homeViewController
+                        self.present(homeViewController!, animated: true)
+                    } else {
+                        print("User is not email verified")
+                        self.errorLabel.text = "User email not verified. Please verify your email."
+                        self.errorLabel.alpha = 1
+                        do {
+                            try Auth.auth().signOut()
+                            //print("Logged out sucessfully")
+                        } catch let error {
+                            print("Failed to logout")
+                        }
+                    }
                 }
             }
         }
@@ -69,6 +111,7 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //setUpVideo()
+
     }
     
     func validateFields() -> String? {

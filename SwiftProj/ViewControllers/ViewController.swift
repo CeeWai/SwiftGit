@@ -9,19 +9,39 @@
 import UIKit
 import FSCalendar
 import FirebaseAuth
+import GoogleSignIn
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource {
-
-    @IBOutlet weak var breakButton: UIButton!
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource, CanReceiveReload {
+    func passReloadDataBack(data: Date) {
+        DispatchQueue.main.async {
+            print("passed back reload data")
+            self.loadTaskListFromDate(date: data)
+        }
+    }
+    
+    @IBOutlet weak var breakButton: UIBarButtonItem!
+    @IBOutlet weak var addTaskButton: UIBarButtonItem!
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noFilterView: UIView!
+    @IBOutlet weak var noFilterLabel: UILabel!
     var taskList : [Task] = []
+    var userCurrentDate = Date()
     
     override func viewDidLoad() {
         //print("print works")
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser == nil { // checks if user is logged in
+             DispatchQueue.main.async {
+                 let welcViewController = (self.storyboard?.instantiateViewController(identifier: "WelcomeController"))
+                 self.view.window?.rootViewController = welcViewController
+                 self.present(welcViewController!, animated: true)
+             }
+         }
+    
+        
         // Do any additional setup after loading the view.
         // Make the navigation bar background clear
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -29,26 +49,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.isTranslucent = true
         
         tableView.layer.cornerRadius = 10;
-    
-        // temp add date value to the to do listings
-        
-        // Specify date components
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-        let datetime = formatter.date(from: "10-05-2020 13:00:00")!
-
-        let formatter2 = DateFormatter()
-        formatter2.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-        let datetime2 = formatter2.date(from: "10-05-2020 15:00:00")!
-        
-        taskList.append(Task(id: "OoWftREGKR4VQU0UNpss", name: "CGIS Practical", description: "Practical at 1PM on May 28", startTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com"))
-        taskList.append(Task(id: "EoWftREGKc4VQU0UNpss", name: "FAI Tutorial", description: "Tutorial at 3PM on May 28", startTime: datetime, taskEndTime: datetime, repeatType: "Never", taskOwner: "ceewai@ceewai.com"))
         
         tableView.tableFooterView = UIView()
-        //breakButton.layer.cornerRadius = 10
-        //breakButton.clipsToBounds = true
         calendar.scope = .week
         self.calendar.today = nil
         self.calendar.select(Date())
@@ -58,20 +60,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        bottomBorder.frame = CGRect(x:0, y: self.calendarView.frame.size.height - thickness, width: self.calendarView.frame.size.width, height:thickness)
        bottomBorder.backgroundColor = UIColor.lightGray.cgColor
        calendarView.layer.addSublayer(bottomBorder)
-        calendarView.layer.shadowColor = UIColor.black.cgColor
+       calendarView.layer.shadowColor = UIColor.black.cgColor
        calendarView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        calendarView.layer.shadowOpacity = 0.2
+       calendarView.layer.shadowOpacity = 0.2
        calendarView.layer.shadowRadius = 4.0
        calendarView.layer.masksToBounds = false
        //calendarView.layer.cornerRadius = 4.0
         
         calendar.delegate = self
+        tableView.delegate = self
+        // instantiate default tasks (today's task)
+        loadTaskListFromDate(date: Date())
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -89,6 +94,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taskTitleLabel.text = p.taskName
         cell.taskDescLabel.text = p.taskDesc
         //cell.taskRuntimeLabel.text = "\(p.runtime/60) Hrs \(p.runtime%60) Mins"
+        if p.importance == "Important" { // Differenciate between important and secondary tasks
+            cell.taskTitleLabel.textColor = UIColor.systemRed
+        } else {
+            cell.taskTitleLabel.textColor = UIColor { tc in
+                switch tc.userInterfaceStyle {
+                case .dark:
+                    return UIColor.white
+                default:
+                    return UIColor.black
+                }
+            }
+        }
         
         // format for the time to do the task
         let formatDateTime = "h:mm a"
@@ -98,6 +115,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let formatDateTimeEnd = "h:mm a"
         let taskFormatTimeEnd = getFormattedDate(date: p.taskEndTime, format: formatDateTime)
         cell.taskEndDateTimeLabel.text = taskFormatTimeEnd
+        
+        if Calendar.current.isDate(Date(), inSameDayAs: p.taskStartTime) {
+            cell.taskDateTimeLabel.textColor = UIColor.label
+            cell.taskEndDateTimeLabel.textColor = UIColor.label
+            if Date() > p.taskEndTime {
+                cell.taskEndDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+                cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
+                cell.taskDateTimeLabel.textColor = UIColor.systemGray3
+                cell.taskEndDateTimeLabel.textColor = UIColor.systemGray3
+            } else if Date() > p.taskStartTime && Date() < p.taskEndTime {
+                cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
+                cell.taskDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+            } else {
+                cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(20)
+                cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
+            }
+        } else {
+            cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
+            cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(18)
+            cell.taskDateTimeLabel.textColor = UIColor.systemGray3
+            cell.taskEndDateTimeLabel.textColor = UIColor.systemGray3
+        }
 
         return cell
     }
@@ -118,12 +157,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 detailViewController.taskItem = task
                 print(task.taskName)
             }
+        } else if segue.identifier == "addTaskSegue" {
+            let entryViewController = segue.destination as! EntryViewController
+            entryViewController.userCurrentDate = self.userCurrentDate
+            entryViewController.taskViewController = self
+            //print(self.userCurrentDate)
+            entryViewController.delegate = self
         }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         //print("This Ran")
+        self.taskList = []
+        self.userCurrentDate = date
+        print("Set userCurrentDate to \(self.userCurrentDate)")
         loadTaskListFromDate(date: date)
+        
+        if Calendar.current.isDate(date, inSameDayAs: Date()) {
+            print("Same Day")
+            breakButton.isEnabled = true
+            addTaskButton.isEnabled = true
+        } else if date < Date() {
+            print("Less than today")
+            breakButton.isEnabled = false
+            addTaskButton.isEnabled = false
+        } else {
+            print("More than today")
+            breakButton.isEnabled = false
+            addTaskButton.isEnabled = true
+        }
     }
     
     func loadTaskListFromDate(date: Date) {
@@ -134,25 +196,52 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("Loading tasks that are set on: \(string)")
         //var userTaskList: [Task] = []
         
+        let currentWeekDayFormatter = DateFormatter()
+        currentWeekDayFormatter.dateFormat = "EEEE"
+        let currentWeekDayString = currentWeekDayFormatter.string(from: date)
+        
         DataManager.loadTasks { fullUserTaskList in
             //userTaskList = fullUserTaskList
-            
+            self.taskList = []
+
+            print(self.taskList.count)
             for task in fullUserTaskList {
+                
+                let weekDayFormatter = DateFormatter()
+                weekDayFormatter.dateFormat = "EEEE"
+                let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
                 //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
-                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
+                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" {
                     print("\(date) is the same day as \(task.taskStartTime)")
+                    self.taskList.append(task)
+                } else if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{
+                    print("Weekdaystring = \(weekDayString), currentweekdaystring = \(currentWeekDayString)")
                     self.taskList.append(task)
                 }
             }
             
-            print(self.taskList)
+            //print(self.taskList)
             self.tableView.reloadData()
+            
+            if self.taskList.count == 0 {
+                if Calendar.current.isDate(date, inSameDayAs: Date()) {
+                    self.noFilterView.isHidden = false
+                    self.noFilterLabel.text = "No task for today! \n Add one by pressing the '+' button!"
+                } else if date < Date() {
+                    self.noFilterView.isHidden = false
+                    self.noFilterLabel.text = "No task scheduled on this day!"
+                } else {
+                    self.noFilterView.isHidden = false
+                    self.noFilterLabel.text = "No task for today! \n Add one by pressing the '+' button!"
+                }
+            } else {
+                self.noFilterView.isHidden = true
+                self.taskList.sort(by: { $0.taskStartTime.compare($1.taskStartTime) == .orderedAscending })
+            }
 
         }
     
     }
-    
-    
     
 }
 

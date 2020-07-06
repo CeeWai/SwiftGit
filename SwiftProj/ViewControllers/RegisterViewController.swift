@@ -71,7 +71,8 @@ class RegisterViewController: UIViewController {
                 
                 // Check for errors
                 if err != nil {
-                    self.showError("Error creating user")
+                    self.showError("Error in creating user. Perhaps try a different Email instead.")
+                    print("error in creating user @ \(err)")
                 } else {
                     // User was created successfully, now store the username
                     let db = Firestore.firestore()
@@ -81,9 +82,22 @@ class RegisterViewController: UIViewController {
                             self.showError("Error. User data not saved. Try again later.")
                         }
                     }
-                    //Transition to home screen
-                    self.transitionToLogin()
                     
+                    // Email the user to verify his email
+                    var user = result?.user
+                    user?.sendEmailVerification(completion: { (error) in
+                        if error != nil {
+                            self.errorLabel.text = error!.localizedDescription
+                            self.errorLabel.alpha = 1
+                        } else {
+                            self.errorLabel.text = "Email verification has been sent to \(email). Please check your email before you login!"
+                            self.errorLabel.alpha = 1
+                            //Transition to home screen
+                            //self.transitionToLogin()
+                            
+                        }
+                    })
+
                 }
             }
 
@@ -98,6 +112,8 @@ class RegisterViewController: UIViewController {
     func transitionToLogin() {
         let homeViewController = (self.storyboard?.instantiateViewController(identifier: "loginController"))
         view.window?.rootViewController = homeViewController
+        let loginViewController = LoginViewController()
+        loginViewController.passedFromRegister = true
         self.present(homeViewController!, animated: true)
         
     }

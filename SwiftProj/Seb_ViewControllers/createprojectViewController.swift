@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class createprojectViewController:
 UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var titlefield: UITextField!
     @IBOutlet var descriptionfield: UITextView!
     @IBOutlet var createBtn: UIButton!
+    @IBOutlet var navBar: UINavigationItem!
     
 
     
@@ -24,6 +25,18 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
         if self.title == "Create Project"{
             self.descriptionfield.layer.borderColor = UIColor.lightGray.cgColor
             self.descriptionfield.layer.borderWidth = 2.0
+            let bottomline = CALayer()
+            bottomline.frame = CGRect(x:0,y:titlefield.frame.height - 2, width: titlefield.frame.width,height: 2)
+            bottomline.backgroundColor =		 UIColor.systemRed.cgColor
+            titlefield.borderStyle = .none
+            titlefield.layer.addSublayer(bottomline)
+            descriptionfield.layer.borderWidth = 2;
+            descriptionfield.layer.cornerRadius = 7
+            descriptionfield.layer.borderColor = UIColor.systemRed.cgColor
+            createBtn.layer.borderWidth = 2;
+            createBtn.layer.cornerRadius = 7
+            createBtn.layer.borderColor = UIColor.systemRed.cgColor
+
         }
     
     }
@@ -32,6 +45,7 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
         let image : UIImage = UIImage(named: "enchroma-green")!
         let imagedata:NSData = image.pngData()! as NSData
         let strBase64 = imagedata.base64EncodedString(options: .lineLength64Characters)
+        //let currentuser = Auth.auth().currentUser
         newproject =  Project(projectId: 0, projectName: titlefield.text!, projectLeader: "bob", projectDescription: descriptionfield.text!, imageName: strBase64)
     }
     

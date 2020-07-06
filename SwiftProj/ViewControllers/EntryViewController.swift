@@ -11,7 +11,13 @@ import AVFoundation
 import AVKit
 import FirebaseAuth
 
-class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat {
+protocol CanReceiveReload {
+    func passReloadDataBack(data: Date)
+}
+
+class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance {
+    
+    var delegate: CanReceiveReload?
     var repeatData: String = ""
     func passRepeatDataBack(data: String) {
         repeatData = data
@@ -51,6 +57,15 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         print("You have picked: \(chosenEndTime)")
     }
     
+    var chosenImportance: String = ""
+    func passImportanceDataBack(data: String) {
+        chosenImportance = data
+        //pickTimeButton.setTite("Time: \(chosenTime)", for: .normal)
+        //endTimeLabel.text! += ": \(chosenEndTime)"
+        importanceLabel.text! = "\(chosenImportance)"
+        print("You have picked: \(chosenImportance)")
+    }
+    
     @IBOutlet weak var scheduleEndTimeCell: UITableViewCell!
     @IBOutlet weak var chosenRepeatLabel: UILabel!
     @IBOutlet weak var chosenEndTimeLabel: UILabel!
@@ -64,6 +79,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     //@IBOutlet weak var topTaskView: UIView!
     @IBOutlet weak var entryTaskView: UIView!
     @IBOutlet weak var errLabel: UILabel!
+    @IBOutlet weak var importanceLabel: UILabel!
+    var userCurrentDate: Date?
+    var taskViewController: ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +94,14 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         descTextView!.layer.borderColor = UIColor.lightGray.cgColor
         descTextView.layer.cornerRadius = 6.5
         
+        let taskDate = self.userCurrentDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM EEEE"
+        let parsedDate = dateFormatter.string(from: taskDate!)
+        //let startDate = dateFormatterStart.date(from:startDateString)!
+        print(parsedDate)
+
+        self.setTaskbutton.setTitle("Set Task on: \(parsedDate)", for: UIControl.State.normal)
     }
     
     // because swift doesnt have a placeholder function for textviews, i created one lol
@@ -118,7 +144,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
 //        print(chosenEndTimeLabel.text!.isEmpty)
 //        print(chosenRepeatLabel.text!.isEmpty)
         
-        if titleTextField.text!.isEmpty || descTextView.text!.isEmpty || descTextView.text == "Your description goes here!" || chosenStartTimeLabel.text!.isEmpty || chosenEndTimeLabel.text!.isEmpty || chosenRepeatLabel.text!.isEmpty {
+        if titleTextField.text!.isEmpty || descTextView.text!.isEmpty || descTextView.text == "Your description goes here!" || chosenStartTimeLabel.text!.isEmpty || chosenEndTimeLabel.text!.isEmpty || chosenRepeatLabel.text!.isEmpty || importanceLabel.text!.isEmpty {
                 errLabel.text = "Enter all fields!"
                 errLabel.isHidden = false
         } else
@@ -128,7 +154,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 taskListFromFirestore in
                 //print("\(taskListFromFirestore)")
                 
-                let now = Date()
+                let now = self.userCurrentDate!
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy "
                 let date = dateFormatter.string(from: now)
@@ -150,42 +176,40 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                     taskListLength = taskListFromFirestore.count
                 }
                 
-                var task = Task(id: user!.uid + "\(taskListLength)", name: self.titleTextField.text!, description: self.descTextView.text, startTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!)
+                var task = Task(taskID: user!.uid + "\(taskListLength)", taskName: self.titleTextField.text!, taskDesc: self.descTextView.text, taskStartTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!, importance: self.importanceLabel.text!)
                 
                 print("name: \(self.titleTextField.text!), description: \(self.descTextView!.text!), startTime: \(dateStartCurrent!), taskEndTime: \(dateEndCurrent!), repeatType: \(self.chosenRepeatLabel.text!), taskOwner: \(user!.email!)")
                 
                 DataManager.insertOrReplaceTask(task)
+                self.taskViewController?.tableView.reloadData() // reload the tableview before popping back
                 
+                self.delegate?.passReloadDataBack(data: self.userCurrentDate!)
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
-//                print(dateAsString)
-//                print(endDateAsString)
-//
-//                let df = DateFormatter()
-//                df.dateFormat = "yyyy-MM-dd h:mm a"
-//                let nowAF = df.string(from: Date())
-//                print("date: \(Date())")
-//                print(nowAF)
 
             }
         }
         
-
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pickTimeSegue" {
             let pickTimeVC = segue.destination as! TimeViewController
             pickTimeVC.delegate = self
+            pickTimeVC.userCurrentDate = self.userCurrentDate
         } else if segue.identifier == "pickEndTimeSegue" {
             let pickEndTimeVC = segue.destination as! EndTimeViewController
             pickEndTimeVC.delegate = self
             pickEndTimeVC.startTime = chosenStartTimeLabel.text
+            pickEndTimeVC.userCurrentDate = self.userCurrentDate
+
         } else if segue.identifier == "repeatSegue" {
            let pickRepeatVC = segue.destination as! RepeatTableViewController
            pickRepeatVC.delegate = self
-       }
+        } else if segue.identifier == "pickImportanceSegue" {
+            let pickImportanceVC = segue.destination as! ImportanceTableViewController
+            pickImportanceVC.delegate = self
+        }
 
     }
 

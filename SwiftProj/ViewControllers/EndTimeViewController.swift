@@ -17,6 +17,10 @@ class EndTimeViewController: UIViewController {
     var delegate: EndCanRecieve?
     var startTime: String?
     var data = ""
+    var userCurrentDate: Date?
+    var disableContinuous: Bool = false
+    var removeContinuous: Bool = false
+    @IBOutlet weak var hiddenView: UIView!
     
     //@IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var buttonStackView1: UIStackView!
@@ -50,7 +54,6 @@ class EndTimeViewController: UIViewController {
     var stack12Count = 0
     var stack13Count = 0
 
-
     var myButtonTestArray: [String] = ["1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM"]
     @IBOutlet weak var titleCardLabel: UILabel!
     override func viewDidLoad() {
@@ -70,122 +73,188 @@ class EndTimeViewController: UIViewController {
 
         super.viewDidLoad()
         
-//        buttonScrollView.translatesAutoresizingMaskIntoConstraints = false
-//        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
         setTimeButtonArray()
-        for (index, element) in myButtonArray.enumerated() {
-            var oneBtn : UIButton {
-                let button = UIButton()
-                button.setTitle(element, for: .normal)
-                button.backgroundColor = UIColor.black
-                button.layer.borderColor = UIColor.black.cgColor
-                button.setTitleColor(UIColor.white, for: .normal)
-//                button.translatesAutoresizingMaskIntoConstraints = false
-                button.contentHorizontalAlignment = .center
-                button.contentVerticalAlignment = .center
-                button.titleLabel?.font = UIFont(name: "Arial", size: 16)
-                button.layer.cornerRadius = 5
-                button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-                button.clipsToBounds = true
-                //button.frame.size = CGSize(width: 82, height: 35)
-                //button.widthAnchor.constraint(equalToConstant: 200).isActive = true
-                //button.heightAnchor.constraint(equalToConstant: 35).isActive = true
-                //print(index)
-                button.tag = index
-                
-                let dateAsString = startTime!
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "hh:mm a"
-                let date = dateFormatter.date(from: dateAsString)
-                
-                let dateAsStringCurrent = element
-                let dateFormatterCurrent = DateFormatter()
-                dateFormatterCurrent.dateFormat = "hh:mm a"
-                let dateCurrent = dateFormatterCurrent.date(from: dateAsStringCurrent)
-                
-                if dateCurrent! <= date! {
-                    button.backgroundColor = UIColor.gray
-                    button.isEnabled = false
-                    print("\(dateCurrent) is less than or equal to \(date)")
+        DataManager.loadTasks { fullUserTaskList in
+            var todayTask: [Task] = []
+            
+            let currentWeekDayFormatter = DateFormatter()
+            currentWeekDayFormatter.dateFormat = "EEEE"
+            let currentWeekDayString = currentWeekDayFormatter.string(from: self.userCurrentDate!)
+            
+            for task in fullUserTaskList {
+                let weekDayFormatter = DateFormatter()
+                weekDayFormatter.dateFormat = "EEEE"
+                let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
+                //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
+                if Calendar.current.isDate(self.userCurrentDate!, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" {
+                    todayTask.append(task)
+                } else if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && self.userCurrentDate! >= task.taskStartTime {
+                    todayTask.append(task)
                 }
+            }
+            
+            for (index, element) in self.myButtonArray.enumerated() {
+                var oneBtn : UIButton {
+                    let button = UIButton()
+                    button.setTitle(element, for: .normal)
+                    button.backgroundColor = UIColor.black
+                    button.layer.borderColor = UIColor.black.cgColor
+                    button.setTitleColor(UIColor.white, for: .normal)
+                    button.contentHorizontalAlignment = .center
+                    button.contentVerticalAlignment = .center
+                    button.titleLabel?.font = UIFont(name: "Arial", size: 16)
+                    button.layer.cornerRadius = 5
+                    button.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
+                    button.clipsToBounds = true
+                    button.tag = index
+                    
+                    let dateAsString = self.startTime!
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "hh:mm a"
+                    let date = dateFormatter.date(from: dateAsString)
+                    
+                    let dateAsStringCurrent = element
+                    let dateFormatterCurrent = DateFormatter()
+                    dateFormatterCurrent.dateFormat = "hh:mm a"
+                    let dateCurrent = dateFormatterCurrent.date(from: dateAsStringCurrent)
+                    
+                    if dateCurrent! <= date! {
+                        button.backgroundColor = UIColor.gray
+                        button.isEnabled = false
+                        print("\(dateCurrent) is less than or equal to \(date)")
+                    }
+                    
+                    if self.startTime == "11:30 PM" {
+                        self.hiddenView.isHidden = false
+                        self.removeContinuous = true
+                    } else {
+                        self.hiddenView.isHidden = true
+                        self.removeContinuous = false
+                    }
+                    
+                    if self.disableContinuous == true {
+                        button.backgroundColor = UIColor.gray
+                        button.isEnabled = false
+                    }
+                    
+                    if self.removeContinuous == true {
+                        button.isHidden = true
+                        button.isEnabled = false
+                    } else {
+                        button.isHidden = false
+                        button.isEnabled = true
+                    }
+                    
+    //                dateFormatter.dateFormat = "HH:mm"
+    //                let date24 = dateFormatter.stringFromDate(date!)
+                    
+                    for task in todayTask {
+                        let taskStartDate = task.taskStartTime
+                        let dateFormatterStart = DateFormatter()
+                        dateFormatterStart.dateFormat = "h:mm a"
+                        let startDateString = dateFormatterStart.string(from: taskStartDate)
+                        let startDate = dateFormatterStart.date(from:startDateString)!
+                        
+                        let taskEndDate = task.taskEndTime
+                        let dateFormatterEnd = DateFormatter()
+                        dateFormatterEnd.dateFormat = "h:mm a"
+                        let endDateString = dateFormatterEnd.string(from: taskEndDate)
+                        let endDate = dateFormatterEnd.date(from:endDateString)!
 
-//                dateFormatter.dateFormat = "HH:mm"
-//                let date24 = dateFormatter.stringFromDate(date!)
+                        let isoDate = "\(element)"
+                        //print("isoDate \(isoDate)")
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "h:mm a"
+                        let date = dateFormatter.date(from:isoDate)!
+                        
+                        print("date = \(date)")
+                        if date == startDate || date == endDate {
+                            print("\(date) is equal to \(startDate) or \(endDate)")
+                             button.backgroundColor = UIColor.lightGray
+                             button.isEnabled = false
+                            
+                            let isoStartTimeDate = self.startTime!
+                            //print("isoDate \(isoDate)")
+                            
+                            let dateFormatterStartTime = DateFormatter()
+                            dateFormatterStartTime.dateFormat = "h:mm a"
+                            let dateStartTime = dateFormatterStartTime.date(from:isoStartTimeDate)
+                            
+                            if date > dateStartTime! {
+                                self.disableContinuous = true
+
+                            }
+                        }
+                        
+                        if date >= startDate && date <= endDate {
+                            print("\(date) is in between \(startDate) and \(endDate)")
+                            button.backgroundColor = UIColor.lightGray
+                            button.isEnabled = false
+                            let isoStartTimeDate = self.startTime!
+                            //print("isoDate \(isoDate)")
+                            
+                            let dateFormatterStartTime = DateFormatter()
+                            dateFormatterStartTime.dateFormat = "h:mm a"
+                            let dateStartTime = dateFormatterStartTime.date(from:isoStartTimeDate)
+                            
+                            if date > dateStartTime! {
+                                self.disableContinuous = true
+
+                            }
+                        }
+                    }
+                    
+                    return button
+                };()
                 
-                return button
-            };()
-            
-//            var view: UIView! = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 35))
-//            view.backgroundColor = UIColor.black
-//            view.addSubview(oneBtn)
-            
-            if stack1Count < 4 {
-                buttonStackView1.addArrangedSubview(oneBtn)
-                stack1Count += 1
-            } else if stack2Count < 4 {
-                buttonStackView2.addArrangedSubview(oneBtn)
-                stack2Count += 1
-            } else if stack3Count < 4 {
-                buttonStackView3.addArrangedSubview(oneBtn)
-                stack3Count += 1
-            } else if stack4Count < 4 {
-                buttonStackView4.addArrangedSubview(oneBtn)
-                stack4Count += 1
-            } else if stack5Count < 4 {
-                buttonStackView5.addArrangedSubview(oneBtn)
-                stack5Count += 1
-            } else if stack6Count < 4 {
-                buttonStackView6.addArrangedSubview(oneBtn)
-                stack6Count += 1
-            } else if stack7Count < 4 {
-                buttonStackView7.addArrangedSubview(oneBtn)
-                stack7Count += 1
-            } else if stack4Count < 4 {
-                buttonStackView7.addArrangedSubview(oneBtn)
-                stack7Count += 1
-            } else if stack8Count < 4 {
-                buttonStackView8.addArrangedSubview(oneBtn)
-                stack8Count += 1
-            } else if stack9Count < 4 {
-               buttonStackView9.addArrangedSubview(oneBtn)
-               stack9Count += 1
-           } else if stack10Count < 4 {
-               buttonStackView10.addArrangedSubview(oneBtn)
-               stack10Count += 1
-           } else if stack11Count < 4 {
-               buttonStackView11.addArrangedSubview(oneBtn)
-               stack11Count += 1
-           } else if stack12Count < 4 {
-               buttonStackView12.addArrangedSubview(oneBtn)
-               stack12Count += 1
-           } else if stack13Count < 4 {
-               buttonStackView13.addArrangedSubview(oneBtn)
-               stack13Count += 1
-           }
-            //print(buttonStackView.frame.height)
+                if self.stack1Count < 4 {
+                     self.buttonStackView1.addArrangedSubview(oneBtn)
+                     self.stack1Count += 1
+                 } else if self.stack2Count < 4 {
+                     self.buttonStackView2.addArrangedSubview(oneBtn)
+                     self.stack2Count += 1
+                 } else if self.stack3Count < 4 {
+                     self.buttonStackView3.addArrangedSubview(oneBtn)
+                     self.stack3Count += 1
+                 } else if self.stack4Count < 4 {
+                     self.buttonStackView4.addArrangedSubview(oneBtn)
+                     self.stack4Count += 1
+                 } else if self.stack5Count < 4 {
+                     self.buttonStackView5.addArrangedSubview(oneBtn)
+                     self.stack5Count += 1
+                 } else if self.stack6Count < 4 {
+                     self.buttonStackView6.addArrangedSubview(oneBtn)
+                     self.stack6Count += 1
+                 } else if self.stack7Count < 4 {
+                     self.buttonStackView7.addArrangedSubview(oneBtn)
+                     self.stack7Count += 1
+                 } else if self.stack4Count < 4 {
+                     self.buttonStackView7.addArrangedSubview(oneBtn)
+                     self.stack7Count += 1
+                 } else if self.stack8Count < 4 {
+                     self.buttonStackView8.addArrangedSubview(oneBtn)
+                     self.stack8Count += 1
+                 } else if self.stack9Count < 4 {
+                    self.buttonStackView9.addArrangedSubview(oneBtn)
+                    self.stack9Count += 1
+                } else if self.stack10Count < 4 {
+                    self.buttonStackView10.addArrangedSubview(oneBtn)
+                    self.stack10Count += 1
+                } else if self.stack11Count < 4 {
+                    self.buttonStackView11.addArrangedSubview(oneBtn)
+                    self.stack11Count += 1
+                } else if self.stack12Count < 4 {
+                    self.buttonStackView12.addArrangedSubview(oneBtn)
+                    self.stack12Count += 1
+                } else if self.stack13Count < 4 {
+                    self.buttonStackView13.addArrangedSubview(oneBtn)
+                    self.stack13Count += 1
+                }
+                //print(buttonStackView.frame.height)
+            }
         }
         
-        //buttonScrollView.contentSize = contentView.frame.size
-//        buttonScrollView.sizeToFit()
-//        buttonStackView.layoutIfNeeded()
-        
-        //buttonScrollView.contentSize.height = 1500
-        //buttonStackView.center.x = contentView.center.x // for horizontal
-        //buttonStackView.center.y = self.view.center.y // for vertical
-//        buttonStackView.subviews.forEach { (view) in
-//            if count < 34 {
-//                print(view)
-//                view.removeFromSuperview()
-//                count += 1
-//            }
-//        }
-        //print("scrollview size \(buttonScrollView.contentSize)")
-        print("buttonstackview1 size \(buttonStackView1.frame.size)")
-        print("buttonstackview2 size \(buttonStackView2.frame.size)")
-        print("buttonstackview3 size \(buttonStackView3.frame.size)")
-        //print(myButtonTestArray.count + 1)
     }
     
     @IBAction func buttonAction(sender: UIButton!) {
@@ -203,64 +272,65 @@ class EndTimeViewController: UIViewController {
         myButtonArray = []
         let date = Date()
         let calendar = Calendar.current
-    //        let year = calendar.component(.year, from: date)
-    //        let month = calendar.component(.month, from: date)
-    //        let day = calendar.component(.day, from: date)
+
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
         let second = calendar.component(.second, from: date)
-        //print("Hours: \(hour) Minutes: \(minute) Second: \(second)")
         
         let formatter = DateFormatter()
         var newDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: date)
         
         formatter.dateFormat = "h:mm a"
         
-        if(minute < 29) {
-//            newDate.year = calendar.component(.year, from: date)
-//            newDate.month = calendar.component(.month, from: date)
-//            newDate.day = calendar.component(.day, from: date)
-//            newDate.hour = calendar.component(.hour, from: date)
-//            newDate.minute = 30
-            newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date), minute: 30, second: 0, of: date)
-        } else {
-//            newDate.year = calendar.component(.year, from: date)
-//            newDate.month = calendar.component(.month, from: date)
-//            newDate.day = calendar.component(.day, from: date)
-//            newDate.hour = calendar.component(.hour, from: date) + 1
-//            newDate.minute = 0
-
-            newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date) + 1, minute: 0, second: 0, of: date)
-
-        }
-        if newDate == nil {
-            titleCardLabel.isHidden = false
-            titleCardLabel.text = "You can't set a last minute task for today!"
-            return
-        } else {
-            titleCardLabel.isHidden = true
-        }
-        let dateString = formatter.string(from: newDate!)
-        print(dateString)
-        
-        myButtonArray.append(dateString)
-        
-        //newDate.minute! += 30
-        //print(newDate)
-        
-        var currentDateString = dateString
-        while (true) {
-            if (currentDateString != "11:30 PM") {
-                newDate = calendar.date(byAdding: .minute, value: 30, to: newDate!)
-                let dateString = formatter.string(from: newDate!)
-                myButtonArray.append(dateString)
-                print("Date string: \(dateString)")
-                currentDateString = dateString
+        if Calendar.current.isDate(Date(), inSameDayAs: self.userCurrentDate!) { //check if the current date is the same as the passed date
+            if(minute < 29) {
+                newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date), minute: 30, second: 0, of: date)
             } else {
-                break
+                newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date) + 1, minute: 0, second: 0, of: date)
+            }
+            if newDate == nil {
+                self.hiddenView.isHidden = false
+                titleCardLabel.text = "You can't set a task at the last minute for the day!"
+                return
+            } else {
+                self.hiddenView.isHidden = true
+            }
+            let dateString = formatter.string(from: newDate!)
+            print(dateString)
+            
+            myButtonArray.append(dateString)
+            
+            var currentDateString = dateString
+            while (true) { // add all the timing that are in the same day
+                if (currentDateString != "11:30 PM") {
+                    newDate = calendar.date(byAdding: .minute, value: 30, to: newDate!)
+                    let dateString = formatter.string(from: newDate!)
+                    myButtonArray.append(dateString)
+                    print("Date string: \(dateString)")
+                    currentDateString = dateString
+                } else {
+                    break
+                }
+            }
+        } else { // the parsed date is different from today
+            newDate = calendar.date(bySettingHour: 0, minute: 30, second: 0, of: self.userCurrentDate!)
+            let dateString = formatter.string(from: newDate!)
+            print(dateString)
+            
+            myButtonArray.append(dateString)
+            
+            var currentDateString = dateString
+            while (true) {
+                if (currentDateString != "11:30 PM") {
+                    newDate = calendar.date(byAdding: .minute, value: 30, to: newDate!)
+                    let dateString = formatter.string(from: newDate!)
+                    myButtonArray.append(dateString)
+                    print("Date string: \(dateString)")
+                    currentDateString = dateString
+                } else {
+                    break
+                }
             }
         }
-
     }
-
 }

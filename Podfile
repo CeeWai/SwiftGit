@@ -12,5 +12,7 @@ target 'SwiftProj' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Analytics'
+  pod 'GoogleSignIn'
 
 end

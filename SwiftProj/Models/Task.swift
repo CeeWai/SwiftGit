@@ -9,32 +9,26 @@
 import UIKit
 
 class Task: Codable {
-    var taskID = ""
-    var taskName = ""
-    var taskDesc = ""
-    var taskStartTime = Date()
-    var taskEndTime = Date()
-    var repeatType = ""
-    var taskOwner = ""
-    //var runtime = 0
     
-    init(
-        id: String,
-        name: String,
-        description: String,
-        startTime: Date,
-        taskEndTime: Date,
-        repeatType: String,
-        taskOwner: String
-    )
-    {
-        self.taskID = id
-        self.taskName = name
-        self.taskDesc = description
-        self.taskStartTime = startTime
+    var taskID: String
+    var taskName: String
+    var taskDesc: String
+    var taskStartTime: Date
+    var taskEndTime: Date
+    var repeatType: String
+    var taskOwner: String
+    //var runtime = 0
+    var importance: String
+    
+    internal init(taskID: String, taskName: String, taskDesc: String, taskStartTime: Date, taskEndTime: Date, repeatType: String, taskOwner: String, importance: String) {
+        self.taskID = taskID
+        self.taskName = taskName
+        self.taskDesc = taskDesc
+        self.taskStartTime = taskStartTime
         self.taskEndTime = taskEndTime
         self.repeatType = repeatType
         self.taskOwner = taskOwner
+        self.importance = importance
     }
 }
  

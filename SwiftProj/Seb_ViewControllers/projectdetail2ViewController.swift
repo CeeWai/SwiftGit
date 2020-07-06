@@ -1,14 +1,14 @@
 //
-//  RepeatViewController.swift
+//  projectdetail2ViewController.swift
 //  SwiftProj
 //
-//  Created by Ong Chong Yong on 27/6/20.
+//  Created by Sebastian on 30/6/20.
 //  Copyright © 2020 Ong Chong Yong. All rights reserved.
 //
 
 import UIKit
 
-class RepeatViewController: UIViewController {
+class projectdetail2ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

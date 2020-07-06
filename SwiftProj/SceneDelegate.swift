@@ -10,17 +10,31 @@ import UIKit
 import AVFoundation
 import AVKit
 import FirebaseAuth
+import GoogleSignIn
+import Firebase
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, GIDSignInDelegate {
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let storyboard =  UIStoryboard(name: "Main", bundle: nil)
+        if let windowScene = scene as? UIWindowScene {
+            self.window = UIWindow(windowScene: windowScene)
+            if Auth.auth().currentUser != nil {
+                // redirect to the home controller
+                self.window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "MainController")
+                self.window!.makeKeyAndVisible()
+            } else {
+                // redirect to the login controller
+                self.window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeController")
+                self.window!.makeKeyAndVisible()
+            }
+        }
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
 
         
 //        if Auth.auth().currentUser != nil {
@@ -40,6 +54,56 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //             }
 //         }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
+        }
+        // Perform any operations on signed in user here.
+        let userId = user.userID                  // For client-side use only!
+        let idToken = user.authentication.idToken // Safe to send to the server
+        let fullName = user.profile.name
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName
+        let email = user.profile.email
+        // ...
+        print("Email: \(email) Fullname: \(fullName) logged in")
+        // Firebase sign in
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Firebase sign in error")
+                print(error)
+                return
+            }
+            print("User is signed in")
+            let storyboard =  UIStoryboard(name: "Main", bundle: nil)
+
+            self.window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "MainController")
+            self.window!.makeKeyAndVisible()
+
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        print("User has disconnected")
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      return GIDSignIn.sharedInstance().handle(url)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
