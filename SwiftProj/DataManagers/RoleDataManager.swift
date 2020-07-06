@@ -15,8 +15,8 @@ class RoleDataManager: NSObject {
             "CREATE TABLE IF NOT EXISTS " +
             "Roles ( " +
             " roleid INTEGER primary key AUTOINCREMENT, " +
-            " rolename INTEGER, " +
-            " projectid INTEGER, " +
+            " rolename text, " +
+            " projectid text, " +
             " manageowntask INTEGER, " +
             " removealltask INTEGER, " +
             " editalltask INTEGER, " +
@@ -49,7 +49,7 @@ class RoleDataManager: NSObject {
         static func insertOrReplaceMovie(role: Role)
         {
         SQLiteDB.sharedInstance.execute(sql:
-        "INSERT OR REPLACE INTO Roles (rolename,projectid,manageowntask,removealltask,editalltask,invitemember,removemember,manageproject) " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,) ",
+        "INSERT OR REPLACE INTO Roles (rolename,projectid,manageowntask,removealltask,editalltask,invitemember,removemember,manageproject) " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ",
         parameters: [
             role.rolename,
             role.projectid,

@@ -119,5 +119,14 @@ class projectdetail1ViewController: UIViewController {
     @IBAction func closepopover(_ sender: Any) {
         self.popover.removeFromSuperview()
     }
-    
+    override func prepare(for segue: UIStoryboardSegue,
+        sender: Any?){
+        if(segue.identifier == "seguetomember")
+         {
+        let detailViewController = segue.destination as!
+         MemberViewController
+            detailViewController.projectItem = self.projectItem
+        }
+         
+    }
 }

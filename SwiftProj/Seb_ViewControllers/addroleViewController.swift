@@ -24,7 +24,7 @@ class addroleViewController: UIViewController {
     @IBOutlet var manageprojectyes: UIButton!
     @IBOutlet var manageprojectno: UIButton!
     @IBOutlet var createrole: UIButton!
-    
+    var projectItem : Project?
     var rolename=""
     var manageowntask=1
     var removealltask=1
@@ -148,9 +148,13 @@ class addroleViewController: UIViewController {
         manageproject=0
     }
     @IBAction func pressedcreaterole(_ sender: Any) {
+        var projectid = "\(projectItem?.projectId)"
+        rolename = rolenamefield.text!
         
+        var newrole : Role = Role(roleid: 0, rolename: rolename, projectid: projectid, manageowntask: manageowntask, removealltask: removealltask, editalltask: editalltask, invitemember: invitemember, removemember: removemember, manageproject: manageproject)
+        RoleDataManager.insertOrReplaceMovie(role: newrole)
     }
-    
+
     /*
     // MARK: - Navigation
 
