@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hsL-V7-cYl">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -68,12 +68,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="37G-6f-dpq"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="add" image="plus" catalog="system" id="n32-qk-LbW"/>
+                        <barButtonItem systemItem="flexibleSpace" id="AjU-Vb-4M8"/>
+                        <barButtonItem image="paperplane" catalog="system" id="bUk-fF-GPr"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="q1W-ye-yJe">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="bell" catalog="system" id="SUd-QP-qG4"/>
                             <barButtonItem title="Item" image="pin" catalog="system" id="0xW-Aj-8c1"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="notesBody" destination="rls-mg-UPa" id="gtg-ad-g62"/>
                     </connections>
@@ -103,6 +109,8 @@
     </scenes>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
+        <image name="paperplane" catalog="system" width="128" height="121"/>
         <image name="pin" catalog="system" width="119" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
