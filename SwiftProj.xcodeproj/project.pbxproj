@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B6C0C376A376A81AD14C328 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		6B6C0C376A376A81AD14C328 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
 		8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000724A75ACC00EE47FA /* MainViewController.swift */; };
@@ -52,6 +52,10 @@
 		89B4E16824B2C76C00B5B841 /* business-woman-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15B24B2C76C00B5B841 /* business-woman-colour-800px.png */; };
 		89B4E16924B2C76C00B5B841 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15C24B2C76C00B5B841 /* student-colour-400px.png */; };
 		89B4E16A24B2C76C00B5B841 /* unlock-monochrome-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15D24B2C76C00B5B841 /* unlock-monochrome-1200px.png */; };
+		89B4E16C24B2D93900B5B841 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4E16B24B2D93900B5B841 /* Role.swift */; };
+		89B4E16E24B2DA2F00B5B841 /* RoleDataManagerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4E16D24B2DA2F00B5B841 /* RoleDataManagerOld.swift */; };
+		89B4E17024B2DA5A00B5B841 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4E16F24B2DA5A00B5B841 /* RoleDataManager.swift */; };
+		89B4E17224B2DA9000B5B841 /* addroleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4E17124B2DA9000B5B841 /* addroleViewController.swift */; };
 		89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */; };
 		89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEFC247FE66B00F3F614 /* CommentCell.swift */; };
 		89E17010247A538A004C3F45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E1700F247A538A004C3F45 /* User.swift */; };
@@ -143,6 +147,10 @@
 		89B4E15B24B2C76C00B5B841 /* business-woman-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-800px.png"; sourceTree = "<group>"; };
 		89B4E15C24B2C76C00B5B841 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
 		89B4E15D24B2C76C00B5B841 /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
+		89B4E16B24B2D93900B5B841 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		89B4E16D24B2DA2F00B5B841 /* RoleDataManagerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManagerOld.swift; sourceTree = "<group>"; };
+		89B4E16F24B2DA5A00B5B841 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
+		89B4E17124B2DA9000B5B841 /* addroleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addroleViewController.swift; sourceTree = "<group>"; };
 		89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommentViewController.swift; sourceTree = "<group>"; };
 		89C8AEFC247FE66B00F3F614 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		89E1700F247A538A004C3F45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -161,7 +169,6 @@
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
 		9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
-		9E5C369324AEF701006F16B5 /* addroleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addroleViewController.swift; sourceTree = "<group>"; };
 		9E5C369424AEF702006F16B5 /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
 		9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
 		9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -185,7 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */,
-				6B6C0C376A376A81AD14C328 /* BuildFile in Frameworks */,
+				6B6C0C376A376A81AD14C328 /* (null) in Frameworks */,
 				FC71DEFBE7A7E36C9D15FA42 /* Pods_SwiftProj.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +291,8 @@
 		8992193D246E44E00029BFF5 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				89B4E16F24B2DA5A00B5B841 /* RoleDataManager.swift */,
+				89B4E16D24B2DA2F00B5B841 /* RoleDataManagerOld.swift */,
 				9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */,
 				9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */,
 				9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */,
@@ -366,6 +375,7 @@
 				89E1700F247A538A004C3F45 /* User.swift */,
 				89C8AEFC247FE66B00F3F614 /* CommentCell.swift */,
 				89B4E14E24B2C73100B5B841 /* Project.swift */,
+				89B4E16B24B2D93900B5B841 /* Role.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -373,8 +383,8 @@
 		9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				89B4E17124B2DA9000B5B841 /* addroleViewController.swift */,
 				9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */,
-				9E5C369324AEF701006F16B5 /* addroleViewController.swift */,
 				9E5C369724AEF702006F16B5 /* createproject2ViewController.swift */,
 				9E5C369424AEF702006F16B5 /* createprojectViewController.swift */,
 				9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */,
@@ -557,12 +567,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8992194D246E45760029BFF5 /* HTTP.swift in Sources */,
+				89B4E16E24B2DA2F00B5B841 /* RoleDataManagerOld.swift in Sources */,
 				89921942246E450A0029BFF5 /* CaseDataManager.swift in Sources */,
 				898646EB2464626F00A5C752 /* ViewController.swift in Sources */,
 				89B4E14D24B2C71500B5B841 /* ProjectOld.swift in Sources */,
 				898646FE2464651C00A5C752 /* EntryViewController.swift in Sources */,
 				89B4E14F24B2C73100B5B841 /* Project.swift in Sources */,
 				89921950246E459C0029BFF5 /* SQLiteDB.swift in Sources */,
+				89B4E17024B2DA5A00B5B841 /* RoleDataManager.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
 				F24BC02C24B26B8B00B8D1ED /* NotesTableViewController.swift in Sources */,
@@ -574,6 +586,7 @@
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
 				F24BC02A24B266E400B8D1ED /* AddNoteViewController.swift in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
+				89B4E17224B2DA9000B5B841 /* addroleViewController.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
 				898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */,
 				89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */,
@@ -594,6 +607,7 @@
 				89921948246E45290029BFF5 /* SavedCountry.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
+				89B4E16C24B2D93900B5B841 /* Role.swift in Sources */,
 				9E52C57C24B2BBE800444978 /* MemberTableViewCell.swift in Sources */,
 				89E17010247A538A004C3F45 /* User.swift in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
