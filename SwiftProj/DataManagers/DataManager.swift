@@ -28,6 +28,29 @@ class DataManager: NSObject {
     // Loads the list of movies from the database
     // and convert it into a [Movie] array
     //
+    static func loadUsers(onComplete: (([User]) -> Void)?)
+    {
+        db.collection("users").getDocuments()
+    {
+        (querySnapshot, err) in
+        var userList : [User] = []
+        if let err = err{
+            print("Error getting documents: \(err)")
+            
+        }
+        else
+        {
+            for document in querySnapshot!.documents
+            {
+                var user = try? document.data(as:User.self) as! User
+                if user != nil {
+                    userList.append(user!)
+                }
+            }
+        }
+        onComplete?(userList)
+        }
+    }
     static func loadCountries() -> [SavedCountry]
     {
         let countryRows = SQLiteDB.sharedInstance.query(sql:

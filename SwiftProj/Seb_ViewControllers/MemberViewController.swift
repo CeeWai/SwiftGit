@@ -16,7 +16,8 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        rolelist = RoleDataManager.load()
+        var currentprojectid = "\(projectItem?.projectId)"
+        rolelist = RoleDataManager.loadprojectid(projectid: currentprojectid)
 
         // Do any additional setup after loading the view.
     }
@@ -25,19 +26,19 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
            if tableView == roletableview{
                return rolelist.count
            }
-           return 0
+        return rolelist.count
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           if tableView == roletableview{
+           //if tableView == roletableview{
                let cell : RoleTableViewCell = tableView
                .dequeueReusableCell (withIdentifier: "rolecell", for: indexPath)
-               as! RoleTableViewCell
+               as! 	RoleTableViewCell
                let p = rolelist[indexPath.row]
                cell.rolename.text = p.rolename
                return cell
-           }
-           return UITableViewCell()
+           //}
+           //return UITableViewCell()
        }
     /*
     // MARK: - Navigation

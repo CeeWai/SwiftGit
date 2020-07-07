@@ -65,6 +65,7 @@
 		9E5C36A924AEF790006F16B5 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A624AEF790006F16B5 /* Project.swift */; };
 		9E5C36AA24AEF790006F16B5 /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A724AEF790006F16B5 /* Projectgroup.swift */; };
 		9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C36AB24AEF7AB006F16B5 /* Seb_Main.storyboard */; };
+		9EC60D3D24B48C45008B9CFF /* addmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */; };
 		F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,7 @@
 		9E5C36A624AEF790006F16B5 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		9E5C36A724AEF790006F16B5 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
 		9E5C36AC24AEF7AB006F16B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_Main.storyboard; sourceTree = "<group>"; };
+		9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addmemberViewController.swift; sourceTree = "<group>"; };
 		E34ED4966392AEB617678FB0 /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
 		F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dom_Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -303,6 +305,7 @@
 				9E52C57924B2B90600444978 /* MemberViewController.swift */,
 				9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */,
 				9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */,
+				9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */,
 			);
 			path = Seb_ViewControllers;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				89921950246E459C0029BFF5 /* SQLiteDB.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
+				9EC60D3D24B48C45008B9CFF /* addmemberViewController.swift in Sources */,
 				9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				9E52C57A24B2B90600444978 /* MemberViewController.swift in Sources */,

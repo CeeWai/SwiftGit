@@ -8,10 +8,26 @@
 
 import Foundation
 
-class User {
+class User:Codable{
     
     //var id: Int
+    var uid: String
     var username : String
+    
+    
+    init(
+        //id: Int,
+        uid: String,
+        username: String
+    )
+    {
+        //self.id = id
+        self.username = username
+        self.uid = uid
+    }
+}
+/*
+ var username : String
     var email: String
     var password: String
     var imagePath: String
@@ -30,4 +46,4 @@ class User {
         self.password = password
         self.imagePath = imagePath
     }
-}
+ */
