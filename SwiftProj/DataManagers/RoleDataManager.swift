@@ -33,7 +33,7 @@ class RoleDataManager: NSObject {
                 for row in roleRows
             {
                 roles.append(Role(
-                    roleid: row["roleid"] as! Int,
+                roleid: row["roleid"] as! Int,
                 rolename: row["rolename"] as! String,
                 projectid: row["projectid"] as! String,
                 manageowntask: row["manageowntask"] as! Int,
@@ -45,7 +45,26 @@ class RoleDataManager: NSObject {
             }
                 return roles;
         }
-        
+    static func loadprojectid(projectid:String) -> [Role]
+        {
+            let roleRows = SQLiteDB.sharedInstance.query(sql:
+                "SELECT roleid, rolename, " + "projectid, manageowntask, removealltask, editalltask, invitemember, removemember, manageproject" + " FROM Roles Where projectid = '\(projectid)'")
+            var roles : [Role] = []
+                for row in roleRows
+            {
+                roles.append(Role(
+                roleid: row["roleid"] as! Int,
+                rolename: row["rolename"] as! String,
+                projectid: row["projectid"] as! String,
+                manageowntask: row["manageowntask"] as! Int,
+                removealltask: row["removealltask"] as! Int,
+                editalltask: row["editalltask"] as! Int,
+                invitemember: row["invitemember"] as! Int,
+                removemember: row["removemember"] as! Int,
+                manageproject: row["manageproject"] as! Int))
+            }
+                return roles;
+        }
         static func insertOrReplaceMovie(role: Role)
         {
         SQLiteDB.sharedInstance.execute(sql:
