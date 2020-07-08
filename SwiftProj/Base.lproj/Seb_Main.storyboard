@@ -339,12 +339,20 @@
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="WWK-DP-DFL">
-                                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="popovermenu:" destination="lCv-NL-OtH" id="mtK-z6-c46"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Item" image="ellipsis" catalog="system" id="WWK-DP-DFL">
+                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="popovermenu:" destination="lCv-NL-OtH" id="mtK-z6-c46"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" image="bell" catalog="system" id="hvI-b4-Msq">
+                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <segue destination="O9q-tN-i6n" kind="presentation" identifier="seguetonoti" modalPresentationStyle="fullScreen" id="sgK-ZQ-tSk"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -689,7 +697,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Invite"/>
                                                 <connections>
-                                                    <segue destination="Nuv-pT-Vh9" kind="presentation" modalPresentationStyle="fullScreen" id="ado-Qh-Sk6"/>
+                                                    <segue destination="Nuv-pT-Vh9" kind="presentation" identifier="seguetoaddmember" modalPresentationStyle="fullScreen" id="ado-Qh-Sk6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -828,7 +836,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="usercell" id="NaR-xD-Nwt" customClass="RoleTableViewCell" customModule="SwiftProj" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="usercell" id="NaR-xD-Nwt" customClass="addmemberTableViewCell" customModule="SwiftProj" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="304" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NaR-xD-Nwt" id="O3O-SP-SKY">
@@ -836,26 +844,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBS-MP-sdI">
-                                                    <rect key="frame" x="0.0" y="11" width="226" height="21"/>
+                                                    <rect key="frame" x="0.0" y="11" width="200" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jl4-YG-9gt">
-                                                    <rect key="frame" x="245" y="3" width="44" height="34"/>
+                                                    <rect key="frame" x="235" y="3" width="69" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Invite">
                                                         <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="invitebtn:" destination="NaR-xD-Nwt" eventType="touchUpInside" id="cnw-Mw-FCr"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="rolebtn" destination="Jl4-YG-9gt" id="nwk-fw-h50"/>
-                                            <outlet property="rolecellview" destination="O3O-SP-SKY" id="ST4-Qy-hs2"/>
-                                            <outlet property="rolename" destination="kBS-MP-sdI" id="ebe-WV-D1D"/>
+                                            <outlet property="invitebtn" destination="Jl4-YG-9gt" id="YrG-zd-I99"/>
+                                            <outlet property="username" destination="kBS-MP-sdI" id="Euh-Jg-Hqy"/>
+                                            <outlet property="view" destination="O3O-SP-SKY" id="PrR-qN-lmc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1203,13 +1214,212 @@
             </objects>
             <point key="canvasLocation" x="2836" y="98"/>
         </scene>
+        <!--Addmember View Controller-->
+        <scene sceneID="cuV-CF-XaG">
+            <objects>
+                <viewController id="4CD-lR-e6T" customClass="addmemberViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yqE-W8-Rw9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvq-tV-LHT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Invite Member" id="GCZ-ng-OwH">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="hVv-Jm-qYu"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seach for user" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFv-Ci-PxF">
+                                <rect key="frame" x="35" y="63" width="304" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchaction:" destination="4CD-lR-e6T" eventType="editingDidEnd" id="lDr-4U-d1c"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SXL-Ci-TBW">
+                                <rect key="frame" x="35" y="137" width="304" height="449"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="usercell" id="zZq-QY-Jdu" customClass="addmemberTableViewCell" customModule="SwiftProj" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="304" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zZq-QY-Jdu" id="ho7-Y7-Qmi">
+                                            <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65G-4w-1l6">
+                                                    <rect key="frame" x="0.0" y="11" width="200" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iZ-Lm-Bgc">
+                                                    <rect key="frame" x="235" y="3" width="69" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Invite">
+                                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="invitebtn:" destination="zZq-QY-Jdu" eventType="touchUpInside" id="i7G-hp-4SS"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="invitebtn" destination="1iZ-Lm-Bgc" id="gzf-im-rD3"/>
+                                            <outlet property="username" destination="65G-4w-1l6" id="rKc-8s-PZ1"/>
+                                            <outlet property="view" destination="ho7-Y7-Qmi" id="7qs-vD-uon"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4CD-lR-e6T" id="3H3-2o-9UE"/>
+                                    <outlet property="delegate" destination="4CD-lR-e6T" id="Nax-db-S5I"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vTZ-Y7-Qn0" firstAttribute="trailing" secondItem="Jvq-tV-LHT" secondAttribute="trailing" id="B94-Kl-r6m"/>
+                            <constraint firstItem="Jvq-tV-LHT" firstAttribute="leading" secondItem="yqE-W8-Rw9" secondAttribute="leading" id="vHS-la-s7e"/>
+                            <constraint firstItem="Jvq-tV-LHT" firstAttribute="top" secondItem="vTZ-Y7-Qn0" secondAttribute="top" id="vse-G6-tod"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vTZ-Y7-Qn0"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchfield" destination="iFv-Ci-PxF" id="cG5-y8-fUp"/>
+                        <outlet property="tableview" destination="SXL-Ci-TBW" id="jXx-Ny-Jrr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aMx-LE-ha5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837.5999999999999" y="1680.8095952023989"/>
+        </scene>
+        <!--Projectnotification View Controller-->
+        <scene sceneID="ui6-YO-u1H">
+            <objects>
+                <viewController id="O9q-tN-i6n" customClass="projectnotificationViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f01-QH-V4J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQa-gE-gsx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Notification" id="4ko-Sx-s7K">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="Rzs-tW-ch0"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6H-05-biI">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="xyk-jI-t03"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="SPx-Zy-kLb"/>
+                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YLH-yh-Cow">
+                                <rect key="frame" x="29" y="66" width="304" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="invitecell" rowHeight="80" id="AIE-Pp-gmb" customClass="invitationnotiTableViewCell" customModule="SwiftProj" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="304" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AIE-Pp-gmb" id="9gh-Sg-ouI">
+                                            <rect key="frame" x="0.0" y="0.0" width="304" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5q-gh-6Zg">
+                                                    <rect key="frame" x="235" y="11" width="54" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <state key="normal" title="Accept"/>
+                                                    <connections>
+                                                        <action selector="pressedacceptbtn:" destination="AIE-Pp-gmb" eventType="touchUpInside" id="AbY-av-lao"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fi-bz-IPJ">
+                                                    <rect key="frame" x="235" y="39" width="54" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <state key="normal" title="Decline"/>
+                                                    <connections>
+                                                        <action selector="presseddeclinebtn:" destination="AIE-Pp-gmb" eventType="touchUpInside" id="WUo-Cw-SN3"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRB-Pv-6Sg">
+                                                    <rect key="frame" x="0.0" y="11" width="60" height="58"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="Awa-aQ-FnV"/>
+                                                        <constraint firstAttribute="height" constant="58" id="bgg-Ws-A8j"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="User has invited you to join groupname." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8z-nQ-aTW">
+                                                    <rect key="frame" x="68" y="11" width="146" height="58"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="acceptbtn" destination="g5q-gh-6Zg" id="iEJ-aO-1Ci"/>
+                                            <outlet property="declinebtn" destination="7fi-bz-IPJ" id="HKh-bS-crk"/>
+                                            <outlet property="imageview" destination="pRB-Pv-6Sg" id="Sjw-ib-Igv"/>
+                                            <outlet property="textview" destination="t8z-nQ-aTW" id="kp0-ZY-Fp1"/>
+                                            <outlet property="view" destination="9gh-Sg-ouI" id="pO6-sh-d04"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="O9q-tN-i6n" id="bu7-k8-lZ9"/>
+                                    <outlet property="delegate" destination="O9q-tN-i6n" id="dUc-PI-bzx"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VQa-gE-gsx" firstAttribute="leading" secondItem="f01-QH-V4J" secondAttribute="leading" id="KfI-c4-f0H"/>
+                            <constraint firstItem="lS0-0W-byk" firstAttribute="trailing" secondItem="VQa-gE-gsx" secondAttribute="trailing" id="sCx-Lo-cgX"/>
+                            <constraint firstItem="VQa-gE-gsx" firstAttribute="top" secondItem="lS0-0W-byk" secondAttribute="top" id="yT5-Ol-YWj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lS0-0W-byk"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="YLH-yh-Cow" id="7Gd-8J-BfJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FQz-eU-3H7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96.799999999999997" y="1680.8095952023989"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QX2-3l-Zaf"/>
+        <segue reference="LXq-jq-hPN"/>
         <segue reference="des-JP-xuL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>

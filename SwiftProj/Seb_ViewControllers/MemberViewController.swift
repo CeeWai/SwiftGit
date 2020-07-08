@@ -16,8 +16,8 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var currentprojectid = "\(projectItem?.projectId)"
-        rolelist = RoleDataManager.loadprojectid(projectid: currentprojectid)
+        var projectid : Int = (projectItem?.projectId)!
+        rolelist = RoleDataManager.loadprojectid(projectid: projectid)
 
         // Do any additional setup after loading the view.
     }
@@ -57,6 +57,12 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
          addroleViewController
             detailViewController.projectItem = self.projectItem
         }
+        if(segue.identifier == "seguetoaddmember")
+                {
+               let detailViewController = segue.destination as!
+                addmemberViewController
+                   detailViewController.projectItem = self.projectItem
+               }
          
     }
 

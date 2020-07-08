@@ -16,7 +16,7 @@ class RoleDataManager: NSObject {
             "Roles ( " +
             " roleid INTEGER primary key AUTOINCREMENT, " +
             " rolename text, " +
-            " projectid text, " +
+            " projectid INTEGER, " +
             " manageowntask INTEGER, " +
             " removealltask INTEGER, " +
             " editalltask INTEGER, " +
@@ -35,7 +35,7 @@ class RoleDataManager: NSObject {
                 roles.append(Role(
                 roleid: row["roleid"] as! Int,
                 rolename: row["rolename"] as! String,
-                projectid: row["projectid"] as! String,
+                projectid: row["projectid"] as! Int,
                 manageowntask: row["manageowntask"] as! Int,
                 removealltask: row["removealltask"] as! Int,
                 editalltask: row["editalltask"] as! Int,
@@ -45,17 +45,17 @@ class RoleDataManager: NSObject {
             }
                 return roles;
         }
-    static func loadprojectid(projectid:String) -> [Role]
+    static func loadprojectid(projectid:Int) -> [Role]
         {
             let roleRows = SQLiteDB.sharedInstance.query(sql:
-                "SELECT roleid, rolename, " + "projectid, manageowntask, removealltask, editalltask, invitemember, removemember, manageproject" + " FROM Roles Where projectid = '\(projectid)'")
+                "SELECT roleid, rolename, " + "projectid, manageowntask, removealltask, editalltask, invitemember, removemember, manageproject" + " FROM Roles Where projectid = \(projectid)")
             var roles : [Role] = []
                 for row in roleRows
             {
                 roles.append(Role(
                 roleid: row["roleid"] as! Int,
                 rolename: row["rolename"] as! String,
-                projectid: row["projectid"] as! String,
+                projectid: row["projectid"] as! Int,
                 manageowntask: row["manageowntask"] as! Int,
                 removealltask: row["removealltask"] as! Int,
                 editalltask: row["editalltask"] as! Int,
@@ -63,6 +63,7 @@ class RoleDataManager: NSObject {
                 removemember: row["removemember"] as! Int,
                 manageproject: row["manageproject"] as! Int))
             }
+            print(projectid)
                 return roles;
         }
         static func insertOrReplaceMovie(role: Role)

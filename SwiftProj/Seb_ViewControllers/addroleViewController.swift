@@ -148,10 +148,9 @@ class addroleViewController: UIViewController {
         manageproject=0
     }
     @IBAction func pressedcreaterole(_ sender: Any) {
-        var projectid = "\(projectItem!.projectId)"
         rolename = rolenamefield.text!
         
-        var newrole : Role = Role(roleid: 0, rolename: rolename, projectid: projectid, manageowntask: manageowntask, removealltask: removealltask, editalltask: editalltask, invitemember: invitemember, removemember: removemember, manageproject: manageproject)
+        var newrole : Role = Role(roleid: 0, rolename: rolename, projectid: projectItem!.projectId, manageowntask: manageowntask, removealltask: removealltask, editalltask: editalltask, invitemember: invitemember, removemember: removemember, manageproject: manageproject)
         RoleDataManager.insertOrReplaceMovie(role: newrole)
     }
 

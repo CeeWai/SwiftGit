@@ -37,6 +37,22 @@ class ProjectDataManager: NSObject {
     }
         return projects;
     }
+    static func loadProjectsbyid(projectid:Int) -> [Project]
+    {
+        let projectRows = SQLiteDB.sharedInstance.query(sql:
+            "SELECT projectId, projectName, " + "projectLeader,projectDescription, imagename" + " FROM Projects Where projectId = \(projectid)")
+    var projects : [Project] = []
+        for row in projectRows
+    {
+    projects.append(Project(
+    projectId: row["projectId"] as! Int,
+    projectName: row["projectName"] as! String,
+    projectLeader: row["projectLeader"] as! String,
+    projectDescription: row["projectDescription"] as! String,
+    imageName: row["imagename"] as! String))
+    }
+        return projects;
+    }
     
     static func insertOrReplaceMovie(project: Project)
     {
