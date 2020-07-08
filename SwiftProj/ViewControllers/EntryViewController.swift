@@ -15,7 +15,17 @@ protocol CanReceiveReload {
     func passReloadDataBack(data: Date)
 }
 
-class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance {
+class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance, CanReceiveSubject {
+    
+    var delegate: CanReceiveSubject?
+    func passSubjectDataBack(data: String) {
+        repeatData = data
+        //pickTimeButton.setTite("Time: \(chosenTime)", for: .normal)
+        //startTimeLabel.text! += ": \(repeatData)"
+        chosenRepeatLabel.text! = "\(repeatData)"
+        chosenRepeatLabel.isHidden = false
+        print("You have picked: \(repeatData)")
+    }
     
     var delegate: CanReceiveReload?
     var repeatData: String = ""
@@ -210,6 +220,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         } else if segue.identifier == "pickImportanceSegue" {
             let pickImportanceVC = segue.destination as! ImportanceTableViewController
             pickImportanceVC.delegate = self
+        } else if segue.identifier == "subjectSegue" {
+            let pickSegueVC = segue.destination as! SubjectTableViewController
+            pickSegueVC.delegate = self
         }
 
     }

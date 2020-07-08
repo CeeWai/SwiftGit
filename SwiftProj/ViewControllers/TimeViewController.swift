@@ -19,7 +19,6 @@ class TimeViewController: UIViewController {
     var data = ""
     var userCurrentDate: Date?
     @IBOutlet weak var hiddenView: UIView!
-    //@IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var buttonStackView1: UIStackView!
     @IBOutlet weak var buttonStackView2: UIStackView!
     @IBOutlet weak var buttonStackView3: UIStackView!
@@ -33,7 +32,6 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var buttonStackView11: UIStackView!
     @IBOutlet weak var buttonStackView12: UIStackView!
     @IBOutlet weak var buttonStackView13: UIStackView!
-
 
     @IBOutlet weak var contentView: UIView!
     var myButtonArray: [String] = []
@@ -133,7 +131,6 @@ class TimeViewController: UIViewController {
                         let endDate = dateFormatterEnd.date(from:endDateString)!
 
                         let isoDate = "\(element)"
-                        //print("isoDate \(isoDate)")
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "h:mm a"
@@ -142,14 +139,14 @@ class TimeViewController: UIViewController {
                         //print("date = \(date)")
                         if date == startDate || date == endDate {
                             print("\(date) is equal to \(startDate) or \(endDate)")
-                             button.backgroundColor = UIColor.lightGray
-                             button.isEnabled = false
+                             button.backgroundColor = UIColor.systemTeal
+                             //button.isEnabled = false
                         }
                         
                         if date >= startDate && date <= endDate {
                             print("\(date) is in between \(startDate) and \(endDate)")
-                            button.backgroundColor = UIColor.lightGray
-                            button.isEnabled = false
+                            button.backgroundColor = UIColor.systemTeal
+                            //button.isEnabled = false
                         }
                     }
 

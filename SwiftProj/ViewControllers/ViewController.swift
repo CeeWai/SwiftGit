@@ -120,7 +120,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taskDescLabel.text = p?.taskDesc
         //cell.taskRuntimeLabel.text = "\(p.runtime/60) Hrs \(p.runtime%60) Mins"
         if p?.importance == "Important" { // Differenciate between important and secondary tasks
-            cell.taskTitleLabel.textColor = UIColor.systemRed
+            cell.taskTitleLabel.textColor = UIColor.systemTeal
         } else {
             cell.taskTitleLabel.textColor = UIColor { tc in
                 switch tc.userInterfaceStyle {

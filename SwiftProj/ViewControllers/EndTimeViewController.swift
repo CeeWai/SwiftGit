@@ -118,8 +118,14 @@ class EndTimeViewController: UIViewController {
                     dateFormatterCurrent.dateFormat = "hh:mm a"
                     let dateCurrent = dateFormatterCurrent.date(from: dateAsStringCurrent)
                     
-                    if dateCurrent! <= date! {
+                    if dateCurrent! < date! {
                         button.backgroundColor = UIColor.gray
+                        button.isEnabled = false
+                        print("\(dateCurrent) is less than or equal to \(date)")
+                    }
+                    
+                    if dateCurrent! == date! {
+                        button.backgroundColor = UIColor.systemRed
                         button.isEnabled = false
                         print("\(dateCurrent) is less than or equal to \(date)")
                     }
@@ -134,7 +140,7 @@ class EndTimeViewController: UIViewController {
                     
                     if self.disableContinuous == true {
                         button.backgroundColor = UIColor.gray
-                        button.isEnabled = false
+                        //button.isEnabled = false
                     }
                     
                     if self.removeContinuous == true {
@@ -145,8 +151,26 @@ class EndTimeViewController: UIViewController {
                         button.isEnabled = true
                     }
                     
-    //                dateFormatter.dateFormat = "HH:mm"
-    //                let date24 = dateFormatter.stringFromDate(date!)
+                    let isoDate = "\(element)"
+                    //print("isoDate \(isoDate)")
+                    
+                    let date_Formatter = DateFormatter()
+                    date_Formatter.dateFormat = "h:mm a"
+                    let date_Format = date_Formatter.date(from:isoDate)!
+                    
+                    let isoStartTimeDate = self.startTime!
+
+                    let dateFormatterStartTime = DateFormatter()
+                    dateFormatterStartTime.dateFormat = "h:mm a"
+                    let dateStartTime = dateFormatterStartTime.date(from:isoStartTimeDate)
+                    
+                    if date_Format < dateStartTime! { // check if the passed in date is more than the button's date
+                        //self.disableContinuous = true
+                        button.backgroundColor = UIColor.gray
+                        button.isEnabled = false
+                    } else {
+                        button.isEnabled = true
+                    }
                     
                     for task in todayTask {
                         let taskStartDate = task.taskStartTime
@@ -169,28 +193,31 @@ class EndTimeViewController: UIViewController {
                         let date = dateFormatter.date(from:isoDate)!
                         
                         print("date = \(date)")
-                        if date == startDate || date == endDate {
-                            print("\(date) is equal to \(startDate) or \(endDate)")
-                             button.backgroundColor = UIColor.lightGray
-                             button.isEnabled = false
-                            
-                            let isoStartTimeDate = self.startTime!
-                            //print("isoDate \(isoDate)")
-                            
-                            let dateFormatterStartTime = DateFormatter()
-                            dateFormatterStartTime.dateFormat = "h:mm a"
-                            let dateStartTime = dateFormatterStartTime.date(from:isoStartTimeDate)
-                            
-                            if date > dateStartTime! {
-                                self.disableContinuous = true
-
-                            }
-                        }
+//                        if date == startDate || date == endDate {
+//                            print("\(date) is equal to \(startDate) or \(endDate)")
+//                             button.backgroundColor = UIColor.systemTeal
+//                             //button.isEnabled = false
+//
+//                            let isoStartTimeDate = self.startTime!
+//                            //print("isoDate \(isoDate)")
+//
+//                            let dateFormatterStartTime = DateFormatter()
+//                            dateFormatterStartTime.dateFormat = "h:mm a"
+//                            let dateStartTime = dateFormatterStartTime.date(from:isoStartTimeDate)
+//
+////                            if date < dateStartTime! { // check if the passed in date is more than the button's date
+////                                //self.disableContinuous = true
+////                                button.backgroundColor = UIColor.gray
+////                                button.isEnabled = false
+////                            } else {
+////                                button.isEnabled = true
+////                            }
+//                        }
                         
-                        if date >= startDate && date <= endDate {
+                        if date > startDate && date <= endDate {
                             print("\(date) is in between \(startDate) and \(endDate)")
-                            button.backgroundColor = UIColor.lightGray
-                            button.isEnabled = false
+                            button.backgroundColor = UIColor.systemTeal
+                            //button.isEnabled = false
                             let isoStartTimeDate = self.startTime!
                             //print("isoDate \(isoDate)")
                             
@@ -198,10 +225,13 @@ class EndTimeViewController: UIViewController {
                             dateFormatterStartTime.dateFormat = "h:mm a"
                             let dateStartTime = dateFormatterStartTime.date(from:isoStartTimeDate)
                             
-                            if date > dateStartTime! {
-                                self.disableContinuous = true
-
-                            }
+//                            if date < dateStartTime! { // check if the passed in date is more than the button's date
+//                                //self.disableContinuous = true
+//                                button.backgroundColor = UIColor.gray
+//                                button.isEnabled = false
+//                            } else {
+//                                button.isEnabled = true
+//                            }
                         }
                     }
                     
