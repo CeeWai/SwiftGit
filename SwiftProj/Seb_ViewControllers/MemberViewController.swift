@@ -59,8 +59,7 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         if(segue.identifier == "seguetoaddmember")
                 {
-               let detailViewController = segue.destination as!
-                addmemberViewController
+               let detailViewController = segue.destination as! addmemberViewController
                    detailViewController.projectItem = self.projectItem
                }
          

@@ -53,8 +53,7 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
     sender: Any?){
     if(segue.identifier == "passproject")
      {
-    let detailViewController = segue.destination as!
-     createproject2ViewController
+    let detailViewController = segue.destination as! createproject2ViewController
      detailViewController.projectitem = newproject
     }
      

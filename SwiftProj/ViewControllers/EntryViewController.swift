@@ -17,14 +17,14 @@ protocol CanReceiveReload {
 
 class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance, CanReceiveSubject {
     
-    var delegate: CanReceiveSubject?
+    var delegateSubject: CanReceiveSubject?
+    var subjectData: String = ""
     func passSubjectDataBack(data: String) {
-        repeatData = data
+        subjectData = data
         //pickTimeButton.setTite("Time: \(chosenTime)", for: .normal)
         //startTimeLabel.text! += ": \(repeatData)"
-        chosenRepeatLabel.text! = "\(repeatData)"
-        chosenRepeatLabel.isHidden = false
-        print("You have picked: \(repeatData)")
+        subjectTextField.text! = "\(subjectData)"
+        print("You have picked: \(subjectData)")
     }
     
     var delegate: CanReceiveReload?
@@ -95,7 +95,6 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     var userCurrentDate: Date?
     var taskViewController: ViewController?
     let model = TopicsClassifier()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
