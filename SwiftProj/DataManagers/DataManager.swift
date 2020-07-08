@@ -84,7 +84,7 @@ class DataManager: NSObject {
                 } else {
                     for document in querySnapshot!.documents
                     {
-                        var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "")
+                        var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "", subject: "")
 
                         if let id = document.documentID as? String {
                             //print("document ID: \(document.documentID)")
@@ -123,6 +123,10 @@ class DataManager: NSObject {
                             task.importance = importance
                         }
                         
+                        if let subject = document.data()["subject"] as? String {
+                            task.subject = subject
+                        }
+                        
                         //print(task)
 
                         if task != nil {
@@ -134,6 +138,75 @@ class DataManager: NSObject {
                 onComplete?(taskList)
                 
             }
+        }
+    
+    }
+    
+    static func loadTasksBySubject(_ subject: String, onComplete: (([Task]) -> Void)?) {
+        
+        db.collection("tasks").whereField("subject", isEqualTo: subject).getDocuments() {
+            (querySnapshot, err) in
+            var taskList : [Task] = []
+
+            if let err = err
+            {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents
+                {
+                    var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "", subject: "")
+
+                    if let id = document.documentID as? String {
+                        //print("document ID: \(document.documentID)")
+                        task.taskID = id
+                    }
+                    
+                    if let name = document.data()["taskName"] as? String {
+                        task.taskName = name
+                    }
+                    
+                    if let description = document.data()["taskDesc"] as? String {
+                        task.taskDesc = description
+                    }
+                    
+                    if let startTime = document.data()["taskStartTime"] as? Timestamp {
+                        let date = startTime.dateValue()
+                        //print(date)
+                        task.taskStartTime = date
+                    }
+                    
+                    if let endtime = document.data()["taskEndTime"] as? Timestamp {
+                        let date = endtime.dateValue()
+                        //print(date)
+                        task.taskEndTime = date
+                    }
+                    
+                    if let repeatType = document.data()["repeatType"] as? String {
+                        task.repeatType = repeatType
+                    }
+                    
+                    if let taskOwner = document.data()["taskOwner"] as? String {
+                        task.taskOwner = taskOwner
+                    }
+                    
+                    if let importance = document.data()["importance"] as? String {
+                        task.importance = importance
+                    }
+                    
+                    if let subject = document.data()["subject"] as? String {
+                        task.subject = subject
+                    }
+                    
+                    //print(task)
+
+                    if task != nil {
+                        taskList.append(task)
+                    }
+                }
+            }
+
+            onComplete?(taskList)
+            
         }
     
     }

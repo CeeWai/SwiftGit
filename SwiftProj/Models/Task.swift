@@ -19,8 +19,9 @@ class Task: Codable {
     var taskOwner: String
     //var runtime = 0
     var importance: String
+    var subject: String
     
-    internal init(taskID: String, taskName: String, taskDesc: String, taskStartTime: Date, taskEndTime: Date, repeatType: String, taskOwner: String, importance: String) {
+    internal init(taskID: String, taskName: String, taskDesc: String, taskStartTime: Date, taskEndTime: Date, repeatType: String, taskOwner: String, importance: String, subject: String) {
         self.taskID = taskID
         self.taskName = taskName
         self.taskDesc = taskDesc
@@ -29,6 +30,7 @@ class Task: Codable {
         self.repeatType = repeatType
         self.taskOwner = taskOwner
         self.importance = importance
+        self.subject = subject
     }
 }
  

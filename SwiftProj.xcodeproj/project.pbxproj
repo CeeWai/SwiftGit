@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B6C0C376A376A81AD14C328 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		8906484924B4C8AC00325C5B /* TopicsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8906484824B4C8AC00325C5B /* TopicsClassifier.mlmodel */; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
 		8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000724A75ACC00EE47FA /* MainViewController.swift */; };
@@ -65,6 +66,7 @@
 		89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */; };
 		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
+		89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89FDD3A424B4D0A700DEBD96 /* topicText.csv */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
 		9E52C57A24B2B90600444978 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C57924B2B90600444978 /* MemberViewController.swift */; };
 		9E52C57C24B2BBE800444978 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */; };
@@ -94,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		4B23C1D54DB33B10CFBFF391 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
+		8906484824B4C8AC00325C5B /* TopicsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TopicsClassifier.mlmodel; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
 		8920000724A75ACC00EE47FA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = file; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9E52C57924B2B90600444978 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
@@ -274,6 +278,8 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
+				8906484824B4C8AC00325C5B /* TopicsClassifier.mlmodel */,
+				89FDD3A424B4D0A700DEBD96 /* topicText.csv */,
 				89B4E15024B2C76C00B5B841 /* Media */,
 				F24BC02824B266BA00B8D1ED /* dom_VC */,
 				9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */,
@@ -503,6 +509,7 @@
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
 				89B4E16724B2C76C00B5B841 /* entryway-colour-1200px.png in Resources */,
 				89B4E16124B2C76C00B5B841 /* business-woman-colour.svg in Resources */,
+				89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
 				89B4E16A24B2C76C00B5B841 /* unlock-monochrome-1200px.png in Resources */,
 				89B4E16424B2C76C00B5B841 /* student-colour.svg in Resources */,
@@ -608,6 +615,7 @@
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
+				8906484924B4C8AC00325C5B /* TopicsClassifier.mlmodel in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
