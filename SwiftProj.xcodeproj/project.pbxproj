@@ -74,24 +74,9 @@
 		9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */; };
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
 		9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */; };
-		9E5C369A24AEF703006F16B5 /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */; };
-		9E5C369B24AEF703006F16B5 /* addroleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369324AEF701006F16B5 /* addroleViewController.swift */; };
-		9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369424AEF702006F16B5 /* createprojectViewController.swift */; };
-		9E5C369D24AEF703006F16B5 /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */; };
-		9E5C369E24AEF703006F16B5 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */; };
-		9E5C369F24AEF703006F16B5 /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369724AEF702006F16B5 /* createproject2ViewController.swift */; };
-		9E5C36A024AEF703006F16B5 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369824AEF703006F16B5 /* ProjectViewController.swift */; };
-		9E5C36A324AEF753006F16B5 /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */; };
-		9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */; };
-		9E5C36A824AEF790006F16B5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A524AEF790006F16B5 /* Role.swift */; };
-		9E5C36A924AEF790006F16B5 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A624AEF790006F16B5 /* Project.swift */; };
-		9E5C36AA24AEF790006F16B5 /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A724AEF790006F16B5 /* Projectgroup.swift */; };
-		9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C36AB24AEF7AB006F16B5 /* Seb_Main.storyboard */; };
-		9EC60D3D24B48C45008B9CFF /* addmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */; };
-		F24BC02A24B266E400B8D1ED /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24BC02924B266E400B8D1ED /* AddNoteViewController.swift */; };
-		F24BC02C24B26B8B00B8D1ED /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24BC02B24B26B8B00B8D1ED /* NotesTableViewController.swift */; };
+		F24BC02A24B266E400B8D1ED /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */; };
-		FC71DEFBE7A7E36C9D15FA42 /* Pods_SwiftProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07FC4C8B2A6A225C71AF79F /* Pods_SwiftProj.framework */; };
+		FC71DEFBE7A7E36C9D15FA42 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,7 +164,7 @@
 		89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = file; path = topicText.csv; sourceTree = SOURCE_ROOT; };
+		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9E52C57924B2B90600444978 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,7 +183,6 @@
 		9E5C36A524AEF790006F16B5 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		9E5C36A724AEF790006F16B5 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
 		9E5C36AC24AEF7AB006F16B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_Main.storyboard; sourceTree = "<group>"; };
-		E34ED4966392AEB617678FB0 /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
 		F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dom_Storyboard.storyboard; sourceTree = "<group>"; };
 		F92B2CF8BD0DA21CD0B994EE /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,7 +194,7 @@
 			files = (
 				8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */,
 				6B6C0C376A376A81AD14C328 /* (null) in Frameworks */,
-				FC71DEFBE7A7E36C9D15FA42 /* Pods_SwiftProj.framework in Frameworks */,
+				FC71DEFBE7A7E36C9D15FA42 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +320,6 @@
 			isa = PBXGroup;
 			children = (
 				8992195A246E46CD0029BFF5 /* libsqlite3.tbd */,
-				E07FC4C8B2A6A225C71AF79F /* Pods_SwiftProj.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -413,7 +396,6 @@
 				9E52C57924B2B90600444978 /* MemberViewController.swift */,
 				9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */,
 				9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */,
-				9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */,
 			);
 			path = Seb_ViewControllers;
 			sourceTree = "<group>";
@@ -430,8 +412,6 @@
 		F24BC02824B266BA00B8D1ED /* dom_VC */ = {
 			isa = PBXGroup;
 			children = (
-				F24BC02924B266E400B8D1ED /* AddNoteViewController.swift */,
-				F24BC02B24B26B8B00B8D1ED /* NotesTableViewController.swift */,
 			);
 			path = dom_VC;
 			sourceTree = "<group>";
@@ -605,7 +585,7 @@
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
 				89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
-				F24BC02A24B266E400B8D1ED /* AddNoteViewController.swift in Sources */,
+				F24BC02A24B266E400B8D1ED /* (null) in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				89B4E17224B2DA9000B5B841 /* addroleViewController.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,

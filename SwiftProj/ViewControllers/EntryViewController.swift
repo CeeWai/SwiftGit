@@ -84,6 +84,8 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var subjectTextField: UITextField!
     var userCurrentDate: Date?
     var taskViewController: ViewController?
+    let model = TopicsClassifier()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +123,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
             }
         }
     }
+    //
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("yes hi wassup")
@@ -141,13 +144,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
           let uid = user.uid
           let email = user.email
         }
-                    
-//        print(titleTextField.text!.isEmpty)
-//        print(descTextView.text!.isEmpty)
-//        print(chosenStartTimeLabel.text!.isEmpty)
-//        print(chosenEndTimeLabel.text!.isEmpty)
-//        print(chosenRepeatLabel.text!.isEmpty)
-        
+                
         if titleTextField.text!.isEmpty || descTextView.text!.isEmpty || descTextView.text == "Your description goes here!" || chosenStartTimeLabel.text!.isEmpty || chosenEndTimeLabel.text!.isEmpty || chosenRepeatLabel.text!.isEmpty || importanceLabel.text!.isEmpty || subjectTextField.text!.isEmpty {
                 errLabel.text = "Enter all fields!"
                 errLabel.isHidden = false
@@ -218,67 +215,91 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        do {
-            let model = TopicsClassifier()
-            let prediction = try model.prediction(text: "\(titleTextField.text) \(descTextView.text)" ?? "")
-            subjectTextField.text = prediction.label
-            print("PREDICTION: \(prediction.label)")
-            
-            DataManager.loadTasksBySubject(prediction.label, onComplete: { usertaskList in
-                //var avgTimePerDayPerPerson: String
-                var totalHoursSpentForTasksAtATime: Double = 0
-
-                for task in usertaskList {
-//                    if task.repeatType == "Never" {
-//                        let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: task.taskStartTime, to: task.taskEndTime)
-//                        var hours = Double(diffComponents.hour!)
-//                        if diffComponents.minute! > 0 {
-//                            hours += 0.5
-//                        }
-//                        print("Hours: \(hours) for task: \(task.taskName)")
-//                        totalAmtOfTimeSpentInHoursPerDay += hours
-//
-//                    } else if task.repeatType == "Daily" {
-//                        let diffComponents = Calendar.current.dateComponents([.hour], from: task.taskStartTime, to: task.taskEndTime)
-//                        var hours = Double(diffComponents.hour!)
-//                        let diffComponentsDay = Calendar.current.dateComponents([.day], from: task.taskStartTime, to: Date())
-//                        let day = Double(diffComponentsDay.day!)
-//
-//
-//                        print("Hours: \(hours) for task: \(task.taskName)")
-//                        totalAmtOfTimeSpentInHoursPerDay += hours
-//                    } else if task.repeatType == "Weekly" {
-//                        let diffComponents = Calendar.current.dateComponents([.hour], from: task.taskStartTime, to: task.taskEndTime)
-//                        var hours = Double(diffComponents.hour!)
-//                        let diffComponentsWeeks = Calendar.current.dateComponents([.weekOfYear], from: task.taskStartTime, to: task.taskEndTime)
-//                        //let weeks = Double(diffComponentsWeeks.weekOfYear!)
-//
-////                        if weeks > 0 {
-////                            hours = hours * weeks
-////                        }
-//                        print("hours: \(hours) for task: \(task.taskName)")
-//                        totalAmtOfTimeSpentInHoursPerDay += hours
-//
-//                   }
-                    let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: task.taskStartTime, to: task.taskEndTime)
-                    var hours = Double(diffComponents.hour!)
-                    if diffComponents.minute! > 0 {
-                        hours += 0.5
-                    }
-                    totalHoursSpentForTasksAtATime += hours
-                }
-                var amtOfTasks: Double = Double(usertaskList.count)
-                var hoursSpentAtATime = totalHoursSpentForTasksAtATime/amtOfTasks
-                self.subjectPredictionLabel.text = "On average, people spend \(hoursSpentAtATime) hour(s) at a time on this"
-                self.subjectPredictionLabel.isHidden = false
-                print("On average, people spend \(hoursSpentAtATime) hour(s) at a time on \(prediction.label)")
-            })
-        } catch {
-            print("Error predicting for \(titleTextField.text) \(descTextView.text)")
-        }
+        var hpt = predictHoursPerTask()
 
         return true
     }
+    
+    @IBAction func subjectEditingChanged(_ sender: Any) {
+        //print(subjectTextField.text)
+        do {
+            let prediction = try self.model.prediction(text: "\(titleTextField.text) \(descTextView.text)" ?? "")
+            //subjectTextField.text = prediction.label
+            if subjectTextField.text != prediction.label { // handle what happens when the subject is wrong
+                subjectPredictionLabel.text = ""
+            } else {
+                predictHoursPerTask()
+            }
+        } catch {
+            print("PREDICTION ERR FOR: \(titleTextField.text) \(descTextView.text)")
+        }
 
+    }
+    
+    func predictHoursPerTask() {
+        if titleTextField.text!.count != 0 && descTextView.text!.count != 0 {
+            do {
+                //let model = TopicsClassifier()
+                let prediction = try self.model.prediction(text: "\(titleTextField.text) \(descTextView.text)" ?? "")
+                subjectTextField.text = prediction.label
+                print("PREDICTION: \(prediction.label)")
+                DataManager.loadTasksBySubject(prediction.label, onComplete: { usertaskList in
+                    //var avgTimePerDayPerPerson: String
+                    var totalHoursSpentForTasksAtATime: Double = 0
+
+                    for task in usertaskList {
+    //                    if task.repeatType == "Never" {
+    //                        let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: task.taskStartTime, to: task.taskEndTime)
+    //                        var hours = Double(diffComponents.hour!)
+    //                        if diffComponents.minute! > 0 {
+    //                            hours += 0.5
+    //                        }
+    //                        print("Hours: \(hours) for task: \(task.taskName)")
+    //                        totalAmtOfTimeSpentInHoursPerDay += hours
+    //
+    //                    } else if task.repeatType == "Daily" {
+    //                        let diffComponents = Calendar.current.dateComponents([.hour], from: task.taskStartTime, to: task.taskEndTime)
+    //                        var hours = Double(diffComponents.hour!)
+    //                        let diffComponentsDay = Calendar.current.dateComponents([.day], from: task.taskStartTime, to: Date())
+    //                        let day = Double(diffComponentsDay.day!)
+    //
+    //
+    //                        print("Hours: \(hours) for task: \(task.taskName)")
+    //                        totalAmtOfTimeSpentInHoursPerDay += hours
+    //                    } else if task.repeatType == "Weekly" {
+    //                        let diffComponents = Calendar.current.dateComponents([.hour], from: task.taskStartTime, to: task.taskEndTime)
+    //                        var hours = Double(diffComponents.hour!)
+    //                        let diffComponentsWeeks = Calendar.current.dateComponents([.weekOfYear], from: task.taskStartTime, to: task.taskEndTime)
+    //                        //let weeks = Double(diffComponentsWeeks.weekOfYear!)
+    //
+    ////                        if weeks > 0 {
+    ////                            hours = hours * weeks
+    ////                        }
+    //                        print("hours: \(hours) for task: \(task.taskName)")
+    //                        totalAmtOfTimeSpentInHoursPerDay += hours
+    //
+    //                   }
+                        let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: task.taskStartTime, to: task.taskEndTime)
+                        var hours = Double(diffComponents.hour!)
+                        if diffComponents.minute! > 0 {
+                            hours += 0.5
+                        }
+                        totalHoursSpentForTasksAtATime += hours
+                    }
+                    var amtOfTasks: Double = Double(usertaskList.count)
+                    var hoursSpentAtATime = totalHoursSpentForTasksAtATime/amtOfTasks
+                    print("On average, people spend \(hoursSpentAtATime) hour(s) at a time on \(prediction.label)")
+                    self.subjectPredictionLabel.text = "On average, people spend \(hoursSpentAtATime) hour(s) at a time on this subject"
+                    self.subjectPredictionLabel.isHidden = false
+                    //return hoursSpentAtATime
+                })
+            } catch {
+                print("Error predicting for \(titleTextField.text) \(descTextView.text)")
+            }
+        }
+
+    }
+    
+    
 }
 
