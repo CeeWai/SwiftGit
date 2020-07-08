@@ -11,7 +11,7 @@ import UIKit
 class Role: NSObject {
     var roleid: Int?
     var rolename: String?
-    var projectid: String?
+    var projectid: Int?
     var manageowntask: Int?
     var removealltask: Int?
     var editalltask: Int?
@@ -19,7 +19,7 @@ class Role: NSObject {
     var removemember: Int?
     var manageproject: Int?
      
-    init(roleid: Int?, rolename: String?, projectid: String?,manageowntask: Int?, removealltask: Int?
+    init(roleid: Int?, rolename: String?, projectid: Int?,manageowntask: Int?, removealltask: Int?
         ,editalltask: Int?,invitemember: Int?,removemember: Int?,manageproject: Int?)
      
 {

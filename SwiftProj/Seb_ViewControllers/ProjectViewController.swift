@@ -18,6 +18,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.navigationController?.isNavigationBarHidden=true
         RoleDataManager.createDatabase()
         ProjectDataManager.createDatabase()
+        ProjectgroupDataManager.createDatabase()
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
         projectList = ProjectDataManager.loadProjects()
 

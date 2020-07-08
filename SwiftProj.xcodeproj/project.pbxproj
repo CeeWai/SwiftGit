@@ -68,6 +68,7 @@
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
 		89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89FDD3A424B4D0A700DEBD96 /* topicText.csv */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
+		9E4B351C24B5B55A00E3C23E /* addmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4B351B24B5B55A00E3C23E /* addmemberTableViewCell.swift */; };
 		9E52C57A24B2B90600444978 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C57924B2B90600444978 /* MemberViewController.swift */; };
 		9E52C57C24B2BBE800444978 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */; };
 		9E52C57E24B2BC7F00444978 /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */; };
@@ -75,6 +76,22 @@
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
 		9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */; };
 		F24BC02A24B266E400B8D1ED /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9E5C369A24AEF703006F16B5 /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */; };
+		9E5C369B24AEF703006F16B5 /* addroleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369324AEF701006F16B5 /* addroleViewController.swift */; };
+		9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369424AEF702006F16B5 /* createprojectViewController.swift */; };
+		9E5C369D24AEF703006F16B5 /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */; };
+		9E5C369E24AEF703006F16B5 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */; };
+		9E5C369F24AEF703006F16B5 /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369724AEF702006F16B5 /* createproject2ViewController.swift */; };
+		9E5C36A024AEF703006F16B5 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369824AEF703006F16B5 /* ProjectViewController.swift */; };
+		9E5C36A324AEF753006F16B5 /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */; };
+		9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */; };
+		9E5C36A824AEF790006F16B5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A524AEF790006F16B5 /* Role.swift */; };
+		9E5C36A924AEF790006F16B5 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A624AEF790006F16B5 /* Project.swift */; };
+		9E5C36AA24AEF790006F16B5 /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A724AEF790006F16B5 /* Projectgroup.swift */; };
+		9E5C36AD24AEF7AB006F16B5 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C36AB24AEF7AB006F16B5 /* Seb_Main.storyboard */; };
+		9E61CCFC24B609E5006320BD /* projectnotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E61CCFB24B609E5006320BD /* projectnotificationViewController.swift */; };
+		9E61CCFE24B60A43006320BD /* invitationnotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E61CCFD24B60A43006320BD /* invitationnotiTableViewCell.swift */; };
+		9EC60D3D24B48C45008B9CFF /* addmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */; };
 		F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */; };
 		FC71DEFBE7A7E36C9D15FA42 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -166,6 +183,7 @@
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9756D15B81A97C8003BA9E16 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
 		9E52C57924B2B90600444978 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
@@ -183,6 +201,8 @@
 		9E5C36A524AEF790006F16B5 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		9E5C36A724AEF790006F16B5 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
 		9E5C36AC24AEF7AB006F16B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_Main.storyboard; sourceTree = "<group>"; };
+		9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addmemberViewController.swift; sourceTree = "<group>"; };
+		E34ED4966392AEB617678FB0 /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
 		F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dom_Storyboard.storyboard; sourceTree = "<group>"; };
 		F92B2CF8BD0DA21CD0B994EE /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -396,6 +416,7 @@
 				9E52C57924B2B90600444978 /* MemberViewController.swift */,
 				9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */,
 				9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */,
+				9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */,
 			);
 			path = Seb_ViewControllers;
 			sourceTree = "<group>";
@@ -589,6 +610,7 @@
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				89B4E17224B2DA9000B5B841 /* addroleViewController.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
+				9E61CCFC24B609E5006320BD /* projectnotificationViewController.swift in Sources */,
 				898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */,
 				89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */,
 				9E52C57E24B2BC7F00444978 /* RoleTableViewCell.swift in Sources */,
@@ -607,7 +629,9 @@
 				89517C81247233AC00503219 /* BreakViewController.swift in Sources */,
 				8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */,
 				89921948246E45290029BFF5 /* SavedCountry.swift in Sources */,
+				9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,
+				9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
 				89B4E16C24B2D93900B5B841 /* Role.swift in Sources */,
 				9E52C57C24B2BBE800444978 /* MemberTableViewCell.swift in Sources */,

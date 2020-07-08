@@ -10,12 +10,12 @@ import UIKit
 
 class Projectgroup: NSObject {
         var groupid: Int?
-        var projectid: String?
+        var projectid: Int?
         var userid: String?
         var invited: Int?
         var subscribe: Int?
          
-        init(groupid:Int?, projectid: String?, userid: String?,invited:Int?, subscribe: Int?)
+        init(groupid:Int?, projectid: Int?, userid: String?,invited:Int?, subscribe: Int?)
          
     {
         self.groupid = groupid

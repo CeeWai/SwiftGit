@@ -15,7 +15,7 @@ class ProjectgroupDataManager: NSObject {
             "CREATE TABLE IF NOT EXISTS " +
             "Projectgroup ( " +
             " groupid INTEGER primary key AUTOINCREMENT, " +
-            " projectid text, " +
+            " projectid INTEGER, " +
             " userid text, " +
             " invited INTEGER, " +
             " subscribe INTEGER )")
@@ -30,14 +30,58 @@ class ProjectgroupDataManager: NSObject {
         {
         projectgroups.append(Projectgroup(
         groupid: row["groupid"] as! Int,
-        projectid: row["projectid"] as! String,
+        projectid: row["projectid"] as! Int,
         userid: row["userid"] as! String,
         invited: row["invited"] as! Int,
         subscribe: row["subscribe"] as! Int))
         }
             return projectgroups;
         }
-        
+    static func loadprojectidanduserid(projectid:Int,userid:String,invited:Int) -> [Projectgroup?]
+        {
+            let projectgroupRows = SQLiteDB.sharedInstance.query(sql:
+                "SELECT groupid, projectid, " + "userid, invited, subscribe" + " FROM Projectgroup WHERE projectid = \(projectid) and userid = '\(userid)' and invited = \(invited) ")
+        var projectgroups : [Projectgroup] = []
+            for row in projectgroupRows
+        {
+        projectgroups.append(Projectgroup(
+        groupid: row["groupid"] as! Int,
+        projectid: row["projectid"] as! Int,
+        userid: row["userid"] as! String,
+        invited: row["invited"] as! Int,
+        subscribe: row["subscribe"] as! Int))
+        }
+            return projectgroups;
+        }
+    static func loadbyprojectuseridwhensubscribe0(projectid:Int,userid:String) -> [Projectgroup]
+        {
+            let projectgroupRows = SQLiteDB.sharedInstance.query(sql:
+                "SELECT groupid, projectid, " + "userid, invited, subscribe" + " FROM Projectgroup WHERE projectid = \(projectid) and userid = '\(userid)' and invited = 1 and subscribe = 0")
+        var projectgroups : [Projectgroup] = []
+            for row in projectgroupRows
+        {
+        projectgroups.append(Projectgroup(
+        groupid: row["groupid"] as! Int,
+        projectid: row["projectid"] as! Int,
+        userid: row["userid"] as! String,
+        invited: row["invited"] as! Int,
+        subscribe: row["subscribe"] as! Int))
+        }
+            return projectgroups;
+        }
+        static func Replaceinvitedorsubscribe(projectgroup: Projectgroup)
+        {
+        SQLiteDB.sharedInstance.execute(sql:
+        "INSERT OR REPLACE INTO Projectgroup (groupid,projectid,userid, invited,subscribe) " + "VALUES (?, ?, ?, ?, ?) ",
+        parameters: [
+        projectgroup.groupid,
+        projectgroup.projectid,
+        projectgroup.userid,
+        projectgroup.invited,
+        projectgroup.subscribe
+            ]
+            )
+        }
         static func insertOrReplace(projectgroup: Projectgroup)
         {
         SQLiteDB.sharedInstance.execute(sql:
