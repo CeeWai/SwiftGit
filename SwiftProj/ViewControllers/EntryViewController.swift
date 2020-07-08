@@ -25,6 +25,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         //startTimeLabel.text! += ": \(repeatData)"
         subjectTextField.text! = "\(subjectData)"
         print("You have picked: \(subjectData)")
+        if subjectTextField.text!.isEmpty == false {
+            predictHoursPerTask()
+        }
     }
     
     var delegate: CanReceiveReload?
@@ -220,8 +223,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
             let pickImportanceVC = segue.destination as! ImportanceTableViewController
             pickImportanceVC.delegate = self
         } else if segue.identifier == "subjectSegue" {
-            let pickSegueVC = segue.destination as! SubjectTableViewController
-            pickSegueVC.delegate = self
+            let pickSubjectVC = segue.destination as! SubjectTableViewController
+            pickSubjectVC.delegate = self
+        
         }
 
     }

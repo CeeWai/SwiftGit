@@ -16,7 +16,7 @@ class SubjectTableViewController: UITableViewController {
     
     var delegate: CanReceiveSubject?
 
-    var subjectList = ["Important", "Secondary"]
+    var subjectList = ["Smart Device Development & Project", "Artificial Intelligence", "Concepts of geospatial information system", "Geospatial Visualization", "Emerging Trends & Technologies", "General Study Modules", "Miscellaneous"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
