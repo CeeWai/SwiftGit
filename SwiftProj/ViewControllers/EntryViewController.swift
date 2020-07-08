@@ -242,7 +242,8 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 //let model = TopicsClassifier()
                 let prediction = try self.model.prediction(text: "\(titleTextField.text) \(descTextView.text)" ?? "")
                 subjectTextField.text = prediction.label
-                print("PREDICTION: \(prediction.label)")
+                print("PREDICTION: \(prediction.label) \(prediction)")
+                
                 DataManager.loadTasksBySubject(prediction.label, onComplete: { usertaskList in
                     //var avgTimePerDayPerPerson: String
                     var totalHoursSpentForTasksAtATime: Double = 0

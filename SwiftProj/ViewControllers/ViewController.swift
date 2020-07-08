@@ -27,6 +27,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var noFilterView: UIView!
     @IBOutlet weak var noFilterLabel: UILabel!
     var taskList : [Task] = []
+    var completedTaskList: [Task] = []
+    var currentTaskList: [Task] = []
+    var upcomingTaskList: [Task] = []
     var userCurrentDate = Date()
     
     override func viewDidLoad() {
@@ -41,7 +44,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
              }
          }
     
-        
         // Do any additional setup after loading the view.
         // Make the navigation bar background clear
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -84,17 +86,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
+        print("section: \(section)")
+        if section == 0 {
+            return completedTaskList.count
+        } else if section == 1 {
+            return currentTaskList.count
+        } else {
+            return upcomingTaskList.count
+        }
+        //return taskList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
         
-        let p = taskList[indexPath.row]
-        cell.taskTitleLabel.text = p.taskName
-        cell.taskDescLabel.text = p.taskDesc
+        var p: Task? = nil
+
+        if indexPath.section == 0 {
+            if self.completedTaskList.count > 0 {
+                p = self.completedTaskList[indexPath.row]
+            }
+        } else if indexPath.section == 1 {
+            if self.currentTaskList.count > 0 {
+                p = self.currentTaskList[indexPath.row]
+            }
+        } else {
+            if self.upcomingTaskList.count > 0 {
+                p = self.upcomingTaskList[indexPath.row]
+            }
+        }
+        
+        cell.taskTitleLabel.text = p?.taskName
+        cell.taskDescLabel.text = p?.taskDesc
         //cell.taskRuntimeLabel.text = "\(p.runtime/60) Hrs \(p.runtime%60) Mins"
-        if p.importance == "Important" { // Differenciate between important and secondary tasks
+        if p?.importance == "Important" { // Differenciate between important and secondary tasks
             cell.taskTitleLabel.textColor = UIColor.systemRed
         } else {
             cell.taskTitleLabel.textColor = UIColor { tc in
@@ -109,22 +134,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // format for the time to do the task
         let formatDateTime = "h:mm a"
-        let taskFormatTime = getFormattedDate(date: p.taskStartTime, format: formatDateTime)
+        let taskFormatTime = getFormattedDate(date: p!.taskStartTime, format: formatDateTime)
         cell.taskDateTimeLabel.text = taskFormatTime
 
         let formatDateTimeEnd = "h:mm a"
-        let taskFormatTimeEnd = getFormattedDate(date: p.taskEndTime, format: formatDateTime)
+        let taskFormatTimeEnd = getFormattedDate(date: p!.taskEndTime, format: formatDateTime)
         cell.taskEndDateTimeLabel.text = taskFormatTimeEnd
         
-        if Calendar.current.isDate(Date(), inSameDayAs: p.taskStartTime) {
+        if Calendar.current.isDate(Date(), inSameDayAs: p!.taskStartTime) {
             cell.taskDateTimeLabel.textColor = UIColor.label
             cell.taskEndDateTimeLabel.textColor = UIColor.label
-            if Date() > p.taskEndTime {
+            if Date() > p!.taskEndTime {
                 cell.taskEndDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
                 cell.taskDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
                 cell.taskDateTimeLabel.textColor = UIColor.systemGray3
                 cell.taskEndDateTimeLabel.textColor = UIColor.systemGray3
-            } else if Date() > p.taskStartTime && Date() < p.taskEndTime {
+            } else if Date() > p!.taskStartTime && Date() < p!.taskEndTime {
                 cell.taskEndDateTimeLabel.font = cell.taskDateTimeLabel.font.withSize(15)
                 cell.taskDateTimeLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
             } else {
@@ -141,10 +166,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Completed"
+        } else if section == 1 {
+            return "Current"
+        } else {
+            return "Upcoming"
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if completedTaskList.count == 0 && currentTaskList.count == 0 && upcomingTaskList.count == 0 {
+            return 0
+        }
+        return 3
+    }
+    
     func getFormattedDate(date: Date, format: String) -> String {
-            let dateformat = DateFormatter()
-            dateformat.dateFormat = format
-            return dateformat.string(from: date)
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: date)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -169,6 +211,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         //print("This Ran")
         self.taskList = []
+        self.completedTaskList = []
+        self.currentTaskList = []
+        self.upcomingTaskList = []
         self.userCurrentDate = date
         print("Set userCurrentDate to \(self.userCurrentDate)")
         loadTaskListFromDate(date: date)
@@ -186,10 +231,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             breakButton.isEnabled = false
             addTaskButton.isEnabled = true
         }
+        
+        tableView.reloadData()
+//        if completedTaskList.count == 0 && currentTaskList.count == 0 && upcomingTaskList.count == 0 {
+//            tableView.isHidden = true
+//            print("tableView is hidden")
+//        } else {
+//            tableView.isHidden = false
+//            print("tableView is not hidden")
+//
+//        }
     }
     
     func loadTaskListFromDate(date: Date) {
-        self.taskList = []
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE MM-dd-YYYY h:mm a"
         let string = formatter.string(from: date)
@@ -219,11 +273,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.taskList.append(task)
                 }
             }
-            
-            //print(self.taskList)
-            self.tableView.reloadData()
-            
-            if self.taskList.count == 0 {
+                        
+            if self.taskList.count == 0 { // show the illustrations in the case of no task
                 if Calendar.current.isDate(date, inSameDayAs: Date()) {
                     self.noFilterView.isHidden = false
                     self.noFilterLabel.text = "No task for today! \n Add one by pressing the '+' button!"
@@ -238,6 +289,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.noFilterView.isHidden = true
                 self.taskList.sort(by: { $0.taskStartTime.compare($1.taskStartTime) == .orderedAscending })
             }
+            
+            for t in self.taskList {
+                if t.taskEndTime < Date() {
+                    self.completedTaskList.append(t)
+                } else if t.taskStartTime < Date() && Date() < t.taskEndTime {
+                    self.currentTaskList.append(t)
+                } else {
+                    self.upcomingTaskList.append(t)
+                }
+            }
+            
+            self.tableView.reloadData()
+            print("completed: \(self.completedTaskList), current: \(self.currentTaskList), upcoming: \(self.upcomingTaskList)")
 
         }
     
