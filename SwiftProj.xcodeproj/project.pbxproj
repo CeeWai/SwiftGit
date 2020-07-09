@@ -65,6 +65,9 @@
 		89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89E17013247A55CE004C3F45 /* GoogleService-Info.plist */; };
 		89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17015247A58BD004C3F45 /* LoginViewController.swift */; };
 		89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17017247A58DE004C3F45 /* RegisterViewController.swift */; };
+		89EC5C6F24B7493D005702DD /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5C6E24B7493D005702DD /* ProjectgroupDataManager.swift */; };
+		89EC5C7124B7499B005702DD /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5C7024B7499A005702DD /* Projectgroup.swift */; };
+		89EC5C7324B749BC005702DD /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5C7224B749BC005702DD /* projectdetail1ViewController.swift */; };
 		89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */; };
 		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
@@ -168,6 +171,9 @@
 		89E17013247A55CE004C3F45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89E17015247A58BD004C3F45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		89E17017247A58DE004C3F45 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		89EC5C6E24B7493D005702DD /* ProjectgroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectgroupDataManager.swift; sourceTree = "<group>"; };
+		89EC5C7024B7499A005702DD /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
+		89EC5C7224B749BC005702DD /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
 		89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceTableViewController.swift; sourceTree = "<group>"; };
 		89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -181,15 +187,12 @@
 		9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
-		9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
 		9E5C369424AEF702006F16B5 /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
 		9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
 		9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
 		9E5C369824AEF703006F16B5 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
-		9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectgroupDataManager.swift; sourceTree = "<group>"; };
 		9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
 		9E5C36A524AEF790006F16B5 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
-		9E5C36A724AEF790006F16B5 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
 		9E5C36AC24AEF7AB006F16B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_Main.storyboard; sourceTree = "<group>"; };
 		F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dom_Storyboard.storyboard; sourceTree = "<group>"; };
 		F92B2CF8BD0DA21CD0B994EE /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
@@ -303,9 +306,9 @@
 		8992193D246E44E00029BFF5 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				89EC5C6E24B7493D005702DD /* ProjectgroupDataManager.swift */,
 				89B4E16F24B2DA5A00B5B841 /* RoleDataManager.swift */,
 				89B4E16D24B2DA2F00B5B841 /* RoleDataManagerOld.swift */,
-				9E5C36A124AEF752006F16B5 /* ProjectgroupDataManager.swift */,
 				9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */,
 				9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */,
 				8992193E246E450A0029BFF5 /* CaseDataManager.swift */,
@@ -376,8 +379,8 @@
 		89F8DA9B2464FEF700B54354 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				89EC5C7024B7499A005702DD /* Projectgroup.swift */,
 				89B4E14C24B2C71500B5B841 /* ProjectOld.swift */,
-				9E5C36A724AEF790006F16B5 /* Projectgroup.swift */,
 				9E5C36A524AEF790006F16B5 /* Role.swift */,
 				89921947246E45290029BFF5 /* Case.swift */,
 				89921946246E45290029BFF5 /* SavedCountry.swift */,
@@ -399,7 +402,7 @@
 				89346BF924B71320005379EF /* createproject2ViewController.swift */,
 				9E5C369424AEF702006F16B5 /* createprojectViewController.swift */,
 				9E5C369624AEF702006F16B5 /* ProjectCellTableViewCell.swift */,
-				9E5C369224AEF701006F16B5 /* projectdetail1ViewController.swift */,
+				89EC5C7224B749BC005702DD /* projectdetail1ViewController.swift */,
 				9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */,
 				9E5C369824AEF703006F16B5 /* ProjectViewController.swift */,
 				9E52C57924B2B90600444978 /* MemberViewController.swift */,
@@ -606,6 +609,7 @@
 				9E52C57E24B2BC7F00444978 /* RoleTableViewCell.swift in Sources */,
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
+				89EC5C6F24B7493D005702DD /* ProjectgroupDataManager.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				89346BFA24B71320005379EF /* createproject2ViewController.swift in Sources */,
 				8906484924B4C8AC00325C5B /* TopicsClassifier.mlmodel in Sources */,
@@ -619,7 +623,9 @@
 				89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
 				89517C81247233AC00503219 /* BreakViewController.swift in Sources */,
+				89EC5C7324B749BC005702DD /* projectdetail1ViewController.swift in Sources */,
 				8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */,
+				89EC5C7124B7499B005702DD /* Projectgroup.swift in Sources */,
 				89921948246E45290029BFF5 /* SavedCountry.swift in Sources */,
 				9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,

@@ -129,9 +129,8 @@ class projectdetail1ViewController: UIViewController {
         }
          if(segue.identifier == "seguetonoti")
           {
-         let detailViewController = segue.destination as!
-          projectnotificationViewController
-             detailViewController.projectItem = self.projectItem
+         let detailViewController = segue.destination as! projectnotificationViewController
+        detailViewController.projectItem = self.projectItem
          }
     }
 }

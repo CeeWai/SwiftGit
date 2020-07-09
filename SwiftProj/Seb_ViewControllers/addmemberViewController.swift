@@ -27,8 +27,7 @@ class addmemberViewController: UIViewController , UITableViewDelegate, UITableVi
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell : addmemberTableViewCell = tableView
-           .dequeueReusableCell (withIdentifier: "usercell", for: indexPath)
+           let cell : addmemberTableViewCell = tableView.dequeueReusableCell (withIdentifier: "usercell", for: indexPath)
            as!     addmemberTableViewCell
            let p = newuserList[indexPath.row]
            cell.username.text = p.username
