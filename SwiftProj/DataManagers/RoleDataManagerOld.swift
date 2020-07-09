@@ -35,7 +35,7 @@ class RoleDataManagerOld: NSObject {
                 roles.append(Role(
                     roleid: row["roleid"] as! Int,
                 rolename: row["rolename"] as! String,
-                projectid: row["projectid"] as! String,
+                projectid: row["projectid"] as! Int,
                 manageowntask: row["manageowntask"] as! Int,
                 removealltask: row["removealltask"] as! Int,
                 editalltask: row["editalltask"] as! Int,
