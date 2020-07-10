@@ -81,6 +81,8 @@
 		9E52C57E24B2BC7F00444978 /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */; };
 		9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */; };
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
+		9E57DCA924B7534C00C3DD69 /* projecttaskdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E57DCA824B7534C00C3DD69 /* projecttaskdetailViewController.swift */; };
+		9E5812A424B8B0E2007F39BC /* addtask1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5812A324B8B0E2007F39BC /* addtask1ViewController.swift */; };
 		9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */; };
 		9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369424AEF702006F16B5 /* createprojectViewController.swift */; };
 		9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */; };
@@ -190,6 +192,8 @@
 		9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
 		9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9E57DCA824B7534C00C3DD69 /* projecttaskdetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projecttaskdetailViewController.swift; sourceTree = "<group>"; };
+		9E5812A324B8B0E2007F39BC /* addtask1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addtask1ViewController.swift; sourceTree = "<group>"; };
 		9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
 		9E5C369424AEF702006F16B5 /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
 		9E5C369524AEF702006F16B5 /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +419,12 @@
 				9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */,
 				9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */,
 				89346BFB24B713D1005379EF /* addmemberViewController.swift */,
+				9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */,
+				9E4B351B24B5B55A00E3C23E /* addmemberTableViewCell.swift */,
+				9E61CCFB24B609E5006320BD /* projectnotificationViewController.swift */,
+				9E61CCFD24B60A43006320BD /* invitationnotiTableViewCell.swift */,
+				9E57DCA824B7534C00C3DD69 /* projecttaskdetailViewController.swift */,
+				9E5812A324B8B0E2007F39BC /* addtask1ViewController.swift */,
 			);
 			path = Seb_ViewControllers;
 			sourceTree = "<group>";
@@ -605,7 +615,6 @@
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
 				89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
-				F24BC02A24B266E400B8D1ED /* (null) in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				89B4E17224B2DA9000B5B841 /* addroleViewController.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
@@ -643,6 +652,7 @@
 				9E52C57C24B2BBE800444978 /* MemberTableViewCell.swift in Sources */,
 				89E17010247A538A004C3F45 /* User.swift in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
+				9E57DCA924B7534C00C3DD69 /* projecttaskdetailViewController.swift in Sources */,
 				9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
