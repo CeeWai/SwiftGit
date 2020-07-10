@@ -10,12 +10,12 @@ import UIKit
 import AVFoundation
 import AVKit
 import FirebaseAuth
-
+import TesseractOCR
 protocol CanReceiveReload {
     func passReloadDataBack(data: Date)
 }
 
-class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance, CanReceiveSubject {
+class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance, CanReceiveSubject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, G8TesseractDelegate {
     
     var delegateSubject: CanReceiveSubject?
     var subjectData: String = ""
@@ -101,6 +101,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var startRecognitionButton: UIButton!
     let speechRecognizer = SpeechRecognizer()
     let speechSynthesizer = SpeechSynthesizer()
+    @IBOutlet weak var startCameraRecognitionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +124,64 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         self.setTaskbutton.setTitle("Set Task on: \(parsedDate)", for: UIControl.State.normal)
         descTextView.delegate = self
         titleTextField.delegate = self
+
+        if let tesseract = G8Tesseract(language: "eng") {
+            tesseract.delegate = self
+        }
+    }
+    
+    @IBAction func cameraRecognitionPressed(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        // Setting this to true allows the user to crop and scale
+        // the image to a square after the image is selected.
+        //
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true)
+    }
+    
+    // This function is called after the user took the picture,
+    // or selected a picture from the photo library.
+    // When that happens, we simply assign the image binary,
+    // represented by UIImage, into the imageView we created.
+    //
+    // iOS doesn’t close the picker controller
+    // automatically, so we have to do this ourselves by calling
+    // dismissViewControllerAnimated.
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        let chosenImage : UIImage = info[.editedImage] as! UIImage
+        print()
+        if let tesseract = G8Tesseract(language: "eng") {
+            tesseract.delegate = self
+            tesseract.image = chosenImage.g8_blackAndWhite()
+            tesseract.recognize()
+            
+            self.descTextView.text = tesseract.recognizedText
+            self.descTextView.textColor = UIColor.label
+        }
+        //self.imageView!.image = chosenImage
+        // This saves the image selected / shot by the user
+        //
+        //UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)
+
+        // This closes the picker
+        //
+        picker.dismiss(animated: true)
+        
+    }
+    
+    func progressImageRecognition(for tesseract: G8Tesseract) {
+        print("Recognition Progress \(tesseract.progress) %")
+    }
+    
+    // This function is called after the user decides not to
+    // take/select any picture. iOS doesn’t close the picker controller // automatically, so we have to do this ourselves by calling
+    // dismissViewControllerAnimated.
+    func imagePickerControllerDidCancel( _ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
     
     @IBAction func speechRecognitionButtonPressed(_ sender: Any) {
@@ -213,7 +272,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     //
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        print("yes hi wassup")
+        //print("yes hi wassup")
         if descTextView.text.isEmpty {
             descTextView.text = "Your description goes here!"
             descTextView.textColor = UIColor.lightGray

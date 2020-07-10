@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44C3CE65B109203FAC03A0D0 /* Pods_SwiftProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210D6399882E59114D926D24 /* Pods_SwiftProj.framework */; };
 		6B6C0C376A376A81AD14C328 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		8906484924B4C8AC00325C5B /* TopicsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8906484824B4C8AC00325C5B /* TopicsClassifier.mlmodel */; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
@@ -73,6 +74,7 @@
 		89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */; };
 		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
+		89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 89FBBC9D24B8D3A8001D0EFD /* tessdata */; };
 		89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89FDD3A424B4D0A700DEBD96 /* topicText.csv */; };
 		89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
@@ -93,6 +95,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210D6399882E59114D926D24 /* Pods_SwiftProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B23C1D54DB33B10CFBFF391 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
 		8906484824B4C8AC00325C5B /* TopicsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TopicsClassifier.mlmodel; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +187,7 @@
 		89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		89FBBC9D24B8D3A8001D0EFD /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 				8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */,
 				6B6C0C376A376A81AD14C328 /* (null) in Frameworks */,
 				FC71DEFBE7A7E36C9D15FA42 /* (null) in Frameworks */,
+				44C3CE65B109203FAC03A0D0 /* Pods_SwiftProj.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +287,7 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
+				89FBBC9D24B8D3A8001D0EFD /* tessdata */,
 				8906484824B4C8AC00325C5B /* TopicsClassifier.mlmodel */,
 				89FDD3A424B4D0A700DEBD96 /* topicText.csv */,
 				89B4E15024B2C76C00B5B841 /* Media */,
@@ -342,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				8992195A246E46CD0029BFF5 /* libsqlite3.tbd */,
+				210D6399882E59114D926D24 /* Pods_SwiftProj.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -524,6 +531,7 @@
 				89B4E16424B2C76C00B5B841 /* student-colour.svg in Resources */,
 				89B4E15E24B2C76C00B5B841 /* student-colour-800px.png in Resources */,
 				89B4E16224B2C76C00B5B841 /* student-colour-1200px.png in Resources */,
+				89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
 				898646EE2464626F00A5C752 /* Main.storyboard in Resources */,
 				89B4E16624B2C76C00B5B841 /* business-woman-colour-1200px.png in Resources */,
