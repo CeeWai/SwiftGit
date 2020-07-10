@@ -18,6 +18,8 @@
 		89517C81247233AC00503219 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89517C80247233AC00503219 /* BreakViewController.swift */; };
 		895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895EE02E247696B400F2C109 /* TimeViewController.swift */; };
 		89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89672C04247E34EA008F3C13 /* startScreenViewController.swift */; };
+		897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982B24B8989C00730930 /* SpeechSynthesizer.swift */; };
+		897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982F24B89BC800730930 /* SpeechRecognizer.swift */; };
 		898646E72464626F00A5C752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646E62464626F00A5C752 /* AppDelegate.swift */; };
 		898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646E82464626F00A5C752 /* SceneDelegate.swift */; };
 		898646EB2464626F00A5C752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646EA2464626F00A5C752 /* ViewController.swift */; };
@@ -108,6 +110,8 @@
 		89517C80247233AC00503219 /* BreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
 		895EE02E247696B400F2C109 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		89672C04247E34EA008F3C13 /* startScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startScreenViewController.swift; sourceTree = "<group>"; };
+		897E982B24B8989C00730930 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
+		897E982F24B89BC800730930 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		898646E32464626F00A5C752 /* SwiftProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898646E62464626F00A5C752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		898646E82464626F00A5C752 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 		8992194A246E453C0029BFF5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				897E982F24B89BC800730930 /* SpeechRecognizer.swift */,
+				897E982B24B8989C00730930 /* SpeechSynthesizer.swift */,
 				8992194B246E45760029BFF5 /* HTTP.swift */,
 				8992194C246E45760029BFF5 /* SwiftyJSON.swift */,
 			);
@@ -591,6 +597,7 @@
 				89B4E17024B2DA5A00B5B841 /* RoleDataManager.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
+				897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */,
 				9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				9E52C57A24B2B90600444978 /* MemberViewController.swift in Sources */,
@@ -612,6 +619,7 @@
 				89EC5C6F24B7493D005702DD /* ProjectgroupDataManager.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				89346BFA24B71320005379EF /* createproject2ViewController.swift in Sources */,
+				897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */,
 				8906484924B4C8AC00325C5B /* TopicsClassifier.mlmodel in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,

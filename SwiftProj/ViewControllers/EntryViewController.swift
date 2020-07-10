@@ -98,6 +98,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     var userCurrentDate: Date?
     var taskViewController: ViewController?
     let model = TopicsClassifier()
+    @IBOutlet weak var startRecognitionButton: UIButton!
+    let speechRecognizer = SpeechRecognizer()
+    let speechSynthesizer = SpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +125,78 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         titleTextField.delegate = self
     }
     
+    @IBAction func speechRecognitionButtonPressed(_ sender: Any) {
+        self.speechSynthesizer.stop()
+        if !speechRecognizer.isRunning {
+            // Disable the "Start Recognition" button
+            // so that user cannot start another recognition
+            // while the current one is in progress.
+            startRecognitionButton.isEnabled = false
+            
+            //Start the speech recognition
+            //
+            speechRecognizer.startRecognition(onReceivedTranscription: {
+                recognizedString in
+                
+                // This onReceivedTranscription closure will be
+                // executed several times during the speech
+                // recognition as the user speaks. So we simply
+                // just retrieve the recognized string and display
+                // it into our resultTextView.
+                //
+                self.descTextView.text = recognizedString
+                
+            }, onStoppedRecognizing: {
+                recognizedString in
+                
+                // The onStoppedRecognizing closure will be executed
+                // only once (when there is an error, or when the
+                // recognition is deemed complete after a short period
+                // of silence). Here, we display the final recognized
+                // text, and process it with a simple if-else to
+                // decide what to reply to the user with Siri's voice.
+                //
+                self.descTextView.text = recognizedString
+                
+                let trimmedResult = recognizedString.lowercased()
+                .trimmingCharacters(in: [" "])
+                
+                if trimmedResult == "" {
+                    self.speechSynthesizer.speak(text: "Excuse me but, nani?")
+                } else if trimmedResult == "hello" {
+                    self.speechSynthesizer.speak(text: "Ohaiyo Gozaimasu")
+                } else if trimmedResult == "go away" {
+                    // This special version of the speak function
+                    // allows us to provide a closure that executes
+                    // only when the synthesized text has spoken
+                    // completely.
+                    //
+                    // In our case, we will pop the current View
+                    // Controller only when that happens.
+                    //
+                    self.speechSynthesizer.speak(
+                        text: "Ok, Sayonara Weeb",
+                        onStoppedSpeaking: {
+                            self.navigationController?
+                            .popViewController(animated: true)
+                    })
+                }else
+                {
+                    //self.speechSynthesizer.speak(text: "You just said, \(trimmedResult)")
+                    
+                }
+                
+                // Re-enable the “Start Recognition” button again.
+                //
+                self.startRecognitionButton.isEnabled = true
+                
+            })
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        speechRecognizer.stopRecognition()
+    }
     // because swift doesnt have a placeholder function for textviews, i created one lol
     func textViewDidBeginEditing(_ textView: UITextView) {
         if descTextView.textColor == UIColor.lightGray {

@@ -577,7 +577,7 @@
             <objects>
                 <tableViewController id="ea6-Qr-04y" customClass="EntryViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oWy-9a-bi5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -618,7 +618,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Viv-t0-KVo">
-                                                    <rect key="frame" x="16" y="33" width="382" height="121"/>
+                                                    <rect key="frame" x="16" y="33" width="338" height="121"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -632,6 +632,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7L-3k-W53">
+                                                    <rect key="frame" x="370" y="132" width="24" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="camera" catalog="system">
+                                                        <color key="titleColor" name="Color"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcq-oA-k6E">
+                                                    <rect key="frame" x="373" y="96" width="18" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" backgroundImage="mic" catalog="system">
+                                                        <color key="titleColor" name="Color"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="speechRecognitionButtonPressed:" destination="ea6-Qr-04y" eventType="touchUpInside" id="4fT-tF-GQc"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -910,6 +927,7 @@
                         <outlet property="importanceLabel" destination="ivc-80-haa" id="ABG-e3-F4L"/>
                         <outlet property="scheduleEndTimeCell" destination="e7A-x2-5gU" id="xWz-EC-QfU"/>
                         <outlet property="setTaskbutton" destination="Zj8-mV-MHO" id="kbx-9M-I7E"/>
+                        <outlet property="startRecognitionButton" destination="vcq-oA-k6E" id="wnd-bO-uhE"/>
                         <outlet property="startTimeLabel" destination="egB-sG-a3Z" id="jUR-6o-frl"/>
                         <outlet property="subjectPredictionLabel" destination="s4d-xF-j9r" id="lTY-Dm-hFL"/>
                         <outlet property="subjectTextField" destination="U5A-eS-60z" id="XPA-5m-lpk"/>
@@ -1163,7 +1181,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OT-hL-dpy">
-                                                    <rect key="frame" x="155" y="20.333333333333329" width="40.666666666666657" height="24.666666666666671"/>
+                                                    <rect key="frame" x="155" y="20.333333333333336" width="37.666666666666657" height="23.333333333333336"/>
                                                     <fontDescription key="fontDescription" name="ProximaNovaA-Bold" family="Proxima Nova Alt" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1172,7 +1190,7 @@
                                                     <rect key="frame" x="-8" y="11" width="143" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="taskDateTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wts-Bz-gt5">
-                                                            <rect key="frame" x="27.666666666666664" y="18" width="107.33333333333334" height="26"/>
+                                                            <rect key="frame" x="24" y="18" width="111" height="26"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1414,7 +1432,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ZUe-13-cYb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TQD-NM-hRE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bcp-tj-N7E">
@@ -1503,7 +1521,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjy-4b-aWL">
-                                <rect key="frame" x="27" y="144" width="360" height="506"/>
+                                <rect key="frame" x="27" y="144" width="360" height="516"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entryway" translatesAutoresizingMaskIntoConstraints="NO" id="sY5-OK-aaa">
                                         <rect key="frame" x="8" y="8" width="352" height="400"/>
@@ -1512,7 +1530,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can't set a task at the last minute of the day!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xj8-TA-8EH">
-                                        <rect key="frame" x="63" y="416" width="234" height="45"/>
+                                        <rect key="frame" x="63" y="416" width="234" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1610,7 +1628,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lBK-V7-DYm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tZS-1p-0G5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N6j-H1-VHD">
@@ -1692,7 +1710,7 @@
                                 </constraints>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyW-Ur-2KV">
-                                <rect key="frame" x="27" y="163" width="360" height="472"/>
+                                <rect key="frame" x="27" y="163" width="360" height="516"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entryway" translatesAutoresizingMaskIntoConstraints="NO" id="aa5-eC-aTf">
                                         <rect key="frame" x="0.0" y="8" width="352" height="400"/>
@@ -1701,7 +1719,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can't set a task at the last minute of the day!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTn-cE-kzH">
-                                        <rect key="frame" x="63" y="416" width="234" height="11"/>
+                                        <rect key="frame" x="63" y="416" width="234" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1824,7 +1842,7 @@
             <objects>
                 <tableViewController id="16C-Md-kuP" customClass="RepeatTableViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yxr-Ui-9Zd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -1915,7 +1933,7 @@
             <objects>
                 <tableViewController id="n8s-o2-vXJ" customClass="ImportanceTableViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MI7-WK-q9D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -1992,7 +2010,7 @@
             <objects>
                 <tableViewController id="a6I-A3-U1n" customClass="SubjectTableViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ae3-Ln-zuO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -2133,15 +2151,17 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HHA-cG-qB7"/>
-        <segue reference="gNj-gy-9SE"/>
+        <segue reference="Mo5-0d-Opj"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="camera" catalog="system" width="128" height="96"/>
         <image name="entryway" width="400" height="357.33334350585938"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="logo" width="500" height="500"/>
         <image name="map" catalog="system" width="128" height="113"/>
+        <image name="mic" catalog="system" width="108" height="128"/>
         <image name="n.square" catalog="system" width="128" height="114"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
