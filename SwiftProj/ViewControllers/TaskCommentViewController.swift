@@ -20,7 +20,6 @@ class TaskCommentViewController: UIViewController, UITableViewDelegate, UITableV
 
         // Do any additional setup after loading the view.
         commentList.append("Unsure about question 4. Ask the teacher for some help.")
-        //print("Loaded")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,8 +32,6 @@ class TaskCommentViewController: UIViewController, UITableViewDelegate, UITableV
         
         let p = commentList[indexPath.row]
         cell.textLabel?.text = p
-//        print(p)
-//        print("dequeued")
         return cell
     }
     

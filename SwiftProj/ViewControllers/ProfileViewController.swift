@@ -23,9 +23,9 @@ class ProfileViewController: UIViewController {
         signOut()
     }
     
-    func signOut() {
-        GIDSignIn.sharedInstance()?.signOut()
-        do {
+    func signOut() { // sign the user out of the acc
+        GIDSignIn.sharedInstance()?.signOut() // Sign out in case of Google Acc
+        do { // Sign out for normal email acc
             try Auth.auth().signOut()
             //let navController = UINavigationController(rootViewController: startScreenViewController())
             let homeViewController = (self.storyboard?.instantiateViewController(identifier: "WelcomeController"))
@@ -37,15 +37,5 @@ class ProfileViewController: UIViewController {
             print("Failed to sign out with error...", error)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

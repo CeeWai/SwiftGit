@@ -18,6 +18,9 @@ class TimeViewController: UIViewController {
     var delegate: CanRecieve?
     var data = ""
     var userCurrentDate: Date?
+    
+    // Making my own movie theater timing slot booking THINGY IDK
+    //
     @IBOutlet weak var hiddenView: UIView!
     @IBOutlet weak var buttonStackView1: UIStackView!
     @IBOutlet weak var buttonStackView2: UIStackView!
@@ -50,10 +53,11 @@ class TimeViewController: UIViewController {
     var stack12Count = 0
     var stack13Count = 0
 
+    // For testing only
+    //
     var myButtonTestArray: [String] = ["1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM"]
     @IBOutlet weak var titleCardLabel: UILabel!
     override func viewDidLoad() {
-        print("userCurrentDate: \(self.userCurrentDate)")
         stack1Count = 0
         stack2Count = 0
         stack3Count = 0
@@ -71,7 +75,7 @@ class TimeViewController: UIViewController {
         super.viewDidLoad()
         
         setTimeButtonArray()
-        DataManager.loadTasks { fullUserTaskList in
+        DataManager.loadTasks { fullUserTaskList in // check if user already have task on days
             var todayTask: [Task] = []
             let currentWeekDayFormatter = DateFormatter()
             currentWeekDayFormatter.dateFormat = "EEEE"
@@ -90,10 +94,8 @@ class TimeViewController: UIViewController {
                     todayTask.append(task)
                 }
             }
-            
-            print(todayTask)
-            
-            if self.myButtonArray.count == 0 {
+                        
+            if self.myButtonArray.count == 0 { // Show icon in the case of empty buttons
                 self.hiddenView.isHidden = false
             } else {
                 self.hiddenView.isHidden = true
@@ -117,7 +119,7 @@ class TimeViewController: UIViewController {
 
                     button.tag = index
                     print("element = \(element)")
-                    for task in todayTask {
+                    for task in todayTask { // Change color in the case of matching timings
                         let taskStartDate = task.taskStartTime
                         let dateFormatterStart = DateFormatter()
                         dateFormatterStart.dateFormat = "h:mm a"

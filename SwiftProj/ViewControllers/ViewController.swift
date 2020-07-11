@@ -87,6 +87,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("section: \(section)")
+        // set the tasks for each of the diff titles
         if section == 0 {
             return completedTaskList.count
         } else if section == 1 {
@@ -94,7 +95,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             return upcomingTaskList.count
         }
-        //return taskList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,7 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let taskFormatTimeEnd = getFormattedDate(date: p!.taskEndTime, format: formatDateTime)
         cell.taskEndDateTimeLabel.text = taskFormatTimeEnd
         
-        if Calendar.current.isDate(Date(), inSameDayAs: p!.taskStartTime) {
+        if Calendar.current.isDate(Date(), inSameDayAs: p!.taskStartTime) { // set changes for the UI when user in different day
             cell.taskDateTimeLabel.textColor = UIColor.label
             cell.taskEndDateTimeLabel.textColor = UIColor.label
             if Date() > p!.taskEndTime {
@@ -208,6 +208,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // Calendar on date change function
+    //
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         //print("This Ran")
         self.taskList = []
@@ -217,6 +220,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.userCurrentDate = date
         print("Set userCurrentDate to \(self.userCurrentDate)")
         loadTaskListFromDate(date: date)
+        
+        // Check if the date pressed is the same as today and then proceed with UI changes
+        //
         
         if Calendar.current.isDate(date, inSameDayAs: Date()) {
             print("Same Day")
@@ -243,6 +249,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        }
     }
     
+    // Load task from firebase
     func loadTaskListFromDate(date: Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE MM-dd-YYYY h:mm a"
@@ -258,18 +265,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //userTaskList = fullUserTaskList
             self.taskList = []
 
-            print(self.taskList.count)
             for task in fullUserTaskList {
                 
                 let weekDayFormatter = DateFormatter()
                 weekDayFormatter.dateFormat = "EEEE"
                 let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
                 //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
+                
+                // Code for if the task is due to call daily or if its the same day for weekly
+                //
+                
                 if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" {
-                    print("\(date) is the same day as \(task.taskStartTime)")
+                    //print("\(date) is the same day as \(task.taskStartTime)")
                     self.taskList.append(task)
                 } else if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{
-                    print("Weekdaystring = \(weekDayString), currentweekdaystring = \(currentWeekDayString)")
+                    //print("Weekdaystring = \(weekDayString), currentweekdaystring = \(currentWeekDayString)")
                     self.taskList.append(task)
                 }
             }

@@ -11,12 +11,16 @@ import AVFoundation
 import AVKit
 import FirebaseAuth
 import TesseractOCR
+
 protocol CanReceiveReload {
     func passReloadDataBack(data: Date)
 }
 
 class EntryViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, CanRecieve, EndCanRecieve, CanRecieveRepeat, CanRecieveImportance, CanReceiveSubject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, G8TesseractDelegate {
     
+    // Below are delegate functions to get the data back from each
+    // of the views that are linked to the entryViewController
+    //
     var delegateSubject: CanReceiveSubject?
     var subjectData: String = ""
     func passSubjectDataBack(data: String) {
@@ -89,7 +93,6 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var setTaskbutton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
-    //@IBOutlet weak var topTaskView: UIView!
     @IBOutlet weak var entryTaskView: UIView!
     @IBOutlet weak var errLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
@@ -114,17 +117,17 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         descTextView!.layer.borderColor = UIColor.lightGray.cgColor
         descTextView.layer.cornerRadius = 6.5
         
+        // set title for the set task button
         let taskDate = self.userCurrentDate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM EEEE"
         let parsedDate = dateFormatter.string(from: taskDate!)
-        //let startDate = dateFormatterStart.date(from:startDateString)!
-        print(parsedDate)
-
         self.setTaskbutton.setTitle("Set Task on: \(parsedDate)", for: UIControl.State.normal)
         descTextView.delegate = self
         titleTextField.delegate = self
 
+        // set delegate for OCR function
+        //
         if let tesseract = G8Tesseract(language: "eng") {
             tesseract.delegate = self
         }
@@ -272,7 +275,6 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     //
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        //print("yes hi wassup")
         if descTextView.text.isEmpty {
             descTextView.text = "Your description goes here!"
             descTextView.textColor = UIColor.lightGray
@@ -291,6 +293,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
           let email = user.email
         }
                 
+        // Validation of inputs
+        //
+        
         if titleTextField.text!.isEmpty || descTextView.text!.isEmpty || descTextView.text == "Your description goes here!" || chosenStartTimeLabel.text!.isEmpty || chosenEndTimeLabel.text!.isEmpty || chosenRepeatLabel.text!.isEmpty || importanceLabel.text!.isEmpty || subjectTextField.text!.isEmpty {
                 errLabel.text = "Enter all fields!"
                 errLabel.isHidden = false
@@ -327,6 +332,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 
                 print("name: \(self.titleTextField.text!), description: \(self.descTextView!.text!), startTime: \(dateStartCurrent!), taskEndTime: \(dateEndCurrent!), repeatType: \(self.chosenRepeatLabel.text!), taskOwner: \(user!.email!)")
                 
+                // Insert task into firebase
                 DataManager.insertOrReplaceTask(task)
                 self.taskViewController?.tableView.reloadData() // reload the tableview before popping back
                 
@@ -430,6 +436,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     //                        totalAmtOfTimeSpentInHoursPerDay += hours
     //
     //                   }
+                        // Find avg time taken that people take for each task and their subject
+                        //
+                        
                         let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: task.taskStartTime, to: task.taskEndTime)
                         var hours = Double(diffComponents.hour!)
                         if diffComponents.minute! > 0 {
@@ -437,6 +446,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                         }
                         totalHoursSpentForTasksAtATime += hours
                     }
+                    
                     var amtOfTasks: Double = Double(usertaskList.count)
                     var hoursSpentAtATime = totalHoursSpentForTasksAtATime/amtOfTasks
                     print("On average, people spend \(hoursSpentAtATime) hour(s) at a time on \(prediction.label)")

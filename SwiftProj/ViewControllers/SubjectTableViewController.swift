@@ -19,9 +19,7 @@ class SubjectTableViewController: UITableViewController {
     var subjectList = ["Smart Device Development & Project", "Artificial Intelligence", "Concepts of geospatial information system", "Geospatial Visualization", "Emerging Trends & Technologies", "General Study Modules", "Miscellaneous"]
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
+        super.viewDidLoad()        
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

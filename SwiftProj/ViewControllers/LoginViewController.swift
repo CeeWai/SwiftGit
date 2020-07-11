@@ -13,11 +13,6 @@ import GoogleSignIn
 
 class LoginViewController: UIViewController, GIDSignInDelegate {
     
-
-//    var videoPlayer: AVPlayer?
-//    var videoPlayerLayer: AVPlayerLayer?
-//    @IBOutlet weak var videoView: UIImageView!
-    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginBttn: UIButton!
@@ -37,12 +32,13 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         LoginView.layer.shadowRadius = 4.0
         LoginView.layer.masksToBounds = false
         LoginView.layer.cornerRadius = 6
-        //LoginView.layer.borderColor = UIColor.gray.cgColor
-        
+
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn() //Automatically signs in the user in
     }
     
+    // Func for google Sign in
+    //
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
         if let error = error {
@@ -60,18 +56,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         let givenName = user.profile.givenName
         let familyName = user.profile.familyName
         let email = user.profile.email
-        // ...
-        print("========== THIS WORKS ==========")
         
 
     }
     
     @IBAction func loginPressed(_ sender: Any) {
-        //TODO VALIDATE TEXT FIELD
         let error = validateFields()
         
         if error != nil {
-            // There's something wrong i can feel it, show the error message
+            // There's something wrong I can feel it, show the error message
             showError(error!)
         } else {
             // Validate Text Fields
@@ -87,7 +80,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
                     //UserDefaults.standard.set(true, forKey: "ISUSERLOGGEDIN")
                     let user = result?.user
 
-                    if user!.isEmailVerified {
+                    if user!.isEmailVerified { // Email validation
                         print("User Is Email Verified")
                         let homeViewController = (self.storyboard?.instantiateViewController(identifier: "MainController"))
                         self.view.window?.rootViewController = homeViewController

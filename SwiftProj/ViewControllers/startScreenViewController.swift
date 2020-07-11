@@ -30,7 +30,7 @@ class startScreenViewController: UIViewController {
 
     }
 
-    
+    // Run the video background LIKE SPOTIFY OOO BOI
     private func setupView() {
         let path = URL(fileURLWithPath: Bundle.main.path(forResource: "startScreenVid", ofType: "mp4") ?? "")
         print("path to the vid: \(path)")

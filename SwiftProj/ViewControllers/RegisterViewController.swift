@@ -23,15 +23,17 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-         registerView.layer.shadowColor = UIColor.black.cgColor
+        registerView.layer.shadowColor = UIColor.black.cgColor
         registerView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-         registerView.layer.shadowOpacity = 0.2
+        registerView.layer.shadowOpacity = 0.2
         registerView.layer.shadowRadius = 4.0
         registerView.layer.masksToBounds = false
         registerView.layer.cornerRadius = 6
     }
     
     func validateFields() -> String? {
+        // Check if empty
+        //
         if usernameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || cfmPasswordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill in all fields."
         }
@@ -47,17 +49,16 @@ class RegisterViewController: UIViewController {
         return nil
     }
     
-    func isPasswordValid(_ password: String) -> Bool {
+    func isPasswordValid(_ password: String) -> Bool { // Validate 8 characters, 1 special, 1 numeric
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
     }
 
     @IBAction func signUpTapped(_ sender: Any) {
-        // Validate the fields
         let error = validateFields()
         
         if error != nil {
-            // There's something wrong i can feel it, show the error message
+            // There's something wrong I can feel it, show the error message
             showError(error!)
         } else {
             
