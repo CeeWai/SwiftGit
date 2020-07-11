@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var currentTaskList: [Task] = []
     var upcomingTaskList: [Task] = []
     var userCurrentDate = Date()
-    
+    var taskListInAdvance: [Task] = []
     override func viewDidLoad() {
         //print("print works")
         super.viewDidLoad()
@@ -70,15 +70,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        //calendarView.layer.cornerRadius = 4.0
         
         calendar.delegate = self
+        calendar.dataSource = self
         tableView.delegate = self
         // instantiate default tasks (today's task)
         loadTaskListFromDate(date: Date())
+        loadTaskInAdvance()
+
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         tableView.reloadData()
+        loadTaskInAdvance()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        do {
+            sleep(3)
+            self.calendar.reloadData()
+            print("Calendar has been reloaded")
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -207,11 +221,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             entryViewController.delegate = self
         }
     }
+
     
     // Calendar on date change function
     //
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
         //print("This Ran")
         self.taskList = []
         self.completedTaskList = []
@@ -249,6 +265,71 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        }
     }
     
+    // WIP for calendar event dots
+//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int { // add event dots
+//        var noOfDots = 0
+//        //DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // Change `+ " " ` to the desired number of seconds.
+//        //noOfDots = 0
+//        var isDaily = false
+//        var currentDate: Date?
+//
+//        for task in self.taskListInAdvance {
+//            //print("TASK: \(task)")
+//            if task.repeatType == "Daily" {
+//                isDaily = true
+//            }
+//        }
+//
+//            if Calendar.current.isDate(date, inSameDayAs: self.taskListInAdvance[0].taskStartTime) {
+//                currentDate = self.taskListInAdvance[0].taskStartTime
+//            }
+//
+//            let currentWeekDayFormatter = DateFormatter()
+//            currentWeekDayFormatter.dateFormat = "EEEE"
+//            let currentWeekDayString = currentWeekDayFormatter.string(from: date)
+//
+//            let weekDayFormatter = DateFormatter()
+//            weekDayFormatter.dateFormat = "EEEE"
+//            let weekDayString = weekDayFormatter.string(from: self.taskListInAdvance[0].taskStartTime)
+//            //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
+//
+//            //print("\(weekDayString) and \(currentWeekDayString) and \(self.taskListInAdvance[count].repeatType) and \(date >= self.taskListInAdvance[count].taskStartTime) ")
+//            if self.taskListInAdvance[0].repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= self.taskListInAdvance[0].taskStartTime{ // check if weekly
+//                print("MATCHED WEEKLY")
+//                noOfDots += 1
+//            }
+//            print(self.taskListInAdvance)
+//            //self.taskListInAdvance.removeFirst()
+//            //count += 1
+//            self.taskListInAdvance.removeFirst()
+//
+//
+//
+//
+//            if isDaily == true {
+//                if date >= Date() {
+//                    print("MATCHED DAILY")
+//                    noOfDots += 1
+//                }
+//            }
+//
+//            if currentDate != nil {
+//                print("MATCHED FOR THE DAY")
+//                noOfDots += 1
+//            }
+//
+//        //}
+//
+//        print(noOfDots)
+//        return noOfDots
+//    }
+//
+    func loadTaskInAdvance() {
+        DataManager.loadTasks { fullUserTaskList in
+            self.taskListInAdvance = fullUserTaskList
+        }
+    }
+    
     // Load task from firebase
     func loadTaskListFromDate(date: Date) {
         let formatter = DateFormatter()
@@ -275,10 +356,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 // Code for if the task is due to call daily or if its the same day for weekly
                 //
                 
-                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" {
+                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" { // check if daily
                     //print("\(date) is the same day as \(task.taskStartTime)")
                     self.taskList.append(task)
-                } else if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{
+                } else if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{ // check if weekly
                     //print("Weekdaystring = \(weekDayString), currentweekdaystring = \(currentWeekDayString)")
                     self.taskList.append(task)
                 }
