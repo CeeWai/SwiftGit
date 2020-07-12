@@ -259,7 +259,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //
 //        }
     }
-    
+        
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
         var cellEvents = 0
 
@@ -268,7 +268,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             for task in fullUserTaskList {
                 if task.repeatType == "Daily" {
-                    print("MATCHED DAILY")
                     isDaily = true
                 }
                 
@@ -282,12 +281,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
 
                 if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{ // check if weekly
-                    print("MATCHED WEEKLY on \(date)")
                     cellEvents += 1
                 }
                 
                 if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
-                    print("MATCHED DAY on \(date)")
                     cellEvents += 1
                 }
             }
