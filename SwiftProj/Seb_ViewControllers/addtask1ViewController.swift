@@ -10,11 +10,18 @@ import UIKit
 
 class addtask1ViewController: UIViewController {
 
+
     @IBOutlet var name: UITextField!
     @IBOutlet var startdate: UITextField!
     @IBOutlet var goal: UITextView!
     @IBOutlet var enddate: UITextField!
+    var startdateraw :Date?
+    var enddateraw :Date?
     let datePicker = UIDatePicker()
+    var userid = "BKAoYyXFsBUzr8tKDViHw4tRrog2"
+    var taskgoal = ""
+    var projectItem : Project?
+    @IBOutlet var nextbtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         let bottomline = CALayer()
@@ -55,6 +62,7 @@ class addtask1ViewController: UIViewController {
         datePicker.datePickerMode = .date
     }
     @objc func donePressed(){
+        startdateraw = datePicker.date
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
@@ -63,6 +71,7 @@ class addtask1ViewController: UIViewController {
         
     }
     @objc func donePressed2(){
+           enddateraw = datePicker.date
            let formatter = DateFormatter()
            formatter.dateStyle = .medium
            formatter.timeStyle = .none
@@ -71,4 +80,25 @@ class addtask1ViewController: UIViewController {
            
     }
 
+    
+    @IBAction func pressednextbtn(_ sender: Any) {
+        var taskname = name.text
+        userid = "1nC1S8cngKXT2da4CmaiV2sb4Ia2"
+        taskgoal = goal.text
+        ProjectTaskDataManager.insertOrReplace(projecttask: ProjectTask(taskid: 0, projectid: 1, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: startdateraw, enddate: enddateraw,status: 0, valid: 1))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue,
+        sender: Any?){
+        if(segue.identifier == "seguetoassignmember")
+         {
+            var taskname = name.text
+            userid = "1nC1S8cngKXT2da4CmaiV2sb4Ia2"
+            taskgoal = goal.text
+        let detailViewController = segue.destination as! addtask2ViewController
+            detailViewController.projecttaskItem = ProjectTask(taskid: 0, projectid: 1, userid: userid, taskname: taskname!, taskgoal: taskgoal, startdate: startdateraw!, enddate: enddateraw!,status: 0, valid: 1)
+            detailViewController.projectItem = self.projectItem!
+        }
+    }
 }
+
