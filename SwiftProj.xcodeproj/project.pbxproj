@@ -17,6 +17,7 @@
 		89346BFA24B71320005379EF /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346BF924B71320005379EF /* createproject2ViewController.swift */; };
 		89346BFC24B713D1005379EF /* addmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346BFB24B713D1005379EF /* addmemberViewController.swift */; };
 		89517C81247233AC00503219 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89517C80247233AC00503219 /* BreakViewController.swift */; };
+		8952F29224BB61D2004B542A /* IndividualTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8952F29124BB61D2004B542A /* IndividualTaskViewController.swift */; };
 		895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895EE02E247696B400F2C109 /* TimeViewController.swift */; };
 		89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89672C04247E34EA008F3C13 /* startScreenViewController.swift */; };
 		897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982B24B8989C00730930 /* SpeechSynthesizer.swift */; };
@@ -84,12 +85,10 @@
 		9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */; };
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
 		9E57DCA924B7534C00C3DD69 /* projecttaskdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E57DCA824B7534C00C3DD69 /* projecttaskdetailViewController.swift */; };
-		9E5812A424B8B0E2007F39BC /* addtask1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5812A324B8B0E2007F39BC /* addtask1ViewController.swift */; };
 		9E5C369924AEF703006F16B5 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369124AEF701006F16B5 /* projectdetail2ViewController.swift */; };
 		9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C369424AEF702006F16B5 /* createprojectViewController.swift */; };
 		9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */; };
 		9E61CCFC24B609E5006320BD /* (null) in Sources */ = {isa = PBXBuildFile; };
-		F24BC02A24B266E400B8D1ED /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29A531724AED3C300C8255E /* Dom_Storyboard.storyboard */; };
 		FC71DEFBE7A7E36C9D15FA42 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -113,6 +112,7 @@
 		89346BF924B71320005379EF /* createproject2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createproject2ViewController.swift; sourceTree = "<group>"; };
 		89346BFB24B713D1005379EF /* addmemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addmemberViewController.swift; sourceTree = "<group>"; };
 		89517C80247233AC00503219 /* BreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
+		8952F29124BB61D2004B542A /* IndividualTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualTaskViewController.swift; sourceTree = "<group>"; };
 		895EE02E247696B400F2C109 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		89672C04247E34EA008F3C13 /* startScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startScreenViewController.swift; sourceTree = "<group>"; };
 		897E982B24B8989C00730930 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
@@ -261,6 +261,7 @@
 				895EE02E247696B400F2C109 /* TimeViewController.swift */,
 				8920000124A642CC00EE47FA /* EndTimeViewController.swift */,
 				89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */,
+				8952F29124BB61D2004B542A /* IndividualTaskViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -426,10 +427,6 @@
 				9E52C57B24B2BBE800444978 /* MemberTableViewCell.swift */,
 				9E52C57D24B2BC7F00444978 /* RoleTableViewCell.swift */,
 				89346BFB24B713D1005379EF /* addmemberViewController.swift */,
-				9EC60D3C24B48C45008B9CFF /* addmemberViewController.swift */,
-				9E4B351B24B5B55A00E3C23E /* addmemberTableViewCell.swift */,
-				9E61CCFB24B609E5006320BD /* projectnotificationViewController.swift */,
-				9E61CCFD24B60A43006320BD /* invitationnotiTableViewCell.swift */,
 				9E57DCA824B7534C00C3DD69 /* projecttaskdetailViewController.swift */,
 				9E5812A324B8B0E2007F39BC /* addtask1ViewController.swift */,
 			);
@@ -655,6 +652,7 @@
 				9E5C369C24AEF703006F16B5 /* createprojectViewController.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,
 				9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */,
+				8952F29224BB61D2004B542A /* IndividualTaskViewController.swift in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
 				89B4E16C24B2D93900B5B841 /* Role.swift in Sources */,
 				9E52C57C24B2BBE800444978 /* MemberTableViewCell.swift in Sources */,
