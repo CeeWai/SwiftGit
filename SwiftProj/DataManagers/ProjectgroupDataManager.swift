@@ -21,10 +21,10 @@ class ProjectgroupDataManager: NSObject {
             " subscribe INTEGER )")
         }
         
-        static func load() -> [Projectgroup]
+        static func loadsubscribed(projectid:Int) -> [Projectgroup]
         {
             let projectgroupRows = SQLiteDB.sharedInstance.query(sql:
-                "SELECT groupid, projectid, " + "userid, invited, subscribe" + " FROM Projectgroup")
+                "SELECT groupid, projectid, " + "userid, invited, subscribe" + " FROM Projectgroup where projectid =\(projectid) and invited = 1 and subscribe = 1 ")
         var projectgroups : [Projectgroup] = []
             for row in projectgroupRows
         {
@@ -37,6 +37,22 @@ class ProjectgroupDataManager: NSObject {
         }
             return projectgroups;
         }
+    static func load() -> [Projectgroup]
+           {
+               let projectgroupRows = SQLiteDB.sharedInstance.query(sql:
+                   "SELECT groupid, projectid, " + "userid, invited, subscribe" + " FROM Projectgroup")
+           var projectgroups : [Projectgroup] = []
+               for row in projectgroupRows
+           {
+           projectgroups.append(Projectgroup(
+           groupid: row["groupid"] as! Int,
+           projectid: row["projectid"] as! Int,
+           userid: row["userid"] as! String,
+           invited: row["invited"] as! Int,
+           subscribe: row["subscribe"] as! Int))
+           }
+               return projectgroups;
+           }
     static func loadprojectidanduserid(projectid:Int,userid:String,invited:Int) -> [Projectgroup?]
         {
             let projectgroupRows = SQLiteDB.sharedInstance.query(sql:
@@ -53,10 +69,10 @@ class ProjectgroupDataManager: NSObject {
         }
             return projectgroups;
         }
-    static func loadbyprojectuseridwhensubscribe0(projectid:Int,userid:String) -> [Projectgroup]
+    static func loadbyprojectuseridwhensubscribe0(userid:String) -> [Projectgroup]
         {
             let projectgroupRows = SQLiteDB.sharedInstance.query(sql:
-                "SELECT groupid, projectid, " + "userid, invited, subscribe" + " FROM Projectgroup WHERE projectid = \(projectid) and userid = '\(userid)' and invited = 1 and subscribe = 0")
+                "SELECT groupid, projectid, " + "userid, invited, subscribe" + " FROM Projectgroup WHERE userid = '\(userid)' and invited = 1 and subscribe = 0")
         var projectgroups : [Projectgroup] = []
             for row in projectgroupRows
         {

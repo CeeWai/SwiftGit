@@ -16,14 +16,12 @@ class projectnotificationViewController: UIViewController,UITableViewDelegate,UI
     @IBOutlet var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        var projectid : Int = (projectItem?.projectId)!
-        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(projectid: projectid, userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
+        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
         // Do any additional setup after loading the view.
         self.tableview.reloadData()
     }
     func refresh(){
-        var projectid : Int = (projectItem?.projectId)!
-        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(projectid: projectid, userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
+        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
         // Do any additional setup after loading the view.
         self.tableview.reloadData()
     }
@@ -32,7 +30,6 @@ class projectnotificationViewController: UIViewController,UITableViewDelegate,UI
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            var projectid : Int = (projectItem?.projectId)!
         let cell : invitationnotiTableViewCell = tableView
            .dequeueReusableCell (withIdentifier: "invitecell", for: indexPath)
            as!     invitationnotiTableViewCell

@@ -19,6 +19,8 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         RoleDataManager.createDatabase()
         ProjectDataManager.createDatabase()
         ProjectgroupDataManager.createDatabase()
+        ProjectTaskDataManager.createDatabase()
+        ProjectTaskMemberDataManager.createDatabase()
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
         projectList = ProjectDataManager.loadProjects()
 
@@ -64,6 +66,19 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
                 let project : Project = projectList[myIndexPath!.row]
                 detailViewController.projectItem = project
             
+            }
+        }
+        if(segue.identifier == "seguetonoti")
+         {
+            let detailViewController = segue.destination as! projectnotificationViewController
+            let myIndexPath = self.tableView.indexPathForSelectedRow
+            if(myIndexPath != nil)
+            {
+                // Set the movieItem field with the movie
+                // object selected by the user.
+                //
+                let project : Project = projectList[myIndexPath!.row]
+                detailViewController.projectItem = project
             }
         }
     }
