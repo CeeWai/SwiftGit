@@ -13,7 +13,9 @@ class IndividualTaskViewController: UITableViewController {
     var individualTask: Task?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var infoCardCell: UITableViewCell!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var hourTimeLabel: UILabel!
     @IBOutlet weak var infoCardView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,9 @@ class IndividualTaskViewController: UITableViewController {
         
         
         self.tableView.rowHeight = UITableView.automaticDimension;
-        //print(tableView.rowHeight)
+        infoCardView.setNeedsLayout()
+        infoCardView.layoutIfNeeded()
+        print(infoCardView.fs_height)
 
     }
 
