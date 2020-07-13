@@ -203,29 +203,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let detailViewController = segue.destination as! IndividualTaskViewController
             
             let myIndexPath = self.tableView.indexPathForSelectedRow
-            print("MY INDEX PATH \(myIndexPath)")
             if myIndexPath != nil {
                 if myIndexPath!.section == 0 {
-                    print(taskList)
-                    print("indexpath row: \(myIndexPath!.row)")
-
                     let task = self.completedTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
-                    print(task.taskName)
                 } else if myIndexPath!.section == 1 {
-                    print(taskList)
-                    print("indexpath row: \(myIndexPath!.row)")
-
                     let task = self.currentTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
-                    print(task.taskName)
                 } else {
-                    print(taskList)
-                    print("indexpath row: \(myIndexPath!.row)")
-
                     let task = self.upcomingTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
-                    print(task.taskName)
                 }
 
             }

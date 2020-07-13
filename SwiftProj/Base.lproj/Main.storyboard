@@ -1355,13 +1355,13 @@
                                                     <rect key="frame" x="32" y="18" width="350" height="174"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKE-Cl-G9G">
-                                                            <rect key="frame" x="41" y="40" width="269" height="36"/>
+                                                            <rect key="frame" x="25" y="43" width="301" height="36"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gei-wS-FwT">
-                                                            <rect key="frame" x="41" y="87" width="269" height="20.333333333333329"/>
+                                                            <rect key="frame" x="25" y="87" width="301" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1369,13 +1369,13 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="tKE-Cl-G9G" firstAttribute="top" secondItem="72a-k7-fOQ" secondAttribute="topMargin" constant="32" id="3y8-mH-6Dt"/>
-                                                        <constraint firstAttribute="bottom" secondItem="gei-wS-FwT" secondAttribute="bottom" constant="66.666666666666671" id="6Kk-ek-UEC"/>
-                                                        <constraint firstItem="gei-wS-FwT" firstAttribute="top" secondItem="tKE-Cl-G9G" secondAttribute="bottom" constant="11" id="9kU-3D-5dz"/>
-                                                        <constraint firstItem="gei-wS-FwT" firstAttribute="leading" secondItem="72a-k7-fOQ" secondAttribute="leadingMargin" constant="33" id="XpP-Ol-e8b"/>
-                                                        <constraint firstItem="tKE-Cl-G9G" firstAttribute="leading" secondItem="72a-k7-fOQ" secondAttribute="leadingMargin" constant="33" id="gA7-oj-eHt"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="gei-wS-FwT" secondAttribute="trailing" constant="32" id="oGE-Mh-w1S"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="tKE-Cl-G9G" secondAttribute="trailing" constant="32" id="rhQ-zN-Pkg"/>
+                                                        <constraint firstItem="tKE-Cl-G9G" firstAttribute="leading" secondItem="72a-k7-fOQ" secondAttribute="leadingMargin" constant="17" id="6Ho-Cd-T7d"/>
+                                                        <constraint firstItem="gei-wS-FwT" firstAttribute="top" secondItem="tKE-Cl-G9G" secondAttribute="bottom" constant="8" id="BhK-T4-LTX"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="tKE-Cl-G9G" secondAttribute="trailing" constant="16" id="OCs-hr-eDG"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="gei-wS-FwT" secondAttribute="trailing" constant="16" id="TKv-ev-vqD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gei-wS-FwT" secondAttribute="bottom" constant="66.666666666666671" id="jhj-dO-RBy"/>
+                                                        <constraint firstItem="tKE-Cl-G9G" firstAttribute="top" secondItem="72a-k7-fOQ" secondAttribute="topMargin" constant="35" id="n46-MN-gaq"/>
+                                                        <constraint firstItem="gei-wS-FwT" firstAttribute="leading" secondItem="72a-k7-fOQ" secondAttribute="leadingMargin" constant="17" id="rIs-HC-Gep"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -1413,6 +1413,7 @@
                     <navigationItem key="navigationItem" title="Individual Task" id="7qg-Eh-aoL"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="gei-wS-FwT" id="Lqf-PV-LTp"/>
+                        <outlet property="infoCardView" destination="72a-k7-fOQ" id="GZY-pi-ivS"/>
                         <outlet property="timeLabel" destination="ao5-uG-xnz" id="ir0-NU-DMw"/>
                         <outlet property="titleLabel" destination="tKE-Cl-G9G" id="Xza-2J-aSb"/>
                     </connections>
