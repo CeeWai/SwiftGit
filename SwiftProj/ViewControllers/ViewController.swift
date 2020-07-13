@@ -200,13 +200,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "taskSegue" {
-            let detailViewController = segue.destination as! TaskViewController
+            let detailViewController = segue.destination as! IndividualTaskViewController
             
             let myIndexPath = self.tableView.indexPathForSelectedRow
+            print("MY INDEX PATH \(myIndexPath)")
             if myIndexPath != nil {
-                let task = taskList[myIndexPath!.section]
-                detailViewController.taskItem = task
-                print(task.taskName)
+                if myIndexPath!.section == 0 {
+                    print(taskList)
+                    print("indexpath row: \(myIndexPath!.row)")
+
+                    let task = self.completedTaskList[myIndexPath!.row]
+                    detailViewController.individualTask = task
+                    print(task.taskName)
+                } else if myIndexPath!.section == 1 {
+                    print(taskList)
+                    print("indexpath row: \(myIndexPath!.row)")
+
+                    let task = self.currentTaskList[myIndexPath!.row]
+                    detailViewController.individualTask = task
+                    print(task.taskName)
+                } else {
+                    print(taskList)
+                    print("indexpath row: \(myIndexPath!.row)")
+
+                    let task = self.upcomingTaskList[myIndexPath!.row]
+                    detailViewController.individualTask = task
+                    print(task.taskName)
+                }
+
             }
         } else if segue.identifier == "addTaskSegue" {
             let entryViewController = segue.destination as! EntryViewController
@@ -288,10 +309,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     cellEvents += 1
                 }
             }
-//
-//            if fullUserTaskList.contains(where: {Calendar.current.isDate(date, inSameDayAs: $0.taskStartTime) }) {
-//
-//            }
             
             if isDaily == true {
                 if date >= Date() {

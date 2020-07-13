@@ -17,6 +17,7 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var taskView: UIView!
+    @IBOutlet weak var timeTaskView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,13 @@ class TaskViewController: UIViewController {
         taskView.layer.borderWidth = 0.4
         taskView.layer.cornerRadius = 6
 
+        timeTaskView.layer.shadowColor = UIColor.lightGray.cgColor
+        //timeTaskView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        timeTaskView.layer.shadowOpacity = 0.2
+        timeTaskView.layer.shadowRadius = 4.0
+        timeTaskView.layer.masksToBounds = false
+        timeTaskView.layer.borderWidth = 1
+        timeTaskView.layer.cornerRadius = 6
     }
 
 }
