@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K6p-oo-NpX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K6p-oo-NpX">
     <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -998,22 +998,6 @@
             </objects>
             <point key="canvasLocation" x="-958" y="1006"/>
         </scene>
-        <!--People-->
-        <scene sceneID="mwv-ff-9Lf">
-            <objects>
-                <viewController id="BI6-Hb-cYz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JEb-7w-Hq3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Bac-gR-waM"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="People" image="person.3" catalog="system" id="nBH-bG-Klj"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L0B-xh-RKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-291" y="258"/>
-        </scene>
         <!--Dom_Storyboard-->
         <scene sceneID="uRw-hs-bkj">
             <objects>
@@ -1435,9 +1419,9 @@
                     <connections>
                         <segue destination="Z6F-VX-Knu" kind="relationship" relationship="viewControllers" id="LVR-pe-blf"/>
                         <segue destination="BeB-BW-vYM" kind="relationship" relationship="viewControllers" id="WRt-2J-2Pq"/>
-                        <segue destination="BI6-Hb-cYz" kind="relationship" relationship="viewControllers" id="dhh-Zz-xKs"/>
                         <segue destination="gr7-Mx-JBB" kind="relationship" relationship="viewControllers" id="Be6-xz-Wpc"/>
                         <segue destination="G56-99-Gf5" kind="relationship" relationship="viewControllers" id="pSd-f9-gmw"/>
+                        <segue destination="0J1-rs-JOi" kind="relationship" relationship="viewControllers" id="zyW-i8-m21"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75v-vX-MCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2007,6 +1991,17 @@
             </objects>
             <point key="canvasLocation" x="-997" y="2502"/>
         </scene>
+        <!--Seb_Main-->
+        <scene sceneID="yag-sV-p2R">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Seb_Main" id="0J1-rs-JOi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="FNI-xD-629"/>
+                    <navigationItem key="navigationItem" id="V0e-Ug-VUY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rdy-pt-21Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-323" y="60"/>
+        </scene>
         <!--Notes-->
         <scene sceneID="B3N-kh-ckT">
             <objects>
@@ -2185,7 +2180,6 @@
         <image name="mic" catalog="system" width="108" height="128"/>
         <image name="n.square" catalog="system" width="128" height="114"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="student-icon" width="400" height="506.66665649414062"/>
         <image name="unlock" width="400" height="466.33334350585938"/>
