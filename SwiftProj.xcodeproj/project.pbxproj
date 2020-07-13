@@ -16,6 +16,7 @@
 		8952F29224BB61D2004B542A /* IndividualTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8952F29124BB61D2004B542A /* IndividualTaskViewController.swift */; };
 		895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895EE02E247696B400F2C109 /* TimeViewController.swift */; };
 		89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89672C04247E34EA008F3C13 /* startScreenViewController.swift */; };
+		896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */; };
 		897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982B24B8989C00730930 /* SpeechSynthesizer.swift */; };
 		897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982F24B89BC800730930 /* SpeechRecognizer.swift */; };
 		898646E72464626F00A5C752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646E62464626F00A5C752 /* AppDelegate.swift */; };
@@ -74,7 +75,6 @@
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
 		9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */; };
 		9E5C36A824AEF790006F16B5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A524AEF790006F16B5 /* Role.swift */; };
-		9E69CB6324BBF4B8003EFCD4 /* TopicsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9E69CB6224BBF4B8003EFCD4 /* TopicsClassifier.mlmodel */; };
 		9E69CB6524BBF527003EFCD4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69CB6424BBF527003EFCD4 /* Project.swift */; };
 		9E69CB7D24BBF730003EFCD4 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69CB6A24BBF72E003EFCD4 /* MemberTableViewCell.swift */; };
 		9E69CB7E24BBF730003EFCD4 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69CB6B24BBF72E003EFCD4 /* createprojectViewController.swift */; };
@@ -122,6 +122,7 @@
 		8952F29124BB61D2004B542A /* IndividualTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualTaskViewController.swift; sourceTree = "<group>"; };
 		895EE02E247696B400F2C109 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		89672C04247E34EA008F3C13 /* startScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startScreenViewController.swift; sourceTree = "<group>"; };
+		896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TopicsClassifier.mlmodel; sourceTree = "<group>"; };
 		897E982B24B8989C00730930 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		897E982F24B89BC800730930 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		898646E32464626F00A5C752 /* SwiftProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,7 +198,6 @@
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
 		9E5C36A524AEF790006F16B5 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
-		9E69CB6224BBF4B8003EFCD4 /* TopicsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = TopicsClassifier.mlmodel; path = ../../../Downloads/TopicsClassifier.mlmodel; sourceTree = "<group>"; };
 		9E69CB6424BBF527003EFCD4 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		9E69CB6A24BBF72E003EFCD4 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		9E69CB6B24BBF72E003EFCD4 /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
@@ -304,8 +304,8 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
-				9E69CB6224BBF4B8003EFCD4 /* TopicsClassifier.mlmodel */,
 				89FBBC9D24B8D3A8001D0EFD /* tessdata */,
+				896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */,
 				89FDD3A424B4D0A700DEBD96 /* topicText.csv */,
 				89B4E15024B2C76C00B5B841 /* Media */,
 				F24BC02824B266BA00B8D1ED /* dom_VC */,
@@ -663,6 +663,7 @@
 				897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */,
 				8906484924B4C8AC00325C5B /* (null) in Sources */,
 				9E69CB8B24BBF730003EFCD4 /* createproject2ViewController.swift in Sources */,
+				896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
@@ -672,7 +673,6 @@
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
 				89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */,
-				9E69CB6324BBF4B8003EFCD4 /* TopicsClassifier.mlmodel in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
 				89517C81247233AC00503219 /* BreakViewController.swift in Sources */,
 				9E69CB8624BBF730003EFCD4 /* ProjectCellTableViewCell.swift in Sources */,
