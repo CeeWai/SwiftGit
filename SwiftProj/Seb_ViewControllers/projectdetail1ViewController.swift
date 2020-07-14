@@ -8,22 +8,16 @@
 
 import UIKit
 
-class projectdetail1ViewController: UIViewController {
-
- 
-    @IBOutlet var label1: UILabel!
-    @IBOutlet var label2: UILabel!
-    @IBOutlet var label3: UILabel!
-    @IBOutlet var scrollview1: UIScrollView!
-    @IBOutlet var scrollview2: UIScrollView!
-    @IBOutlet var scrollview3: UIScrollView!
-    @IBOutlet var view1: UIView!
-    @IBOutlet var view2: UIView!
-    @IBOutlet var view3: UIView!
+class projectdetail1ViewController: UIViewController,
+UITableViewDelegate, UITableViewDataSource{
+    var taskList : [ProjectTask] = []
+    @IBOutlet var tableview1: UITableView!
     @IBOutlet var addtask: UIButton!
     @IBOutlet var board: UIButton!
     @IBOutlet var ganttchart: UIButton!
-    
+    @IBOutlet var btn1: UIButton!
+    @IBOutlet var btn3: UIButton!
+    @IBOutlet var btn2: UIButton!
     @IBOutlet var navtitle: UINavigationItem!
     var popoverstatus = 0;
     var projectItem : Project?
@@ -34,44 +28,54 @@ class projectdetail1ViewController: UIViewController {
         addtask.layer.borderColor = UIColor.systemRed.cgColor
         addtask.layer.borderWidth = 2;
         addtask.layer.backgroundColor = UIColor.black.cgColor
-        /*view1.layer.borderWidth = 2;
-        view1.layer.cornerRadius = 10
-        view2.layer.borderWidth = 2;
-        view2.layer.cornerRadius = 10
-        view3.layer.borderWidth = 2;
-        view3.layer.cornerRadius = 10*/
         board.layer.borderWidth = 2;
         board.layer.cornerRadius = 7
         board.layer.borderColor = UIColor.systemRed.cgColor
         ganttchart.layer.borderWidth = 2;
         ganttchart.layer.cornerRadius = 7
         ganttchart.layer.borderColor = UIColor.systemRed.cgColor
-        label1.layer.borderWidth = 2;
-        label1.layer.cornerRadius = 7
-        label1.layer.borderColor = UIColor.systemRed.cgColor
-        label1.clipsToBounds = true
-        label2.layer.borderWidth = 2;
-        label2.layer.cornerRadius = 7
-        label2.layer.borderColor = UIColor.systemRed.cgColor
-        label2.clipsToBounds = true
-        label3.layer.borderWidth = 2;
-        label3.layer.cornerRadius = 7
-        label3.layer.borderColor = UIColor.systemRed.cgColor
-        label3.clipsToBounds = true
-        view1.layer.borderWidth = 2;
-        view1.layer.cornerRadius = 7
-        view1.layer.borderColor = UIColor.systemRed.cgColor
-        view2.layer.borderWidth = 2;
-        view2.layer.cornerRadius = 7
-        view2.layer.borderColor = UIColor.systemRed.cgColor
-        view3.layer.borderWidth = 2;
-        view3.layer.cornerRadius = 7
-        view3.layer.borderColor = UIColor.systemRed.cgColor
-        
+        if (self.restorationIdentifier == "detailtodo"){
+            btn1.layer.cornerRadius = 10
+            btn1.layer.borderColor = UIColor.systemRed.cgColor
+            btn1.layer.borderWidth = 2;
+            btn1.layer.backgroundColor = UIColor.black.cgColor
+            taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
+        }
+        if (self.restorationIdentifier == "detailongoing"){
+            btn2.layer.cornerRadius = 10
+            btn2.layer.borderColor = UIColor.systemRed.cgColor
+            btn2.layer.borderWidth = 2;
+            btn2.layer.backgroundColor = UIColor.black.cgColor
+            taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 1)
+        }
+        if (self.restorationIdentifier == "detailcomplete"){
+            btn3.layer.cornerRadius = 10
+            btn3.layer.borderColor = UIColor.systemRed.cgColor
+            btn3.layer.borderWidth = 2;
+            btn3.layer.backgroundColor = UIColor.black.cgColor
+            taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 2)
+        }
         
     }
     
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var listcount : Int = 0
+        if tableView == tableview1{
+            listcount = taskList.count
+        }
+        return listcount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : taskTableViewCell = tableView
+        .dequeueReusableCell (withIdentifier: "TaskCell", for: indexPath)
+        as!     taskTableViewCell
+        if tableView == tableview1{
+                          let p = taskList[indexPath.row]
+                          cell.tasknem.text = p.taskname!
+        }
+        return cell
+    }
     /*
     // MARK: - Navigation
 
@@ -132,6 +136,43 @@ class projectdetail1ViewController: UIViewController {
         let detailViewController = segue.destination as!
          addtask1ViewController
             detailViewController.projectItem = self.projectItem
+        }
+        if(segue.identifier == "seguetoongoing")
+         {
+        let detailViewController = segue.destination as!
+         projectdetail1ViewController
+            detailViewController.projectItem = self.projectItem
+        }
+        if(segue.identifier == "seguetotodo")
+         {
+        let detailViewController = segue.destination as!
+         projectdetail1ViewController
+            detailViewController.projectItem = self.projectItem
+        }
+        if(segue.identifier == "seguetocompete")
+         {
+        let detailViewController = segue.destination as!
+         projectdetail1ViewController
+            detailViewController.projectItem = self.projectItem
+        }
+        if(segue.identifier == "seguetotask")
+        {
+            let detailViewController =
+                segue.destination as!
+            projecttaskdetailViewController
+            var myIndexPath : IndexPath?
+            var projecttask : ProjectTask?
+            myIndexPath = self.tableview1.indexPathForSelectedRow
+            projecttask = taskList[myIndexPath!.row]
+            if(myIndexPath != nil)
+            {
+                // Set the movieItem field with the movie
+                // object selected by the user.
+                //
+                detailViewController.projectItem = projectItem
+                detailViewController.projecttask = projecttask!
+            
+            }
         }
     }
 }

@@ -60,6 +60,24 @@ class ProjectTaskMemberDataManager: NSObject {
            }
                return projecttaskmember;
            }
+    static func loadprojecttaskidandprojectid(taskid:Int,projectid:Int,assign:Int) -> [ProjectTaskMember]
+              {
+                  let projecttaskmemberRows = SQLiteDB.sharedInstance.query(sql:
+                     "SELECT taskgroupid, projectid, taskid," + "userid, username, assign, valid" + " FROM ProjectTaskMember WHERE taskid = \(taskid) and projectid = \(projectid) and assign = \(assign) and valid = 1")
+              var projecttaskmember : [ProjectTaskMember] = []
+                  for row in projecttaskmemberRows
+              {
+              projecttaskmember.append(ProjectTaskMember(
+              taskgroupid: row["taskgroupid"] as! Int,
+              projectid: row["projectid"] as! Int,
+              taskid: row["taskid"] as! Int,
+              userid: row["userid"] as! String,
+              username: row["username"] as! String,
+              assign: row["assign"] as! Int,
+              valid: row["valid"] as! Int))
+              }
+                  return projecttaskmember;
+              }
        static func loadbyprojecttaskuseridwhensubscribe0(taskid:Int,userid:String) -> [ProjectTaskMember]
            {
                let projecttaskmemberRows = SQLiteDB.sharedInstance.query(sql:

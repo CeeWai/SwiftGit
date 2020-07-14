@@ -32,12 +32,36 @@ class ProjectTaskDataManager: NSObject {
         var projecttasks : [ProjectTask] = []
             for row in projecttaskRows
         {
+        let formmater = DateFormatter()
+                   let startdateString  = row["startdate"] as? String
+                   let enddateString  = row["enddate"] as? String
+                   formmater.dateFormat = "yyyy-mm-dd HH:mm:ss"
+                   var strstatus = row["status"]! as! String
+                   var intstatus : Int = Int(strstatus)!
+               projecttasks.append(ProjectTask(
+                   taskid: row["taskid"] as? Int, projectid: row["projectid"] as? Int,userid: row["userid"] as? String, taskname: row["taskname"] as? String, taskgoal: row["taskgoal"] as? String, startdate: formmater.date(from: startdateString!)as? Date, enddate: formmater.date(from: enddateString!) as? Date,status: intstatus as? Int, valid: row["valid"] as? Int))
+               }
+                   return projecttasks;
+               }
+    static func loadtaskbystatusandprojectid(projectid:Int,status:Int) -> [ProjectTask]
+        {
+            let projecttaskRows = SQLiteDB.sharedInstance.query(sql:
+                "SELECT taskid, projectid, userid" + ",taskname, taskgoal, startdate, enddate, status, valid" + " FROM ProjectTask Where projectid = \(projectid) and status = \(status) and valid = 1")
+        var projecttasks : [ProjectTask] = []
+
+            for row in projecttaskRows
+        {
+            let formmater = DateFormatter()
+            let startdateString  = row["startdate"] as? String
+            let enddateString  = row["enddate"] as? String
+            formmater.dateFormat = "yyyy-mm-dd HH:mm:ss"
+            var strstatus = row["status"]! as! String
+            var intstatus : Int = Int(strstatus)!
         projecttasks.append(ProjectTask(
-            taskid: row["taskid"] as! Int, projectid: row["projectid"] as! Int,userid: row["userid"] as! String, taskname: row["taskname"] as! String, taskgoal: row["taskgoal"] as! String, startdate: row["startdate"] as! Date, enddate: row["enddate"] as! Date,status: row["status"] as! Int, valid: row["valid"] as! Int))
+            taskid: row["taskid"] as? Int, projectid: row["projectid"] as? Int,userid: row["userid"] as? String, taskname: row["taskname"] as? String, taskgoal: row["taskgoal"] as? String, startdate: formmater.date(from: startdateString!)as? Date, enddate: formmater.date(from: enddateString!) as? Date,status: intstatus as? Int, valid: row["valid"] as? Int))
         }
             return projecttasks;
         }
-    
         static func loadtaskbyid(taskid:Int) -> [ProjectTask]
         {
             let projecttaskRows = SQLiteDB.sharedInstance.query(sql:
@@ -45,11 +69,17 @@ class ProjectTaskDataManager: NSObject {
         var projecttasks : [ProjectTask] = []
             for row in projecttaskRows
         {
-        projecttasks.append(ProjectTask(
-            taskid: row["taskid"] as! Int, projectid: row["projectid"] as! Int,userid: row["userid"] as! String, taskname: row["taskname"] as! String, taskgoal: row["taskgoal"] as! String, startdate: row["startdate"] as! Date, enddate: row["enddate"] as! Date,status: row["status"] as! Int, valid: row["valid"] as! Int))
-        }
-            return projecttasks;
-        }
+       let formmater = DateFormatter()
+                   let startdateString  = row["startdate"] as? String
+                   let enddateString  = row["enddate"] as? String
+                   formmater.dateFormat = "yyyy-mm-dd HH:mm:ss"
+                   var strstatus = row["status"]! as! String
+                   var intstatus : Int = Int(strstatus)!
+               projecttasks.append(ProjectTask(
+                   taskid: row["taskid"] as? Int, projectid: row["projectid"] as? Int,userid: row["userid"] as? String, taskname: row["taskname"] as? String, taskgoal: row["taskgoal"] as? String, startdate: formmater.date(from: startdateString!)as? Date, enddate: formmater.date(from: enddateString!) as? Date,status: intstatus as? Int, valid: row["valid"] as? Int))
+               }
+                   return projecttasks;
+               }
     static func loadtaskbytask(task:ProjectTask!,startdate:String,enddate:String) -> [ProjectTask]
                {
                    let projecttaskRows = SQLiteDB.sharedInstance.query(sql:
@@ -58,10 +88,10 @@ class ProjectTaskDataManager: NSObject {
                       for row in projecttaskRows
                   {
                   projecttasks.append(ProjectTask(
-                    taskid: row["taskid"] as? Int, projectid: row["projectid"] as? Int,userid: row["userid"] as? String, taskname: row["taskname"] as? String, taskgoal: row["taskgoal"] as? String, startdate: row["startdate"] as? Date, enddate: row["enddate"] as? Date,status: row["status"] as? Int, valid: row["valid"] as? Int))
-                  }
-                      return projecttasks;
-                  }
+                                      taskid: row["taskid"] as? Int, projectid: row["projectid"] as? Int,userid: row["userid"] as? String, taskname: row["taskname"] as? String, taskgoal: row["taskgoal"] as? String, startdate: row["startdate"] as? Date, enddate: row["enddate"] as? Date,status: row["status"] as? Int, valid: row["valid"] as? Int))
+                                    }
+                                        return projecttasks;
+                                    }
         
         static func insertOrReplace(projecttask: ProjectTask)
         {
@@ -79,6 +109,11 @@ class ProjectTaskDataManager: NSObject {
             ]
             )
         }
+    static func update(taskid: Int,status:Int)
+               {
+               SQLiteDB.sharedInstance.execute(sql:
+               "UPDATE ProjectTask SET status = \(status) WHERE taskid = \(taskid)")
+               }
         
         static func delete(projecttask: ProjectTask)
         {

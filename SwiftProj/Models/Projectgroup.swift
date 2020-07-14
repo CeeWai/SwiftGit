@@ -12,15 +12,17 @@ class Projectgroup: NSObject {
         var groupid: Int?
         var projectid: Int?
         var userid: String?
+        var username : String?
         var invited: Int?
         var subscribe: Int?
          
-        init(groupid:Int?, projectid: Int?, userid: String?,invited:Int?, subscribe: Int?)
+    init(groupid:Int?, projectid: Int?, userid: String?,username:String?,invited:Int?, subscribe: Int?)
          
     {
         self.groupid = groupid
         self.projectid = projectid
         self.userid = userid
+        self.username = username
         self.invited = invited
         self.subscribe = subscribe
     }

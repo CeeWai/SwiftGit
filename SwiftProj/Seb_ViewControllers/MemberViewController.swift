@@ -11,13 +11,16 @@ import UIKit
 class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var projectItem : Project?
     @IBOutlet var roletableview: UITableView!
+    @IBOutlet var membertableview: UITableView!
     var rolelist : [Role] = []
+    var memberlist : [Projectgroup] = []
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         var projectid : Int = (projectItem?.projectId)!
         rolelist = RoleDataManager.loadprojectid(projectid: projectid)
+        memberlist = ProjectgroupDataManager.loadsubscribed(projectid: projectid)
 
         // Do any additional setup after loading the view.
     }
@@ -26,19 +29,30 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
            if tableView == roletableview{
                return rolelist.count
            }
-        return rolelist.count
+            if tableView == membertableview{
+                return memberlist.count
+            }
+        return 0
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           //if tableView == roletableview{
+           if tableView == roletableview{
                let cell : RoleTableViewCell = tableView
                .dequeueReusableCell (withIdentifier: "rolecell", for: indexPath)
                as! 	RoleTableViewCell
                let p = rolelist[indexPath.row]
                cell.rolename.text = p.rolename
                return cell
-           //}
-           //return UITableViewCell()
+           }
+            if tableView == membertableview{
+                let cell : projectmemberTableViewCell = tableView
+                .dequeueReusableCell (withIdentifier: "membercell", for: indexPath)
+                as!     projectmemberTableViewCell
+                let p = memberlist[indexPath.row]
+                cell.membername.text = p.username
+                return cell
+            }
+           return UITableViewCell()
        }
     /*
     // MARK: - Navigation

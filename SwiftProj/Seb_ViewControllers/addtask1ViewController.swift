@@ -85,7 +85,7 @@ class addtask1ViewController: UIViewController {
         var taskname = name.text
         userid = "1nC1S8cngKXT2da4CmaiV2sb4Ia2"
         taskgoal = goal.text
-        ProjectTaskDataManager.insertOrReplace(projecttask: ProjectTask(taskid: 0, projectid: 1, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: startdateraw, enddate: enddateraw,status: 0, valid: 1))
+        ProjectTaskDataManager.insertOrReplace(projecttask: ProjectTask(taskid: 0, projectid: projectItem?.projectId!, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: startdateraw, enddate: enddateraw,status: 0, valid: 1))
     }
     
     override func prepare(for segue: UIStoryboardSegue,
@@ -96,7 +96,7 @@ class addtask1ViewController: UIViewController {
             userid = "1nC1S8cngKXT2da4CmaiV2sb4Ia2"
             taskgoal = goal.text
         let detailViewController = segue.destination as! addtask2ViewController
-            detailViewController.projecttaskItem = ProjectTask(taskid: 0, projectid: 1, userid: userid, taskname: taskname!, taskgoal: taskgoal, startdate: startdateraw!, enddate: enddateraw!,status: 0, valid: 1)
+            detailViewController.projecttaskItem = ProjectTask(taskid: 0, projectid: projectItem?.projectId!, userid: userid, taskname: taskname!, taskgoal: taskgoal, startdate: startdateraw!, enddate: enddateraw!,status: 0, valid: 1)
             detailViewController.projectItem = self.projectItem!
         }
     }

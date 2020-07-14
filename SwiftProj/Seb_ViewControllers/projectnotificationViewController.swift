@@ -38,15 +38,15 @@ class projectnotificationViewController: UIViewController,UITableViewDelegate,UI
         let dataDecoded:NSData = NSData(base64Encoded:projectList[0].imageName!, options: .ignoreUnknownCharacters)!
         let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
         cell.imageview.image = decodedimage
-        cell.textview.text = "\(p.userid) has invited you to join \(projectList[0].projectName!)."
+        cell.textview.text = "\(p.username!) has invited you to join \(projectList[0].projectName!)."
             
            cell.acceptbuttonPressed = {
-            var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid, invited: 1, subscribe: 1)
+            var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid!,username: p.username!, invited: 1, subscribe: 1)
             ProjectgroupDataManager.Replaceinvitedorsubscribe(projectgroup: newprojectgroup)
             self.refresh()
            }
             cell.declinebuttonPressed = {
-             var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid, invited: 0, subscribe: 0)
+                var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid!,username: p.username!, invited: 0, subscribe: 0)
              ProjectgroupDataManager.Replaceinvitedorsubscribe(projectgroup: newprojectgroup)
                 self.refresh()
             }
