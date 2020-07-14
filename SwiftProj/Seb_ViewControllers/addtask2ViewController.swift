@@ -18,7 +18,7 @@ class addtask2ViewController: UIViewController , UITableViewDelegate, UITableVie
     @IBOutlet var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        userList = ProjectgroupDataManager.loadsubscribed(projectid: 1)
+        userList = ProjectgroupDataManager.loadsubscribed(projectid: projecttaskItem!.projectid!)
         var projectid : Int = projecttaskItem!.projectid!
         var userid : String = projecttaskItem!.userid!
         var taskname : String = projecttaskItem!.taskname!
@@ -42,7 +42,7 @@ class addtask2ViewController: UIViewController , UITableViewDelegate, UITableVie
         .dequeueReusableCell (withIdentifier: "taskmembercell", for: indexPath)
         as!     addtaskmemberTableViewCell
         let p = userList[indexPath.row]
-        cell.usernamelabel.text = p.userid
+        cell.usernamelabel.text = p.username
          
         var projectid : Int = projectItem!.projectId!
         if(ProjectTaskMemberDataManager.loadprojecttaskidanduserid(taskid: self.newprojecttaskItem.count+1, userid: p.userid!, assign: 1).isEmpty == false){

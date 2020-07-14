@@ -39,7 +39,7 @@ class addmemberViewController: UIViewController , UITableViewDelegate, UITableVi
             }
            cell.buttonPressed = {
             if(ProjectgroupDataManager.loadprojectidanduserid(projectid: projectid, userid: p.uid, invited: 1).isEmpty){
-                 ProjectgroupDataManager.insertOrReplace(projectgroup: Projectgroup(groupid: 0, projectid: projectid, userid: p.uid, invited: 1, subscribe: 0))
+                ProjectgroupDataManager.insertOrReplace(projectgroup: Projectgroup(groupid: 0, projectid: projectid, userid: p.uid,username:p.username, invited: 1, subscribe: 0))
                 cell.invitebtn.setTitle("Invited", for: .normal)
             }
 
