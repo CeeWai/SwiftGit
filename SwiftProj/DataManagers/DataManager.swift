@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 class DataManager: NSObject {
-
+    
     static let db = Firestore.firestore()
     
     // Create a new database if it does not already exists
@@ -22,7 +22,7 @@ class DataManager: NSObject {
         SQLiteDB.sharedInstance.execute(sql:
             "CREATE TABLE IF NOT EXISTS " +
                 "SavedCountry ( " +
-                "country text primary key)")
+            "country text primary key)")
     }
     
     // Loads the list of movies from the database
@@ -31,24 +31,24 @@ class DataManager: NSObject {
     static func loadUsers(onComplete: (([User]) -> Void)?)
     {
         db.collection("users").getDocuments()
-    {
-        (querySnapshot, err) in
-        var userList : [User] = []
-        if let err = err{
-            print("Error getting documents: \(err)")
-            
-        }
-        else
-        {
-            for document in querySnapshot!.documents
             {
-                var user = try? document.data(as:User.self) as! User
-                if user != nil {
-                    userList.append(user!)
+                (querySnapshot, err) in
+                var userList : [User] = []
+                if let err = err{
+                    print("Error getting documents: \(err)")
+                    
                 }
-            }
-        }
-        onComplete?(userList)
+                else
+                {
+                    for document in querySnapshot!.documents
+                    {
+                        var user = try? document.data(as:User.self) as! User
+                        if user != nil {
+                            userList.append(user!)
+                        }
+                    }
+                }
+                onComplete?(userList)
         }
     }
     static func loadCountries() -> [SavedCountry]
@@ -69,23 +69,23 @@ class DataManager: NSObject {
         
         let user = Auth.auth().currentUser
         if let user = user {
-          let uid = user.uid
-          let email = user.email
+            let uid = user.uid
+            let email = user.email
         }
         
         if user != nil {
             db.collection("tasks").whereField("taskOwner", isEqualTo: user!.email!).getDocuments {
                 (querySnapshot, err) in
                 var taskList : [Task] = []
-
+                
                 if let err = err
                 {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents
                     {
-                        var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "", subject: "")
-
+                        var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "", subject: "", lastStartDelayedTime: Date(), lastEndDelayedTime: Date())
+                        
                         if let id = document.documentID as? String {
                             //print("document ID: \(document.documentID)")
                             task.taskID = id
@@ -127,19 +127,27 @@ class DataManager: NSObject {
                             task.subject = subject
                         }
                         
-                        //print(task)
-
+                        if let lastStartDelayedTime = document.data()["lastStartDelayedTime"] as? Timestamp {
+                            let date = lastStartDelayedTime.dateValue()
+                            task.lastStartDelayedTime = date
+                        }
+                        
+                        if let lastEndDelayedTime = document.data()["lastEndDelayedTime"] as? Timestamp {
+                            let date = lastEndDelayedTime.dateValue()
+                            task.lastEndDelayedTime = date
+                        }
+                        
                         if task != nil {
                             taskList.append(task)
                         }
                     }
                 }
-
+                
                 onComplete?(taskList)
                 
             }
         }
-    
+        
     }
     
     static func loadTasksBySubject(_ subject: String, onComplete: (([Task]) -> Void)?) {
@@ -147,15 +155,15 @@ class DataManager: NSObject {
         db.collection("tasks").whereField("subject", isEqualTo: subject).getDocuments() {
             (querySnapshot, err) in
             var taskList : [Task] = []
-
+            
             if let err = err
             {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents
                 {
-                    var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "", subject: "")
-
+                    var task = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "", subject: "", lastStartDelayedTime: Date(), lastEndDelayedTime: Date())
+                    
                     if let id = document.documentID as? String {
                         //print("document ID: \(document.documentID)")
                         task.taskID = id
@@ -198,22 +206,23 @@ class DataManager: NSObject {
                     }
                     
                     //print(task)
-
+                    
                     if task != nil {
                         taskList.append(task)
                     }
                 }
             }
-
+            
             onComplete?(taskList)
             
         }
-    
+        
     }
     
-     // Inserts or replaces an existing movie
-     // into Firestore. //
-     static func insertOrReplaceTask(_ task: Task) {
+    // Inserts or replaces an existing movie
+    // into Firestore.
+    //
+    static func insertOrReplaceTask(_ task: Task) {
         try? db.collection("tasks")
             .document("\(task.taskID)")
             .setData(from: task, encoder: Firestore.Encoder()) {
@@ -222,22 +231,25 @@ class DataManager: NSObject {
                     print("Error adding document: \(err)")
                 } else {
                     print("Document successfully added!")
-            }
+                }
         }
     }
     
-     // Deletes a movie from the Firestore database. //
-     static func deleteTask(_ task: Task) {
+    
+    
+    // Deletes a movie from the Firestore database.
+    //
+    static func deleteTask(_ task: Task) {
         db.collection("tasks").document(task.taskID).delete() {
             err in
-         if let err = err {
-             print("Error removing document: \(err)")
-         }
-         else {
-             print("Document successfully removed!")
-            
+            if let err = err {
+                print("Error removing document: \(err)")
             }
-         }
+            else {
+                print("Document successfully removed!")
+                
+            }
+        }
     }
     
 }

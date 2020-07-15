@@ -269,49 +269,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
         
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        var cellEvents = 0
+        
+        if date >= Date() {
+            var cellEvents = 0
 
-        DataManager.loadTasks { fullUserTaskList in
-            var isDaily = false
-            
-            for task in fullUserTaskList {
-                if task.repeatType == "Daily" {
-                    isDaily = true
+            DataManager.loadTasks { fullUserTaskList in
+                var isDaily = false
+                
+                for task in fullUserTaskList {
+                    if task.repeatType == "Daily" {
+                        isDaily = true
+                    }
+                    
+                    let currentWeekDayFormatter = DateFormatter()
+                    currentWeekDayFormatter.dateFormat = "EEEE"
+                    let currentWeekDayString = currentWeekDayFormatter.string(from: date)
+
+                    let weekDayFormatter = DateFormatter()
+                    weekDayFormatter.dateFormat = "EEEE"
+                    let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
+                    //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
+
+                    if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{ // check if weekly
+                        cellEvents += 1
+                    }
+                    
+                    if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
+                        cellEvents += 1
+                    }
                 }
                 
-                let currentWeekDayFormatter = DateFormatter()
-                currentWeekDayFormatter.dateFormat = "EEEE"
-                let currentWeekDayString = currentWeekDayFormatter.string(from: date)
-
-                let weekDayFormatter = DateFormatter()
-                weekDayFormatter.dateFormat = "EEEE"
-                let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
-                //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
-
-                if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{ // check if weekly
-                    cellEvents += 1
+                if isDaily == true {
+                    if date >= Date() {
+                        cellEvents += 1
+                    }
                 }
-                
-                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
-                    cellEvents += 1
-                }
-            }
-            
-            if isDaily == true {
-                if date >= Date() {
-                    cellEvents += 1
-                }
-            }
 
-            print("\(date) has \(cellEvents)")
-            if cellEvents > 0 {
-                cell.eventIndicator.numberOfEvents = cellEvents
-                cell.eventIndicator.isHidden = false
-                cell.eventIndicator.color = UIColor.systemRed
-            } else {
-                cell.eventIndicator.isHidden = true
+                print("\(date) has \(cellEvents)")
+                if cellEvents > 0 {
+                    cell.eventIndicator.numberOfEvents = cellEvents
+                    cell.eventIndicator.isHidden = false
+                    cell.eventIndicator.color = UIColor.systemRed
+                } else {
+                    cell.eventIndicator.isHidden = true
+                }
             }
         }
+
     }
     
     // Load task from firebase

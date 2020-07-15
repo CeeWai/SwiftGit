@@ -10,6 +10,20 @@ import UIKit
 
 class Task: Codable {
     
+    internal init(taskID: String, taskName: String, taskDesc: String, taskStartTime: Date, taskEndTime: Date, repeatType: String, taskOwner: String, importance: String, subject: String, lastStartDelayedTime: Date?, lastEndDelayedTime: Date?) {
+        self.taskID = taskID
+        self.taskName = taskName
+        self.taskDesc = taskDesc
+        self.taskStartTime = taskStartTime
+        self.taskEndTime = taskEndTime
+        self.repeatType = repeatType
+        self.taskOwner = taskOwner
+        self.importance = importance
+        self.subject = subject
+        self.lastStartDelayedTime = lastStartDelayedTime
+        self.lastEndDelayedTime = lastEndDelayedTime
+    }
+    
     var taskID: String
     var taskName: String
     var taskDesc: String
@@ -20,17 +34,8 @@ class Task: Codable {
     //var runtime = 0
     var importance: String
     var subject: String
+    var lastStartDelayedTime: Date?
+    var lastEndDelayedTime: Date?
     
-    internal init(taskID: String, taskName: String, taskDesc: String, taskStartTime: Date, taskEndTime: Date, repeatType: String, taskOwner: String, importance: String, subject: String) {
-        self.taskID = taskID
-        self.taskName = taskName
-        self.taskDesc = taskDesc
-        self.taskStartTime = taskStartTime
-        self.taskEndTime = taskEndTime
-        self.repeatType = repeatType
-        self.taskOwner = taskOwner
-        self.importance = importance
-        self.subject = subject
-    }
 }
  
