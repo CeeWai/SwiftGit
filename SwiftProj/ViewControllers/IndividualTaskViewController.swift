@@ -11,6 +11,7 @@ import UIKit
 class IndividualTaskViewController: UIViewController {
 
     var individualTask: Task?
+    var userCurrentDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class IndividualTaskViewController: UIViewController {
     func addBottomSheetView() {
         let bottomSheetVC = BottomSheetViewController()
         bottomSheetVC.task = individualTask
-        print(individualTask)
+        //print(individualTask)
         
         self.addChild(bottomSheetVC)
         self.view.addSubview(bottomSheetVC.view)
@@ -34,6 +35,14 @@ class IndividualTaskViewController: UIViewController {
         
         let height = view.frame.height
         let width = view.frame.width
-        bottomSheetVC.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+        bottomSheetVC.view.frame = CGRect(x: 0, y: view.frame.maxY + 20, width: width, height: height)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editTaskSegue" {
+            let editViewController = segue.destination as! EntryViewController
+            editViewController.editTask = individualTask
+            editViewController.userCurrentDate = userCurrentDate
+        }
     }
 }

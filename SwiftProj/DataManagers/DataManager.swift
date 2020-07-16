@@ -223,6 +223,7 @@ class DataManager: NSObject {
     // into Firestore.
     //
     static func insertOrReplaceTask(_ task: Task) {
+        //print(task.taskID)
         try? db.collection("tasks")
             .document("\(task.taskID)")
             .setData(from: task, encoder: Firestore.Encoder()) {

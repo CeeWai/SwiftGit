@@ -208,13 +208,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if myIndexPath!.section == 0 {
                     let task = self.completedTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
-                    print(task)
+                    detailViewController.userCurrentDate = self.userCurrentDate
+
                 } else if myIndexPath!.section == 1 {
                     let task = self.currentTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
+                    detailViewController.userCurrentDate = self.userCurrentDate
+
                 } else {
                     let task = self.upcomingTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
+                    detailViewController.userCurrentDate = self.userCurrentDate
+
                 }
 
             }
