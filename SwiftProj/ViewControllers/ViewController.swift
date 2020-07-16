@@ -73,6 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         calendar.dataSource = self
         tableView.delegate = self
         // instantiate default tasks (today's task)
+        
         loadTaskListFromDate(date: Date())
         //loadTaskInAdvance()
 
@@ -207,6 +208,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if myIndexPath!.section == 0 {
                     let task = self.completedTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
+                    print(task)
                 } else if myIndexPath!.section == 1 {
                     let task = self.currentTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
@@ -245,15 +247,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if Calendar.current.isDate(date, inSameDayAs: Date()) {
             print("Same Day")
-            breakButton.isEnabled = true
+            //breakButton.isEnabled = true
             addTaskButton.isEnabled = true
         } else if date < Date() {
-            print("Less than today")
-            breakButton.isEnabled = false
-            addTaskButton.isEnabled = false
+//            print("Less than today")
+//            breakButton.isEnabled = false
+//            addTaskButton.isEnabled = false
         } else {
             print("More than today")
-            breakButton.isEnabled = false
+            //breakButton.isEnabled = false
             addTaskButton.isEnabled = true
         }
         
@@ -333,6 +335,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         DataManager.loadTasks { fullUserTaskList in
             //userTaskList = fullUserTaskList
             self.taskList = []
+            self.completedTaskList = []
+            self.currentTaskList = []
+            self.upcomingTaskList = []
 
             for task in fullUserTaskList {
                 
