@@ -16,7 +16,7 @@ extension BottomSheetViewController {
     
     private enum Constant {
         static let fullViewYposition: CGFloat = 100
-        static var partialViewYPosition: CGFloat { UIScreen.main.bounds.height - 145 }
+        static var partialViewYPosition: CGFloat { UIScreen.main.bounds.height/3 }
     }
 }
 
@@ -46,7 +46,7 @@ class BottomSheetViewController: UIViewController {
 //            infoView.layer.borderColor = UIColor.white
 //        }
         print(task?.taskName)
-        titleLabel.text = task?.taskName
+        //titleLabel.text = task?.taskName
         descLabel.text = task?.taskDesc
         subjectLabel.text = task?.subject
         importanceLabel.text = task?.importance
@@ -57,9 +57,10 @@ class BottomSheetViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.6, animations: {
-            self.moveView(state: .partial)
-        })
+//        UIView.animate(withDuration: 0.05, animations: {
+//            self.moveView(state: .partial)
+//        })
+        self.moveView(state: .partial)
     }
     
     private func moveView(state: State) {
@@ -81,7 +82,7 @@ class BottomSheetViewController: UIViewController {
         moveView(panGestureRecognizer: recognizer)
         
         if recognizer.state == .ended {
-            UIView.animate(withDuration: 1, delay: 0.0, options: [.allowUserInteraction], animations: {
+            UIView.animate(withDuration: 0.01, delay: 0.0, options: [.allowUserInteraction], animations: {
                 let state: State = recognizer.velocity(in: self.view).y >= 0 ? .partial : .full
                 self.moveView(state: state)
             }, completion: nil)

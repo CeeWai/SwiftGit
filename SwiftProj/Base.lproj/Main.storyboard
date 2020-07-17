@@ -1211,17 +1211,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPt-Uj-cOJ">
-                                <rect key="frame" x="186" y="207" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeO-0E-6bF">
+                                <rect key="frame" x="47" y="157" width="320" height="31.333333333333343"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4V-uy-q7P">
+                                <rect key="frame" x="20" y="196" width="374" height="87"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dayTimeLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwd-tz-6KM">
+                                        <rect key="frame" x="8" y="8" width="358" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hourTimeLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMc-vK-Tg1">
+                                        <rect key="frame" x="8" y="43" width="358" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="EMc-vK-Tg1" firstAttribute="leading" secondItem="j4V-uy-q7P" secondAttribute="leadingMargin" id="0HR-hO-M3I"/>
+                                    <constraint firstItem="EMc-vK-Tg1" firstAttribute="top" secondItem="Pwd-tz-6KM" secondAttribute="bottom" constant="11" id="C2e-Wr-Re1"/>
+                                    <constraint firstItem="EMc-vK-Tg1" firstAttribute="trailing" secondItem="j4V-uy-q7P" secondAttribute="trailingMargin" id="gvk-k6-IVm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pwd-tz-6KM" secondAttribute="trailing" constant="8" id="rE2-I8-Roa"/>
+                                    <constraint firstItem="Pwd-tz-6KM" firstAttribute="leading" secondItem="j4V-uy-q7P" secondAttribute="leading" constant="8" id="vUx-UR-MBe"/>
+                                    <constraint firstItem="Pwd-tz-6KM" firstAttribute="top" secondItem="j4V-uy-q7P" secondAttribute="top" constant="8" id="w7K-fl-Niv"/>
+                                    <constraint firstAttribute="bottom" secondItem="EMc-vK-Tg1" secondAttribute="bottom" constant="20" id="wOa-ko-gxA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="rPt-Uj-cOJ" firstAttribute="centerX" secondItem="O0p-gW-1gk" secondAttribute="centerX" id="4j3-Is-Yg3"/>
-                            <constraint firstItem="rPt-Uj-cOJ" firstAttribute="top" secondItem="CYt-gF-YpE" secondAttribute="top" constant="67" id="JGU-6m-lEE"/>
+                            <constraint firstItem="j4V-uy-q7P" firstAttribute="leading" secondItem="CYt-gF-YpE" secondAttribute="leading" constant="20" id="1lP-DT-9z8"/>
+                            <constraint firstItem="j4V-uy-q7P" firstAttribute="top" secondItem="FeO-0E-6bF" secondAttribute="bottom" constant="8" id="AZb-b0-XId"/>
+                            <constraint firstItem="FeO-0E-6bF" firstAttribute="leading" secondItem="CYt-gF-YpE" secondAttribute="leading" constant="47" id="OEs-dd-DZX"/>
+                            <constraint firstItem="FeO-0E-6bF" firstAttribute="top" secondItem="CYt-gF-YpE" secondAttribute="top" constant="17" id="ff6-5h-m02"/>
+                            <constraint firstItem="CYt-gF-YpE" firstAttribute="trailing" secondItem="j4V-uy-q7P" secondAttribute="trailing" constant="20" id="h4C-X1-o7z"/>
+                            <constraint firstItem="CYt-gF-YpE" firstAttribute="trailing" secondItem="FeO-0E-6bF" secondAttribute="trailing" constant="47" id="m7m-ZR-7kF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CYt-gF-YpE"/>
                     </view>
@@ -1232,10 +1263,16 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dayTimeLabel" destination="Pwd-tz-6KM" id="xx2-sY-BwA"/>
+                        <outlet property="hourTimeLabel" destination="EMc-vK-Tg1" id="vKF-q3-nbr"/>
+                        <outlet property="timeView" destination="j4V-uy-q7P" id="aWu-kX-yv4"/>
+                        <outlet property="titleLabel" destination="FeO-0E-6bF" id="XQM-xu-PTf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4k-AW-1tj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-323" y="1748"/>
+            <point key="canvasLocation" x="-323.1884057971015" y="1747.7678571428571"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="m2H-ms-W3E">
@@ -1998,7 +2035,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HHA-cG-qB7"/>
-        <segue reference="Mo5-0d-Opj"/>
+        <segue reference="RQZ-dP-3gS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
