@@ -71,6 +71,7 @@
 		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
 		89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 89FBBC9D24B8D3A8001D0EFD /* tessdata */; };
+		89FD652424C306FA005A7BEA /* BertModel in Resources */ = {isa = PBXBuildFile; fileRef = 89FD652324C306FA005A7BEA /* BertModel */; };
 		89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89FDD3A424B4D0A700DEBD96 /* topicText.csv */; };
 		89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
@@ -201,6 +202,7 @@
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		89FBBC9D24B8D3A8001D0EFD /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		89FD652324C306FA005A7BEA /* BertModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BertModel; sourceTree = "<group>"; };
 		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
+				89FD652324C306FA005A7BEA /* BertModel */,
 				89FBBC9D24B8D3A8001D0EFD /* tessdata */,
 				896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */,
 				89FDD3A424B4D0A700DEBD96 /* topicText.csv */,
@@ -562,6 +565,7 @@
 				89B4E16324B2C76C00B5B841 /* startScreenVid.mp4 in Resources */,
 				89B4E16924B2C76C00B5B841 /* student-colour-400px.png in Resources */,
 				89B4E16524B2C76C00B5B841 /* startScreenVid.mp4.zip in Resources */,
+				89FD652424C306FA005A7BEA /* BertModel in Resources */,
 				F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
