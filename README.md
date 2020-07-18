@@ -17,3 +17,6 @@ Also note: in order for the video in the welcome screen to work, you'll need to 
 https://drive.google.com/file/d/1S92g1ond1hOCASJIK2l-Y639eHQ72i_Y/view?usp=sharing
 place this file in the "/SwiftProj/Media/"
 directory
+
+Also place this in the "/SwiftProj/BertModel/"
+https://drive.google.com/drive/folders/1PNTNHkY_vgQnAD6Z3hu44SSWukjNB250?usp=sharing
