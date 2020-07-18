@@ -71,7 +71,16 @@
 		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
 		89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 89FBBC9D24B8D3A8001D0EFD /* tessdata */; };
-		89FD652424C306FA005A7BEA /* BertModel in Resources */ = {isa = PBXBuildFile; fileRef = 89FD652324C306FA005A7BEA /* BertModel */; };
+		89FD652724C30852005A7BEA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD652624C30852005A7BEA /* Document.swift */; };
+		89FD652924C3085B005A7BEA /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD652824C3085B005A7BEA /* MasterViewController.swift */; };
+		89FD652B24C3085F005A7BEA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD652A24C3085F005A7BEA /* DetailViewController.swift */; };
+		89FD655224C30BFF005A7BEA /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654B24C30BF3005A7BEA /* TokenizedString.swift */; };
+		89FD655324C30BFF005A7BEA /* BERTVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654C24C30BF5005A7BEA /* BERTVocabulary.swift */; };
+		89FD655424C30BFF005A7BEA /* BERTQAFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654D24C30BF7005A7BEA /* BERTQAFP16.mlmodel */; };
+		89FD655524C30BFF005A7BEA /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654E24C30BF9005A7BEA /* BERTInput.swift */; };
+		89FD655624C30BFF005A7BEA /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654F24C30BFB005A7BEA /* BERT.swift */; };
+		89FD655724C30BFF005A7BEA /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD655024C30BFD005A7BEA /* BERTOutput.swift */; };
+		89FD655824C30BFF005A7BEA /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */; };
 		89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89FDD3A424B4D0A700DEBD96 /* topicText.csv */; };
 		89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
@@ -202,7 +211,17 @@
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		89FBBC9D24B8D3A8001D0EFD /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
-		89FD652324C306FA005A7BEA /* BertModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BertModel; sourceTree = "<group>"; };
+		89FD652524C30788005A7BEA /* FindingAnswers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindingAnswers.entitlements; sourceTree = "<group>"; };
+		89FD652624C30852005A7BEA /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		89FD652824C3085B005A7BEA /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		89FD652A24C3085F005A7BEA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		89FD654B24C30BF3005A7BEA /* TokenizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
+		89FD654C24C30BF5005A7BEA /* BERTVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTVocabulary.swift; sourceTree = "<group>"; };
+		89FD654D24C30BF7005A7BEA /* BERTQAFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BERTQAFP16.mlmodel; sourceTree = "<group>"; };
+		89FD654E24C30BF9005A7BEA /* BERTInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
+		89FD654F24C30BFB005A7BEA /* BERT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
+		89FD655024C30BFD005A7BEA /* BERTOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
+		89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
 		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -275,6 +294,8 @@
 		895EE02D2476968400F2C109 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				89FD652824C3085B005A7BEA /* MasterViewController.swift */,
+				89FD652A24C3085F005A7BEA /* DetailViewController.swift */,
 				89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */,
 				898646EA2464626F00A5C752 /* ViewController.swift */,
 				89921951246E45CB0029BFF5 /* MapViewController.swift */,
@@ -322,7 +343,8 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
-				89FD652324C306FA005A7BEA /* BertModel */,
+				89FD654A24C30BD5005A7BEA /* BertModel */,
+				89FD652524C30788005A7BEA /* FindingAnswers.entitlements */,
 				89FBBC9D24B8D3A8001D0EFD /* tessdata */,
 				896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */,
 				89FDD3A424B4D0A700DEBD96 /* topicText.csv */,
@@ -434,6 +456,7 @@
 		89F8DA9B2464FEF700B54354 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				89FD652624C30852005A7BEA /* Document.swift */,
 				9E62D92424BE1AF0003462F1 /* ProjectTaskMember.swift */,
 				9E62D92024BE1A38003462F1 /* ProjectTask.swift */,
 				9E62D91E24BE1A0C003462F1 /* Project.swift */,
@@ -448,6 +471,20 @@
 				89A94E0424C023C600287A03 /* IndividualCollectionViewCell.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		89FD654A24C30BD5005A7BEA /* BertModel */ = {
+			isa = PBXGroup;
+			children = (
+				89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */,
+				89FD654F24C30BFB005A7BEA /* BERT.swift */,
+				89FD654E24C30BF9005A7BEA /* BERTInput.swift */,
+				89FD655024C30BFD005A7BEA /* BERTOutput.swift */,
+				89FD654D24C30BF7005A7BEA /* BERTQAFP16.mlmodel */,
+				89FD654C24C30BF5005A7BEA /* BERTVocabulary.swift */,
+				89FD654B24C30BF3005A7BEA /* TokenizedString.swift */,
+			);
+			path = BertModel;
 			sourceTree = "<group>";
 		};
 		9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */ = {
@@ -565,7 +602,6 @@
 				89B4E16324B2C76C00B5B841 /* startScreenVid.mp4 in Resources */,
 				89B4E16924B2C76C00B5B841 /* student-colour-400px.png in Resources */,
 				89B4E16524B2C76C00B5B841 /* startScreenVid.mp4.zip in Resources */,
-				89FD652424C306FA005A7BEA /* BertModel in Resources */,
 				F29A531824AED3C300C8255E /* Dom_Storyboard.storyboard in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
@@ -573,6 +609,7 @@
 				89B4E16124B2C76C00B5B841 /* business-woman-colour.svg in Resources */,
 				89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */,
 				8954EE2D24C0751700039BDF /* BottomSheetViewController.xib in Resources */,
+				89FD655824C30BFF005A7BEA /* bert-base-uncased-vocab.txt in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
 				89B4E16A24B2C76C00B5B841 /* unlock-monochrome-1200px.png in Resources */,
 				89B4E16424B2C76C00B5B841 /* student-colour.svg in Resources */,
@@ -658,7 +695,9 @@
 				8992194D246E45760029BFF5 /* HTTP.swift in Sources */,
 				89B4E16E24B2DA2F00B5B841 /* RoleDataManagerOld.swift in Sources */,
 				89921942246E450A0029BFF5 /* CaseDataManager.swift in Sources */,
+				89FD652B24C3085F005A7BEA /* DetailViewController.swift in Sources */,
 				9E62D97324BE1BBB003462F1 /* ProjectCellTableViewCell.swift in Sources */,
+				89FD655724C30BFF005A7BEA /* BERTOutput.swift in Sources */,
 				898646EB2464626F00A5C752 /* ViewController.swift in Sources */,
 				898646FE2464651C00A5C752 /* EntryViewController.swift in Sources */,
 				9E62D92524BE1AF0003462F1 /* ProjectTaskMember.swift in Sources */,
@@ -674,6 +713,7 @@
 				9E62D97124BE1BBB003462F1 /* addtask1ViewController.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
 				897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */,
+				89FD655324C30BFF005A7BEA /* BERTVocabulary.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
@@ -693,6 +733,7 @@
 				89EC5C6F24B7493D005702DD /* ProjectgroupDataManager.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */,
+				89FD655224C30BFF005A7BEA /* TokenizedString.swift in Sources */,
 				8906484924B4C8AC00325C5B /* (null) in Sources */,
 				896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
@@ -703,7 +744,9 @@
 				9E62D97224BE1BBB003462F1 /* MemberViewController.swift in Sources */,
 				89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
+				89FD655424C30BFF005A7BEA /* BERTQAFP16.mlmodel in Sources */,
 				9E62D98524BE1BBC003462F1 /* addmemberViewController.swift in Sources */,
+				89FD655624C30BFF005A7BEA /* BERT.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
 				89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
@@ -714,6 +757,7 @@
 				9E62D97824BE1BBB003462F1 /* projecttaskdetailViewController.swift in Sources */,
 				89EC5C7124B7499B005702DD /* Projectgroup.swift in Sources */,
 				9E62D91F24BE1A0C003462F1 /* Project.swift in Sources */,
+				89FD655524C30BFF005A7BEA /* BERTInput.swift in Sources */,
 				9E62D92124BE1A38003462F1 /* ProjectTask.swift in Sources */,
 				9E62D98424BE1BBC003462F1 /* taskmemberTableViewCell.swift in Sources */,
 				9E62D96F24BE1BBB003462F1 /* projectdetail1ViewController.swift in Sources */,
@@ -722,9 +766,11 @@
 				9E62D97B24BE1BBB003462F1 /* addprojectpageviewcontrollerViewController.swift in Sources */,
 				9E62D97A24BE1BBB003462F1 /* projectdetail2ViewController.swift in Sources */,
 				9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */,
+				89FD652924C3085B005A7BEA /* MasterViewController.swift in Sources */,
 				9E62D98024BE1BBC003462F1 /* RoleTableViewCell.swift in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
 				89E17010247A538A004C3F45 /* User.swift in Sources */,
+				89FD652724C30852005A7BEA /* Document.swift in Sources */,
 				9E62D97724BE1BBB003462F1 /* createproject2ViewController.swift in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
 				9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */,
