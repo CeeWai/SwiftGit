@@ -8,6 +8,7 @@
 import UIKit
 import CoreML
 import TesseractOCR
+import FirebaseAuth
 
 class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, G8TesseractDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -15,6 +16,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     @IBOutlet weak var documentTextView: UITextView!
     @IBOutlet weak var questionTextFieldBottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var cameraOCRBttn: UIButton!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var errLabel: UILabel!
     
     let bert = BERT()
     
@@ -53,6 +56,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         if let tesseract = G8Tesseract(language: "eng") {
             tesseract.delegate = self
         }
+        
+        titleTextField.text = detailItem?.title
+        documentTextView.text = detailItem?.body
         
     }
     
@@ -130,7 +136,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         // Run the search in the background to keep the UI responsive.
         DispatchQueue.global(qos: .userInitiated).async {
             // Use the BERT model to search for the answer.
-            let answer = self.bert.findAnswer(for: searchText, in: detail.body)
+            let answer = self.bert.findAnswer(for: searchText, in: detail.body!)
             
             // Update the UI on the main queue.
             DispatchQueue.main.async {
@@ -146,10 +152,46 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         return true
     }
     
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        if titleTextField.text!.isEmpty || documentTextView.text.isEmpty {
+            errLabel.text = "Please enter all fields!"
+            errLabel.isHidden = false
+            
+            return
+        }
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let uid = user.uid
+            let email = user.email
+        }
+        var userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email)
+
+        if self.detailItem?.docID != nil && self.detailItem?.docID != ""{
+            print("Found that docID is empty \(self.detailItem?.docID)")
+            userDoc.docID = self.detailItem?.docID
+            DataManager.insertOrReplaceDoc(userDoc)
+            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            DataManager.loadDocs{ fullUserDocList in
+                print("Found that docID is NOT empty \(self.detailItem?.docID)")
+
+                self.errLabel.isHidden = true
+                userDoc.docID = "\(user!.uid)D\(fullUserDocList.count)"
+                DataManager.insertOrReplaceDoc(userDoc)
+                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+
+
+    }
+    
     // MARK: - UITextViewDelegate
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        detailItem = Document(title: detailItem?.title ?? "Document", body: textView.text)
+        detailItem = Document(docID: "", title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner)
     }
     
     // MARK: - Keyboard Event Handling
@@ -169,13 +211,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIWindow.keyboardWillShowNotification,
-                                                  object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIWindow.keyboardWillHideNotification,
-                                                  object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -183,13 +221,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         questionTextField.becomeFirstResponder()
     }
     
-    @objc
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         animateBottomLayoutConstraint(from: notification)
     }
     
-    @objc
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         animateBottomLayoutConstraint(from: notification)
     }
     

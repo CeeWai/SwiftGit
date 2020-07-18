@@ -8,6 +8,21 @@ A struct that represents the contents of a textual document with a body and titl
 import Foundation
 
 struct Document: Codable {
-    var title = "New Document"
-    var body = "Type or paste document body here"
+    var docID: String?
+    var title: String?
+    var body: String?
+    var docOwner: String?
+    
+    internal init(
+        docID: String?,
+        title: String?,
+        body: String?,
+        docOwner: String?
+    ){
+        self.docID = docID
+        self.title = title
+        self.body = body
+        self.docOwner = docOwner
+
+    }
 }

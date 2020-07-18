@@ -81,6 +81,8 @@
 		89FD655624C30BFF005A7BEA /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654F24C30BFB005A7BEA /* BERT.swift */; };
 		89FD655724C30BFF005A7BEA /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD655024C30BFD005A7BEA /* BERTOutput.swift */; };
 		89FD655824C30BFF005A7BEA /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */; };
+		89FD655A24C3448B005A7BEA /* IndexerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD655924C3448B005A7BEA /* IndexerCollectionViewController.swift */; };
+		89FD655C24C345CF005A7BEA /* IndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD655B24C345CF005A7BEA /* IndexCell.swift */; };
 		89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89FDD3A424B4D0A700DEBD96 /* topicText.csv */; };
 		89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
@@ -222,6 +224,8 @@
 		89FD654F24C30BFB005A7BEA /* BERT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
 		89FD655024C30BFD005A7BEA /* BERTOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
 		89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
+		89FD655924C3448B005A7BEA /* IndexerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexerCollectionViewController.swift; sourceTree = "<group>"; };
+		89FD655B24C345CF005A7BEA /* IndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
 		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -294,8 +298,6 @@
 		895EE02D2476968400F2C109 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				89FD652824C3085B005A7BEA /* MasterViewController.swift */,
-				89FD652A24C3085F005A7BEA /* DetailViewController.swift */,
 				89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */,
 				898646EA2464626F00A5C752 /* ViewController.swift */,
 				89921951246E45CB0029BFF5 /* MapViewController.swift */,
@@ -317,6 +319,9 @@
 				8954EE2824C06F8400039BDF /* IndividualTaskViewController.swift */,
 				8954EE2A24C06FE300039BDF /* BottomSheetViewController.swift */,
 				8954EE2C24C0751700039BDF /* BottomSheetViewController.xib */,
+				89FD652824C3085B005A7BEA /* MasterViewController.swift */,
+				89FD652A24C3085F005A7BEA /* DetailViewController.swift */,
+				89FD655924C3448B005A7BEA /* IndexerCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				89E1700F247A538A004C3F45 /* User.swift */,
 				89C8AEFC247FE66B00F3F614 /* CommentCell.swift */,
 				89A94E0424C023C600287A03 /* IndividualCollectionViewCell.swift */,
+				89FD655B24C345CF005A7BEA /* IndexCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -705,6 +711,8 @@
 				9E62D98224BE1BBC003462F1 /* ProjecttaskmemberViewController.swift in Sources */,
 				9E62D98124BE1BBC003462F1 /* addtask2ViewController.swift in Sources */,
 				89B4E17024B2DA5A00B5B841 /* RoleDataManager.swift in Sources */,
+				89FD655A24C3448B005A7BEA /* IndexerCollectionViewController.swift in Sources */,
+				89FD655C24C345CF005A7BEA /* IndexCell.swift in Sources */,
 				9E62D92324BE1A88003462F1 /* ProjectTaskDataManager.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				9E62D97624BE1BBB003462F1 /* addtaskmemberTableViewCell.swift in Sources */,

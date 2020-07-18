@@ -219,11 +219,10 @@ class DataManager: NSObject {
         
     }
     
-    // Inserts or replaces an existing movie
+    // Inserts or replaces an existing Task
     // into Firestore.
     //
     static func insertOrReplaceTask(_ task: Task) {
-        //print(task.taskID)
         try? db.collection("tasks")
             .document("\(task.taskID)")
             .setData(from: task, encoder: Firestore.Encoder()) {
@@ -236,9 +235,7 @@ class DataManager: NSObject {
         }
     }
     
-    
-    
-    // Deletes a movie from the Firestore database.
+    // Deletes a Task from the Firestore database.
     //
     static func deleteTask(_ task: Task) {
         db.collection("tasks").document(task.taskID).delete() {
@@ -250,6 +247,74 @@ class DataManager: NSObject {
                 print("Document successfully removed!")
                 
             }
+        }
+    }
+    
+    static func loadDocs(onComplete: (([Document]) -> Void)?) {
+        
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let uid = user.uid
+            let email = user.email
+        }
+        
+        if user != nil {
+            db.collection("documentation").whereField("docOwner", isEqualTo: user!.email!).getDocuments {
+                (querySnapshot, err) in
+                var docList : [Document] = []
+                
+                if let err = err
+                {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents
+                    {
+                        var doc = Document(docID: "", title: "", body: "", docOwner: "")
+                        
+                        if let docID = document.documentID as? String {
+                            //print("document ID: \(document.documentID)")
+                            doc.docID = docID
+                        }
+                        
+                        if let title = document.data()["title"] as? String {
+                            doc.title = title
+                        }
+                    
+                        
+                        if let body = document.data()["body"] as? String {
+                            doc.body = body
+                        }
+                        
+                        if let docOwner = document.data()["docOwner"] as? String {
+                            doc.docOwner = docOwner
+                        }
+
+                        if doc != nil {
+                            docList.append(doc)
+                        }
+                    }
+                }
+                
+                onComplete?(docList)
+                
+            }
+        }
+        
+    }
+
+    // Inserts or replaces an existing documentation
+    // into Firestore.
+    //
+    static func insertOrReplaceDoc(_ documentation: Document) {
+        try? db.collection("documentation")
+            .document(documentation.docID!)
+            .setData(from: documentation, encoder: Firestore.Encoder()) {
+                err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document successfully added!")
+                }
         }
     }
     
