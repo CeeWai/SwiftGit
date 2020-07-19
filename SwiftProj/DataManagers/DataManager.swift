@@ -250,6 +250,8 @@ class DataManager: NSObject {
         }
     }
     
+    // Load all of the logged in user's Docs from Firebase 
+    //
     static func loadDocs(onComplete: (([Document]) -> Void)?) {
         
         let user = Auth.auth().currentUser

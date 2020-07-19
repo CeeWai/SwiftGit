@@ -2134,7 +2134,7 @@
         <!--Detail-->
         <scene sceneID="Q59-hY-Tj2">
             <objects>
-                <viewController title="Detail" id="Yym-oE-Rsn" customClass="DetailViewController" customModule="FindingAnswers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="Yym-oE-Rsn" customClass="DetailViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jF0-sO-Pye">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
