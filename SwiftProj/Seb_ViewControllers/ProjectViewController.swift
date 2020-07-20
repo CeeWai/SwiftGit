@@ -10,11 +10,8 @@ import UIKit
 
 class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var projectList : [Project] = []
-    var projectgroupList : [Projectgroup] = []
-    var inviteList : [Projectgroup] = []
     @IBOutlet var tableView: UITableView!
     
-    @IBOutlet var bell: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +22,9 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         ProjectTaskDataManager.createDatabase()
         ProjectTaskMemberDataManager.createDatabase()
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
-        projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
-        for project in projectgroupList{
-            var projectitem: [Project] = ProjectDataManager.loadProjectsbyid(projectid: project.projectid!)
-            projectList.append(projectitem[0])
-        }
-        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
+        projectList = ProjectDataManager.loadProjects()
+
         
-        if inviteList.count > 0{
-            
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -53,7 +43,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         as! ProjectCellTableViewCell
         let p = projectList[indexPath.row]
         cell.projectnameLabel.text = p.projectName
-        cell.projectleaderLabel.text = ""
+        cell.projectleaderLabel.text = p.projectLeader
         let dataDecoded:NSData = NSData(base64Encoded:p.imageName!, options: .ignoreUnknownCharacters)!
         let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
         cell.projectImageView.image = decodedimage

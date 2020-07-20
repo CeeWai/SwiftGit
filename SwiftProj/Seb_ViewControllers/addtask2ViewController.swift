@@ -50,7 +50,7 @@ class addtask2ViewController: UIViewController , UITableViewDelegate, UITableVie
          }
         cell.buttonPressed = {
             if(ProjectTaskMemberDataManager.loadprojecttaskidanduserid(taskid: self.newprojecttaskItem.count+1, userid: p.userid!, assign: 1).isEmpty){
-                ProjectTaskMemberDataManager.insertOrReplace(projecttaskmember: ProjectTaskMember(taskgroupid: 0, projectid: projectid,taskid: self.newprojecttaskItem.count+1, userid: p.userid, username: p.username, assign: 1, valid: 1))
+                ProjectTaskMemberDataManager.insertOrReplace(projecttaskmember: ProjectTaskMember(taskgroupid: 0, projectid: projectid,taskid: self.newprojecttaskItem.count+1, userid: p.userid, username: "", assign: 1, valid: 1))
              cell.assignbtn.setTitle("Assigned", for: .normal)
          }
            
@@ -71,30 +71,5 @@ class addtask2ViewController: UIViewController , UITableViewDelegate, UITableVie
              userList = ProjectgroupDataManager.loadsubscribed(projectid: 1)
         }
         self.tableview.reloadData()
-    }
-    override func prepare(for segue: UIStoryboardSegue,
-        sender: Any?){
-        if(segue.identifier == "seguetotask")
-        {
-            let detailViewController =
-                segue.destination as!
-            projecttaskdetailViewController
-            var projecttask : ProjectTask?
-            var projectid : Int = projecttaskItem!.projectid!
-            var userid : String = projecttaskItem!.userid!
-            var taskname : String = projecttaskItem!.taskname!
-            var taskgoal: String = projecttaskItem!.taskgoal!
-            var startdate : Date = projecttaskItem!.startdate!
-            var enddate : Date = projecttaskItem!.enddate!
-            var status : Int = projecttaskItem!.status!
-            var valid: Int = projecttaskItem!.valid!
-            var strstartdate :String = String("\(startdate)".dropLast(6))
-            var strenddate :String = String("\(enddate)".dropLast(6))
-            projecttask = ProjectTask(taskid: self.newprojecttaskItem.count+1, projectid: projectid, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: startdate, enddate: enddate, status: status, valid: valid)
-                detailViewController.projectItem = projectItem
-                detailViewController.projecttask = projecttask!
-            
-            
-        }
     }
 }

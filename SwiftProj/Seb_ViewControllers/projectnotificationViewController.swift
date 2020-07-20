@@ -41,12 +41,12 @@ class projectnotificationViewController: UIViewController,UITableViewDelegate,UI
         cell.textview.text = "\(p.username!) has invited you to join \(projectList[0].projectName!)."
             
            cell.acceptbuttonPressed = {
-            var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid!,username: p.username!,role:p.role, invited: 1, subscribe: 1)
+            var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid!,username: p.username!, invited: 1, subscribe: 1)
             ProjectgroupDataManager.Replaceinvitedorsubscribe(projectgroup: newprojectgroup)
             self.refresh()
            }
             cell.declinebuttonPressed = {
-                var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid!,username: p.username!,role: p.role, invited: 0, subscribe: 0)
+                var newprojectgroup : Projectgroup = Projectgroup(groupid: p.groupid, projectid: p.projectid, userid: p.userid!,username: p.username!, invited: 0, subscribe: 0)
              ProjectgroupDataManager.Replaceinvitedorsubscribe(projectgroup: newprojectgroup)
                 self.refresh()
             }

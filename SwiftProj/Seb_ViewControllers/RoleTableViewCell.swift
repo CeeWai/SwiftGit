@@ -18,7 +18,7 @@ class RoleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
           let bottomline = CALayer()
-                  bottomline.frame = CGRect(x:0,y:rolecellview.frame.height - 1, width: rolecellview.frame.width,height: 1)
+                  bottomline.frame = CGRect(x:0,y:rolecellview.frame.height - 2, width: rolecellview.frame.width,height: 2)
                   bottomline.backgroundColor =         UIColor.systemRed.cgColor
                   rolecellview.layer.addSublayer(bottomline)
         

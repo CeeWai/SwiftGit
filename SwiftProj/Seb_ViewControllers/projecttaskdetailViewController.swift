@@ -103,11 +103,5 @@ class projecttaskdetailViewController: UIViewController, UIPickerViewDelegate, U
                detailViewController.projectItem = projectItem
                detailViewController.projecttask = projecttask!
            }
-        if(segue.identifier == "seguetoprojectdetail")
-         {
-        let detailViewController = segue.destination as!
-         projectdetail1ViewController
-            detailViewController.projectItem = self.projectItem
-        }
     }
 }

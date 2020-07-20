@@ -40,7 +40,6 @@ class addroleViewController: UIViewController {
                    bottomline.backgroundColor =         UIColor.systemRed.cgColor
                    rolenamefield.borderStyle = .none
                    rolenamefield.layer.addSublayer(bottomline)
-        rolenamefield.attributedPlaceholder = NSAttributedString(string: "Role Name", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemRed])
         manageowntaskyes.layer.borderColor = UIColor.systemRed.cgColor
         manageowntaskno.layer.borderColor = UIColor.systemRed.cgColor
         manageowntaskyes.layer.borderWidth = 2
@@ -164,20 +163,5 @@ class addroleViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    override func prepare(for segue: UIStoryboardSegue,
-        sender: Any?){
-          if(segue.identifier == "seguetomemberview")
-                  {
-                 let detailViewController = segue.destination as!
-                  MemberViewController
-                     detailViewController.projectItem = self.projectItem
-                 }
-            if(segue.identifier == "seguetomemberview2")
-                         {
-                        let detailViewController = segue.destination as!
-                         MemberViewController
-                            detailViewController.projectItem = self.projectItem
-                        }
-    }
 
 }

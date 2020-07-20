@@ -13,18 +13,16 @@ class Projectgroup: NSObject {
         var projectid: Int?
         var userid: String?
         var username : String?
-        var role :String?
         var invited: Int?
         var subscribe: Int?
          
-    init(groupid:Int?, projectid: Int?, userid: String?,username:String?,role:String?,invited:Int?, subscribe: Int?)
+    init(groupid:Int?, projectid: Int?, userid: String?,username:String?,invited:Int?, subscribe: Int?)
          
     {
         self.groupid = groupid
         self.projectid = projectid
         self.userid = userid
         self.username = username
-        self.role = role
         self.invited = invited
         self.subscribe = subscribe
     }
