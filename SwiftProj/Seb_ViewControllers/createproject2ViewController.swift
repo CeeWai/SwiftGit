@@ -85,7 +85,8 @@ class createproject2ViewController: UIViewController, UIImagePickerControllerDel
         sender: Any?){
         if(segue.identifier == "projectdetail1")
          {
-        let detailViewController = segue.destination as! projectdetail1ViewController
+        let detailViewController = segue.destination as!
+         projectdetail1ViewController
             detailViewController.projectItem = self.projectitem
         }
          

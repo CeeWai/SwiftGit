@@ -58,16 +58,12 @@
 		89B4E16824B2C76C00B5B841 /* business-woman-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15B24B2C76C00B5B841 /* business-woman-colour-800px.png */; };
 		89B4E16924B2C76C00B5B841 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15C24B2C76C00B5B841 /* student-colour-400px.png */; };
 		89B4E16A24B2C76C00B5B841 /* unlock-monochrome-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15D24B2C76C00B5B841 /* unlock-monochrome-1200px.png */; };
-		89B4E16E24B2DA2F00B5B841 /* RoleDataManagerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4E16D24B2DA2F00B5B841 /* RoleDataManagerOld.swift */; };
-		89B4E17024B2DA5A00B5B841 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4E16F24B2DA5A00B5B841 /* RoleDataManager.swift */; };
 		89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */; };
 		89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEFC247FE66B00F3F614 /* CommentCell.swift */; };
 		89E17010247A538A004C3F45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E1700F247A538A004C3F45 /* User.swift */; };
 		89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89E17013247A55CE004C3F45 /* GoogleService-Info.plist */; };
 		89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17015247A58BD004C3F45 /* LoginViewController.swift */; };
 		89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17017247A58DE004C3F45 /* RegisterViewController.swift */; };
-		89EC5C6F24B7493D005702DD /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5C6E24B7493D005702DD /* ProjectgroupDataManager.swift */; };
-		89EC5C7124B7499B005702DD /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5C7024B7499A005702DD /* Projectgroup.swift */; };
 		89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */; };
 		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
@@ -75,21 +71,11 @@
 		89FD652724C30852005A7BEA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD652624C30852005A7BEA /* Document.swift */; };
 		89FD652924C3085B005A7BEA /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD652824C3085B005A7BEA /* MasterViewController.swift */; };
 		89FD652B24C3085F005A7BEA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD652A24C3085F005A7BEA /* DetailViewController.swift */; };
-		89FD655224C30BFF005A7BEA /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654B24C30BF3005A7BEA /* TokenizedString.swift */; };
-		89FD655324C30BFF005A7BEA /* BERTVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654C24C30BF5005A7BEA /* BERTVocabulary.swift */; };
-		89FD655424C30BFF005A7BEA /* BERTQAFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654D24C30BF7005A7BEA /* BERTQAFP16.mlmodel */; };
-		89FD655524C30BFF005A7BEA /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654E24C30BF9005A7BEA /* BERTInput.swift */; };
-		89FD655624C30BFF005A7BEA /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD654F24C30BFB005A7BEA /* BERT.swift */; };
-		89FD655724C30BFF005A7BEA /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD655024C30BFD005A7BEA /* BERTOutput.swift */; };
-		89FD655824C30BFF005A7BEA /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */; };
 		89FD655A24C3448B005A7BEA /* IndexerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD655924C3448B005A7BEA /* IndexerCollectionViewController.swift */; };
 		89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89FDD3A424B4D0A700DEBD96 /* topicText.csv */; };
 		89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */; };
 		89FE2A5D246477720006F595 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FE2A5C246477720006F595 /* Task.swift */; };
-		9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */; };
 		9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */; };
-		9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */; };
-		9E5C36A824AEF790006F16B5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C36A524AEF790006F16B5 /* Role.swift */; };
 		9E62D91F24BE1A0C003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9E62D92124BE1A38003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9E62D92324BE1A88003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -117,13 +103,53 @@
 		9E62D98324BE1BBC003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9E62D98424BE1BBC003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9E62D98524BE1BBC003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9EFFB63924C5F19F0073CE59 /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63224C5F19E0073CE59 /* BERTOutput.swift */; };
+		9EFFB63A24C5F19F0073CE59 /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63324C5F19E0073CE59 /* BERTInput.swift */; };
+		9EFFB63B24C5F19F0073CE59 /* BERTQAFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63424C5F19E0073CE59 /* BERTQAFP16.mlmodel */; };
+		9EFFB63C24C5F19F0073CE59 /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9EFFB63524C5F19E0073CE59 /* bert-base-uncased-vocab.txt */; };
+		9EFFB63D24C5F19F0073CE59 /* BERTVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63624C5F19E0073CE59 /* BERTVocabulary.swift */; };
+		9EFFB63E24C5F19F0073CE59 /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63724C5F19E0073CE59 /* BERT.swift */; };
+		9EFFB63F24C5F19F0073CE59 /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63824C5F19F0073CE59 /* TokenizedString.swift */; };
+		9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64024C5F2980073CE59 /* ProjectTask.swift */; };
+		9EFFB64624C5F2980073CE59 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64124C5F2980073CE59 /* Project.swift */; };
+		9EFFB64724C5F2980073CE59 /* ProjectTaskMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64224C5F2980073CE59 /* ProjectTaskMember.swift */; };
+		9EFFB64824C5F2980073CE59 /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64324C5F2980073CE59 /* Projectgroup.swift */; };
+		9EFFB64924C5F2980073CE59 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64424C5F2980073CE59 /* Role.swift */; };
+		9EFFB64F24C5F2FD0073CE59 /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */; };
+		9EFFB65024C5F2FD0073CE59 /* ProjectTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64B24C5F2FC0073CE59 /* ProjectTaskDataManager.swift */; };
+		9EFFB65124C5F2FD0073CE59 /* ProjectTaskMemberDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64C24C5F2FC0073CE59 /* ProjectTaskMemberDataManager.swift */; };
+		9EFFB65224C5F2FD0073CE59 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */; };
+		9EFFB65324C5F2FD0073CE59 /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */; };
+		9EFFB66C24C5F3950073CE59 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */; };
+		9EFFB66D24C5F3950073CE59 /* taskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65524C5F3920073CE59 /* taskmemberTableViewCell.swift */; };
+		9EFFB66E24C5F3950073CE59 /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65624C5F3920073CE59 /* RoleTableViewCell.swift */; };
+		9EFFB66F24C5F3950073CE59 /* projectmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65724C5F3920073CE59 /* projectmemberTableViewCell.swift */; };
+		9EFFB67024C5F3950073CE59 /* ProjecttaskmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65824C5F3930073CE59 /* ProjecttaskmemberViewController.swift */; };
+		9EFFB67124C5F3950073CE59 /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65924C5F3930073CE59 /* projectdetail1ViewController.swift */; };
+		9EFFB67224C5F3950073CE59 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65A24C5F3930073CE59 /* ProjectViewController.swift */; };
+		9EFFB67324C5F3950073CE59 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65B24C5F3930073CE59 /* MemberTableViewCell.swift */; };
+		9EFFB67424C5F3950073CE59 /* invitationnotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65C24C5F3930073CE59 /* invitationnotiTableViewCell.swift */; };
+		9EFFB67524C5F3950073CE59 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65D24C5F3930073CE59 /* createprojectViewController.swift */; };
+		9EFFB67624C5F3950073CE59 /* projecttaskdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65E24C5F3930073CE59 /* projecttaskdetailViewController.swift */; };
+		9EFFB67724C5F3950073CE59 /* addtask2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65F24C5F3930073CE59 /* addtask2ViewController.swift */; };
+		9EFFB67824C5F3950073CE59 /* projectnotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66024C5F3940073CE59 /* projectnotificationViewController.swift */; };
+		9EFFB67924C5F3950073CE59 /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66124C5F3940073CE59 /* createproject2ViewController.swift */; };
+		9EFFB67A24C5F3950073CE59 /* addmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66224C5F3940073CE59 /* addmemberViewController.swift */; };
+		9EFFB67B24C5F3950073CE59 /* addtask1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66324C5F3940073CE59 /* addtask1ViewController.swift */; };
+		9EFFB67C24C5F3950073CE59 /* addmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66424C5F3940073CE59 /* addmemberTableViewCell.swift */; };
+		9EFFB67D24C5F3950073CE59 /* taskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66524C5F3940073CE59 /* taskTableViewCell.swift */; };
+		9EFFB67E24C5F3950073CE59 /* addroleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66624C5F3940073CE59 /* addroleViewController.swift */; };
+		9EFFB67F24C5F3950073CE59 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66724C5F3950073CE59 /* MemberViewController.swift */; };
+		9EFFB68024C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */; };
+		9EFFB68124C5F3950073CE59 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */; };
+		9EFFB68224C5F3950073CE59 /* addtaskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */; };
+		9EFFB68324C5F3950073CE59 /* memberdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66B24C5F3950073CE59 /* memberdetailViewController.swift */; };
+		9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */; };
 		D7276B2D849A8B6E2CD8D851 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F272C1CC24BB68F900CCD185 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F28A1FAB24C5315900F1D0DB /* IndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FAA24C5315900F1D0DB /* IndexCell.swift */; };
 		F28A1FAE24C531C200F1D0DB /* dom_note.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FAC24C531C200F1D0DB /* dom_note.swift */; };
 		F28A1FAF24C531C200F1D0DB /* dom_tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FAD24C531C200F1D0DB /* dom_tag.swift */; };
-		F28A1FB124C531EF00F1D0DB /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FB024C531EF00F1D0DB /* Project.swift */; };
-		F28A1FB424C5327E00F1D0DB /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F28A1FB224C5327D00F1D0DB /* Seb_Main.storyboard */; };
 		F28A1FBA24C5336100F1D0DB /* dom_FireStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FB924C5336100F1D0DB /* dom_FireStoreDataManager.swift */; };
 		F28A1FBF24C53B0A00F1D0DB /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FBB24C53B0A00F1D0DB /* TagsTableViewController.swift */; };
 		F28A1FC024C53B0A00F1D0DB /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FBC24C53B0A00F1D0DB /* AddNoteViewController.swift */; };
@@ -209,16 +235,12 @@
 		89B4E15B24B2C76C00B5B841 /* business-woman-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-800px.png"; sourceTree = "<group>"; };
 		89B4E15C24B2C76C00B5B841 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
 		89B4E15D24B2C76C00B5B841 /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
-		89B4E16D24B2DA2F00B5B841 /* RoleDataManagerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManagerOld.swift; sourceTree = "<group>"; };
-		89B4E16F24B2DA5A00B5B841 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
 		89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommentViewController.swift; sourceTree = "<group>"; };
 		89C8AEFC247FE66B00F3F614 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		89E1700F247A538A004C3F45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		89E17013247A55CE004C3F45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89E17015247A58BD004C3F45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		89E17017247A58DE004C3F45 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		89EC5C6E24B7493D005702DD /* ProjectgroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectgroupDataManager.swift; sourceTree = "<group>"; };
-		89EC5C7024B7499A005702DD /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
 		89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceTableViewController.swift; sourceTree = "<group>"; };
 		89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -228,27 +250,57 @@
 		89FD652624C30852005A7BEA /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		89FD652824C3085B005A7BEA /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		89FD652A24C3085F005A7BEA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		89FD654B24C30BF3005A7BEA /* TokenizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
-		89FD654C24C30BF5005A7BEA /* BERTVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTVocabulary.swift; sourceTree = "<group>"; };
-		89FD654D24C30BF7005A7BEA /* BERTQAFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BERTQAFP16.mlmodel; sourceTree = "<group>"; };
-		89FD654E24C30BF9005A7BEA /* BERTInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
-		89FD654F24C30BFB005A7BEA /* BERT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
-		89FD655024C30BFD005A7BEA /* BERTOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
-		89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
 		89FD655924C3448B005A7BEA /* IndexerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexerCollectionViewController.swift; sourceTree = "<group>"; };
 		89FDD3A424B4D0A700DEBD96 /* topicText.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = topicText.csv; sourceTree = SOURCE_ROOT; };
 		89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
-		9E5C36A524AEF790006F16B5 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		9EFFB63224C5F19E0073CE59 /* BERTOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
+		9EFFB63324C5F19E0073CE59 /* BERTInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
+		9EFFB63424C5F19E0073CE59 /* BERTQAFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BERTQAFP16.mlmodel; sourceTree = "<group>"; };
+		9EFFB63524C5F19E0073CE59 /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
+		9EFFB63624C5F19E0073CE59 /* BERTVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTVocabulary.swift; sourceTree = "<group>"; };
+		9EFFB63724C5F19E0073CE59 /* BERT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
+		9EFFB63824C5F19F0073CE59 /* TokenizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
+		9EFFB64024C5F2980073CE59 /* ProjectTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTask.swift; sourceTree = "<group>"; };
+		9EFFB64124C5F2980073CE59 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		9EFFB64224C5F2980073CE59 /* ProjectTaskMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskMember.swift; sourceTree = "<group>"; };
+		9EFFB64324C5F2980073CE59 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
+		9EFFB64424C5F2980073CE59 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
+		9EFFB64B24C5F2FC0073CE59 /* ProjectTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTaskDataManager.swift; path = ../../../SwiftGit_integrate/SwiftProj/DataManagers/ProjectTaskDataManager.swift; sourceTree = "<group>"; };
+		9EFFB64C24C5F2FC0073CE59 /* ProjectTaskMemberDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTaskMemberDataManager.swift; path = ../../../SwiftGit_integrate/SwiftProj/DataManagers/ProjectTaskMemberDataManager.swift; sourceTree = "<group>"; };
+		9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
+		9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectgroupDataManager.swift; sourceTree = "<group>"; };
+		9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB65524C5F3920073CE59 /* taskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = taskmemberTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB65624C5F3920073CE59 /* RoleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB65724C5F3920073CE59 /* projectmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectmemberTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB65824C5F3930073CE59 /* ProjecttaskmemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjecttaskmemberViewController.swift; sourceTree = "<group>"; };
+		9EFFB65924C5F3930073CE59 /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
+		9EFFB65A24C5F3930073CE59 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		9EFFB65B24C5F3930073CE59 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB65C24C5F3930073CE59 /* invitationnotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = invitationnotiTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB65D24C5F3930073CE59 /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
+		9EFFB65E24C5F3930073CE59 /* projecttaskdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projecttaskdetailViewController.swift; sourceTree = "<group>"; };
+		9EFFB65F24C5F3930073CE59 /* addtask2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtask2ViewController.swift; sourceTree = "<group>"; };
+		9EFFB66024C5F3940073CE59 /* projectnotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectnotificationViewController.swift; sourceTree = "<group>"; };
+		9EFFB66124C5F3940073CE59 /* createproject2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createproject2ViewController.swift; sourceTree = "<group>"; };
+		9EFFB66224C5F3940073CE59 /* addmemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addmemberViewController.swift; sourceTree = "<group>"; };
+		9EFFB66324C5F3940073CE59 /* addtask1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtask1ViewController.swift; sourceTree = "<group>"; };
+		9EFFB66424C5F3940073CE59 /* addmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addmemberTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB66524C5F3940073CE59 /* taskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = taskTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB66624C5F3940073CE59 /* addroleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addroleViewController.swift; sourceTree = "<group>"; };
+		9EFFB66724C5F3950073CE59 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
+		9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
+		9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtaskmemberTableViewCell.swift; sourceTree = "<group>"; };
+		9EFFB66B24C5F3950073CE59 /* memberdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberdetailViewController.swift; sourceTree = "<group>"; };
+		9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Seb_Main.storyboard; sourceTree = "<group>"; };
 		D12CB7282E4BEF5FB337CA01 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
 		F28A1FAA24C5315900F1D0DB /* IndexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
 		F28A1FAC24C531C200F1D0DB /* dom_note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dom_note.swift; sourceTree = "<group>"; };
 		F28A1FAD24C531C200F1D0DB /* dom_tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dom_tag.swift; sourceTree = "<group>"; };
-		F28A1FB024C531EF00F1D0DB /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		F28A1FB324C5327D00F1D0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_Main.storyboard; sourceTree = "<group>"; };
 		F28A1FB924C5336100F1D0DB /* dom_FireStoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dom_FireStoreDataManager.swift; sourceTree = "<group>"; };
 		F28A1FBB24C53B0A00F1D0DB /* TagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
 		F28A1FBC24C53B0A00F1D0DB /* AddNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
@@ -339,8 +391,8 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
+				9EFFB63124C5F1740073CE59 /* BertModel */,
 				F2F5A4FA24C542A3009295E4 /* Dom_Storyboard.storyboard */,
-				89FD654A24C30BD5005A7BEA /* BertModel */,
 				89FD652524C30788005A7BEA /* FindingAnswers.entitlements */,
 				89FBBC9D24B8D3A8001D0EFD /* tessdata */,
 				896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */,
@@ -359,7 +411,7 @@
 				898646EC2464626F00A5C752 /* Main.storyboard */,
 				898646F22464627000A5C752 /* Assets.xcassets */,
 				9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */,
-				F28A1FB224C5327D00F1D0DB /* Seb_Main.storyboard */,
+				9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */,
 				898646F42464627000A5C752 /* LaunchScreen.storyboard */,
 				898646F72464627000A5C752 /* Info.plist */,
 				89E17013247A55CE004C3F45 /* GoogleService-Info.plist */,
@@ -374,12 +426,12 @@
 		8992193D246E44E00029BFF5 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */,
+				9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */,
+				9EFFB64B24C5F2FC0073CE59 /* ProjectTaskDataManager.swift */,
+				9EFFB64C24C5F2FC0073CE59 /* ProjectTaskMemberDataManager.swift */,
+				9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */,
 				F28A1FB924C5336100F1D0DB /* dom_FireStoreDataManager.swift */,
-				89EC5C6E24B7493D005702DD /* ProjectgroupDataManager.swift */,
-				89B4E16F24B2DA5A00B5B841 /* RoleDataManager.swift */,
-				89B4E16D24B2DA2F00B5B841 /* RoleDataManagerOld.swift */,
-				9E5C36A224AEF753006F16B5 /* RoleDataManager.swift */,
-				9E567DBC24AAFC0200DE6CDA /* ProjectDataManager.swift */,
 				8992193E246E450A0029BFF5 /* CaseDataManager.swift */,
 				89921941246E450A0029BFF5 /* CountryDataManager.swift */,
 				89921940246E450A0029BFF5 /* DataManager.swift */,
@@ -452,13 +504,15 @@
 		89F8DA9B2464FEF700B54354 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F28A1FB024C531EF00F1D0DB /* Project.swift */,
+				9EFFB64124C5F2980073CE59 /* Project.swift */,
+				9EFFB64324C5F2980073CE59 /* Projectgroup.swift */,
+				9EFFB64024C5F2980073CE59 /* ProjectTask.swift */,
+				9EFFB64224C5F2980073CE59 /* ProjectTaskMember.swift */,
+				9EFFB64424C5F2980073CE59 /* Role.swift */,
 				F28A1FAC24C531C200F1D0DB /* dom_note.swift */,
 				F28A1FAD24C531C200F1D0DB /* dom_tag.swift */,
 				F28A1FAA24C5315900F1D0DB /* IndexCell.swift */,
 				89FD652624C30852005A7BEA /* Document.swift */,
-				89EC5C7024B7499A005702DD /* Projectgroup.swift */,
-				9E5C36A524AEF790006F16B5 /* Role.swift */,
 				89921947246E45290029BFF5 /* Case.swift */,
 				89921946246E45290029BFF5 /* SavedCountry.swift */,
 				89FE2A5C246477720006F595 /* Task.swift */,
@@ -469,25 +523,49 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		89FD654A24C30BD5005A7BEA /* BertModel */ = {
-			isa = PBXGroup;
-			children = (
-				89FD655124C30BFF005A7BEA /* bert-base-uncased-vocab.txt */,
-				89FD654F24C30BFB005A7BEA /* BERT.swift */,
-				89FD654E24C30BF9005A7BEA /* BERTInput.swift */,
-				89FD655024C30BFD005A7BEA /* BERTOutput.swift */,
-				89FD654D24C30BF7005A7BEA /* BERTQAFP16.mlmodel */,
-				89FD654C24C30BF5005A7BEA /* BERTVocabulary.swift */,
-				89FD654B24C30BF3005A7BEA /* TokenizedString.swift */,
-			);
-			path = BertModel;
-			sourceTree = "<group>";
-		};
 		9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9EFFB66424C5F3940073CE59 /* addmemberTableViewCell.swift */,
+				9EFFB66224C5F3940073CE59 /* addmemberViewController.swift */,
+				9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */,
+				9EFFB66624C5F3940073CE59 /* addroleViewController.swift */,
+				9EFFB66324C5F3940073CE59 /* addtask1ViewController.swift */,
+				9EFFB65F24C5F3930073CE59 /* addtask2ViewController.swift */,
+				9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */,
+				9EFFB66124C5F3940073CE59 /* createproject2ViewController.swift */,
+				9EFFB65D24C5F3930073CE59 /* createprojectViewController.swift */,
+				9EFFB65C24C5F3930073CE59 /* invitationnotiTableViewCell.swift */,
+				9EFFB66B24C5F3950073CE59 /* memberdetailViewController.swift */,
+				9EFFB65B24C5F3930073CE59 /* MemberTableViewCell.swift */,
+				9EFFB66724C5F3950073CE59 /* MemberViewController.swift */,
+				9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */,
+				9EFFB65924C5F3930073CE59 /* projectdetail1ViewController.swift */,
+				9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */,
+				9EFFB65724C5F3920073CE59 /* projectmemberTableViewCell.swift */,
+				9EFFB66024C5F3940073CE59 /* projectnotificationViewController.swift */,
+				9EFFB65E24C5F3930073CE59 /* projecttaskdetailViewController.swift */,
+				9EFFB65824C5F3930073CE59 /* ProjecttaskmemberViewController.swift */,
+				9EFFB65A24C5F3930073CE59 /* ProjectViewController.swift */,
+				9EFFB65624C5F3920073CE59 /* RoleTableViewCell.swift */,
+				9EFFB65524C5F3920073CE59 /* taskmemberTableViewCell.swift */,
+				9EFFB66524C5F3940073CE59 /* taskTableViewCell.swift */,
 			);
 			path = Seb_ViewControllers;
+			sourceTree = "<group>";
+		};
+		9EFFB63124C5F1740073CE59 /* BertModel */ = {
+			isa = PBXGroup;
+			children = (
+				9EFFB63524C5F19E0073CE59 /* bert-base-uncased-vocab.txt */,
+				9EFFB63724C5F19E0073CE59 /* BERT.swift */,
+				9EFFB63324C5F19E0073CE59 /* BERTInput.swift */,
+				9EFFB63224C5F19E0073CE59 /* BERTOutput.swift */,
+				9EFFB63424C5F19E0073CE59 /* BERTQAFP16.mlmodel */,
+				9EFFB63624C5F19E0073CE59 /* BERTVocabulary.swift */,
+				9EFFB63824C5F19F0073CE59 /* TokenizedString.swift */,
+			);
+			path = BertModel;
 			sourceTree = "<group>";
 		};
 		C43BFB3B8B0F2346BDC6FCD4 /* Pods */ = {
@@ -572,10 +650,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */,
 				89B4E15F24B2C76C00B5B841 /* business-woman-colour-400px.png in Resources */,
 				89B4E16824B2C76C00B5B841 /* business-woman-colour-800px.png in Resources */,
 				89B4E16024B2C76C00B5B841 /* business-woman-colour.psd in Resources */,
-				F28A1FB424C5327E00F1D0DB /* Seb_Main.storyboard in Resources */,
 				89B4E16324B2C76C00B5B841 /* startScreenVid.mp4 in Resources */,
 				89B4E16924B2C76C00B5B841 /* student-colour-400px.png in Resources */,
 				89B4E16524B2C76C00B5B841 /* startScreenVid.mp4.zip in Resources */,
@@ -586,7 +664,7 @@
 				89B4E16124B2C76C00B5B841 /* business-woman-colour.svg in Resources */,
 				89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */,
 				8954EE2D24C0751700039BDF /* BottomSheetViewController.xib in Resources */,
-				89FD655824C30BFF005A7BEA /* bert-base-uncased-vocab.txt in Resources */,
+				9EFFB63C24C5F19F0073CE59 /* bert-base-uncased-vocab.txt in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
 				89B4E16A24B2C76C00B5B841 /* unlock-monochrome-1200px.png in Resources */,
 				89B4E16424B2C76C00B5B841 /* student-colour.svg in Resources */,
@@ -668,82 +746,102 @@
 				8954EE2924C06F8400039BDF /* IndividualTaskViewController.swift in Sources */,
 				8954EE2B24C06FE300039BDF /* BottomSheetViewController.swift in Sources */,
 				9E62D98324BE1BBC003462F1 /* (null) in Sources */,
+				9EFFB66C24C5F3950073CE59 /* ProjectCellTableViewCell.swift in Sources */,
 				9E62D92924BE1B5A003462F1 /* (null) in Sources */,
 				8992194D246E45760029BFF5 /* HTTP.swift in Sources */,
-				89B4E16E24B2DA2F00B5B841 /* RoleDataManagerOld.swift in Sources */,
 				F28A1FBF24C53B0A00F1D0DB /* TagsTableViewController.swift in Sources */,
 				89921942246E450A0029BFF5 /* CaseDataManager.swift in Sources */,
+				9EFFB67F24C5F3950073CE59 /* MemberViewController.swift in Sources */,
 				89FD652B24C3085F005A7BEA /* DetailViewController.swift in Sources */,
 				9E62D97324BE1BBB003462F1 /* (null) in Sources */,
-				89FD655724C30BFF005A7BEA /* BERTOutput.swift in Sources */,
+				9EFFB63A24C5F19F0073CE59 /* BERTInput.swift in Sources */,
 				898646EB2464626F00A5C752 /* ViewController.swift in Sources */,
 				898646FE2464651C00A5C752 /* EntryViewController.swift in Sources */,
 				9E62D92524BE1AF0003462F1 /* (null) in Sources */,
 				89921950246E459C0029BFF5 /* SQLiteDB.swift in Sources */,
+				9EFFB67824C5F3950073CE59 /* projectnotificationViewController.swift in Sources */,
+				9EFFB67124C5F3950073CE59 /* projectdetail1ViewController.swift in Sources */,
 				9E62D98224BE1BBC003462F1 /* (null) in Sources */,
 				9E62D98124BE1BBC003462F1 /* (null) in Sources */,
-				89B4E17024B2DA5A00B5B841 /* RoleDataManager.swift in Sources */,
+				9EFFB67324C5F3950073CE59 /* MemberTableViewCell.swift in Sources */,
 				89FD655A24C3448B005A7BEA /* IndexerCollectionViewController.swift in Sources */,
 				9E62D92324BE1A88003462F1 /* (null) in Sources */,
+				9EFFB65124C5F2FD0073CE59 /* ProjectTaskMemberDataManager.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				9E62D97624BE1BBB003462F1 /* (null) in Sources */,
 				9E62D97424BE1BBB003462F1 /* (null) in Sources */,
+				9EFFB64924C5F2980073CE59 /* Role.swift in Sources */,
 				9E62D97E24BE1BBC003462F1 /* (null) in Sources */,
+				9EFFB67A24C5F3950073CE59 /* addmemberViewController.swift in Sources */,
 				9E62D97124BE1BBB003462F1 /* (null) in Sources */,
+				9EFFB64F24C5F2FD0073CE59 /* ProjectDataManager.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
+				9EFFB63924C5F19F0073CE59 /* BERTOutput.swift in Sources */,
+				9EFFB67224C5F3950073CE59 /* ProjectViewController.swift in Sources */,
+				9EFFB67E24C5F3950073CE59 /* addroleViewController.swift in Sources */,
 				897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */,
-				89FD655324C30BFF005A7BEA /* BERTVocabulary.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
+				9EFFB67B24C5F3950073CE59 /* addtask1ViewController.swift in Sources */,
+				9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
+				9EFFB67724C5F3950073CE59 /* addtask2ViewController.swift in Sources */,
 				F28A1FAE24C531C200F1D0DB /* dom_note.swift in Sources */,
 				9E62D97D24BE1BBC003462F1 /* (null) in Sources */,
 				F28A1FC024C53B0A00F1D0DB /* AddNoteViewController.swift in Sources */,
-				9E5C36A824AEF790006F16B5 /* Role.swift in Sources */,
+				9EFFB68024C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift in Sources */,
 				89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */,
 				9E62D97C24BE1BBC003462F1 /* (null) in Sources */,
 				F28A1FAF24C531C200F1D0DB /* dom_tag.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
+				9EFFB64824C5F2980073CE59 /* Projectgroup.swift in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
 				F28A1FC124C53B0A00F1D0DB /* NotesTableViewController.swift in Sources */,
 				9E62D97524BE1BBB003462F1 /* (null) in Sources */,
 				898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */,
+				9EFFB66E24C5F3950073CE59 /* RoleTableViewCell.swift in Sources */,
 				89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */,
+				9EFFB65324C5F2FD0073CE59 /* ProjectgroupDataManager.swift in Sources */,
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
-				89EC5C6F24B7493D005702DD /* ProjectgroupDataManager.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */,
-				89FD655224C30BFF005A7BEA /* TokenizedString.swift in Sources */,
 				8906484924B4C8AC00325C5B /* (null) in Sources */,
 				896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */,
+				9EFFB63F24C5F19F0073CE59 /* TokenizedString.swift in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
+				9EFFB65024C5F2FD0073CE59 /* ProjectTaskDataManager.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,
-				F28A1FB124C531EF00F1D0DB /* Project.swift in Sources */,
+				9EFFB66D24C5F3950073CE59 /* taskmemberTableViewCell.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
 				89A94E0524C023C600287A03 /* IndividualCollectionViewCell.swift in Sources */,
+				9EFFB68124C5F3950073CE59 /* projectdetail2ViewController.swift in Sources */,
+				9EFFB65224C5F2FD0073CE59 /* RoleDataManager.swift in Sources */,
 				89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */,
+				9EFFB68224C5F3950073CE59 /* addtaskmemberTableViewCell.swift in Sources */,
+				9EFFB67924C5F3950073CE59 /* createproject2ViewController.swift in Sources */,
 				9E62D97224BE1BBB003462F1 /* (null) in Sources */,
 				89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */,
 				F28A1FAB24C5315900F1D0DB /* IndexCell.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
-				89FD655424C30BFF005A7BEA /* BERTQAFP16.mlmodel in Sources */,
 				9E62D98524BE1BBC003462F1 /* (null) in Sources */,
+				9EFFB67D24C5F3950073CE59 /* taskTableViewCell.swift in Sources */,
 				F28A1FBA24C5336100F1D0DB /* dom_FireStoreDataManager.swift in Sources */,
-				89FD655624C30BFF005A7BEA /* BERT.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
 				89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */,
+				9EFFB67024C5F3950073CE59 /* ProjecttaskmemberViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
 				89517C81247233AC00503219 /* BreakViewController.swift in Sources */,
 				9E62D97924BE1BBB003462F1 /* (null) in Sources */,
+				9EFFB64724C5F2980073CE59 /* ProjectTaskMember.swift in Sources */,
 				9E62D97F24BE1BBC003462F1 /* (null) in Sources */,
 				8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */,
+				9EFFB68324C5F3950073CE59 /* memberdetailViewController.swift in Sources */,
 				9E62D97824BE1BBB003462F1 /* (null) in Sources */,
-				89EC5C7124B7499B005702DD /* Projectgroup.swift in Sources */,
 				F28A1FC224C53B0A00F1D0DB /* SideMenuTableViewController.swift in Sources */,
 				9E62D91F24BE1A0C003462F1 /* (null) in Sources */,
-				89FD655524C30BFF005A7BEA /* BERTInput.swift in Sources */,
+				9EFFB66F24C5F3950073CE59 /* projectmemberTableViewCell.swift in Sources */,
 				9E62D92124BE1A38003462F1 /* (null) in Sources */,
 				9E62D98424BE1BBC003462F1 /* (null) in Sources */,
 				9E62D96F24BE1BBB003462F1 /* (null) in Sources */,
@@ -751,17 +849,23 @@
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,
 				9E62D97B24BE1BBB003462F1 /* (null) in Sources */,
 				9E62D97A24BE1BBB003462F1 /* (null) in Sources */,
-				9E5C36A424AEF753006F16B5 /* RoleDataManager.swift in Sources */,
+				9EFFB63E24C5F19F0073CE59 /* BERT.swift in Sources */,
 				89FD652924C3085B005A7BEA /* MasterViewController.swift in Sources */,
 				9E62D98024BE1BBC003462F1 /* (null) in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
+				9EFFB67524C5F3950073CE59 /* createprojectViewController.swift in Sources */,
+				9EFFB63D24C5F19F0073CE59 /* BERTVocabulary.swift in Sources */,
 				89E17010247A538A004C3F45 /* User.swift in Sources */,
 				89FD652724C30852005A7BEA /* Document.swift in Sources */,
+				9EFFB63B24C5F19F0073CE59 /* BERTQAFP16.mlmodel in Sources */,
+				9EFFB67424C5F3950073CE59 /* invitationnotiTableViewCell.swift in Sources */,
 				9E62D97724BE1BBB003462F1 /* (null) in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
+				9EFFB67C24C5F3950073CE59 /* addmemberTableViewCell.swift in Sources */,
 				F272C1CC24BB68F900CCD185 /* (null) in Sources */,
 				F2DE2A9E24C2C61F006EC81F /* (null) in Sources */,
-				9E567DBD24AAFC0200DE6CDA /* ProjectDataManager.swift in Sources */,
+				9EFFB67624C5F3950073CE59 /* projecttaskdetailViewController.swift in Sources */,
+				9EFFB64624C5F2980073CE59 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,14 +894,6 @@
 				9E567DC124AAFC3200DE6CDA /* Base */,
 			);
 			name = Seb_LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		F28A1FB224C5327D00F1D0DB /* Seb_Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F28A1FB324C5327D00F1D0DB /* Base */,
-			);
-			name = Seb_Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -9,7 +9,7 @@
 import UIKit
 
 class addmemberViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
-
+    
 
     @IBOutlet var searchfield: UITextField!
     @IBOutlet var tableview: UITableView!
@@ -21,17 +21,18 @@ class addmemberViewController: UIViewController , UITableViewDelegate, UITableVi
         loaduser()        // Do any additional setup after loading the view.
         searchfield.addTarget(self, action: #selector(addmemberViewController.searchfieldDidchange(_:)),for: .editingChanged)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            return newuserList.count
        }
-
+       
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell : addmemberTableViewCell = tableView.dequeueReusableCell (withIdentifier: "usercell", for: indexPath)
+           let cell : addmemberTableViewCell = tableView
+           .dequeueReusableCell (withIdentifier: "usercell", for: indexPath)
            as!     addmemberTableViewCell
            let p = newuserList[indexPath.row]
            cell.username.text = p.username
-
+            
             var projectid : Int = projectItem!.projectId!
             print(projectid)
             if(ProjectgroupDataManager.loadprojectidanduserid(projectid: projectid, userid: p.uid, invited: 1).isEmpty == false){
@@ -39,15 +40,15 @@ class addmemberViewController: UIViewController , UITableViewDelegate, UITableVi
             }
            cell.buttonPressed = {
             if(ProjectgroupDataManager.loadprojectidanduserid(projectid: projectid, userid: p.uid, invited: 1).isEmpty){
-                ProjectgroupDataManager.insertOrReplace(projectgroup: Projectgroup(groupid: 0, projectid: projectid, userid: p.uid,username:p.username, invited: 1, subscribe: 0))
+                ProjectgroupDataManager.insertOrReplace(projectgroup: Projectgroup(groupid: 0, projectid: projectid, userid: p.uid,username:p.username,role:"default", invited: 1, subscribe: 0))
                 cell.invitebtn.setTitle("Invited", for: .normal)
             }
-
+              
            }
            return cell
        }
     @IBAction func searchaction(_ sender: Any) {
-
+        
     }
     @objc func searchfieldDidchange(_ textfield:UITextField){
         var searchtext : String = searchfield.text!
@@ -55,12 +56,12 @@ class addmemberViewController: UIViewController , UITableViewDelegate, UITableVi
         for i in userList{
             if i.username.contains(searchtext){
                 newuserList.append(i)
-
+                
             }
         }
         self.tableview.reloadData()
     }
-
+    
     func loaduser()
     {
     // This is a special way to call loadMovies. //
@@ -75,9 +76,20 @@ class addmemberViewController: UIViewController , UITableViewDelegate, UITableVi
     // async loading from Firestore is complete.
     // What it is to reassigned the new list loaded
     // from Firestore.
-
+    
         self.userList = userListFromFirestore
     // Once done, call on the Table View to reload // all its contents
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue,
+        sender: Any?){
+          if(segue.identifier == "seguetomemberview")
+                  {
+                 let detailViewController = segue.destination as!
+                  MemberViewController
+                     detailViewController.projectItem = self.projectItem
+                
+                 }
+
     }
 }
