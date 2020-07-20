@@ -1975,7 +1975,7 @@
                 <navigationController title="Notes" automaticallyAdjustsScrollViewInsets="NO" id="G56-99-Gf5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notes" image="n.square" catalog="system" id="HMM-bw-IOT"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QD6-ln-5bd">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QD6-ln-5bd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

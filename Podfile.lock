@@ -356,6 +356,7 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
+  - SideMenu (6.4.8)
   - PromisesObjC (1.2.9)
   - TesseractOCRiOS (5.0.1)
 
@@ -368,7 +369,6 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FSCalendar
   - GoogleSignIn
-  - TesseractOCRiOS
 
 SPEC REPOS:
   trunk:
@@ -397,7 +397,6 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - TesseractOCRiOS
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -424,9 +423,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
-  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
-  TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: 163a4227d179d4b3c9afb3927659345b4d498963
+PODFILE CHECKSUM: e2e266394a58e55541af092ba0ee71986c8f190f
 
 COCOAPODS: 1.9.1
