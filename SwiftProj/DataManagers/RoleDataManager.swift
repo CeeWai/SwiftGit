@@ -82,7 +82,6 @@ class RoleDataManager: NSObject {
             ]
             )
         }
-        
         static func deleteMovie(role: Role)
         {
         SQLiteDB.sharedInstance.execute(
