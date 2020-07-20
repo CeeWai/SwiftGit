@@ -153,16 +153,30 @@ UITableViewDelegate, UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         navtitle.title=projectItem?.projectName
-        addtask.layer.cornerRadius = 10
+        addtask.layer.cornerRadius = 40
         addtask.layer.borderColor = UIColor.systemRed.cgColor
         addtask.layer.borderWidth = 2;
         addtask.layer.backgroundColor = UIColor.black.cgColor
+        addtask.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         board.layer.borderWidth = 2;
-        board.layer.cornerRadius = 7
+        board.layer.cornerRadius = 0
         board.layer.borderColor = UIColor.systemRed.cgColor
-        ganttchart.layer.borderWidth = 2;
-        ganttchart.layer.cornerRadius = 7
+        ganttchart.layer.borderWidth = 0;
+        ganttchart.layer.cornerRadius = 0
         ganttchart.layer.borderColor = UIColor.systemRed.cgColor
+        btn1.layer.cornerRadius = 10
+        btn1.layer.borderColor = UIColor.systemRed.cgColor
+        btn1.layer.borderWidth = 2;
+        btn1.layer.backgroundColor = UIColor.black.cgColor
+        btn2.layer.cornerRadius = 10
+        btn2.layer.borderColor = UIColor.systemRed.cgColor
+        btn2.layer.borderWidth = 0;
+        btn2.layer.backgroundColor = UIColor.black.cgColor
+        btn3.layer.cornerRadius = 10
+        btn3.layer.borderColor = UIColor.systemRed.cgColor
+        btn3.layer.borderWidth = 0;
+        btn3.layer.backgroundColor = UIColor.black.cgColor
+        taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
         if (self.restorationIdentifier == "detailtodo"){
             btn1.layer.cornerRadius = 10
             btn1.layer.borderColor = UIColor.systemRed.cgColor
@@ -215,40 +229,69 @@ UITableViewDelegate, UITableViewDataSource{
     }
     */
     @IBOutlet var popover: UIView!
+    @IBOutlet var popover2: UIView!
+    @IBOutlet var popover3: UIView!
     
     @IBAction func popovermenu(_ sender: Any) {
         //popover.frame.origin.x = CGFloat(10.0)
         //popover.frame.origin.x = CGFloat(44.0)
-        if popoverstatus == 1{
-            self.popover.removeFromSuperview()
-            popoverstatus = 0
+        if (self.restorationIdentifier == "detailtodo"){
+            if popoverstatus == 1{
+                self.popover.removeFromSuperview()
+                popoverstatus = 0
+            }
+            if popoverstatus == 0{
+                self.view.addSubview(popover)
+                let superView = self.view.superview
+                superView!.addSubview(popover)
+                popover.translatesAutoresizingMaskIntoConstraints = false
+
+                NSLayoutConstraint.activate([
+
+                        // 5
+                        NSLayoutConstraint(item: popover, attribute: .top, relatedBy: .equal, toItem: superView, attribute: .top, multiplier: 1.0, constant: 60),
+
+                        // 6
+                        NSLayoutConstraint(item: popover, attribute: .right, relatedBy: .equal, toItem: superView, attribute: .right, multiplier: 1.0, constant: 160),
+
+                        // 7
+                        popover.heightAnchor.constraint(equalToConstant:110),
+            
+                        //8
+                        popover.widthAnchor.constraint(equalToConstant: 300)
+                    ])
+                popoverstatus = 1
+            }
         }
-        if popoverstatus == 0{
-            self.view.addSubview(popover)
-            let superView = self.view.superview
-            superView!.addSubview(popover)
-            popover.translatesAutoresizingMaskIntoConstraints = false
-
-            NSLayoutConstraint.activate([
-
-                    // 5
-                    NSLayoutConstraint(item: popover, attribute: .top, relatedBy: .equal, toItem: superView, attribute: .top, multiplier: 1.0, constant: 60),
-
-                    // 6
-                    NSLayoutConstraint(item: popover, attribute: .right, relatedBy: .equal, toItem: superView, attribute: .right, multiplier: 1.0, constant: 160),
-
-                    // 7
-                    popover.heightAnchor.constraint(equalToConstant:200),
-        
-                    //8
-                    popover.widthAnchor.constraint(equalToConstant: 300)
-                ])
-            popoverstatus = 1
-        }
-        
-        
     }
     
+    @IBAction func btn1pressed(_ sender: Any) {
+        btn1.layer.borderWidth = 2;
+        btn2.layer.borderWidth = 0;
+        btn3.layer.borderWidth = 0;
+        btn1.layer.backgroundColor = UIColor.black.cgColor
+        taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
+        tableview1.reloadData()
+    }
+    
+    @IBAction func btn2pressed(_ sender: Any) {
+        btn1.layer.borderWidth = 0;
+        btn2.layer.borderWidth = 2;
+        btn3.layer.borderWidth = 0;
+        btn1.layer.backgroundColor = UIColor.black.cgColor
+        taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 1)
+        tableview1.reloadData()
+        
+    }
+    @IBAction func btn3pressed(_ sender: Any) {
+        btn1.layer.borderWidth = 0;
+        btn2.layer.borderWidth = 0;
+        btn3.layer.borderWidth = 2;
+        btn1.layer.backgroundColor = UIColor.black.cgColor
+        taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 2)
+        tableview1.reloadData()
+        
+    }
     @IBAction func closepopover(_ sender: Any) {
         self.popover.removeFromSuperview()
     }

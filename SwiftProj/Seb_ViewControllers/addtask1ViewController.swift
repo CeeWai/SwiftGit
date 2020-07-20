@@ -99,6 +99,12 @@ class addtask1ViewController: UIViewController {
             detailViewController.projecttaskItem = ProjectTask(taskid: 0, projectid: projectItem?.projectId!, userid: userid, taskname: taskname!, taskgoal: taskgoal, startdate: startdateraw!, enddate: enddateraw!,status: 0, valid: 1)
             detailViewController.projectItem = self.projectItem!
         }
+        if(segue.identifier == "seguetoprojectdetail")
+         {
+        let detailViewController = segue.destination as!
+         projectdetail1ViewController
+            detailViewController.projectItem = self.projectItem
+        }
     }
 }
 

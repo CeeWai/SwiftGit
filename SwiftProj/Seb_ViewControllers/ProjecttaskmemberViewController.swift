@@ -30,6 +30,7 @@ class ProjecttaskmemberViewController: UIViewController,UITableViewDelegate, UIT
         .dequeueReusableCell (withIdentifier: "taskmembercell", for: indexPath)
         as! taskmemberTableViewCell
         let p = taskmember[indexPath.row]
+        print(p.username)
         cell.membername.text = p.username
         return cell
         
@@ -46,11 +47,11 @@ class ProjecttaskmemberViewController: UIViewController,UITableViewDelegate, UIT
     */
     override func prepare(for segue: UIStoryboardSegue,
            sender: Any?){
-           if(segue.identifier == "seguetotaskmember")
+           if(segue.identifier == "seguetotask")
            {
                let detailViewController =
                    segue.destination as!
-               ProjecttaskmemberViewController
+               projecttaskdetailViewController
                detailViewController.projectItem = projectItem
                detailViewController.projecttask = projecttask!
            }
