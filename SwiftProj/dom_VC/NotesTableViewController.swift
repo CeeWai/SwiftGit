@@ -13,7 +13,8 @@ import SideMenu
 
 class NotesTableViewController: UITableViewController{
     var fStore : Firestore?
-    @IBOutlet var dom_tableView: UITableView!
+    
+    //@IBOutlet var dom_tableView: UITableView!
     var noteList : [dom_note] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,8 @@ class NotesTableViewController: UITableViewController{
         }*/
 
         
-        dom_tableView.delegate = self
-        dom_tableView.dataSource = self
+        self.tableView.delegate = self
+       self.tableView.dataSource = self
 //        let notesRef = fStore?.collection("notes")// change to load only 1 user data
 //         notesRef?.getDocuments(completion: { (snapshot, error) in
 //             if let error = error {
@@ -53,7 +54,7 @@ class NotesTableViewController: UITableViewController{
         let fsdbManager = dom_FireStoreDataManager()
         fsdbManager.loadNotesDB(){notesList in
             self.noteList = notesList
-            self.dom_tableView.reloadData()
+            self.tableView.reloadData()
         }
         print(self.noteList.count)
            
@@ -76,12 +77,12 @@ class NotesTableViewController: UITableViewController{
         }*/
 
         
-        dom_tableView.delegate = self
-        dom_tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         let fsdbManager = dom_FireStoreDataManager()
         fsdbManager.loadNotesDB(){notesList in
             self.noteList = notesList
-            self.dom_tableView.reloadData()
+                    self.tableView.reloadData()
         }
         print("noteList count:" + String(self.noteList.count))
         self.navigationController?.tabBarController?.tabBar.isHidden = false
@@ -113,7 +114,7 @@ class NotesTableViewController: UITableViewController{
         if(segue.identifier == "showNote")
          {
             let addNoteViewController = segue.destination as! AddNoteViewController
-            let myIndexPath = self.dom_tableView.indexPathForSelectedRow
+            let myIndexPath = self.tableView.indexPathForSelectedRow
             if(myIndexPath != nil) {
                 let note = noteList[myIndexPath!.row]
                 print("Selected row: " + String(myIndexPath!.row))
