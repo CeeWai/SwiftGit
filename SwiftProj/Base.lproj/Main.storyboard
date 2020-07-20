@@ -2211,7 +2211,9 @@
                         <viewLayoutGuide key="safeArea" id="5Ad-Y3-YcD"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Document" id="A1P-cp-e1h"/>
+                    <navigationItem key="navigationItem" title="Document" id="A1P-cp-e1h">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="trash" catalog="system" id="sr7-M5-Kgh"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cameraOCRBttn" destination="gJe-h9-RrD" id="cSQ-tm-VSY"/>
                         <outlet property="documentTextView" destination="sK6-0H-sKG" id="q7N-Hc-Yhr"/>
@@ -2227,7 +2229,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tcx-uY-OZl"/>
+        <segue reference="DAI-0f-AcZ"/>
         <segue reference="HHA-cG-qB7"/>
         <segue reference="Mo5-0d-Opj"/>
     </inferredMetricsTieBreakers>
@@ -2245,6 +2247,7 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="student-icon" width="400" height="506.66665649414062"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <image name="unlock" width="400" height="466.33334350585938"/>
         <namedColor name="Color">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
