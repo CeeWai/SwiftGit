@@ -105,6 +105,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     let speechRecognizer = SpeechRecognizer()
     let speechSynthesizer = SpeechSynthesizer()
     @IBOutlet weak var startCameraRecognitionButton: UIButton!
+    var editTask: Task?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +131,34 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         //
         if let tesseract = G8Tesseract(language: "eng") {
             tesseract.delegate = self
+        }
+        
+        if editTask != nil {
+            titleTextField.text = editTask!.taskName
+            descTextView.text = editTask!.taskDesc
+            let dateFormatterStart = DateFormatter()
+            dateFormatterStart.dateFormat = "h:mm a"
+            let startDateString = dateFormatterStart.string(from: editTask!.taskStartTime)
+            chosenStartTimeLabel.text = startDateString
+            let dateFormatterEnd = DateFormatter()
+            dateFormatterEnd.dateFormat = "h:mm a"
+            let endDateString = dateFormatterEnd.string(from: editTask!.taskEndTime)
+            chosenEndTimeLabel.text = endDateString
+            chosenRepeatLabel.text = editTask!.repeatType
+            chosenRepeatLabel.isHidden = false
+            subjectTextField.text = editTask!.subject
+            importanceLabel.text = editTask!.importance
+            chosenStartTimeLabel.isHidden = false
+            scheduleEndTimeCell.isHidden = false
+            chosenEndTimeLabel.isHidden = false
+            predictHoursPerTask()
+            if traitCollection.userInterfaceStyle == .dark {
+                descTextView.textColor = UIColor.white
+
+            } else {
+                descTextView.textColor = UIColor.black
+
+            }
         }
     }
     
@@ -327,18 +356,28 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 if taskListFromFirestore != nil {
                     taskListLength = taskListFromFirestore.count
                 }
+                var task = Task(taskID: user!.uid + "\(taskListLength)", taskName: self.titleTextField.text!, taskDesc: self.descTextView.text, taskStartTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!, importance: self.importanceLabel.text!, subject: self.subjectTextField.text!, lastStartDelayedTime: nil, lastEndDelayedTime: nil)
                 
-                var task = Task(taskID: user!.uid + "\(taskListLength)", taskName: self.titleTextField.text!, taskDesc: self.descTextView.text, taskStartTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!, importance: self.importanceLabel.text!, subject: self.subjectTextField.text!)
-                
+                if self.editTask != nil {
+                    task.taskID = self.editTask!.taskID
+                }
                 print("name: \(self.titleTextField.text!), description: \(self.descTextView!.text!), startTime: \(dateStartCurrent!), taskEndTime: \(dateEndCurrent!), repeatType: \(self.chosenRepeatLabel.text!), taskOwner: \(user!.email!)")
                 
                 // Insert task into firebase
                 DataManager.insertOrReplaceTask(task)
                 self.taskViewController?.tableView.reloadData() // reload the tableview before popping back
                 
-                self.delegate?.passReloadDataBack(data: self.userCurrentDate!)
-                self.dismiss(animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: true)
+                if self.editTask != nil {
+                    let homeViewController = (self.storyboard?.instantiateViewController(identifier: "MainController"))
+                    self.view.window?.rootViewController = homeViewController
+                    self.present(homeViewController!, animated: true)
+                } else {
+                    
+                    self.delegate?.passReloadDataBack(data: self.userCurrentDate!)
+                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                }
+
 
             }
         }

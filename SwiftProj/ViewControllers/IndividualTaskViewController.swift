@@ -2,41 +2,66 @@
 //  IndividualTaskViewController.swift
 //  SwiftProj
 //
-//  Created by Ong Chong Yong on 12/7/20.
+//  Created by Ong Chong Yong on 16/7/20.
 //  Copyright © 2020 Ong Chong Yong. All rights reserved.
 //
 
 import UIKit
 
-class IndividualTaskViewController: UITableViewController {
+class IndividualTaskViewController: UIViewController {
 
     var individualTask: Task?
+    var userCurrentDate: Date?
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var infoCardCell: UITableViewCell!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dayTimeLabel: UILabel!
     @IBOutlet weak var hourTimeLabel: UILabel!
-    @IBOutlet weak var infoCardView: UIView!
+    @IBOutlet weak var timeView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Do any additional setup after loading the view.
         titleLabel.text = individualTask?.taskName
-        print("title: \(individualTask?.taskName) description: \(individualTask?.taskDesc)")
-        descriptionLabel.text = individualTask?.taskDesc
-        titleLabel.sizeToFit()
-        descriptionLabel.sizeToFit()
+        //dayTimeLabel.text = individualTask
+        let weekDayFormatter = DateFormatter()
+        weekDayFormatter.dateFormat = "d EEEE YYYY"
+        let weekDayString = weekDayFormatter.string(from: individualTask!.taskStartTime)
+        dayTimeLabel.text = weekDayString
         
-        timeLabel.text = "Placeholder for the time label"
-        descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus mi auctor feugiat pharetra. Phasellus id nisl id odio facilisis venenatis eget laoreet velit. Sed dictum vitae erat non maximus. Praesent eget turpis vel neque varius sollicitudin a a turpis. Pellentesque volutpat tincidunt odio at vehicula. Suspendisse varius sodales augue, sed maximus nibh maximus non. Sed semper efficitur rutrum. Nullam in lacus eget diam consequat finibus. Suspendisse tincidunt et sem a dignissim."
+        let hourTimeFormatter = DateFormatter()
+        hourTimeFormatter.dateFormat = "h:mm a"
+        let hourStartTimeString = hourTimeFormatter.string(from: individualTask!.taskStartTime)
+        let hourEndTimeString = hourTimeFormatter.string(from: individualTask!.taskEndTime)
+        var dateTime = "\(hourStartTimeString) - \(hourEndTimeString)"
+        hourTimeLabel.text = dateTime
+        timeView.layer.cornerRadius = 10
         
-        
-        self.tableView.rowHeight = UITableView.automaticDimension;
-        infoCardView.setNeedsLayout()
-        infoCardView.layoutIfNeeded()
-        print(infoCardView.fs_height)
-
     }
-
-
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addBottomSheetView()
+    }
+    
+    func addBottomSheetView() {
+        let bottomSheetVC = BottomSheetViewController()
+        bottomSheetVC.task = individualTask
+        //print(individualTask)
+        
+        self.addChild(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParent: self)
+        
+        let height = view.frame.height
+        let width = view.frame.width
+        bottomSheetVC.view.frame = CGRect(x: 0, y: view.frame.maxY + 20, width: width, height: height)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editTaskSegue" {
+            let editViewController = segue.destination as! EntryViewController
+            editViewController.editTask = individualTask
+            editViewController.userCurrentDate = userCurrentDate
+        }
+    }
 }

@@ -73,6 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         calendar.dataSource = self
         tableView.delegate = self
         // instantiate default tasks (today's task)
+        
         loadTaskListFromDate(date: Date())
         //loadTaskInAdvance()
 
@@ -207,12 +208,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if myIndexPath!.section == 0 {
                     let task = self.completedTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
+                    detailViewController.userCurrentDate = self.userCurrentDate
+
                 } else if myIndexPath!.section == 1 {
                     let task = self.currentTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
+                    detailViewController.userCurrentDate = self.userCurrentDate
+
                 } else {
                     let task = self.upcomingTaskList[myIndexPath!.row]
                     detailViewController.individualTask = task
+                    detailViewController.userCurrentDate = self.userCurrentDate
+
                 }
 
             }
@@ -245,15 +252,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if Calendar.current.isDate(date, inSameDayAs: Date()) {
             print("Same Day")
-            breakButton.isEnabled = true
+            //breakButton.isEnabled = true
             addTaskButton.isEnabled = true
         } else if date < Date() {
-            print("Less than today")
-            breakButton.isEnabled = false
-            addTaskButton.isEnabled = false
+//            print("Less than today")
+//            breakButton.isEnabled = false
+//            addTaskButton.isEnabled = false
         } else {
             print("More than today")
-            breakButton.isEnabled = false
+            //breakButton.isEnabled = false
             addTaskButton.isEnabled = true
         }
         
@@ -269,49 +276,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
         
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        var cellEvents = 0
+        
+        if date >= Date() {
+            var cellEvents = 0
 
-        DataManager.loadTasks { fullUserTaskList in
-            var isDaily = false
-            
-            for task in fullUserTaskList {
-                if task.repeatType == "Daily" {
-                    isDaily = true
+            DataManager.loadTasks { fullUserTaskList in
+                var isDaily = false
+                
+                for task in fullUserTaskList {
+                    if task.repeatType == "Daily" {
+                        isDaily = true
+                    }
+                    
+                    let currentWeekDayFormatter = DateFormatter()
+                    currentWeekDayFormatter.dateFormat = "EEEE"
+                    let currentWeekDayString = currentWeekDayFormatter.string(from: date)
+
+                    let weekDayFormatter = DateFormatter()
+                    weekDayFormatter.dateFormat = "EEEE"
+                    let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
+                    //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
+
+                    if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{ // check if weekly
+                        cellEvents += 1
+                    }
+                    
+                    if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
+                        cellEvents += 1
+                    }
                 }
                 
-                let currentWeekDayFormatter = DateFormatter()
-                currentWeekDayFormatter.dateFormat = "EEEE"
-                let currentWeekDayString = currentWeekDayFormatter.string(from: date)
-
-                let weekDayFormatter = DateFormatter()
-                weekDayFormatter.dateFormat = "EEEE"
-                let weekDayString = weekDayFormatter.string(from: task.taskStartTime)
-                //print("\(date) is being compared to task: \(task.taskName): \(task.taskStartTime)")
-
-                if task.repeatType == "Weekly" && weekDayString == currentWeekDayString && date >= task.taskStartTime{ // check if weekly
-                    cellEvents += 1
+                if isDaily == true {
+                    if date >= Date() {
+                        cellEvents += 1
+                    }
                 }
-                
-                if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) {
-                    cellEvents += 1
-                }
-            }
-            
-            if isDaily == true {
-                if date >= Date() {
-                    cellEvents += 1
-                }
-            }
 
-            print("\(date) has \(cellEvents)")
-            if cellEvents > 0 {
-                cell.eventIndicator.numberOfEvents = cellEvents
-                cell.eventIndicator.isHidden = false
-                cell.eventIndicator.color = UIColor.systemRed
-            } else {
-                cell.eventIndicator.isHidden = true
+                print("\(date) has \(cellEvents)")
+                if cellEvents > 0 {
+                    cell.eventIndicator.numberOfEvents = cellEvents
+                    cell.eventIndicator.isHidden = false
+                    cell.eventIndicator.color = UIColor.systemRed
+                } else {
+                    cell.eventIndicator.isHidden = true
+                }
             }
         }
+
     }
     
     // Load task from firebase
@@ -329,6 +340,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         DataManager.loadTasks { fullUserTaskList in
             //userTaskList = fullUserTaskList
             self.taskList = []
+            self.completedTaskList = []
+            self.currentTaskList = []
+            self.upcomingTaskList = []
 
             for task in fullUserTaskList {
                 
