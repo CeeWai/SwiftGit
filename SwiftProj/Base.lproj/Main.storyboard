@@ -370,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqO-6Y-Mm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="-473"/>
+            <point key="canvasLocation" x="845" y="-465"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="qt8-qW-esH">
@@ -1385,15 +1385,25 @@
                     </tabBar>
                     <connections>
                         <segue destination="Z6F-VX-Knu" kind="relationship" relationship="viewControllers" id="LVR-pe-blf"/>
-                        <segue destination="BeB-BW-vYM" kind="relationship" relationship="viewControllers" id="WRt-2J-2Pq"/>
                         <segue destination="gr7-Mx-JBB" kind="relationship" relationship="viewControllers" id="Be6-xz-Wpc"/>
                         <segue destination="G56-99-Gf5" kind="relationship" relationship="viewControllers" id="pSd-f9-gmw"/>
                         <segue destination="0J1-rs-JOi" kind="relationship" relationship="viewControllers" id="zyW-i8-m21"/>
+                        <segue destination="pKh-fi-3ds" kind="relationship" relationship="viewControllers" id="2bR-kE-Xyo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75v-vX-MCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-957" y="-473"/>
+        </scene>
+        <!--wx-->
+        <scene sceneID="W5Z-8p-ksB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="wx" id="pKh-fi-3ds" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="mxD-n0-RTk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNe-gv-l8T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-245" y="-473"/>
         </scene>
         <!--Pick Time!-->
         <scene sceneID="r9S-6m-1la">

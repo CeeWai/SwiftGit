@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dWS-bg-y4W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dWS-bg-y4W">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,9 +10,9 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WXViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="V9T-Gp-t1m">
@@ -29,7 +29,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="491" id="GS5-Gi-GZn" customClass="PostCell" customModule="SwiftTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="491" id="GS5-Gi-GZn" customClass="PostCell" customModule="SwiftProj" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="491"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GS5-Gi-GZn" id="1He-98-Ex0">
@@ -123,7 +123,7 @@
                                                         <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="share:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PD8-Ef-1f1"/>
+                                                        <action selector="share:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PKx-cO-52k"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -185,8 +185,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="dFp-hQ-l82"/>
                     <connections>
-                        <outlet property="search" destination="V9T-Gp-t1m" id="umY-Wn-qBR"/>
-                        <outlet property="tableView" destination="BDp-vE-9Mc" id="72k-L1-qFz"/>
+                        <outlet property="search" destination="V9T-Gp-t1m" id="POH-ux-ns3"/>
+                        <outlet property="tableView" destination="BDp-vE-9Mc" id="jpn-ZV-2eQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -196,9 +196,9 @@
         <!--Post Detail View Controller-->
         <scene sceneID="geb-4v-OsO">
             <objects>
-                <viewController id="FI6-rH-scG" customClass="PostDetailViewController" customModule="SwiftTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FI6-rH-scG" customClass="PostDetailViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FfU-g5-s8E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image6" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-4c-76n">
@@ -308,7 +308,7 @@
         <!--Add Post-->
         <scene sceneID="HzG-S2-EY6">
             <objects>
-                <viewController id="ncr-t1-wPJ" customClass="addPost" customModule="SwiftTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ncr-t1-wPJ" customClass="addPost" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G4G-vz-Png">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,7 +356,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="&lt; Back"/>
                                 <connections>
-                                    <segue destination="ncr-t1-wPJ" kind="custom" customClass="DismissSegue" customModule="SwiftTest" customModuleProvider="target" id="Teh-07-3NC"/>
+                                    <segue destination="ncr-t1-wPJ" kind="custom" customClass="DismissSegue" customModule="SwiftProj" customModuleProvider="target" id="Teh-07-3NC"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50g-sy-p26">
@@ -389,8 +389,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nz4-BX-A4C"/>
-        <segue reference="IQd-vE-hs3"/>
+        <segue reference="mTa-zN-YOl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
