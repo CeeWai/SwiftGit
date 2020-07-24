@@ -16,5 +16,6 @@ target 'SwiftProj' do
   pod 'GoogleSignIn'
   pod 'SideMenu'
   pod 'TesseractOCRiOS'
+  pod 'JZCalendarWeekView', '~> 0.3'
 
 end

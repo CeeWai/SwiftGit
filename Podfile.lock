@@ -350,6 +350,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - JZCalendarWeekView (0.7.1)
   - leveldb-library (1.22)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
@@ -369,6 +370,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FSCalendar
   - GoogleSignIn
+  - JZCalendarWeekView (~> 0.3)
   - SideMenu
   - TesseractOCRiOS
 
@@ -396,6 +398,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - JZCalendarWeekView
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -425,12 +428,13 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  JZCalendarWeekView: 586a429ab3fbeef4f98d648ea6b801f57c5495cc
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
 
-PODFILE CHECKSUM: ed7edf44ec69ca0be7c9a08976c1e14a3d503861
+PODFILE CHECKSUM: ef9a13e4a0e1ce76e2e0fdc53b38f750375fa7a2
 
 COCOAPODS: 1.9.3
