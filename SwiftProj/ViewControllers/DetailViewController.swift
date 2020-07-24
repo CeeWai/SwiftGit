@@ -18,6 +18,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     @IBOutlet weak var cameraOCRBttn: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var errLabel: UILabel!
+    @IBOutlet weak var deleteDoc: UIBarButtonItem!
     
     let bert = BERT()
     
@@ -60,6 +61,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         titleTextField.text = detailItem?.title
         documentTextView.text = detailItem?.body
         
+    }
+    
+    @IBAction func deleteDocPressed(_ sender: Any) {
+        DataManager.deleteDoc(detailItem!)
+        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func ocrButtonPressed(_ sender: Any) {
@@ -165,20 +172,29 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             let uid = user.uid
             let email = user.email
         }
-        var userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email)
+        
+        var userDoc = Document(docID: "", title: "", body: "", docOwner: "")
+        
+        if self.detailItem?.docID != nil && self.detailItem?.docID != "" {
+            userDoc = Document(docID: detailItem?.docID, title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email)
+        } else {
+            userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email)
+        }
 
         if self.detailItem?.docID != nil && self.detailItem?.docID != ""{
-            print("Found that docID is empty \(self.detailItem?.docID)")
-            userDoc.docID = self.detailItem?.docID
+            print("DOCID = \(self.detailItem?.docID)")
+
+            //print("Found that docID is empty \(self.detailItem?.docID)")
+            //userDoc.docID = self.detailItem?.docID
             DataManager.insertOrReplaceDoc(userDoc)
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         } else {
             DataManager.loadDocs{ fullUserDocList in
-                print("Found that docID is NOT empty \(self.detailItem?.docID)")
+                //print("Found that docID is NOT empty \(self.detailItem?.docID)")
 
                 self.errLabel.isHidden = true
-                userDoc.docID = "\(user!.uid)D\(fullUserDocList.count)"
+                //userDoc.docID = "\(user!.uid)D\(fullUserDocList.count)"
                 DataManager.insertOrReplaceDoc(userDoc)
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
@@ -191,7 +207,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     // MARK: - UITextViewDelegate
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        detailItem = Document(docID: "", title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner)
+        if self.detailItem?.docID != nil || self.detailItem?.docID != "" {
+            detailItem = Document(docID: detailItem?.docID, title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner)
+        } else {
+            detailItem = Document(docID: "", title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner)
+        }
     }
     
     // MARK: - Keyboard Event Handling

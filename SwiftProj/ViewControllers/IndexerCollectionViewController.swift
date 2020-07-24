@@ -60,6 +60,7 @@ class IndexerCollectionViewController: UICollectionViewController {
             let myIndexPath = self.cView.indexPathsForSelectedItems?.first
 
             detailDocViewController.detailItem = self.docList[myIndexPath!.row]
+            detailDocViewController.deleteDoc.isEnabled = true
         }
     }
 

@@ -277,7 +277,7 @@ class DataManager: NSObject {
                             //print("document ID: \(document.documentID)")
                             doc.docID = docID
                         }
-                        
+
                         if let title = document.data()["title"] as? String {
                             doc.title = title
                         }
@@ -308,7 +308,8 @@ class DataManager: NSObject {
     // into Firestore.
     //
     static func insertOrReplaceDoc(_ documentation: Document) {
-        try? db.collection("documentation")
+        if documentation.docID != nil && documentation.docID != "" { // exists in the firebase
+            try? db.collection("documentation")
             .document(documentation.docID!)
             .setData(from: documentation, encoder: Firestore.Encoder()) {
                 err in
@@ -317,6 +318,35 @@ class DataManager: NSObject {
                 } else {
                     print("Document successfully added!")
                 }
+            }
+        } else { // does not exist in db
+            print("recognize that ID is nil")
+            try? db.collection("documentation")
+            .document()
+            .setData(from: documentation, encoder: Firestore.Encoder()) {
+                err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document successfully added!")
+                }
+            }
+        }
+
+    }
+    
+    // Deletes a Task from the Firestore database.
+    //
+    static func deleteDoc(_ documentation: Document) {
+        db.collection("documentation").document(documentation.docID!).delete() {
+            err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            }
+            else {
+                print("Document successfully removed!")
+                
+            }
         }
     }
     

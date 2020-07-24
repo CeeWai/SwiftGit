@@ -2212,10 +2212,15 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Document" id="A1P-cp-e1h">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="trash" catalog="system" id="sr7-M5-Kgh"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="trash" catalog="system" id="sr7-M5-Kgh">
+                            <connections>
+                                <action selector="deleteDocPressed:" destination="Yym-oE-Rsn" id="1Ze-T7-oDF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cameraOCRBttn" destination="gJe-h9-RrD" id="cSQ-tm-VSY"/>
+                        <outlet property="deleteDoc" destination="sr7-M5-Kgh" id="gjF-sa-ffg"/>
                         <outlet property="documentTextView" destination="sK6-0H-sKG" id="q7N-Hc-Yhr"/>
                         <outlet property="errLabel" destination="IUq-X9-4W0" id="MJ8-dk-qn0"/>
                         <outlet property="questionTextField" destination="OWi-Vs-gEV" id="qin-8F-X9A"/>
