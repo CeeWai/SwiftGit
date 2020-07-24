@@ -8,6 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		22E76B63742AFBC05FE6279D /* Pods_SwiftProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F7530B15E7FD3394A8BD51 /* Pods_SwiftProj.framework */; };
+		5CD142EE24CA8C7800DB5915 /* ProjectTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD142EC24CA8C7800DB5915 /* ProjectTaskDataManager.swift */; };
+		5CD142EF24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD142ED24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift */; };
+		5CD1430624CA8CDF00DB5915 /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD142FF24CA8CDE00DB5915 /* BERTInput.swift */; };
+		5CD1430724CA8CDF00DB5915 /* BERTVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1430024CA8CDE00DB5915 /* BERTVocabulary.swift */; };
+		5CD1430824CA8CDF00DB5915 /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1430124CA8CDF00DB5915 /* BERTOutput.swift */; };
+		5CD1430924CA8CDF00DB5915 /* BERTQAFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1430224CA8CDF00DB5915 /* BERTQAFP16.mlmodel */; };
+		5CD1430A24CA8CDF00DB5915 /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1430324CA8CDF00DB5915 /* TokenizedString.swift */; };
+		5CD1430B24CA8CDF00DB5915 /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1430424CA8CDF00DB5915 /* BERT.swift */; };
+		5CD1430C24CA8CDF00DB5915 /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1430524CA8CDF00DB5915 /* bert-base-uncased-vocab.txt */; };
+		5CD1431A24CA913700DB5915 /* business-woman-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1430D24CA913600DB5915 /* business-woman-colour.svg */; };
+		5CD1431B24CA913700DB5915 /* business-woman-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1430E24CA913600DB5915 /* business-woman-colour-400px.png */; };
+		5CD1431C24CA913700DB5915 /* entryway-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1430F24CA913600DB5915 /* entryway-colour-1200px.png */; };
+		5CD1431D24CA913700DB5915 /* student-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431024CA913600DB5915 /* student-colour-800px.png */; };
+		5CD1431E24CA913700DB5915 /* business-woman-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431124CA913600DB5915 /* business-woman-colour-800px.png */; };
+		5CD1431F24CA913700DB5915 /* student-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431224CA913600DB5915 /* student-colour.svg */; };
+		5CD1432024CA913700DB5915 /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431324CA913600DB5915 /* startScreenVid.mp4.zip */; };
+		5CD1432124CA913700DB5915 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431424CA913600DB5915 /* student-colour-400px.png */; };
+		5CD1432224CA913700DB5915 /* business-woman-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431524CA913700DB5915 /* business-woman-colour-1200px.png */; };
+		5CD1432324CA913700DB5915 /* student-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431624CA913700DB5915 /* student-colour-1200px.png */; };
+		5CD1432424CA913700DB5915 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431724CA913700DB5915 /* startScreenVid.mp4 */; };
+		5CD1432524CA913700DB5915 /* business-woman-colour.psd in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431824CA913700DB5915 /* business-woman-colour.psd */; };
+		5CD1432624CA913700DB5915 /* unlock-monochrome-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1431924CA913700DB5915 /* unlock-monochrome-1200px.png */; };
+		5CD1432924CA91DD00DB5915 /* wx.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1432724CA91DD00DB5915 /* wx.storyboard */; };
+		5CD1433024CA922500DB5915 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432B24CA922400DB5915 /* Post.swift */; };
+		5CD1433124CA922500DB5915 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432C24CA922400DB5915 /* PostCell.swift */; };
+		5CD1433224CA922500DB5915 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432D24CA922400DB5915 /* DismissSegue.swift */; };
+		5CD1433324CA922500DB5915 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */; };
+		5CD1433424CA922500DB5915 /* addPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432F24CA922500DB5915 /* addPost.swift */; };
+		5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1433724CA92B100DB5915 /* WXViewController.swift */; };
 		8906484924B4C8AC00325C5B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
@@ -48,19 +77,6 @@
 		8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8992195A246E46CD0029BFF5 /* libsqlite3.tbd */; };
 		89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A67B3F249BB35C006241C5 /* ProfileViewController.swift */; };
 		89A94E0524C023C600287A03 /* IndividualCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A94E0424C023C600287A03 /* IndividualCollectionViewCell.swift */; };
-		89B4E15E24B2C76C00B5B841 /* student-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15124B2C76C00B5B841 /* student-colour-800px.png */; };
-		89B4E15F24B2C76C00B5B841 /* business-woman-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15224B2C76C00B5B841 /* business-woman-colour-400px.png */; };
-		89B4E16024B2C76C00B5B841 /* business-woman-colour.psd in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15324B2C76C00B5B841 /* business-woman-colour.psd */; };
-		89B4E16124B2C76C00B5B841 /* business-woman-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15424B2C76C00B5B841 /* business-woman-colour.svg */; };
-		89B4E16224B2C76C00B5B841 /* student-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15524B2C76C00B5B841 /* student-colour-1200px.png */; };
-		89B4E16324B2C76C00B5B841 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15624B2C76C00B5B841 /* startScreenVid.mp4 */; };
-		89B4E16424B2C76C00B5B841 /* student-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15724B2C76C00B5B841 /* student-colour.svg */; };
-		89B4E16524B2C76C00B5B841 /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15824B2C76C00B5B841 /* startScreenVid.mp4.zip */; };
-		89B4E16624B2C76C00B5B841 /* business-woman-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15924B2C76C00B5B841 /* business-woman-colour-1200px.png */; };
-		89B4E16724B2C76C00B5B841 /* entryway-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15A24B2C76C00B5B841 /* entryway-colour-1200px.png */; };
-		89B4E16824B2C76C00B5B841 /* business-woman-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15B24B2C76C00B5B841 /* business-woman-colour-800px.png */; };
-		89B4E16924B2C76C00B5B841 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15C24B2C76C00B5B841 /* student-colour-400px.png */; };
-		89B4E16A24B2C76C00B5B841 /* unlock-monochrome-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B4E15D24B2C76C00B5B841 /* unlock-monochrome-1200px.png */; };
 		89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */; };
 		89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEFC247FE66B00F3F614 /* CommentCell.swift */; };
 		89E17010247A538A004C3F45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E1700F247A538A004C3F45 /* User.swift */; };
@@ -106,13 +122,6 @@
 		9E62D98324BE1BBC003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9E62D98424BE1BBC003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9E62D98524BE1BBC003462F1 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		9EFFB63924C5F19F0073CE59 /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63224C5F19E0073CE59 /* BERTOutput.swift */; };
-		9EFFB63A24C5F19F0073CE59 /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63324C5F19E0073CE59 /* BERTInput.swift */; };
-		9EFFB63B24C5F19F0073CE59 /* BERTQAFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63424C5F19E0073CE59 /* BERTQAFP16.mlmodel */; };
-		9EFFB63C24C5F19F0073CE59 /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9EFFB63524C5F19E0073CE59 /* bert-base-uncased-vocab.txt */; };
-		9EFFB63D24C5F19F0073CE59 /* BERTVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63624C5F19E0073CE59 /* BERTVocabulary.swift */; };
-		9EFFB63E24C5F19F0073CE59 /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63724C5F19E0073CE59 /* BERT.swift */; };
-		9EFFB63F24C5F19F0073CE59 /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB63824C5F19F0073CE59 /* TokenizedString.swift */; };
 		9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64024C5F2980073CE59 /* ProjectTask.swift */; };
 		9EFFB64624C5F2980073CE59 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64124C5F2980073CE59 /* Project.swift */; };
 		9EFFB64724C5F2980073CE59 /* ProjectTaskMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64224C5F2980073CE59 /* ProjectTaskMember.swift */; };
@@ -162,6 +171,35 @@
 /* Begin PBXFileReference section */
 		0E160307C8DEF2DC28D26549 /* Pods-SwiftProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.release.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.release.xcconfig"; sourceTree = "<group>"; };
 		35F7530B15E7FD3394A8BD51 /* Pods_SwiftProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CD142EC24CA8C7800DB5915 /* ProjectTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskDataManager.swift; sourceTree = "<group>"; };
+		5CD142ED24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskMemberDataManager.swift; sourceTree = "<group>"; };
+		5CD142FF24CA8CDE00DB5915 /* BERTInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
+		5CD1430024CA8CDE00DB5915 /* BERTVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTVocabulary.swift; sourceTree = "<group>"; };
+		5CD1430124CA8CDF00DB5915 /* BERTOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
+		5CD1430224CA8CDF00DB5915 /* BERTQAFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BERTQAFP16.mlmodel; sourceTree = "<group>"; };
+		5CD1430324CA8CDF00DB5915 /* TokenizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
+		5CD1430424CA8CDF00DB5915 /* BERT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
+		5CD1430524CA8CDF00DB5915 /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
+		5CD1430D24CA913600DB5915 /* business-woman-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "business-woman-colour.svg"; sourceTree = "<group>"; };
+		5CD1430E24CA913600DB5915 /* business-woman-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-400px.png"; sourceTree = "<group>"; };
+		5CD1430F24CA913600DB5915 /* entryway-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "entryway-colour-1200px.png"; sourceTree = "<group>"; };
+		5CD1431024CA913600DB5915 /* student-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-800px.png"; sourceTree = "<group>"; };
+		5CD1431124CA913600DB5915 /* business-woman-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-800px.png"; sourceTree = "<group>"; };
+		5CD1431224CA913600DB5915 /* student-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "student-colour.svg"; sourceTree = "<group>"; };
+		5CD1431324CA913600DB5915 /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
+		5CD1431424CA913600DB5915 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
+		5CD1431524CA913700DB5915 /* business-woman-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-1200px.png"; sourceTree = "<group>"; };
+		5CD1431624CA913700DB5915 /* student-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-1200px.png"; sourceTree = "<group>"; };
+		5CD1431724CA913700DB5915 /* startScreenVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startScreenVid.mp4; sourceTree = "<group>"; };
+		5CD1431824CA913700DB5915 /* business-woman-colour.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "business-woman-colour.psd"; sourceTree = "<group>"; };
+		5CD1431924CA913700DB5915 /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
+		5CD1432824CA91DD00DB5915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/wx.storyboard; sourceTree = "<group>"; };
+		5CD1432B24CA922400DB5915 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		5CD1432C24CA922400DB5915 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		5CD1432D24CA922400DB5915 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
+		5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		5CD1432F24CA922500DB5915 /* addPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addPost.swift; sourceTree = "<group>"; };
+		5CD1433724CA92B100DB5915 /* WXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXViewController.swift; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
 		8920000724A75ACC00EE47FA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
@@ -225,19 +263,6 @@
 		8992195A246E46CD0029BFF5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		89A67B3F249BB35C006241C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		89A94E0424C023C600287A03 /* IndividualCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IndividualCollectionViewCell.swift; path = SwiftProj/Fonts/IndividualCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
-		89B4E15124B2C76C00B5B841 /* student-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-800px.png"; sourceTree = "<group>"; };
-		89B4E15224B2C76C00B5B841 /* business-woman-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-400px.png"; sourceTree = "<group>"; };
-		89B4E15324B2C76C00B5B841 /* business-woman-colour.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "business-woman-colour.psd"; sourceTree = "<group>"; };
-		89B4E15424B2C76C00B5B841 /* business-woman-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "business-woman-colour.svg"; sourceTree = "<group>"; };
-		89B4E15524B2C76C00B5B841 /* student-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-1200px.png"; sourceTree = "<group>"; };
-		89B4E15624B2C76C00B5B841 /* startScreenVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startScreenVid.mp4; sourceTree = "<group>"; };
-		89B4E15724B2C76C00B5B841 /* student-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "student-colour.svg"; sourceTree = "<group>"; };
-		89B4E15824B2C76C00B5B841 /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
-		89B4E15924B2C76C00B5B841 /* business-woman-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-1200px.png"; sourceTree = "<group>"; };
-		89B4E15A24B2C76C00B5B841 /* entryway-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "entryway-colour-1200px.png"; sourceTree = "<group>"; };
-		89B4E15B24B2C76C00B5B841 /* business-woman-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-800px.png"; sourceTree = "<group>"; };
-		89B4E15C24B2C76C00B5B841 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
-		89B4E15D24B2C76C00B5B841 /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
 		89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommentViewController.swift; sourceTree = "<group>"; };
 		89C8AEFC247FE66B00F3F614 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		89E1700F247A538A004C3F45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -258,13 +283,6 @@
 		89FDD3A824B632BD00DEBD96 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		89FE2A5C246477720006F595 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9E567DC124AAFC3200DE6CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Seb_LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9EFFB63224C5F19E0073CE59 /* BERTOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
-		9EFFB63324C5F19E0073CE59 /* BERTInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
-		9EFFB63424C5F19E0073CE59 /* BERTQAFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BERTQAFP16.mlmodel; sourceTree = "<group>"; };
-		9EFFB63524C5F19E0073CE59 /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
-		9EFFB63624C5F19E0073CE59 /* BERTVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERTVocabulary.swift; sourceTree = "<group>"; };
-		9EFFB63724C5F19E0073CE59 /* BERT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
-		9EFFB63824C5F19F0073CE59 /* TokenizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
 		9EFFB64024C5F2980073CE59 /* ProjectTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTask.swift; sourceTree = "<group>"; };
 		9EFFB64124C5F2980073CE59 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		9EFFB64224C5F2980073CE59 /* ProjectTaskMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskMember.swift; sourceTree = "<group>"; };
@@ -323,6 +341,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CD142F024CA8CB900DB5915 /* BertModel */ = {
+			isa = PBXGroup;
+			children = (
+				5CD1430524CA8CDF00DB5915 /* bert-base-uncased-vocab.txt */,
+				5CD1430424CA8CDF00DB5915 /* BERT.swift */,
+				5CD142FF24CA8CDE00DB5915 /* BERTInput.swift */,
+				5CD1430124CA8CDF00DB5915 /* BERTOutput.swift */,
+				5CD1430224CA8CDF00DB5915 /* BERTQAFP16.mlmodel */,
+				5CD1430024CA8CDE00DB5915 /* BERTVocabulary.swift */,
+				5CD1430324CA8CDF00DB5915 /* TokenizedString.swift */,
+			);
+			path = BertModel;
+			sourceTree = "<group>";
+		};
+		5CD1432A24CA91F000DB5915 /* WX_ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CD1433724CA92B100DB5915 /* WXViewController.swift */,
+				5CD1432F24CA922500DB5915 /* addPost.swift */,
+				5CD1432D24CA922400DB5915 /* DismissSegue.swift */,
+				5CD1432B24CA922400DB5915 /* Post.swift */,
+				5CD1432C24CA922400DB5915 /* PostCell.swift */,
+				5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */,
+			);
+			path = WX_ViewControllers;
+			sourceTree = "<group>";
+		};
 		8928F3272466C41F0087C59F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,7 +436,8 @@
 		898646E52464626F00A5C752 /* SwiftProj */ = {
 			isa = PBXGroup;
 			children = (
-				9EFFB63124C5F1740073CE59 /* BertModel */,
+				5CD1432A24CA91F000DB5915 /* WX_ViewControllers */,
+				5CD142F024CA8CB900DB5915 /* BertModel */,
 				F2F5A4FA24C542A3009295E4 /* Dom_Storyboard.storyboard */,
 				89FD652524C30788005A7BEA /* FindingAnswers.entitlements */,
 				89FBBC9D24B8D3A8001D0EFD /* tessdata */,
@@ -409,6 +455,7 @@
 				898646E82464626F00A5C752 /* SceneDelegate.swift */,
 				898646E62464626F00A5C752 /* AppDelegate.swift */,
 				898646EC2464626F00A5C752 /* Main.storyboard */,
+				5CD1432724CA91DD00DB5915 /* wx.storyboard */,
 				898646F22464627000A5C752 /* Assets.xcassets */,
 				9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */,
 				9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */,
@@ -431,6 +478,8 @@
 				89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */,
 				9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */,
 				9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */,
+				5CD142EC24CA8C7800DB5915 /* ProjectTaskDataManager.swift */,
+				5CD142ED24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift */,
 				F28A1FB924C5336100F1D0DB /* dom_FireStoreDataManager.swift */,
 				8992193E246E450A0029BFF5 /* CaseDataManager.swift */,
 				89921941246E450A0029BFF5 /* CountryDataManager.swift */,
@@ -484,19 +533,19 @@
 		89B4E15024B2C76C00B5B841 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				89B4E15124B2C76C00B5B841 /* student-colour-800px.png */,
-				89B4E15224B2C76C00B5B841 /* business-woman-colour-400px.png */,
-				89B4E15324B2C76C00B5B841 /* business-woman-colour.psd */,
-				89B4E15424B2C76C00B5B841 /* business-woman-colour.svg */,
-				89B4E15524B2C76C00B5B841 /* student-colour-1200px.png */,
-				89B4E15624B2C76C00B5B841 /* startScreenVid.mp4 */,
-				89B4E15724B2C76C00B5B841 /* student-colour.svg */,
-				89B4E15824B2C76C00B5B841 /* startScreenVid.mp4.zip */,
-				89B4E15924B2C76C00B5B841 /* business-woman-colour-1200px.png */,
-				89B4E15A24B2C76C00B5B841 /* entryway-colour-1200px.png */,
-				89B4E15B24B2C76C00B5B841 /* business-woman-colour-800px.png */,
-				89B4E15C24B2C76C00B5B841 /* student-colour-400px.png */,
-				89B4E15D24B2C76C00B5B841 /* unlock-monochrome-1200px.png */,
+				5CD1430E24CA913600DB5915 /* business-woman-colour-400px.png */,
+				5CD1431124CA913600DB5915 /* business-woman-colour-800px.png */,
+				5CD1431524CA913700DB5915 /* business-woman-colour-1200px.png */,
+				5CD1431824CA913700DB5915 /* business-woman-colour.psd */,
+				5CD1430D24CA913600DB5915 /* business-woman-colour.svg */,
+				5CD1430F24CA913600DB5915 /* entryway-colour-1200px.png */,
+				5CD1431724CA913700DB5915 /* startScreenVid.mp4 */,
+				5CD1431324CA913600DB5915 /* startScreenVid.mp4.zip */,
+				5CD1431424CA913600DB5915 /* student-colour-400px.png */,
+				5CD1431024CA913600DB5915 /* student-colour-800px.png */,
+				5CD1431624CA913700DB5915 /* student-colour-1200px.png */,
+				5CD1431224CA913600DB5915 /* student-colour.svg */,
+				5CD1431924CA913700DB5915 /* unlock-monochrome-1200px.png */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -552,20 +601,6 @@
 				9EFFB66524C5F3940073CE59 /* taskTableViewCell.swift */,
 			);
 			path = Seb_ViewControllers;
-			sourceTree = "<group>";
-		};
-		9EFFB63124C5F1740073CE59 /* BertModel */ = {
-			isa = PBXGroup;
-			children = (
-				9EFFB63524C5F19E0073CE59 /* bert-base-uncased-vocab.txt */,
-				9EFFB63724C5F19E0073CE59 /* BERT.swift */,
-				9EFFB63324C5F19E0073CE59 /* BERTInput.swift */,
-				9EFFB63224C5F19E0073CE59 /* BERTOutput.swift */,
-				9EFFB63424C5F19E0073CE59 /* BERTQAFP16.mlmodel */,
-				9EFFB63624C5F19E0073CE59 /* BERTVocabulary.swift */,
-				9EFFB63824C5F19F0073CE59 /* TokenizedString.swift */,
-			);
-			path = BertModel;
 			sourceTree = "<group>";
 		};
 		C43BFB3B8B0F2346BDC6FCD4 /* Pods */ = {
@@ -651,29 +686,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */,
-				89B4E15F24B2C76C00B5B841 /* business-woman-colour-400px.png in Resources */,
-				89B4E16824B2C76C00B5B841 /* business-woman-colour-800px.png in Resources */,
-				89B4E16024B2C76C00B5B841 /* business-woman-colour.psd in Resources */,
-				89B4E16324B2C76C00B5B841 /* startScreenVid.mp4 in Resources */,
-				89B4E16924B2C76C00B5B841 /* student-colour-400px.png in Resources */,
-				89B4E16524B2C76C00B5B841 /* startScreenVid.mp4.zip in Resources */,
+				5CD1432524CA913700DB5915 /* business-woman-colour.psd in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
+				5CD1432924CA91DD00DB5915 /* wx.storyboard in Resources */,
+				5CD1431B24CA913700DB5915 /* business-woman-colour-400px.png in Resources */,
+				5CD1431C24CA913700DB5915 /* entryway-colour-1200px.png in Resources */,
 				F2F5A4FB24C542A3009295E4 /* Dom_Storyboard.storyboard in Resources */,
+				5CD1432024CA913700DB5915 /* startScreenVid.mp4.zip in Resources */,
+				5CD1432424CA913700DB5915 /* startScreenVid.mp4 in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
-				89B4E16724B2C76C00B5B841 /* entryway-colour-1200px.png in Resources */,
-				89B4E16124B2C76C00B5B841 /* business-woman-colour.svg in Resources */,
+				5CD1431D24CA913700DB5915 /* student-colour-800px.png in Resources */,
 				89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */,
 				8954EE2D24C0751700039BDF /* BottomSheetViewController.xib in Resources */,
-				9EFFB63C24C5F19F0073CE59 /* bert-base-uncased-vocab.txt in Resources */,
+				5CD1432124CA913700DB5915 /* student-colour-400px.png in Resources */,
+				5CD1430C24CA8CDF00DB5915 /* bert-base-uncased-vocab.txt in Resources */,
+				5CD1431A24CA913700DB5915 /* business-woman-colour.svg in Resources */,
+				5CD1431E24CA913700DB5915 /* business-woman-colour-800px.png in Resources */,
+				5CD1431F24CA913700DB5915 /* student-colour.svg in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
-				89B4E16A24B2C76C00B5B841 /* unlock-monochrome-1200px.png in Resources */,
-				89B4E16424B2C76C00B5B841 /* student-colour.svg in Resources */,
-				89B4E15E24B2C76C00B5B841 /* student-colour-800px.png in Resources */,
-				89B4E16224B2C76C00B5B841 /* student-colour-1200px.png in Resources */,
 				89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */,
+				5CD1432324CA913700DB5915 /* student-colour-1200px.png in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
+				5CD1432224CA913700DB5915 /* business-woman-colour-1200px.png in Resources */,
 				898646EE2464626F00A5C752 /* Main.storyboard in Resources */,
-				89B4E16624B2C76C00B5B841 /* business-woman-colour-1200px.png in Resources */,
+				5CD1432624CA913700DB5915 /* unlock-monochrome-1200px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,7 +790,6 @@
 				9EFFB67F24C5F3950073CE59 /* MemberViewController.swift in Sources */,
 				89FD652B24C3085F005A7BEA /* DetailViewController.swift in Sources */,
 				9E62D97324BE1BBB003462F1 /* (null) in Sources */,
-				9EFFB63A24C5F19F0073CE59 /* BERTInput.swift in Sources */,
 				898646EB2464626F00A5C752 /* ViewController.swift in Sources */,
 				898646FE2464651C00A5C752 /* EntryViewController.swift in Sources */,
 				9E62D92524BE1AF0003462F1 /* (null) in Sources */,
@@ -762,25 +797,29 @@
 				9EFFB67824C5F3950073CE59 /* projectnotificationViewController.swift in Sources */,
 				9EFFB67124C5F3950073CE59 /* projectdetail1ViewController.swift in Sources */,
 				9E62D98224BE1BBC003462F1 /* (null) in Sources */,
+				5CD142EF24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift in Sources */,
 				9E62D98124BE1BBC003462F1 /* (null) in Sources */,
+				5CD1430A24CA8CDF00DB5915 /* TokenizedString.swift in Sources */,
 				9EFFB67324C5F3950073CE59 /* MemberTableViewCell.swift in Sources */,
 				89770CD024CA8A2500EB21D2 /* ProjectTaskDataManager.swift in Sources */,
 				89FD655A24C3448B005A7BEA /* IndexerCollectionViewController.swift in Sources */,
 				9E62D92324BE1A88003462F1 /* (null) in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				9E62D97624BE1BBB003462F1 /* (null) in Sources */,
+				5CD1433424CA922500DB5915 /* addPost.swift in Sources */,
 				9E62D97424BE1BBB003462F1 /* (null) in Sources */,
 				9EFFB64924C5F2980073CE59 /* Role.swift in Sources */,
 				9E62D97E24BE1BBC003462F1 /* (null) in Sources */,
 				9EFFB67A24C5F3950073CE59 /* addmemberViewController.swift in Sources */,
 				9E62D97124BE1BBB003462F1 /* (null) in Sources */,
 				9EFFB64F24C5F2FD0073CE59 /* ProjectDataManager.swift in Sources */,
+				5CD1433024CA922500DB5915 /* Post.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
-				9EFFB63924C5F19F0073CE59 /* BERTOutput.swift in Sources */,
 				9EFFB67224C5F3950073CE59 /* ProjectViewController.swift in Sources */,
 				9EFFB67E24C5F3950073CE59 /* addroleViewController.swift in Sources */,
 				897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
+				5CD1430824CA8CDF00DB5915 /* BERTOutput.swift in Sources */,
 				9EFFB67B24C5F3950073CE59 /* addtask1ViewController.swift in Sources */,
 				9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
@@ -806,11 +845,12 @@
 				9EFFB65324C5F2FD0073CE59 /* ProjectgroupDataManager.swift in Sources */,
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
+				5CD1433124CA922500DB5915 /* PostCell.swift in Sources */,
+				5CD1433224CA922500DB5915 /* DismissSegue.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */,
 				8906484924B4C8AC00325C5B /* (null) in Sources */,
 				896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */,
-				9EFFB63F24C5F19F0073CE59 /* TokenizedString.swift in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,
 				9EFFB66D24C5F3950073CE59 /* taskmemberTableViewCell.swift in Sources */,
@@ -820,9 +860,12 @@
 				9EFFB65224C5F2FD0073CE59 /* RoleDataManager.swift in Sources */,
 				89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */,
 				9EFFB68224C5F3950073CE59 /* addtaskmemberTableViewCell.swift in Sources */,
+				5CD1430B24CA8CDF00DB5915 /* BERT.swift in Sources */,
 				9EFFB67924C5F3950073CE59 /* createproject2ViewController.swift in Sources */,
 				9E62D97224BE1BBB003462F1 /* (null) in Sources */,
 				89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */,
+				5CD1430724CA8CDF00DB5915 /* BERTVocabulary.swift in Sources */,
+				5CD1433324CA922500DB5915 /* PostDetailViewController.swift in Sources */,
 				F28A1FAB24C5315900F1D0DB /* IndexCell.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
 				9E62D98524BE1BBC003462F1 /* (null) in Sources */,
@@ -844,20 +887,21 @@
 				9EFFB66F24C5F3950073CE59 /* projectmemberTableViewCell.swift in Sources */,
 				9E62D92124BE1A38003462F1 /* (null) in Sources */,
 				9E62D98424BE1BBC003462F1 /* (null) in Sources */,
+				5CD1430924CA8CDF00DB5915 /* BERTQAFP16.mlmodel in Sources */,
 				9E62D96F24BE1BBB003462F1 /* (null) in Sources */,
+				5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */,
+				5CD1430624CA8CDF00DB5915 /* BERTInput.swift in Sources */,
 				89921948246E45290029BFF5 /* SavedCountry.swift in Sources */,
+				5CD142EE24CA8C7800DB5915 /* ProjectTaskDataManager.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,
 				9E62D97B24BE1BBB003462F1 /* (null) in Sources */,
 				9E62D97A24BE1BBB003462F1 /* (null) in Sources */,
-				9EFFB63E24C5F19F0073CE59 /* BERT.swift in Sources */,
 				89FD652924C3085B005A7BEA /* MasterViewController.swift in Sources */,
 				9E62D98024BE1BBC003462F1 /* (null) in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
 				9EFFB67524C5F3950073CE59 /* createprojectViewController.swift in Sources */,
-				9EFFB63D24C5F19F0073CE59 /* BERTVocabulary.swift in Sources */,
 				89E17010247A538A004C3F45 /* User.swift in Sources */,
 				89FD652724C30852005A7BEA /* Document.swift in Sources */,
-				9EFFB63B24C5F19F0073CE59 /* BERTQAFP16.mlmodel in Sources */,
 				9EFFB67424C5F3950073CE59 /* invitationnotiTableViewCell.swift in Sources */,
 				9E62D97724BE1BBB003462F1 /* (null) in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
@@ -872,6 +916,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5CD1432724CA91DD00DB5915 /* wx.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CD1432824CA91DD00DB5915 /* Base */,
+			);
+			name = wx.storyboard;
+			sourceTree = "<group>";
+		};
 		898646EC2464626F00A5C752 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1020,7 +1072,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4CH8KS9GJ9;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwiftProj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1042,7 +1094,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4CH8KS9GJ9;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwiftProj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
