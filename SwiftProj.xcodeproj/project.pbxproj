@@ -20,6 +20,9 @@
 		895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895EE02E247696B400F2C109 /* TimeViewController.swift */; };
 		89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89672C04247E34EA008F3C13 /* startScreenViewController.swift */; };
 		896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */; };
+		89770CD024CA8A2500EB21D2 /* ProjectTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */; };
+		89770CD224CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */; };
+		89770CD424CA8D7200EB21D2 /* memberdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CD324CA8D7200EB21D2 /* memberdetailViewController.swift */; };
 		897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982B24B8989C00730930 /* SpeechSynthesizer.swift */; };
 		897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982F24B89BC800730930 /* SpeechRecognizer.swift */; };
 		898646E72464626F00A5C752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646E62464626F00A5C752 /* AppDelegate.swift */; };
@@ -116,8 +119,6 @@
 		9EFFB64824C5F2980073CE59 /* Projectgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64324C5F2980073CE59 /* Projectgroup.swift */; };
 		9EFFB64924C5F2980073CE59 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64424C5F2980073CE59 /* Role.swift */; };
 		9EFFB64F24C5F2FD0073CE59 /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */; };
-		9EFFB65024C5F2FD0073CE59 /* ProjectTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64B24C5F2FC0073CE59 /* ProjectTaskDataManager.swift */; };
-		9EFFB65124C5F2FD0073CE59 /* ProjectTaskMemberDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64C24C5F2FC0073CE59 /* ProjectTaskMemberDataManager.swift */; };
 		9EFFB65224C5F2FD0073CE59 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */; };
 		9EFFB65324C5F2FD0073CE59 /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */; };
 		9EFFB66C24C5F3950073CE59 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */; };
@@ -143,7 +144,6 @@
 		9EFFB68024C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */; };
 		9EFFB68124C5F3950073CE59 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */; };
 		9EFFB68224C5F3950073CE59 /* addtaskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */; };
-		9EFFB68324C5F3950073CE59 /* memberdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66B24C5F3950073CE59 /* memberdetailViewController.swift */; };
 		9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */; };
 		D7276B2D849A8B6E2CD8D851 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F272C1CC24BB68F900CCD185 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -181,6 +181,9 @@
 		895EE02E247696B400F2C109 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		89672C04247E34EA008F3C13 /* startScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startScreenViewController.swift; sourceTree = "<group>"; };
 		896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TopicsClassifier.mlmodel; sourceTree = "<group>"; };
+		89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskDataManager.swift; sourceTree = "<group>"; };
+		89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskMemberDataManager.swift; sourceTree = "<group>"; };
+		89770CD324CA8D7200EB21D2 /* memberdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberdetailViewController.swift; sourceTree = "<group>"; };
 		897E982B24B8989C00730930 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		897E982F24B89BC800730930 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		898646E32464626F00A5C752 /* SwiftProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,8 +271,6 @@
 		9EFFB64324C5F2980073CE59 /* Projectgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectgroup.swift; sourceTree = "<group>"; };
 		9EFFB64424C5F2980073CE59 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
-		9EFFB64B24C5F2FC0073CE59 /* ProjectTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTaskDataManager.swift; path = ../../../SwiftGit_integrate/SwiftProj/DataManagers/ProjectTaskDataManager.swift; sourceTree = "<group>"; };
-		9EFFB64C24C5F2FC0073CE59 /* ProjectTaskMemberDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTaskMemberDataManager.swift; path = ../../../SwiftGit_integrate/SwiftProj/DataManagers/ProjectTaskMemberDataManager.swift; sourceTree = "<group>"; };
 		9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
 		9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectgroupDataManager.swift; sourceTree = "<group>"; };
 		9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -295,7 +296,6 @@
 		9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
 		9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
 		9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtaskmemberTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB66B24C5F3950073CE59 /* memberdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberdetailViewController.swift; sourceTree = "<group>"; };
 		9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Seb_Main.storyboard; sourceTree = "<group>"; };
 		D12CB7282E4BEF5FB337CA01 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
 		F28A1FAA24C5315900F1D0DB /* IndexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
@@ -427,9 +427,9 @@
 			isa = PBXGroup;
 			children = (
 				9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */,
+				89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */,
+				89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */,
 				9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */,
-				9EFFB64B24C5F2FC0073CE59 /* ProjectTaskDataManager.swift */,
-				9EFFB64C24C5F2FC0073CE59 /* ProjectTaskMemberDataManager.swift */,
 				9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */,
 				F28A1FB924C5336100F1D0DB /* dom_FireStoreDataManager.swift */,
 				8992193E246E450A0029BFF5 /* CaseDataManager.swift */,
@@ -536,7 +536,7 @@
 				9EFFB66124C5F3940073CE59 /* createproject2ViewController.swift */,
 				9EFFB65D24C5F3930073CE59 /* createprojectViewController.swift */,
 				9EFFB65C24C5F3930073CE59 /* invitationnotiTableViewCell.swift */,
-				9EFFB66B24C5F3950073CE59 /* memberdetailViewController.swift */,
+				89770CD324CA8D7200EB21D2 /* memberdetailViewController.swift */,
 				9EFFB65B24C5F3930073CE59 /* MemberTableViewCell.swift */,
 				9EFFB66724C5F3950073CE59 /* MemberViewController.swift */,
 				9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */,
@@ -764,9 +764,9 @@
 				9E62D98224BE1BBC003462F1 /* (null) in Sources */,
 				9E62D98124BE1BBC003462F1 /* (null) in Sources */,
 				9EFFB67324C5F3950073CE59 /* MemberTableViewCell.swift in Sources */,
+				89770CD024CA8A2500EB21D2 /* ProjectTaskDataManager.swift in Sources */,
 				89FD655A24C3448B005A7BEA /* IndexerCollectionViewController.swift in Sources */,
 				9E62D92324BE1A88003462F1 /* (null) in Sources */,
-				9EFFB65124C5F2FD0073CE59 /* ProjectTaskMemberDataManager.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				9E62D97624BE1BBB003462F1 /* (null) in Sources */,
 				9E62D97424BE1BBB003462F1 /* (null) in Sources */,
@@ -785,6 +785,7 @@
 				9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
+				89770CD224CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift in Sources */,
 				9EFFB67724C5F3950073CE59 /* addtask2ViewController.swift in Sources */,
 				F28A1FAE24C531C200F1D0DB /* dom_note.swift in Sources */,
 				9E62D97D24BE1BBC003462F1 /* (null) in Sources */,
@@ -811,7 +812,6 @@
 				896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */,
 				9EFFB63F24C5F19F0073CE59 /* TokenizedString.swift in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
-				9EFFB65024C5F2FD0073CE59 /* ProjectTaskDataManager.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,
 				9EFFB66D24C5F3950073CE59 /* taskmemberTableViewCell.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
@@ -837,7 +837,7 @@
 				9EFFB64724C5F2980073CE59 /* ProjectTaskMember.swift in Sources */,
 				9E62D97F24BE1BBC003462F1 /* (null) in Sources */,
 				8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */,
-				9EFFB68324C5F3950073CE59 /* memberdetailViewController.swift in Sources */,
+				89770CD424CA8D7200EB21D2 /* memberdetailViewController.swift in Sources */,
 				9E62D97824BE1BBB003462F1 /* (null) in Sources */,
 				F28A1FC224C53B0A00F1D0DB /* SideMenuTableViewController.swift in Sources */,
 				9E62D91F24BE1A0C003462F1 /* (null) in Sources */,
