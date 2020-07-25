@@ -271,7 +271,7 @@ class DataManager: NSObject {
                 } else {
                     for document in querySnapshot!.documents
                     {
-                        var doc = Document(docID: "", title: "", body: "", docOwner: "")
+                        var doc = Document(docID: "", title: "", body: "", docOwner: "", docImages: [])
                         
                         if let docID = document.documentID as? String {
                             //print("document ID: \(document.documentID)")
@@ -289,6 +289,10 @@ class DataManager: NSObject {
                         
                         if let docOwner = document.data()["docOwner"] as? String {
                             doc.docOwner = docOwner
+                        }
+                        
+                        if let docImages = document.data()["docImages"] as? [String] {
+                            doc.docImages = docImages
                         }
 
                         if doc != nil {

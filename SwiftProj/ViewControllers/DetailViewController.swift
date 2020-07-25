@@ -9,9 +9,10 @@ import UIKit
 import CoreML
 import TesseractOCR
 import FirebaseAuth
-
-class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, G8TesseractDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+import FirebaseStorage
+import Photos
+import FirebaseUI
+class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, G8TesseractDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var documentTextView: UITextView!
     @IBOutlet weak var questionTextFieldBottomLayoutConstraint: NSLayoutConstraint!
@@ -19,9 +20,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var errLabel: UILabel!
     @IBOutlet weak var deleteDoc: UIBarButtonItem!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     let bert = BERT()
-    
+    var imageList: [UIImage] = []
+
     func configureView() {
         guard let detail = detailItem else {
             return
@@ -33,6 +35,51 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             return
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageList.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellID = indexPath.row < imageList.count ? "normalCell" : "specialCell"
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+
+        setupCell(cell: cell, indexPath: indexPath, type: cellID)
+
+        return cell
+    }
+    
+    func setupCell(cell: UICollectionViewCell, indexPath: IndexPath, type: String) {
+        switch(type) {
+        case "normalCell":
+            setupImageCell(cell: cell as! ImageCell, indexPath: indexPath)
+        case "specialCell":
+            setupSpecialCell(cell: cell as! SpecialCell, indexPath: indexPath)
+        default:
+            break
+        }
+    }
+
+    func setupImageCell(cell: ImageCell, indexPath: IndexPath) {
+        cell.ImageView.image = imageList[indexPath.row]
+    }
+
+    func setupSpecialCell(cell: SpecialCell, indexPath: IndexPath) {
+        cell.addBtn.addTarget(self, action: #selector(addButtonTapped), for: UIControl.Event.touchUpInside)
+    }
+
+    @objc func addButtonTapped(sender: UIButton) {
+        print("Show image picker UI")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        // Setting this to true allows the user to crop and scale
+        // the image to a square after the image is selected.
+        //
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true)
     }
     
     override func viewDidLoad() {
@@ -60,7 +107,40 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
         titleTextField.text = detailItem?.title
         documentTextView.text = detailItem?.body
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
+        if let dItems = detailItem?.docImages {
+            print("dItems = \(dItems) in \(detailItem?.title)")
+            let storage = Storage.storage()
+            //var reference: StorageReference!
+            let storageRef = storage.reference()
+            for img in dItems {
+                let ref = storageRef.child(img)
+                //imageList.append(ref)
+                //reference = storage.reference(forURL: "gs://\(img)")
+                print("reference = \(ref)")
+
+                ref.downloadURL { (url, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    
+                    let data = NSData(contentsOf: url!)
+                    let image = UIImage(data: data! as Data)
+                    //cell.imgOutlet.image = image
+                    self.imageList.append(image!)
+
+                    self.collectionView.reloadData()
+
+                }
+
+            }
+            
+            collectionView.reloadData()
+        }
+
     }
     
     @IBAction func deleteDocPressed(_ sender: Any) {
@@ -88,8 +168,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     // iOS doesn’t close the picker controller
     // automatically, so we have to do this ourselves by calling
     // dismissViewControllerAnimated.
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
         let chosenImage : UIImage = info[.editedImage] as! UIImage
         print()
@@ -98,8 +177,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             tesseract.image = chosenImage.g8_blackAndWhite()
             tesseract.recognize()
             
-            self.documentTextView.text = tesseract.recognizedText
-            self.documentTextView.textColor = UIColor.label
+            if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+                print(url)
+                imageList.append(chosenImage)
+                uploadToCloud(fileURL: url)
+                self.detailItem?.docImages!.append(url.lastPathComponent)
+
+                collectionView.reloadData()
+            }
+            
+            //DocImage(image: , imageDesc: tesseract.recognizedText)
+            
+//            self.documentTextView.text = tesseract.recognizedText
+//            self.documentTextView.textColor = UIColor.label
         }
         //self.imageView!.image = chosenImage
         // This saves the image selected / shot by the user
@@ -110,6 +200,26 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         //
         picker.dismiss(animated: true)
         
+    }
+    
+    func uploadToCloud(fileURL: URL) {
+        let storage = Storage.storage()
+        let data = Data()
+        
+        let storageRef = storage.reference()
+        
+        let localFile = fileURL
+        
+        let photoRef = storageRef.child(fileURL.lastPathComponent)
+        
+        let uploadTask = photoRef.putFile(from: localFile, metadata: nil, completion: {
+            (metadata, err) in
+            guard let metadata = metadata else {
+                print(err?.localizedDescription)
+                return
+            }
+            print("Photo Uploaded")
+        })
     }
     
     func progressImageRecognition(for tesseract: G8Tesseract) {
@@ -173,12 +283,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             let email = user.email
         }
         
-        var userDoc = Document(docID: "", title: "", body: "", docOwner: "")
+        var userDoc = Document(docID: "", title: "", body: "", docOwner: "", docImages: self.detailItem?.docImages)
         
         if self.detailItem?.docID != nil && self.detailItem?.docID != "" {
-            userDoc = Document(docID: detailItem?.docID, title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email)
+            userDoc = Document(docID: detailItem?.docID, title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email, docImages: self.detailItem?.docImages)
         } else {
-            userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email)
+            userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email, docImages: self.detailItem?.docImages)
         }
 
         if self.detailItem?.docID != nil && self.detailItem?.docID != ""{
@@ -208,9 +318,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if self.detailItem?.docID != nil || self.detailItem?.docID != "" {
-            detailItem = Document(docID: detailItem?.docID, title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner)
+            detailItem = Document(docID: detailItem?.docID, title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner, docImages: detailItem?.docImages)
         } else {
-            detailItem = Document(docID: "", title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner)
+            detailItem = Document(docID: "", title: titleTextField.text ?? "Document", body: textView.text, docOwner: detailItem?.docOwner, docImages: detailItem?.docImages)
         }
     }
     

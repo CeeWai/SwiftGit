@@ -16,5 +16,7 @@ target 'SwiftProj' do
   pod 'GoogleSignIn'
   pod 'SideMenu'
   pod 'TesseractOCRiOS'
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI'
 
 end
