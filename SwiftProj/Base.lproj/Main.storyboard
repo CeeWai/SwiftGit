@@ -2267,6 +2267,14 @@
                                                         <constraint firstItem="lRL-1u-JbK" firstAttribute="leading" secondItem="QSk-pZ-QLl" secondAttribute="leading" id="LhX-AK-P8b"/>
                                                         <constraint firstAttribute="trailing" secondItem="lRL-1u-JbK" secondAttribute="trailing" id="oc9-8m-wwb"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <real key="value" value="0.40000000000000002"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>

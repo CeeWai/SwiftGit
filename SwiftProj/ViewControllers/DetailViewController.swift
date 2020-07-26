@@ -23,6 +23,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     @IBOutlet weak var collectionView: UICollectionView!
     let bert = BERT()
     var imageList: [UIImage] = []
+    var imageDocList: [DocImage] = []
 
     func configureView() {
         guard let detail = detailItem else {
@@ -116,24 +117,31 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             //var reference: StorageReference!
             let storageRef = storage.reference()
             for img in dItems {
-                let ref = storageRef.child(img)
-                //imageList.append(ref)
-                //reference = storage.reference(forURL: "gs://\(img)")
-                print("reference = \(ref)")
+                if let tesseract = G8Tesseract(language: "eng") {
+                    let ref = storageRef.child(img)
+                    //imageList.append(ref)
+                    //reference = storage.reference(forURL: "gs://\(img)")
+                    print("reference = \(ref)")
 
-                ref.downloadURL { (url, error) in
-                    if let error = error {
-                        print(error)
-                        return
+                    ref.downloadURL { (url, error) in
+                        if let error = error {
+                            print(error)
+                            return
+                        }
+                        
+                        let data = NSData(contentsOf: url!)
+                        let image = UIImage(data: data! as Data)
+                        //cell.imgOutlet.image = image
+                        self.imageList.append(image!)
+                        tesseract.delegate = self
+                        tesseract.image = image!.g8_blackAndWhite()
+                        tesseract.recognize()
+                        
+                        self.imageDocList.append(DocImage(image: image!, imageDesc: tesseract.recognizedText))
+                        //print("OCR TEXT: \(tesseract.recognizedText)")
+                        self.collectionView.reloadData()
+
                     }
-                    
-                    let data = NSData(contentsOf: url!)
-                    let image = UIImage(data: data! as Data)
-                    //cell.imgOutlet.image = image
-                    self.imageList.append(image!)
-
-                    self.collectionView.reloadData()
-
                 }
 
             }
@@ -174,8 +182,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         print()
         if let tesseract = G8Tesseract(language: "eng") {
             tesseract.delegate = self
-            tesseract.image = chosenImage.g8_blackAndWhite()
-            tesseract.recognize()
+            //tesseract.image = chosenImage.g8_blackAndWhite()
+            //tesseract.recognize()
             
             if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
                 print(url)
@@ -250,18 +258,128 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         textField.placeholder = "Searching..."
         textField.text = ""
         
+        // stop words to be removed from the filter later
+        //
+        var stopwords = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "one", "two", "three", "four", "five", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        var set = CharacterSet.punctuationCharacters
+
+        
         // Run the search in the background to keep the UI responsive.
         DispatchQueue.global(qos: .userInitiated).async {
-            // Use the BERT model to search for the answer.
-            let answer = self.bert.findAnswer(for: searchText, in: detail.body!)
+
+            // Create a list of document strings and the levenshtein values of each of them
+            // These will be used later for the checking of where to use bert on
+            //
+            var chosenDoc = ""
+            var listOfDocs: [String] = []
+            var similarityList: [Double] = []
             
-            // Update the UI on the main queue.
-            DispatchQueue.main.async {
-                textField.text = String(answer)
-                textField.placeholder = placeholder
+            // Remove Punctuations from the search text
+            var searchTxtList = searchText.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+            for word in stopwords { // Removing stopwords from search text
+                for text in searchTxtList {
+                    if text.lowercased() == word.lowercased() {
+                        searchTxtList.remove(at: searchTxtList.firstIndex(of: text)!)
+                    }
+                }
             }
+            var searchtxt = searchTxtList.joined(separator: " ")
+
+
+            //print("stop words removed from searchtxt \(searchtxt)")
+            // removing all new lines (\n) and stop words
+            for imgDoc in self.imageDocList {
+                var sentence = imgDoc.imageDesc!.replacingOccurrences(of: "\n", with: " ")
+
+                var puncList = sentence.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+
+                //
+                for word in stopwords {
+                    for filteredWord in puncList {
+                        if filteredWord.lowercased() == word.lowercased() {
+                            //print("\(puncList.firstIndex(of: filteredWord)) for text \(filteredWord.lowercased()) on word \(word.lowercased())")
+
+                            puncList.remove(at: puncList.firstIndex(of: filteredWord)!)
+                        }
+                    }
+                }
+                var fullSentencefiltered = puncList.joined(separator: " ")
+
+
+                // Append the OCR'd text from the images into the first list
+                //
+                listOfDocs.append(imgDoc.imageDesc!)
+                similarityList.append(self.simpleSimilarityBetween(sentence: fullSentencefiltered, searchStr: searchtxt))
+            }
+            
+            // Append the paragraph text into the first list
+            //
+            var searchDetailBodyList = detail.body!.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+            for word in stopwords { // Removing stopwords from detail body text
+                for text in searchDetailBodyList {
+                    if text.lowercased() == word.lowercased() {
+                        //print("\(searchDetailBodyList.firstIndex(of: text)) for text \(text.lowercased()) on word \(word.lowercased())")
+
+                        searchDetailBodyList.remove(at: searchDetailBodyList.firstIndex(of: text)!)
+                    }
+                }
+            }
+            var searchDetailBody = searchDetailBodyList.joined(separator: " ")
+            listOfDocs.append(detail.body!)
+            print(searchDetailBody)
+            similarityList.append(self.simpleSimilarityBetween(sentence: searchDetailBody, searchStr: searchtxt))
+            
+            // Check if all the array items have the same value
+            // returns an error if they are the same value
+            // computes using the bert model if otherwise
+            //
+            let set = NSSet(array: similarityList)
+            if set.count == 1 {
+                DispatchQueue.main.async {
+                    textField.text = "We did not get that. Ask another question instead!"
+                    textField.placeholder = placeholder
+                }
+            } else {
+                // Find out which one is the one with the lowest levenshtein distance and
+                // that doc will be selected for the bert model to proces
+                //
+                chosenDoc = listOfDocs[similarityList.firstIndex(of: similarityList.max()!)!]
+
+                // Use the BERT model to search for the answer.
+                //
+                //let answer = self.bert.findAnswer(for: searchText, in: detail.body!)
+                let answer = self.bert.findAnswer(for: searchText, in: chosenDoc)
+
+                // Update the UI on the main queue.
+                DispatchQueue.main.async {
+                    textField.text = String(answer)
+                    textField.placeholder = placeholder
+                }
+            }
+
         }
         return true
+    }
+    
+    // Finds whether there is reoccuring words and then returns based on that
+    //
+    func simpleSimilarityBetween(sentence: String, searchStr: String)-> Double {
+        var similarityMetric: Double = 0
+        let searchStrList = searchStr.components(separatedBy: " ")
+        let sentenceStrList = sentence.components(separatedBy: " ")
+
+        for searchWord in searchStrList {
+ 
+            if sentenceStrList.contains(searchWord) {
+                similarityMetric += 2
+            } else {
+                similarityMetric -= 0.1
+            }
+        }
+        
+        //print("similarity metric \(similarityMetric) for \(sentence) with searchStr = \(searchStr)")
+
+        return Double(similarityMetric)
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
