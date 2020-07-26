@@ -99,56 +99,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             documentTextView.layer.backgroundColor = UIColor.white.cgColor
             
         }
-        
-        // set delegate for OCR function
-        //
-        if let tesseract = G8Tesseract(language: "eng") {
-            tesseract.delegate = self
-        }
-        
-        titleTextField.text = detailItem?.title
-        documentTextView.text = detailItem?.body
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        if let dItems = detailItem?.docImages {
-            print("dItems = \(dItems) in \(detailItem?.title)")
-            let storage = Storage.storage()
-            //var reference: StorageReference!
-            let storageRef = storage.reference()
-            for img in dItems {
-                if let tesseract = G8Tesseract(language: "eng") {
-                    let ref = storageRef.child(img)
-                    //imageList.append(ref)
-                    //reference = storage.reference(forURL: "gs://\(img)")
-                    print("reference = \(ref)")
-
-                    ref.downloadURL { (url, error) in
-                        if let error = error {
-                            print(error)
-                            return
-                        }
-                        
-                        let data = NSData(contentsOf: url!)
-                        let image = UIImage(data: data! as Data)
-                        //cell.imgOutlet.image = image
-                        self.imageList.append(image!)
-                        tesseract.delegate = self
-                        tesseract.image = image!.g8_blackAndWhite()
-                        tesseract.recognize()
-                        
-                        self.imageDocList.append(DocImage(image: image!, imageDesc: tesseract.recognizedText))
-                        //print("OCR TEXT: \(tesseract.recognizedText)")
-                        self.collectionView.reloadData()
-
-                    }
-                }
-
-            }
-            
-            collectionView.reloadData()
-        }
-
     }
     
     @IBAction func deleteDocPressed(_ sender: Any) {
@@ -467,6 +417,55 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         questionTextField.becomeFirstResponder()
+        
+        // set delegate for OCR function
+        //
+        if let tesseract = G8Tesseract(language: "eng") {
+            tesseract.delegate = self
+        }
+        
+        titleTextField.text = detailItem?.title
+        documentTextView.text = detailItem?.body
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        if let dItems = detailItem?.docImages {
+            print("dItems = \(dItems) in \(detailItem?.title)")
+            let storage = Storage.storage()
+            //var reference: StorageReference!
+            let storageRef = storage.reference()
+            for img in dItems {
+                if let tesseract = G8Tesseract(language: "eng") {
+                    let ref = storageRef.child(img)
+                    //imageList.append(ref)
+                    //reference = storage.reference(forURL: "gs://\(img)")
+                    print("reference = \(ref)")
+                    
+                    ref.downloadURL { (url, error) in
+                        if let error = error {
+                            print(error)
+                            return
+                        }
+                        
+                        let data = NSData(contentsOf: url!)
+                        let image = UIImage(data: data! as Data)
+                        //cell.imgOutlet.image = image
+                        self.imageList.append(image!)
+                        tesseract.delegate = self
+                        tesseract.image = image!.g8_blackAndWhite()
+                        tesseract.recognize()
+                        
+                        self.imageDocList.append(DocImage(image: image!, imageDesc: tesseract.recognizedText))
+                        //print("OCR TEXT: \(tesseract.recognizedText)")
+                        self.collectionView.reloadData()
+                        
+                    }
+                }
+                
+            }
+            
+            collectionView.reloadData()
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
