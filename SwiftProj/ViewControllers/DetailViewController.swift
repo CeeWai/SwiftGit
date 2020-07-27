@@ -87,6 +87,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         super.viewDidLoad()
         configureView()
         
+        if let dItem = self.detailItem?.docImages {
+            print("Not nill")
+        } else {
+            self.detailItem?.docImages = []
+        }
+        
         documentTextView.layer.cornerRadius = 10
         documentTextView.layer.borderWidth = 0.4
         if self.traitCollection.userInterfaceStyle == .dark {
@@ -139,6 +145,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 print(url)
                 imageList.append(chosenImage)
                 uploadToCloud(fileURL: url)
+                if let dItem = self.detailItem?.docImages {
+                    print("Not nill")
+                } else {
+                    self.detailItem?.docImages = []
+                }
+                
                 self.detailItem?.docImages!.append(url.lastPathComponent)
 
                 collectionView.reloadData()
@@ -349,13 +361,15 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             let email = user.email
         }
         
-        var userDoc = Document(docID: "", title: "", body: "", docOwner: "", docImages: self.detailItem?.docImages)
+        var userDoc = Document(docID: "", title: "", body: "", docOwner: "", docImages: [])
         
         if self.detailItem?.docID != nil && self.detailItem?.docID != "" {
             userDoc = Document(docID: detailItem?.docID, title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email, docImages: self.detailItem?.docImages)
         } else {
             userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email, docImages: self.detailItem?.docImages)
         }
+        
+        //print(self.detailItem?.docImages)
 
         if self.detailItem?.docID != nil && self.detailItem?.docID != ""{
             print("DOCID = \(self.detailItem?.docID)")
