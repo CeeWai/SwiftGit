@@ -79,6 +79,7 @@
 		89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89921951246E45CB0029BFF5 /* MapViewController.swift */; };
 		89921958246E46870029BFF5 /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89921957246E46870029BFF5 /* BridgingHeader.m */; };
 		8992195B246E46CD0029BFF5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8992195A246E46CD0029BFF5 /* libsqlite3.tbd */; };
+		89A0863724CE81C6003E04A8 /* default_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A0863624CE81C6003E04A8 /* default_image.png */; };
 		89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A67B3F249BB35C006241C5 /* ProfileViewController.swift */; };
 		89A94E0524C023C600287A03 /* IndividualCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A94E0424C023C600287A03 /* IndividualCollectionViewCell.swift */; };
 		89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */; };
@@ -269,6 +270,7 @@
 		89921956246E46870029BFF5 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		89921957246E46870029BFF5 /* BridgingHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
 		8992195A246E46CD0029BFF5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		89A0863624CE81C6003E04A8 /* default_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_image.png; sourceTree = "<group>"; };
 		89A67B3F249BB35C006241C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		89A94E0424C023C600287A03 /* IndividualCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IndividualCollectionViewCell.swift; path = SwiftProj/Fonts/IndividualCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		89C8AEF9247FE45300F3F614 /* TaskCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommentViewController.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				5CD1431624CA913700DB5915 /* student-colour-1200px.png */,
 				5CD1431224CA913600DB5915 /* student-colour.svg */,
 				5CD1431924CA913700DB5915 /* unlock-monochrome-1200px.png */,
+				89A0863624CE81C6003E04A8 /* default_image.png */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				5CD1432424CA913700DB5915 /* startScreenVid.mp4 in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
 				5CD1431D24CA913700DB5915 /* student-colour-800px.png in Resources */,
+				89A0863724CE81C6003E04A8 /* default_image.png in Resources */,
 				89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */,
 				8954EE2D24C0751700039BDF /* BottomSheetViewController.xib in Resources */,
 				5CD1432124CA913700DB5915 /* student-colour-400px.png in Resources */,

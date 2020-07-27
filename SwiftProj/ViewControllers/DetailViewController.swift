@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     @IBOutlet weak var errLabel: UILabel!
     @IBOutlet weak var deleteDoc: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var mainImageView: UIImageView!
     let bert = BERT()
     var imageList: [UIImage] = []
     var imageDocList: [DocImage] = []
@@ -89,6 +90,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
         if let dItem = self.detailItem?.docImages {
             print("Not nill")
+            //self.mainImageView.image = self.detailItem?.
         } else {
             self.detailItem?.docImages = []
         }
@@ -445,6 +447,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             print("dItems = \(dItems) in \(detailItem?.title)")
             let storage = Storage.storage()
             //var reference: StorageReference!
+            var count = 0
             let storageRef = storage.reference()
             for img in dItems {
                 if let tesseract = G8Tesseract(language: "eng") {
@@ -471,10 +474,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                         //print("OCR TEXT: \(tesseract.recognizedText)")
                         self.collectionView.reloadData()
                         
+                        count += 1
+                        
+                        if count == 1 {
+                            self.mainImageView.image = image
+                        }
+                        
                     }
                 }
                 
             }
+
             
             collectionView.reloadData()
         }
