@@ -335,6 +335,73 @@ class DataManager: NSObject {
                     print("Document successfully added!")
                 }
             }
+            
+            let user = Auth.auth().currentUser
+            if let user = user {
+                let uid = user.uid
+                let email = user.email
+            }
+            
+            if user != nil {
+                db.collection("documentation").whereField("docOwner", isEqualTo: user!.email!).getDocuments {
+                    (querySnapshot, err) in
+                    var docList : [Document] = []
+                    
+                    if let err = err
+                    {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents
+                        {
+                            var doc = Document(docID: "", title: "", body: "", docOwner: "", docImages: [])
+                            
+                            if let docID = document.documentID as? String {
+                                //print("document ID: \(document.documentID)")
+                                doc.docID = docID
+                            }
+
+                            if let title = document.data()["title"] as? String {
+                                doc.title = title
+                            }
+                        
+                            
+                            if let body = document.data()["body"] as? String {
+                                doc.body = body
+                            }
+                            
+                            if let docOwner = document.data()["docOwner"] as? String {
+                                doc.docOwner = docOwner
+                            }
+                            
+                            if let docImages = document.data()["docImages"] as? [String] {
+                                doc.docImages = docImages
+                            }
+                            
+                            if doc.title == documentation.title { // add the thing again
+                                if doc.body == documentation.body {
+                                    if doc != nil {
+                                        try? db.collection("documentation")
+                                        .document(doc.docID!)
+                                        .setData(from: doc, encoder: Firestore.Encoder()) {
+                                            err in
+                                            if let err = err {
+                                                print("Error adding document: \(err)")
+                                            } else {
+                                                print("Document successfully added!")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+
+                        }
+                    }
+                                        
+                }
+            }
+            
+            
         }
 
     }
