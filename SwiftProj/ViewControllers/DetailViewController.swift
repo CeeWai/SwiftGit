@@ -268,8 +268,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             for word in stopwords { // Removing stopwords from detail body text
                 for text in searchDetailBodyList {
                     if text.lowercased() == word.lowercased() {
-                        //print("\(searchDetailBodyList.firstIndex(of: text)) for text \(text.lowercased()) on word \(word.lowercased())")
-
                         searchDetailBodyList.remove(at: searchDetailBodyList.firstIndex(of: text)!)
                     }
                 }

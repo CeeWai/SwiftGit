@@ -416,10 +416,8 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     }
     
     @IBAction func subjectEditingChanged(_ sender: Any) {
-        //print(subjectTextField.text)
         do {
             let prediction = try self.model.prediction(text: "\(titleTextField.text) \(descTextView.text)" ?? "")
-            //subjectTextField.text = prediction.label
             if subjectTextField.text != prediction.label { // handle what happens when the subject is wrong
                 subjectPredictionLabel.text = ""
             } else {
