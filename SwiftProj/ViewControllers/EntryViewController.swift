@@ -30,7 +30,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         subjectTextField.text! = "\(subjectData)"
         print("You have picked: \(subjectData)")
         if subjectTextField.text!.isEmpty == false {
-            predictHoursPerTask()
+            self.predictHoursWrongPassBack()
         }
     }
     
@@ -426,6 +426,28 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         } catch {
             print("PREDICTION ERR FOR: \(titleTextField.text) \(descTextView.text)")
         }
+
+    }
+    
+    func predictHoursWrongPassBack() { // handle function in case the Neural net picked the wrong choice or if he picks a subject himself
+        DataManager.loadTasksBySubject(subjectTextField.text!, onComplete: { usertaskList in
+            var totalHoursSpentForTasksAtATime: Double = 0
+
+            for task in usertaskList {
+                let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: task.taskStartTime, to: task.taskEndTime)
+                var hours = Double(diffComponents.hour!)
+                if diffComponents.minute! > 0 {
+                    hours += 0.5
+                }
+                totalHoursSpentForTasksAtATime += hours
+            }
+            
+            var amtOfTasks: Double = Double(usertaskList.count)
+            var hoursSpentAtATime = totalHoursSpentForTasksAtATime/amtOfTasks
+            print("On average, people spend \(hoursSpentAtATime) hour(s) at a time on \(self.subjectTextField.text)")
+            self.subjectPredictionLabel.text = "On average, people spend \(hoursSpentAtATime) hour(s) at a time on this subject"
+            self.subjectPredictionLabel.isHidden = false
+        })
 
     }
     
