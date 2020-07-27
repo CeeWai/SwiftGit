@@ -1824,7 +1824,7 @@
             <objects>
                 <tableViewController id="16C-Md-kuP" customClass="RepeatTableViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yxr-Ui-9Zd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -2359,8 +2359,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="DAI-0f-AcZ"/>
-        <segue reference="HHA-cG-qB7"/>
-        <segue reference="Mo5-0d-Opj"/>
+        <segue reference="hmw-md-t0b"/>
+        <segue reference="RQZ-dP-3gS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>

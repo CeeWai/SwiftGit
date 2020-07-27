@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hyY-U7-DgB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hyY-U7-DgB">
     <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,7 +51,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="urJ-tp-QVg">
                             <connections>
-                                <segue destination="bha-GO-GEA" kind="show" identifier="" id="UGo-xH-VlU"/>
+                                <segue destination="bha-GO-GEA" kind="show" identifier="addNote" id="UGo-xH-VlU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -140,6 +140,7 @@
                         <outlet property="optionsBtn" destination="OcU-SE-jZI" id="LoD-IB-bfa"/>
                         <outlet property="tagsLabel" destination="LFa-JD-PJm" id="iJd-t0-SlL"/>
                         <outlet property="titleTF" destination="Xc1-h2-j6W" id="iB3-pD-von"/>
+                        <outlet property="trashBarButton" destination="uUA-Dr-c6j" id="DQ6-iM-FvJ"/>
                         <segue destination="Eg1-gp-5mO" kind="show" identifier="TagsSegue" id="W4r-qB-UBE"/>
                     </connections>
                 </viewController>

@@ -24,6 +24,7 @@ var tagList : [dom_tag] = []
                     print("Error reading document: \(error)")
                 }
              else{
+                self.noteList = []
               for doc in (snapshot?.documents)!{
                 let currentNote = dom_note(notetitle:  doc.get("title") as? String, notebody:doc.get("body") as? String, notetags:doc.get("tags") as? String, noteUserid: doc.get("uID") as? String, noteid: doc.documentID)
                 //print("current Note: " + currentNote.noteTitle! + ", body:" +   currentNote.noteBody!)
@@ -42,6 +43,7 @@ var tagList : [dom_tag] = []
                     print("Error reading document: \(error)")
                 }
              else{
+                self.noteList = []
               for doc in (snapshot?.documents)!{
                 let currentNote = dom_note(notetitle:  doc.get("title") as? String, notebody:doc.get("body") as? String, notetags:doc.get("tags") as? String, noteUserid: doc.get("uID") as? String, noteid: doc.documentID)
                 print("current note tag comparison: ", currentNote.noteTags! + " vs " + filter!)
@@ -80,6 +82,8 @@ var tagList : [dom_tag] = []
           })
     }
     
+
+    
     func updateTag(noteID:String?, tagStr:String?){
         let noteRef = self.fStore.collection("notes").document(noteID!)
         noteRef.updateData(["tags": tagStr ], completion: { (err) in
@@ -90,6 +94,8 @@ var tagList : [dom_tag] = []
                 }
             })
         }
+    
+
     
     func addNote(titleStr:String?, bodyStr:String?, tagStr:String?, uid:String?){
         fStore.collection("notes").addDocument(data: ["title":titleStr , "body":bodyStr, "tags": tagStr  , "uID":uid]){ err in

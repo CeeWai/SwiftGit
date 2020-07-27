@@ -18,6 +18,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
     //var ref : DatabaseReference?
     @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var optionsBtn: UIBarButtonItem!
+    @IBOutlet weak var trashBarButton: UIBarButtonItem!
     //speech stuff below m8s
     let audioEngine = AVAudioEngine()
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US")) // did this because im using vm and not sure where my locale is -dom 16/07/2020
@@ -32,7 +33,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
 //    var tagList : [dom_tag] = []
     var currentNote : dom_note?
     var updatedNote : dom_note?
-    var fromTV : String?
+    var addNoteBool : Bool?
     var isDeleting : Bool?
     let fsdbManager = dom_FireStoreDataManager()
     
@@ -49,7 +50,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
             userID = user.uid
             userEmail = user.email
         }
-        if let CurrentNote = currentNote {
+        if currentNote != nil {
             self.tagsLabel.text = "Tag: " + (currentNote?.noteTags)!
             self.titleTF.text = currentNote?.noteTitle
             self.bodyTV.text = currentNote?.noteBody
@@ -75,16 +76,24 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         lastEditBBI.title = "Edited: \(day) \(monthName) \(year), \(hourAndMin)"
         lastEditBBI.tintColor = UIColor.white
         lastEditBBI.isEnabled = false
-        
+        UserDefaults.standard.set("", forKey: "addNoteTag")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        fsdbManager.loadOneNoteTag(nID: currentNote?.noteID){ updatedtag in
-            
-            self.tagsLabel.text! = "Tag: " + (updatedtag)
+        if !(addNoteBool != nil && addNoteBool == true){ // if updating note and not adding new note
+            fsdbManager.loadOneNoteTag(nID: currentNote?.noteID){ updatedtag in
+                
+                self.tagsLabel.text! = "Tag: " + (updatedtag)
+            }
         }
+        else{
+            let addNoteTag = UserDefaults.standard.string(forKey: "addNoteTag")
+            if !(addNoteTag!.isEmpty){
+                self.tagsLabel.text! = "Tag: " + addNoteTag!
+            }
+        }
+
         
     }
     
@@ -103,20 +112,28 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         }))
         present(actionsheet, animated: true, completion: nil)
     }
-    @IBAction func trashBtnPressed(_ sender: Any) {
+    @IBAction func trashBtnPressed(_ sender: Any) { // check if it is deleting an existing object if yes go ddelete else just pop the view
         let deleteAlert = UIAlertController(title: "Delete", message: "All data will be lost.", preferredStyle: UIAlertController.Style.alert)
-        deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-            self.fStore?.collection("notes").document((self.currentNote?.noteID)!).delete() { err in
-                if let err = err {
-                    print("Error removing document: \(err)")
-                } else {
-                    print("Document successfully removed!")
-                    self.isDeleting = true
-                    self.navigationController?.popViewController(animated: true)
+        if currentNote != nil{
+            deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
+                self.fStore?.collection("notes").document((self.currentNote?.noteID)!).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                        self.isDeleting = true
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
-            }
-            
-        }))
+                
+            }))
+        }
+        else{
+            deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+        }
+
         
         deleteAlert.addAction(UIAlertAction(title: "Wait go back!", style: .cancel, handler: { (action: UIAlertAction!) in
             
@@ -133,7 +150,13 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         if(segue.identifier == "TagsSegue")
          {
             let TagViewController = segue.destination as! TagsTableViewController
-            TagViewController.prevNote = currentNote
+            if !(addNoteBool != nil && addNoteBool == true){
+                TagViewController.prevNote = currentNote
+            }
+            else{
+                TagViewController.isAddNote = true
+            }
+            
          }
     }
     

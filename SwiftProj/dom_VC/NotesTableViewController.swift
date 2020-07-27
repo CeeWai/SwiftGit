@@ -22,7 +22,7 @@ class NotesTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         fStore = Firestore.firestore()
-        UserDefaults.standard.set("All Notes",  forKey: "category") // reset title on 1st load
+        UserDefaults.standard.set("All Notes",  forKey: "dom_tag_category") // reset title on 1st load
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -81,9 +81,10 @@ class NotesTableViewController: UITableViewController{
     
     // refreshes tableview with all notes or filtered notes
     @objc func refreshTB(){
-        category = UserDefaults.standard.string(forKey: "category")
+        category = UserDefaults.standard.string(forKey: "dom_tag_category")
         if let category = category{
             print("catTitle: " + category)
+            self.noteList = []
             if (category == "All Notes"){
                 noteListTabBar.title = ("Notes")
                 fsdbManager.loadNotesDB(){notesList in
@@ -134,8 +135,13 @@ class NotesTableViewController: UITableViewController{
                 let note = noteList[myIndexPath!.row]
                 print("Selected row: " + String(myIndexPath!.row))
                 addNoteViewController.currentNote = note
-                addNoteViewController.fromTV = "yep" // i forgot what this is for lmao but i don't think i should remove it
             }
+         }
+        else if(segue.identifier == "addNote")
+         {
+            let addNoteViewController = segue.destination as! AddNoteViewController
+                addNoteViewController.addNoteBool = true
+            
          }
     }
     

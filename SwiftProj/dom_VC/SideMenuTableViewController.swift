@@ -59,7 +59,7 @@ class SideMenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // print(tagList[indexPath.row].tagTitle)
-        UserDefaults.standard.set(tagList[indexPath.row].tagTitle, forKey: "category")
+        UserDefaults.standard.set(tagList[indexPath.row].tagTitle, forKey: "dom_tag_category")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateNoteTable"), object: nil)
         dismiss(animated: true, completion: nil)
     }

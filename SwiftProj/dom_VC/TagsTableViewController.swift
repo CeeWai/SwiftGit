@@ -11,6 +11,7 @@ import UIKit
 class TagsTableViewController: UITableViewController {
     var prevNote : dom_note?
     var tagList : [dom_tag] = []
+    var isAddNote : Bool?
     let fsdbManager = dom_FireStoreDataManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +25,17 @@ class TagsTableViewController: UITableViewController {
         fsdbManager.loadTagsDB(){tagList in
             self.tagList = tagList
             //print("tagList Count:", tagList.count)
-            var counter = 0
-            self.tagList.forEach(){tag in
-                if tag.tagTitle == self.prevNote?.noteTags{
-                    self.tagList.remove(at: counter)//remove the dup tag that's already selected
-                    //print(tag.tagTitle! + " vs " + (self.prevNote?.noteTags)!)
+            if self.isAddNote != nil && !self.isAddNote!{ // if its existing note check for duplicate tag and remove it so they cant select it again
+                var counter = 0
+                self.tagList.forEach(){tag in
+                    if tag.tagTitle == self.prevNote?.noteTags{
+                        self.tagList.remove(at: counter)//remove the dup tag that's already selected
+                        //print(tag.tagTitle! + " vs " + (self.prevNote?.noteTags)!)
+                    }
+                    counter+=1
                 }
-                counter+=1
             }
+
             self.tableView.reloadData()
         }
         
@@ -62,7 +66,13 @@ class TagsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // print(tagList[indexPath.row].tagTitle)
-        fsdbManager.updateTag(noteID: prevNote?.noteID, tagStr: tagList[indexPath.row].tagTitle)
+        print(self.isAddNote)
+        if self.isAddNote != nil && self.isAddNote!{
+            UserDefaults.standard.set(tagList[indexPath.row].tagTitle, forKey: "addNoteTag")
+        }
+        else{
+            fsdbManager.updateTag(noteID: prevNote?.noteID, tagStr: tagList[indexPath.row].tagTitle)
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
