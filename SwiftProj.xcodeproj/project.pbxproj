@@ -25,6 +25,7 @@
 		5CD1433424CA922500DB5915 /* addPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432F24CA922500DB5915 /* addPost.swift */; };
 		5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1433724CA92B100DB5915 /* WXViewController.swift */; };
 		8906484924B4C8AC00325C5B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		89101E1924CEE4590036CE86 /* DocImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89101E1824CEE4590036CE86 /* DocImageStore.swift */; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
 		8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000724A75ACC00EE47FA /* MainViewController.swift */; };
@@ -192,6 +193,7 @@
 		5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		5CD1432F24CA922500DB5915 /* addPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addPost.swift; sourceTree = "<group>"; };
 		5CD1433724CA92B100DB5915 /* WXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXViewController.swift; sourceTree = "<group>"; };
+		89101E1824CEE4590036CE86 /* DocImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocImageStore.swift; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
 		8920000724A75ACC00EE47FA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				8944BB2324CC219900A7484F /* ImageCell.swift */,
 				8944BB2524CC239800A7484F /* SpecialCell.swift */,
 				89651AA024CDA2470088CF49 /* Levenshtein.swift */,
+				89101E1824CEE4590036CE86 /* DocImageStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				9EFFB67124C5F3950073CE59 /* projectdetail1ViewController.swift in Sources */,
 				9E62D98224BE1BBC003462F1 /* (null) in Sources */,
 				5CD142EF24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift in Sources */,
+				89101E1924CEE4590036CE86 /* DocImageStore.swift in Sources */,
 				9E62D98124BE1BBC003462F1 /* (null) in Sources */,
 				5CD1430A24CA8CDF00DB5915 /* TokenizedString.swift in Sources */,
 				9EFFB67324C5F3950073CE59 /* MemberTableViewCell.swift in Sources */,

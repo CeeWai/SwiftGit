@@ -25,6 +25,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     let bert = BERT()
     var imageList: [UIImage] = []
     var imageDocList: [DocImage] = []
+    var newimageDocStoreList: [DocImageStore] = []
+    //var imageDocStoreList: [DocImageStore] = []
+
 
     func configureView() {
         guard let detail = detailItem else {
@@ -90,7 +93,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
         if let dItem = self.detailItem?.docImages {
             print("Not nill")
-            //self.mainImageView.image = self.detailItem?.
         } else {
             self.detailItem?.docImages = []
         }
@@ -140,11 +142,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         print()
         if let tesseract = G8Tesseract(language: "eng") {
             tesseract.delegate = self
-            //tesseract.image = chosenImage.g8_blackAndWhite()
-            //tesseract.recognize()
+            tesseract.image = chosenImage.g8_blackAndWhite()
+            tesseract.recognize()
             
             if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-                print(url)
+                //print(url)
                 imageList.append(chosenImage)
                 uploadToCloud(fileURL: url)
                 if let dItem = self.detailItem?.docImages {
@@ -153,8 +155,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                     self.detailItem?.docImages = []
                 }
                 
+                if self.imageDocList.count == 0 {
+                    self.mainImageView.image = chosenImage
+                }
+                
                 self.detailItem?.docImages!.append(url.lastPathComponent)
+                self.imageDocList.append(DocImage(image: chosenImage, imageDesc: tesseract.recognizedText))
 
+                self.newimageDocStoreList.append(DocImageStore(docID: "", imageDesc: tesseract.recognizedText, imageLink: url.lastPathComponent))
+
+
+                
                 collectionView.reloadData()
             }
             
@@ -302,10 +313,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                     textField.placeholder = placeholder
                 }
             } else {
-                // Find out which one is the one with the lowest levenshtein distance and
-                // that doc will be selected for the bert model to proces
+                // Find out which one is the one with the highest points
+                // which will be selected to be used in the bert model
                 //
                 chosenDoc = listOfDocs[similarityList.firstIndex(of: similarityList.max()!)!]
+                
+                // TODO: Show the user which collection view is the one that was selected
+                //
 
                 // Use the BERT model to search for the answer.
                 //
@@ -371,14 +385,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email, docImages: self.detailItem?.docImages)
         }
         
-        //print(self.detailItem?.docImages)
-
         if self.detailItem?.docID != nil && self.detailItem?.docID != ""{
             print("DOCID = \(self.detailItem?.docID)")
 
             //print("Found that docID is empty \(self.detailItem?.docID)")
             //userDoc.docID = self.detailItem?.docID
-            DataManager.insertOrReplaceDoc(userDoc)
+            DataManager.insertOrReplaceDoc(userDoc, self.newimageDocStoreList)
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         } else {
@@ -387,7 +399,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
 
                 self.errLabel.isHidden = true
                 //userDoc.docID = "\(user!.uid)D\(fullUserDocList.count)"
-                DataManager.insertOrReplaceDoc(userDoc)
+                DataManager.insertOrReplaceDoc(userDoc, self.newimageDocStoreList)
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
             }
@@ -419,38 +431,21 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                                                selector: #selector(keyboardWillHide),
                                                name: UIWindow.keyboardWillHideNotification,
                                                object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        questionTextField.becomeFirstResponder()
-        
-        // set delegate for OCR function
-        //
-        if let tesseract = G8Tesseract(language: "eng") {
-            tesseract.delegate = self
-        }
         
         titleTextField.text = detailItem?.title
         documentTextView.text = detailItem?.body
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        if let dItems = detailItem?.docImages {
-            print("dItems = \(dItems) in \(detailItem?.title)")
-            let storage = Storage.storage()
-            //var reference: StorageReference!
-            var count = 0
-            let storageRef = storage.reference()
-            for img in dItems {
-                if let tesseract = G8Tesseract(language: "eng") {
+        DataManager.loadDocImageStoreById((self.detailItem?.docID!)!, onComplete: {
+            docImgStoreList in
+            if let dItems = self.detailItem?.docImages {
+                print("dItems = \(dItems) in \(self.detailItem?.title)")
+                let storage = Storage.storage()
+                //var reference: StorageReference!
+                var count = 0
+                let storageRef = storage.reference()
+                for img in dItems {
                     let ref = storageRef.child(img)
                     //imageList.append(ref)
                     //reference = storage.reference(forURL: "gs://\(img)")
@@ -464,13 +459,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                         
                         let data = NSData(contentsOf: url!)
                         let image = UIImage(data: data! as Data)
-                        //cell.imgOutlet.image = image
                         self.imageList.append(image!)
-                        tesseract.delegate = self
-                        tesseract.image = image!.g8_blackAndWhite()
-                        tesseract.recognize()
                         
-                        self.imageDocList.append(DocImage(image: image!, imageDesc: tesseract.recognizedText))
+                        // TODO implement the loadDocImgStore
+                        self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc))
                         //print("OCR TEXT: \(tesseract.recognizedText)")
                         self.collectionView.reloadData()
                         
@@ -481,13 +473,27 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                         }
                         
                     }
+                    
+                    
                 }
-                
-            }
 
-            
-            collectionView.reloadData()
-        }
+                self.imageDocList.reverse()
+                self.collectionView.reloadData()
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        questionTextField.becomeFirstResponder()
+        
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

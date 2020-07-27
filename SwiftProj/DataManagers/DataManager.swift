@@ -311,7 +311,7 @@ class DataManager: NSObject {
     // Inserts or replaces an existing documentation
     // into Firestore.
     //
-    static func insertOrReplaceDoc(_ documentation: Document) {
+    static func insertOrReplaceDoc(_ documentation: Document, _ docImgStoreList: [DocImageStore]) {
         if documentation.docID != nil && documentation.docID != "" { // exists in the firebase
             try? db.collection("documentation")
             .document(documentation.docID!)
@@ -322,6 +322,11 @@ class DataManager: NSObject {
                 } else {
                     print("Document successfully added!")
                 }
+            }
+            
+            for docImg in docImgStoreList {
+                var newDocImg = DocImageStore(docID: documentation.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink)
+                self.insertOrReplaceDocImageStore(newDocImg)
             }
         } else { // does not exist in db
             print("recognize that ID is nil")
@@ -394,14 +399,16 @@ class DataManager: NSObject {
                                 }
                             }
 
-
+                            for docImg in docImgStoreList {
+                                var newDocImg = DocImageStore(docID: doc.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink)
+                                self.insertOrReplaceDocImageStore(newDocImg)
+                            }
+                            
                         }
                     }
                                         
                 }
             }
-            
-            
         }
 
     }
@@ -417,6 +424,65 @@ class DataManager: NSObject {
             else {
                 print("Document successfully removed!")
                 
+            }
+        }
+    }
+    
+    static func loadDocImageStoreById(_ documentID : String, onComplete: (([DocImageStore]) -> Void)?) {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let uid = user.uid
+            let email = user.email
+        }
+        
+        if user != nil {
+            db.collection("docImageStore").whereField("docID", isEqualTo: documentID).getDocuments {
+                (querySnapshot, err) in
+                var docImageStoreList : [DocImageStore] = []
+                
+                if let err = err
+                {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents
+                    {
+
+                        var doc = DocImageStore(docID: "", imageDesc: "", imageLink: "")
+                        if let docID = document.data()["docID"] as? String {
+                            doc.docID = documentID
+                        }
+                        
+                        if let imageDesc = document.data()["imageDesc"] as? String {
+                            doc.imageDesc = imageDesc
+                        }
+                        
+                        if let imageLink = document.data()["imageLink"] as? String {
+                            doc.imageLink = imageLink
+                        }
+
+                        if doc != nil {
+                            docImageStoreList.append(doc)
+                        }
+                    }
+                }
+                
+                onComplete?(docImageStoreList)
+                
+            }
+        }
+        
+    }
+
+    
+    static func insertOrReplaceDocImageStore(_ docImageStore: DocImageStore) {
+        try? db.collection("docImageStore")
+        .document()
+        .setData(from: docImageStore, encoder: Firestore.Encoder()) {
+            err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document successfully added!")
             }
         }
     }
