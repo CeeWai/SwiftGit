@@ -2323,7 +2323,7 @@
                         <viewLayoutGuide key="safeArea" id="5Ad-Y3-YcD"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Individual Docs." id="A1P-cp-e1h">
+                    <navigationItem key="navigationItem" title="Materials" id="A1P-cp-e1h">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" image="trash" catalog="system" id="sr7-M5-Kgh">
                             <connections>
                                 <action selector="deleteDocPressed:" destination="Yym-oE-Rsn" id="1Ze-T7-oDF"/>
