@@ -992,30 +992,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KZm-Xt-6J4">
-                            <size key="itemSize" width="332" height="575"/>
+                            <size key="itemSize" width="300" height="570"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="indexCell" id="tAu-bH-Lf2" customClass="IndexCell" customModule="SwiftProj" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49" width="332" height="575"/>
+                                <rect key="frame" x="0.0" y="51.666666666666664" width="300" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wX2-Le-twx">
-                                    <rect key="frame" x="0.0" y="0.0" width="332" height="575"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="570"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2v-uR-rpn">
-                                            <rect key="frame" x="0.0" y="0.0" width="332" height="575"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="570"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vga-T7-T7o">
-                                                    <rect key="frame" x="8" y="8.0000000000000018" width="316" height="21.666666666666671"/>
+                                                    <rect key="frame" x="8" y="8.0000000000000018" width="284" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WOj-kM-Fct">
-                                                    <rect key="frame" x="8" y="37.666666666666686" width="316" height="529.33333333333326"/>
+                                                    <rect key="frame" x="8" y="37.666666666666686" width="284" height="524.33333333333326"/>
                                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1047,7 +1047,7 @@
                                         <constraint firstAttribute="trailing" secondItem="O2v-uR-rpn" secondAttribute="trailing" id="v8K-Mg-SEl"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="332" height="575"/>
+                                <size key="customSize" width="300" height="570"/>
                                 <connections>
                                     <outlet property="indexView" destination="O2v-uR-rpn" id="gAG-Vi-QGQ"/>
                                     <outlet property="textView" destination="WOj-kM-Fct" id="Qd6-2Z-i9W"/>

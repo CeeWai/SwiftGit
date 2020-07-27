@@ -22,12 +22,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     @IBOutlet weak var deleteDoc: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainImageView: UIImageView!
+    var selectedCell = 0
     let bert = BERT()
     var imageList: [UIImage] = []
     var imageDocList: [DocImage] = []
     var newimageDocStoreList: [DocImageStore] = []
     //var imageDocStoreList: [DocImageStore] = []
 
+    var placeIndexPath = NSIndexPath(item: 0, section: 0)
 
     func configureView() {
         guard let detail = detailItem else {
@@ -43,17 +45,34 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageList.count + 1
+        return imageDocList.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellID = indexPath.row < imageList.count ? "normalCell" : "specialCell"
+        let cellID = indexPath.row < imageDocList.count ? "normalCell" : "specialCell"
 
+        print("INDEXPATH \(indexPath)")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+
+        if indexPath.row == self.selectedCell {
+            cell.contentView.layer.borderColor = UIColor.systemRed.cgColor
+            cell.contentView.layer.borderWidth = 1.5
+        } else {
+            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+            cell.contentView.layer.borderWidth = 1.5
+        }
 
         setupCell(cell: cell, indexPath: indexPath, type: cellID)
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //print("INDEXPATH @ \(indexPath)")
+        self.mainImageView.image = self.imageDocList[indexPath.row].image
+        self.documentTextView.text = self.imageDocList[indexPath.row].imageDesc
+        self.selectedCell = indexPath.row
+        self.collectionView.reloadData()
     }
     
     func setupCell(cell: UICollectionViewCell, indexPath: IndexPath, type: String) {
@@ -68,13 +87,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     }
 
     func setupImageCell(cell: ImageCell, indexPath: IndexPath) {
-        cell.ImageView.image = imageList[indexPath.row]
+        cell.ImageView.image = imageDocList[indexPath.row].image
+    
     }
 
     func setupSpecialCell(cell: SpecialCell, indexPath: IndexPath) {
         cell.addBtn.addTarget(self, action: #selector(addButtonTapped), for: UIControl.Event.touchUpInside)
     }
-
+    
     @objc func addButtonTapped(sender: UIButton) {
         print("Show image picker UI")
         let picker = UIImagePickerController()
@@ -164,17 +184,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
 
                 self.newimageDocStoreList.append(DocImageStore(docID: "", imageDesc: tesseract.recognizedText, imageLink: url.lastPathComponent))
 
-
-                
                 collectionView.reloadData()
             }
-            
-            //DocImage(image: , imageDesc: tesseract.recognizedText)
-            
-//            self.documentTextView.text = tesseract.recognizedText
-//            self.documentTextView.textColor = UIColor.label
         }
-        //self.imageView!.image = chosenImage
         // This saves the image selected / shot by the user
         //
         //UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)
@@ -272,8 +284,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 for word in stopwords {
                     for filteredWord in puncList {
                         if filteredWord.lowercased() == word.lowercased() {
-                            //print("\(puncList.firstIndex(of: filteredWord)) for text \(filteredWord.lowercased()) on word \(word.lowercased())")
-
                             puncList.remove(at: puncList.firstIndex(of: filteredWord)!)
                         }
                     }
@@ -289,18 +299,18 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             
             // Append the paragraph text into the first list
             //
-            var searchDetailBodyList = detail.body!.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
-            for word in stopwords { // Removing stopwords from detail body text
-                for text in searchDetailBodyList {
-                    if text.lowercased() == word.lowercased() {
-                        searchDetailBodyList.remove(at: searchDetailBodyList.firstIndex(of: text)!)
-                    }
-                }
-            }
-            var searchDetailBody = searchDetailBodyList.joined(separator: " ")
-            listOfDocs.append(detail.body!)
-            print(searchDetailBody)
-            similarityList.append(self.simpleSimilarityBetween(sentence: searchDetailBody, searchStr: searchtxt))
+//            var searchDetailBodyList = detail.body!.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+//            for word in stopwords { // Removing stopwords from detail body text
+//                for text in searchDetailBodyList {
+//                    if text.lowercased() == word.lowercased() {
+//                        searchDetailBodyList.remove(at: searchDetailBodyList.firstIndex(of: text)!)
+//                    }
+//                }
+//            }
+//            var searchDetailBody = searchDetailBodyList.joined(separator: " ")
+//            listOfDocs.append(detail.body!)
+//            print(searchDetailBody)
+//            similarityList.append(self.simpleSimilarityBetween(sentence: searchDetailBody, searchStr: searchtxt))
             
             // Check if all the array items have the same value
             // returns an error if they are the same value
@@ -318,8 +328,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 //
                 chosenDoc = listOfDocs[similarityList.firstIndex(of: similarityList.max()!)!]
                 
-                // TODO: Show the user which collection view is the one that was selected
-                //
+                print("SIMILARITY LIST INDEX \(similarityList.firstIndex(of: similarityList.max()!)!)")
 
                 // Use the BERT model to search for the answer.
                 //
@@ -330,6 +339,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 DispatchQueue.main.async {
                     textField.text = String(answer)
                     textField.placeholder = placeholder
+                    self.mainImageView.image = self.imageDocList[similarityList.firstIndex(of: similarityList.max()!)!].image
+                    self.documentTextView.text = self.imageDocList[similarityList.firstIndex(of: similarityList.max()!)!].imageDesc
+                    //self.changeColorOfCellForIndexPath(item: 0, section: similarityList.firstIndex(of: similarityList.max()!)!)
+                    // TODO add the highlighted color of the collectionview
+
+                    self.selectedCell = similarityList.firstIndex(of: similarityList.max()!)!
+                    
+                    self.collectionView.reloadData()
                 }
             }
 
@@ -353,8 +370,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             }
         }
         
-        //print("similarity metric \(similarityMetric) for \(sentence) with searchStr = \(searchStr)")
-
         return Double(similarityMetric)
     }
     
@@ -439,17 +454,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
         DataManager.loadDocImageStoreById((self.detailItem?.docID!)!, onComplete: {
             docImgStoreList in
+            
             if let dItems = self.detailItem?.docImages {
-                print("dItems = \(dItems) in \(self.detailItem?.title)")
                 let storage = Storage.storage()
                 //var reference: StorageReference!
                 var count = 0
                 let storageRef = storage.reference()
-                for img in dItems {
-                    let ref = storageRef.child(img)
+                for img in 0...dItems.count - 1 {
+                    let ref = storageRef.child(docImgStoreList[count].imageLink!)
                     //imageList.append(ref)
                     //reference = storage.reference(forURL: "gs://\(img)")
-                    print("reference = \(ref)")
                     
                     ref.downloadURL { (url, error) in
                         if let error = error {
@@ -461,25 +475,27 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                         let image = UIImage(data: data! as Data)
                         self.imageList.append(image!)
                         
-                        // TODO implement the loadDocImgStore
                         self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc))
-                        //print("OCR TEXT: \(tesseract.recognizedText)")
+           
                         self.collectionView.reloadData()
                         
                         count += 1
                         
-                        if count == 1 {
+                        if count == 1 { // set all the environments for the first item
                             self.mainImageView.image = image
+                            self.documentTextView.text = self.imageDocList[0].imageDesc
                         }
                         
                     }
                     
+                    self.collectionView.reloadData()
                     
                 }
-
-                self.imageDocList.reverse()
-                self.collectionView.reloadData()
+                
+                self.selectedCell = 0
             }
+            self.collectionView.reloadData()
+
         })
     }
     
