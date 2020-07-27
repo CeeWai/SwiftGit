@@ -474,6 +474,7 @@
 				89921956246E46870029BFF5 /* BridgingHeader.h */,
 				89921957246E46870029BFF5 /* BridgingHeader.m */,
 				89921955246E46870029BFF5 /* SwiftProj-Bridging-Header.h */,
+				F2F5A4FA24C542A3009295E4 /* Dom_Storyboard.storyboard */,
 			);
 			path = SwiftProj;
 			sourceTree = "<group>";
@@ -627,9 +628,9 @@
 		F24BC02824B266BA00B8D1ED /* dom_VC */ = {
 			isa = PBXGroup;
 			children = (
-				F28A1FBC24C53B0A00F1D0DB /* AddNoteViewController.swift */,
 				F28A1FBD24C53B0A00F1D0DB /* NotesTableViewController.swift */,
 				F28A1FBE24C53B0A00F1D0DB /* SideMenuTableViewController.swift */,
+				F28A1FBC24C53B0A00F1D0DB /* AddNoteViewController.swift */,
 				F28A1FBB24C53B0A00F1D0DB /* TagsTableViewController.swift */,
 			);
 			path = dom_VC;

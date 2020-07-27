@@ -13,12 +13,16 @@ import SideMenu
 
 class NotesTableViewController: UITableViewController{
     var fStore : Firestore?
-    
+    let fsdbManager = dom_FireStoreDataManager()
+    @IBOutlet weak var noteListTabBar: UINavigationItem!
     //@IBOutlet var dom_tableView: UITableView!
     var noteList : [dom_note] = []
+    var category: String?
+    let name = Notification.Name("didReceiveData")
     override func viewDidLoad() {
         super.viewDidLoad()
         fStore = Firestore.firestore()
+        UserDefaults.standard.set("All Notes",  forKey: "category") // reset title on 1st load
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,9 +38,6 @@ class NotesTableViewController: UITableViewController{
             }
         }*/
 
-        
-        self.tableView.delegate = self
-       self.tableView.dataSource = self
 //        let notesRef = fStore?.collection("notes")// change to load only 1 user data
 //         notesRef?.getDocuments(completion: { (snapshot, error) in
 //             if let error = error {
@@ -51,16 +52,12 @@ class NotesTableViewController: UITableViewController{
 //             }
 //             self.dom_tableView.reloadData()
 //          })
-        let fsdbManager = dom_FireStoreDataManager()
-        fsdbManager.loadNotesDB(){notesList in
-            self.noteList = notesList
-            self.tableView.reloadData()
-        }
-        print(self.noteList.count)
-           
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fStore = Firestore.firestore()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTB), name: NSNotification.Name(rawValue: "updateNoteTable"), object: nil)
+        noteList = []
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -75,17 +72,35 @@ class NotesTableViewController: UITableViewController{
                 }
             }
         }*/
-
+        refreshTB()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        let fsdbManager = dom_FireStoreDataManager()
-        fsdbManager.loadNotesDB(){notesList in
-            self.noteList = notesList
-                    self.tableView.reloadData()
-        }
-        print("noteList count:" + String(self.noteList.count))
         self.navigationController?.tabBarController?.tabBar.isHidden = false
+    }
+    
+    // refreshes tableview with all notes or filtered notes
+    @objc func refreshTB(){
+        category = UserDefaults.standard.string(forKey: "category")
+        if let category = category{
+            print("catTitle: " + category)
+            if (category == "All Notes"){
+                noteListTabBar.title = ("Notes")
+                fsdbManager.loadNotesDB(){notesList in
+                    self.noteList = notesList
+                    print("noteList count (normal):" + String(self.noteList.count))
+                    self.tableView.reloadData()
+                }
+            }
+            else{
+                noteListTabBar.title = ("Notes - " + category)
+                fsdbManager.loadSelectedNotes(filter:category){ noteList2 in
+                    self.noteList = noteList2
+                    print("noteList count (filtered):" + String(self.noteList.count))
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -119,7 +134,7 @@ class NotesTableViewController: UITableViewController{
                 let note = noteList[myIndexPath!.row]
                 print("Selected row: " + String(myIndexPath!.row))
                 addNoteViewController.currentNote = note
-                addNoteViewController.fromTV = "yep"
+                addNoteViewController.fromTV = "yep" // i forgot what this is for lmao but i don't think i should remove it
             }
          }
     }

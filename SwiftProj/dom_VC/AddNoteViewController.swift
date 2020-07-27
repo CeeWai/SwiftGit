@@ -16,6 +16,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var lastEditBBI: UIBarButtonItem!
     @IBOutlet weak var titleTF: UITextField!
     //var ref : DatabaseReference?
+    @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var optionsBtn: UIBarButtonItem!
     //speech stuff below m8s
     let audioEngine = AVAudioEngine()
@@ -26,15 +27,22 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
     var fStore : Firestore?
     var userID : String?
     var userEmail : String?
+//    var currentNoteTag : dom_tag?
+//    var loadedNote : dom_note?
+//    var tagList : [dom_tag] = []
     var currentNote : dom_note?
+    var updatedNote : dom_note?
     var fromTV : String?
     var isDeleting : Bool?
+    let fsdbManager = dom_FireStoreDataManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notesBody.delegate = self
         // Do any additional setup after loading the view.
         notesBody.textColor = UIColor.lightGray
         // ref = Database.database().reference()
+        self.tagsLabel.text = ""
         fStore = Firestore.firestore()
         let user = Auth.auth().currentUser
         if let user = user {
@@ -42,8 +50,9 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
             userEmail = user.email
         }
         if let CurrentNote = currentNote {
-            self.titleTF.text = CurrentNote.noteTitle
-            self.bodyTV.text = CurrentNote.noteBody
+            self.tagsLabel.text = "Tag: " + (currentNote?.noteTags)!
+            self.titleTF.text = currentNote?.noteTitle
+            self.bodyTV.text = currentNote?.noteBody
         }
         else{
             self.bodyTV.text = "body"
@@ -55,7 +64,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         label.textColor = UIColor.systemGray
         let date = Date()
         let calendar = Calendar.current
-
+        
         let day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
         let monthName = DateFormatter().monthSymbols[month - 1]
@@ -70,20 +79,29 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        fsdbManager.loadOneNoteTag(nID: currentNote?.noteID){ updatedtag in
+            
+            self.tagsLabel.text! = "Tag: " + (updatedtag)
+        }
+        
+    }
+    
     @IBAction func micBtnPressed(_ sender: Any) {
         recordAndRecogniseSpeech()
     }
     @IBAction func optionsBtnPressed(_ sender: Any) {
         let actionsheet = UIAlertController(title: "Additional Options", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-
+        
         actionsheet.addAction(UIAlertAction(title: "Add Tags", style: UIAlertAction.Style.default, handler: presentTagsVC))
-
+        
         actionsheet.addAction(UIAlertAction(title: "Add Photos", style: UIAlertAction.Style.default, handler: { (action) -> Void in
-             }))
+        }))
         actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
-
-             }))
-             present(actionsheet, animated: true, completion: nil)
+            
+        }))
+        present(actionsheet, animated: true, completion: nil)
     }
     @IBAction func trashBtnPressed(_ sender: Any) {
         let deleteAlert = UIAlertController(title: "Delete", message: "All data will be lost.", preferredStyle: UIAlertController.Style.alert)
@@ -111,20 +129,28 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         self.performSegue(withIdentifier: "TagsSegue", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "TagsSegue")
+         {
+            let TagViewController = segue.destination as! TagsTableViewController
+            TagViewController.prevNote = currentNote
+         }
+    }
+    
     @IBOutlet weak var notesBody: UITextView!
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray && textView.text == "note"{
+        if textView.textColor == UIColor.lightGray && textView.text == "body"{
             textView.text = nil
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Note"
+            textView.text = "body"
             textView.textColor = UIColor.lightGray
         }
     }
-    
+    // the speech func copied from apple docs
     func recordAndRecogniseSpeech(){
         audioEngine.inputNode.removeTap(onBus: 0)
         let node = audioEngine.inputNode
@@ -162,31 +188,29 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         
         if self.isMovingFromParent {
+            let tagStr = tagsLabel.text?.replacingOccurrences(of: "Tag:", with: "")
+            let tagStr2 = tagStr?.trimmingCharacters(in: .whitespacesAndNewlines)
             if self.isDeleting!{
-                // deleting note
+                // deleting note so skip all the stuff below, maybe add alert? idk
             }
             else{
-                
-                
                 if let CurrentNote = currentNote{
-                    // do update here dom 15/7/2020
-                    print("current note ID: " + CurrentNote.noteUserID!)
-                    let noteRef = self.fStore?.collection("notes").document(CurrentNote.noteID!)
-                    noteRef?.updateData(["title": self.titleTF.text! , "body":self.bodyTV.text!], completion: { (err) in
-                        if let err = err {
-                            print("Error updating document: \(err)")
-                        } else {
-                            print("Document successfully updated")
-                        }
-                    })
+//                    if (currentNote?.noteTitle == loadedNote?.noteTitle && currentNote?.noteBody == loadedNote?.noteBody && currentNote?.noteTags == loadedNote?.noteTags){
+                       //checked for changes, no changes to note, so don't update
+//                    }
+                    //else{
+                        // do update here, change to datamanager ltr dom 15/7/2020
+                       // print("current note ID: " + CurrentNote.noteUserID!)
+                    fsdbManager.updateNote(noteID: currentNote?.noteID, titleStr: titleTF.text, bodyStr: bodyTV.text, tagStr: tagStr2)
+                   // }
                 }
                 else{
-                    // make new note since it's not an existing one mate
+                    // make new note since it's not an existing one
                     if( titleTF.text!.isEmpty){
                         print("Empty note")
                     }
                     else{
-                        fStore?.collection("notes").addDocument(data: ["title":titleTF.text ?? "default title text", "body": bodyTV.text ?? "default body text", "uID":userID ?? "no uID found"])
+                        fsdbManager.addNote(titleStr: titleTF.text, bodyStr: bodyTV.text, tagStr:  tagStr2, uid: userID)
                     }
                 }
             }

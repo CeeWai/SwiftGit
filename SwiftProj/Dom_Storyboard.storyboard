@@ -10,7 +10,7 @@
         <!--Notes-->
         <scene sceneID="vNC-fy-x1C">
             <objects>
-                <tableViewController id="Tje-sz-6we" customClass="NotesTableViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="Tje-sz-6we" customClass="NotesTableViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VvG-lI-95f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="YEi-GX-Jqr">
                             <connections>
                                 <action selector="sideMenuButtonPressed:" destination="Tje-sz-6we" id="yPV-qL-Hif"/>
-                                <segue destination="04b-2a-dyp" kind="presentation" id="Pof-UN-6mo"/>
+                                <segue destination="04b-2a-dyp" kind="presentation" modalPresentationStyle="automatic" id="Pof-UN-6mo"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="urJ-tp-QVg">
@@ -55,6 +55,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="noteListTabBar" destination="ZUI-0E-AyL" id="fEV-G7-s8C"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmk-cL-9D1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,13 +72,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-h2-j6W">
-                                <rect key="frame" x="28" y="167" width="349" height="39"/>
+                                <rect key="frame" x="28" y="136" width="349" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="46"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h1I-Ad-DZZ">
-                                <rect key="frame" x="28" y="226" width="349" height="602"/>
+                                <rect key="frame" x="28" y="192" width="349" height="573"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,13 +107,20 @@
                                 </items>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqW-cM-nIY">
-                                <rect key="frame" x="355" y="242" width="22" height="34"/>
+                                <rect key="frame" x="355" y="207" width="22" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="mic" catalog="system"/>
                                 <connections>
                                     <action selector="micBtnPressed:" destination="bha-GO-GEA" eventType="touchUpInside" id="tmc-3R-8nL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Tags selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFa-JD-PJm">
+                                <rect key="frame" x="28" y="773" width="133" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="y7S-HI-cjX"/>
@@ -128,6 +138,7 @@
                         <outlet property="lastEditBBI" destination="1Cf-nj-pcV" id="EEI-mB-UPZ"/>
                         <outlet property="notesBody" destination="h1I-Ad-DZZ" id="DoS-Gb-L8S"/>
                         <outlet property="optionsBtn" destination="OcU-SE-jZI" id="LoD-IB-bfa"/>
+                        <outlet property="tagsLabel" destination="LFa-JD-PJm" id="iJd-t0-SlL"/>
                         <outlet property="titleTF" destination="Xc1-h2-j6W" id="iB3-pD-von"/>
                         <segue destination="Eg1-gp-5mO" kind="show" identifier="TagsSegue" id="W4r-qB-UBE"/>
                     </connections>
@@ -165,9 +176,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="D82-I0-9CC"/>
-                    <connections>
-                        <outlet property="dom_TagsTB" destination="7ed-l3-5qH" id="Pry-O1-WFY"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdo-2Q-Z7a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,6 +236,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="04b-2a-dyp" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="AOB-k7-u2V"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X2b-iu-kUI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
