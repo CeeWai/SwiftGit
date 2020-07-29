@@ -30,6 +30,7 @@
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
 		8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000724A75ACC00EE47FA /* MainViewController.swift */; };
 		892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B0B4224750E2800D3FE7E /* CalendarViewController.swift */; };
+		8936C6F324D071990075E762 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8936C6F224D071990075E762 /* YOLOv3.mlmodel */; };
 		8944BB2224CB3C8B00A7484F /* DocImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944BB2124CB3C8B00A7484F /* DocImage.swift */; };
 		8944BB2424CC219900A7484F /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944BB2324CC219900A7484F /* ImageCell.swift */; };
 		8944BB2624CC239800A7484F /* SpecialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944BB2524CC239800A7484F /* SpecialCell.swift */; };
@@ -206,6 +207,7 @@
 		8928F32E2466C4330087C59F /* Proxima Nova Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Black.otf"; sourceTree = "<group>"; };
 		8928F32F2466C4330087C59F /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
 		892B0B4224750E2800D3FE7E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		8936C6F224D071990075E762 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
 		8944BB2124CB3C8B00A7484F /* DocImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocImage.swift; sourceTree = "<group>"; };
 		8944BB2324CC219900A7484F /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		8944BB2524CC239800A7484F /* SpecialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialCell.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				89FD652524C30788005A7BEA /* FindingAnswers.entitlements */,
 				89FBBC9D24B8D3A8001D0EFD /* tessdata */,
 				896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */,
+				8936C6F224D071990075E762 /* YOLOv3.mlmodel */,
 				89FDD3A424B4D0A700DEBD96 /* topicText.csv */,
 				F24BC02824B266BA00B8D1ED /* dom_VC */,
 				9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */,
@@ -907,6 +910,7 @@
 				9E62D97824BE1BBB003462F1 /* (null) in Sources */,
 				F28A1FC224C53B0A00F1D0DB /* SideMenuTableViewController.swift in Sources */,
 				9E62D91F24BE1A0C003462F1 /* (null) in Sources */,
+				8936C6F324D071990075E762 /* YOLOv3.mlmodel in Sources */,
 				9EFFB66F24C5F3950073CE59 /* projectmemberTableViewCell.swift in Sources */,
 				9E62D92124BE1A38003462F1 /* (null) in Sources */,
 				9E62D98424BE1BBC003462F1 /* (null) in Sources */,

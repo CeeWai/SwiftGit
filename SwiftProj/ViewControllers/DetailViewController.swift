@@ -137,16 +137,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func ocrButtonPressed(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        // Setting this to true allows the user to crop and scale
-        // the image to a square after the image is selected.
-        //
-        picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
-        self.present(picker, animated: true)
-    }
+//    @IBAction func ocrButtonPressed(_ sender: Any) {
+//        let picker = UIImagePickerController()
+//        picker.delegate = self
+//        // Setting this to true allows the user to crop and scale
+//        // the image to a square after the image is selected.
+//        //
+//        picker.allowsEditing = true
+//        picker.sourceType = .photoLibrary
+//        self.present(picker, animated: true)
+//    }
     
     // This function is called after the user took the picture,
     // or selected a picture from the photo library.
@@ -159,7 +159,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
         let chosenImage : UIImage = info[.editedImage] as! UIImage
-        print()
         if let tesseract = G8Tesseract(language: "eng") {
             tesseract.delegate = self
             tesseract.image = chosenImage.g8_blackAndWhite()
@@ -452,51 +451,75 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        DataManager.loadDocImageStoreById((self.detailItem?.docID!)!, onComplete: {
-            docImgStoreList in
-            
-            if let dItems = self.detailItem?.docImages {
-                let storage = Storage.storage()
-                //var reference: StorageReference!
-                var count = 0
-                let storageRef = storage.reference()
-                for img in 0...dItems.count - 1 {
-                    let ref = storageRef.child(docImgStoreList[count].imageLink!)
-                    //imageList.append(ref)
-                    //reference = storage.reference(forURL: "gs://\(img)")
-                    
-                    ref.downloadURL { (url, error) in
-                        if let error = error {
-                            print(error)
-                            return
+        if let theDocID = self.detailItem?.docID { // handle if the user is trying to ADD a new material
+            DataManager.loadDocImageStoreById((self.detailItem?.docID!)!, onComplete: {
+                docImgStoreList in
+                
+                if let dItems = self.detailItem?.docImages {
+                    let storage = Storage.storage()
+                    //var reference: StorageReference!
+                    var count = 0
+                    let storageRef = storage.reference()
+                    for img in 0...dItems.count - 1 {
+                        let ref = storageRef.child(docImgStoreList[count].imageLink!)
+                        //imageList.append(ref)
+                        //reference = storage.reference(forURL: "gs://\(img)")
+                        
+                        ref.downloadURL { (url, error) in
+                            if let error = error {
+                                print(error)
+                                return
+                            }
+                            
+                            let data = NSData(contentsOf: url!)
+                            let image = UIImage(data: data! as Data)
+                            self.imageList.append(image!)
+                            
+                            self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc))
+               
+                            self.collectionView.reloadData()
+                            
+                            count += 1
+                            
+                            if count == 1 { // set all the environments for the first item
+                                self.mainImageView.image = image
+                                self.documentTextView.text = self.imageDocList[0].imageDesc
+                            }
+                            
                         }
                         
-                        let data = NSData(contentsOf: url!)
-                        let image = UIImage(data: data! as Data)
-                        self.imageList.append(image!)
-                        
-                        self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc))
-           
                         self.collectionView.reloadData()
-                        
-                        count += 1
-                        
-                        if count == 1 { // set all the environments for the first item
-                            self.mainImageView.image = image
-                            self.documentTextView.text = self.imageDocList[0].imageDesc
-                        }
                         
                     }
                     
-                    self.collectionView.reloadData()
-                    
+                    self.selectedCell = 0
                 }
-                
-                self.selectedCell = 0
-            }
-            self.collectionView.reloadData()
+                            
+                self.collectionView.reloadData()
 
-        })
+            })
+        } else {
+            if !UIImagePickerController.isSourceTypeAvailable(.camera) { // handle if device has no camera
+                let alertController = UIAlertController(title: nil, message: "Device has no camera.", preferredStyle: .alert)
+
+                let okAction = UIAlertAction(title: "K", style: .default, handler: { (alert: UIAlertAction!) in
+                })
+
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                // Handle if device has camera
+                print("THIS IS A WHOLE NEW DOC")
+                let vc = UIImagePickerController()
+                vc.sourceType = .camera
+                vc.allowsEditing = true
+                vc.delegate = self
+                present(vc, animated: true)
+            }
+
+        }
+        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
