@@ -22,7 +22,7 @@ SwiftProj/BertModel/
 SwiftProj/BertModel/BERTQAFP16.mlmodel
 /SwiftProj/BertModel/BERTQAFP16.mlmodel
 /SwiftProj/YOLOv3.mlmodel
-
+/SwiftProj/Resnet50.mlmodel
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
