@@ -20,3 +20,6 @@ directory
 
 Also place this in the "/SwiftProj/BertModel/"
 https://drive.google.com/drive/folders/1PNTNHkY_vgQnAD6Z3hu44SSWukjNB250?usp=sharing
+
+Also Place this in "/SwiftProj/" in the same dir as the TopicsClassifier.mlmodel:
+https://drive.google.com/file/d/1n_lP1zTW1ZdvVA-_Y2ecVE0w5m5q1FzC/view?usp=sharing
