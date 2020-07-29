@@ -325,7 +325,7 @@ class DataManager: NSObject {
             }
             
             for docImg in docImgStoreList {
-                var newDocImg = DocImageStore(docID: documentation.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink)
+                var newDocImg = DocImageStore(docID: documentation.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink, objPredictions: docImg.objPredictions)
                 self.insertOrReplaceDocImageStore(newDocImg)
             }
         } else { // does not exist in db
@@ -400,7 +400,7 @@ class DataManager: NSObject {
                             }
 
                             for docImg in docImgStoreList {
-                                var newDocImg = DocImageStore(docID: doc.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink)
+                                var newDocImg = DocImageStore(docID: doc.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink, objPredictions: docImg.objPredictions)
                                 self.insertOrReplaceDocImageStore(newDocImg)
                             }
                             
@@ -447,7 +447,7 @@ class DataManager: NSObject {
                     for document in querySnapshot!.documents
                     {
 
-                        var doc = DocImageStore(docID: "", imageDesc: "", imageLink: "")
+                        var doc = DocImageStore(docID: "", imageDesc: "", imageLink: "", objPredictions: [])
                         if let docID = document.data()["docID"] as? String {
                             doc.docID = documentID
                         }
@@ -459,6 +459,11 @@ class DataManager: NSObject {
                         if let imageLink = document.data()["imageLink"] as? String {
                             doc.imageLink = imageLink
                         }
+                        
+                        if let objPredictions = document.data()["objPredictions"] as? [String] {
+                            doc.objPredictions = objPredictions
+                        }
+                        
 
                         if doc != nil {
                             docImageStoreList.append(doc)

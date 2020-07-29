@@ -12,6 +12,8 @@ import FirebaseAuth
 import FirebaseStorage
 import Photos
 import FirebaseUI
+import Vision
+
 class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, G8TesseractDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var documentTextView: UITextView!
@@ -179,11 +181,53 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 }
                 
                 self.detailItem?.docImages!.append(url.lastPathComponent)
-                self.imageDocList.append(DocImage(image: chosenImage, imageDesc: tesseract.recognizedText))
-
-                self.newimageDocStoreList.append(DocImageStore(docID: "", imageDesc: tesseract.recognizedText, imageLink: url.lastPathComponent))
-
-                collectionView.reloadData()
+                
+                var cImage = CIImage(cgImage: chosenImage.cgImage!)
+                
+                // Load the ML model through its generated class
+                guard let model = try? VNCoreMLModel(for: Resnet50().model) else {
+                    fatalError("can't load Places ML model")
+                }
+                
+                // Create a Vision request with completion handler
+                let request = VNCoreMLRequest(model: model) { [weak self] request, error in
+                    let results = request.results as? [VNClassificationObservation]
+                    
+                    var outputText: [String] = []
+                    
+                    for res in results!{
+                        if Int(res.confidence * 100) > 0 {
+                            outputText.append(res.identifier)
+                            print("\(Int(res.confidence * 100))% it's \(res.identifier)\n")
+                        }
+                    }
+                    DispatchQueue.main.async { [weak self] in
+                        
+                        self!.imageDocList.append(DocImage(image: chosenImage, imageDesc: tesseract.recognizedText, objPredictions: outputText))
+                        
+                        self!.newimageDocStoreList.append(DocImageStore(docID: "", imageDesc: tesseract.recognizedText, imageLink: url.lastPathComponent, objPredictions: outputText))
+                        
+                        self?.documentTextView.text = tesseract.recognizedText
+                        //print(outputText)
+                        self?.selectedCell = (self?.imageDocList.count)! - 1
+                        
+                        self?.mainImageView.image = chosenImage
+                        self!.collectionView.reloadData()
+                        
+                    }
+                }
+                
+                // Run the CoreML3 Resnet50 classifier on global dispatch queue
+                let handler = VNImageRequestHandler(ciImage: cImage)
+                DispatchQueue.global(qos: .userInteractive).async {
+                    do {
+                        try handler.perform([request])
+                    } catch {
+                        print(error)
+                    }
+                }
+                
+                
             }
         }
         // This saves the image selected / shot by the user
@@ -195,6 +239,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         picker.dismiss(animated: true)
         
     }
+    
+//    func imageClassify(image: CIImage) -> [String]? {
+//
+//    }
     
     func uploadToCloud(fileURL: URL) {
         let storage = Storage.storage()
@@ -269,86 +317,106 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                     }
                 }
             }
-            var searchtxt = searchTxtList.joined(separator: " ")
+            
+            
+            var c = 0 // check for images
+            var found = false
+            for iDoc in self.imageDocList {
+                var idvIDocPred = iDoc.objPredictions!
+                for pred in idvIDocPred {
+                    print("pred: \(pred)")
+                    for p in pred.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ") {
+                        print(p)
+                        for sText in searchTxtList {
+                            if p.lowercased() == sText.lowercased() {
+                                print("YO WE FOUND SOMETHING DAWG \(p.lowercased()) == \(sText.lowercased())")
+                                // Update the UI on the main queue.
+                                found = true
 
+                                DispatchQueue.main.async {
+                                    textField.text = "We found a: \(sText.lowercased())"
+                                    textField.placeholder = placeholder
+                                    self.mainImageView.image = iDoc.image
+                                    self.documentTextView.text = iDoc.imageDesc
 
-            //print("stop words removed from searchtxt \(searchtxt)")
-            // removing all new lines (\n) and stop words
-            for imgDoc in self.imageDocList {
-                var sentence = imgDoc.imageDesc!.replacingOccurrences(of: "\n", with: " ")
+                                    self.selectedCell = c - 1
+                                    
+                                    self.collectionView.reloadData()
+                                    
+                                }
+                                break
 
-                var puncList = sentence.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
-
-                //
-                for word in stopwords {
-                    for filteredWord in puncList {
-                        if filteredWord.lowercased() == word.lowercased() {
-                            puncList.remove(at: puncList.firstIndex(of: filteredWord)!)
+                            }
                         }
                     }
                 }
-                var fullSentencefiltered = puncList.joined(separator: " ")
-
-
-                // Append the OCR'd text from the images into the first list
-                //
-                listOfDocs.append(imgDoc.imageDesc!)
-                similarityList.append(self.simpleSimilarityBetween(sentence: fullSentencefiltered, searchStr: searchtxt))
-            }
-            
-            // Append the paragraph text into the first list
-            //
-//            var searchDetailBodyList = detail.body!.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
-//            for word in stopwords { // Removing stopwords from detail body text
-//                for text in searchDetailBodyList {
-//                    if text.lowercased() == word.lowercased() {
-//                        searchDetailBodyList.remove(at: searchDetailBodyList.firstIndex(of: text)!)
-//                    }
-//                }
-//            }
-//            var searchDetailBody = searchDetailBodyList.joined(separator: " ")
-//            listOfDocs.append(detail.body!)
-//            print(searchDetailBody)
-//            similarityList.append(self.simpleSimilarityBetween(sentence: searchDetailBody, searchStr: searchtxt))
-            
-            // Check if all the array items have the same value
-            // returns an error if they are the same value
-            // computes using the bert model if otherwise
-            //
-            let set = NSSet(array: similarityList)
-            if set.count == 1 {
-                DispatchQueue.main.async {
-                    textField.text = "We did not get that. Ask another question instead!"
-                    textField.placeholder = placeholder
-                }
-            } else {
-                // Find out which one is the one with the highest points
-                // which will be selected to be used in the bert model
-                //
-                chosenDoc = listOfDocs[similarityList.firstIndex(of: similarityList.max()!)!]
                 
-                print("SIMILARITY LIST INDEX \(similarityList.firstIndex(of: similarityList.max()!)!)")
+                c += 1
+            }
+            
+            if !found {
+                var searchtxt = searchTxtList.joined(separator: " ")
 
-                // Use the BERT model to search for the answer.
+                //print("stop words removed from searchtxt \(searchtxt)")
+                // removing all new lines (\n) and stop words
+                for imgDoc in self.imageDocList {
+                    var sentence = imgDoc.imageDesc!.replacingOccurrences(of: "\n", with: " ")
+
+                    var puncList = sentence.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+
+                    //
+                    for word in stopwords {
+                        for filteredWord in puncList {
+                            if filteredWord.lowercased() == word.lowercased() {
+                                puncList.remove(at: puncList.firstIndex(of: filteredWord)!)
+                            }
+                        }
+                    }
+                    var fullSentencefiltered = puncList.joined(separator: " ")
+
+
+                    // Append the OCR'd text from the images into the first list
+                    //
+                    listOfDocs.append(imgDoc.imageDesc!)
+                    similarityList.append(self.simpleSimilarityBetween(sentence: fullSentencefiltered, searchStr: searchtxt))
+                }
+            
+                // Check if all the array items have the same value
+                // returns an error if they are the same value
+                // computes using the bert model if otherwise
                 //
-                //let answer = self.bert.findAnswer(for: searchText, in: detail.body!)
-                let answer = self.bert.findAnswer(for: searchText, in: chosenDoc)
-
-                // Update the UI on the main queue.
-                DispatchQueue.main.async {
-                    textField.text = String(answer)
-                    textField.placeholder = placeholder
-                    self.mainImageView.image = self.imageDocList[similarityList.firstIndex(of: similarityList.max()!)!].image
-                    self.documentTextView.text = self.imageDocList[similarityList.firstIndex(of: similarityList.max()!)!].imageDesc
-                    //self.changeColorOfCellForIndexPath(item: 0, section: similarityList.firstIndex(of: similarityList.max()!)!)
-                    // TODO add the highlighted color of the collectionview
-
-                    self.selectedCell = similarityList.firstIndex(of: similarityList.max()!)!
+                let set = NSSet(array: similarityList)
+                if set.count == 1 {
+                    DispatchQueue.main.async {
+                        textField.text = "We did not get that. Ask another question instead!"
+                        textField.placeholder = placeholder
+                    }
+                } else {
                     
-                    self.collectionView.reloadData()
+                    // Find out which one is the one with the highest points
+                    // which will be selected to be used in the bert model
+                    //
+                    chosenDoc = listOfDocs[similarityList.firstIndex(of: similarityList.max()!)!]
+                    
+                    // Use the BERT model to search for the answer.
+                    //
+                    let answer = self.bert.findAnswer(for: searchText, in: chosenDoc)
+
+                    // Update the UI on the main queue.
+                    DispatchQueue.main.async {
+                        textField.text = String(answer)
+                        textField.placeholder = placeholder
+                        self.mainImageView.image = self.imageDocList[similarityList.firstIndex(of: similarityList.max()!)!].image
+                        self.documentTextView.text = self.imageDocList[similarityList.firstIndex(of: similarityList.max()!)!].imageDesc
+                        //self.changeColorOfCellForIndexPath(item: 0, section: similarityList.firstIndex(of: similarityList.max()!)!)
+                        // TODO add the highlighted color of the collectionview
+
+                        self.selectedCell = similarityList.firstIndex(of: similarityList.max()!)!
+                        
+                        self.collectionView.reloadData()
+                    }
                 }
             }
-
         }
         return true
     }
@@ -456,43 +524,45 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 docImgStoreList in
                 
                 if let dItems = self.detailItem?.docImages {
-                    let storage = Storage.storage()
-                    //var reference: StorageReference!
-                    var count = 0
-                    let storageRef = storage.reference()
-                    for img in 0...dItems.count - 1 {
-                        let ref = storageRef.child(docImgStoreList[count].imageLink!)
-                        //imageList.append(ref)
-                        //reference = storage.reference(forURL: "gs://\(img)")
-                        
-                        ref.downloadURL { (url, error) in
-                            if let error = error {
-                                print(error)
-                                return
-                            }
-                            
-                            let data = NSData(contentsOf: url!)
-                            let image = UIImage(data: data! as Data)
-                            self.imageList.append(image!)
-                            
-                            self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc))
-               
-                            self.collectionView.reloadData()
-                            
-                            count += 1
-                            
-                            if count == 1 { // set all the environments for the first item
-                                self.mainImageView.image = image
-                                self.documentTextView.text = self.imageDocList[0].imageDesc
-                            }
-                            
-                        }
-                        
-                        self.collectionView.reloadData()
-                        
-                    }
+                    if dItems.count > 0 {
+                         let storage = Storage.storage()
+                         //var reference: StorageReference!
+                         var count = 0
+                         let storageRef = storage.reference()
+                         for img in 0...dItems.count - 1 {
+                             let ref = storageRef.child(docImgStoreList[count].imageLink!)
+                             //imageList.append(ref)
+                             //reference = storage.reference(forURL: "gs://\(img)")
+                             
+                             ref.downloadURL { (url, error) in
+                                 if let error = error {
+                                     print(error)
+                                     return
+                                 }
+                                 
+                                 let data = NSData(contentsOf: url!)
+                                 let image = UIImage(data: data! as Data)
+                                 self.imageList.append(image!)
+                                 
+                                 self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc, objPredictions: docImgStoreList[count].objPredictions))
                     
-                    self.selectedCell = 0
+                                 self.collectionView.reloadData()
+                                 
+                                 count += 1
+                                 
+                                 if count == 1 { // set all the environments for the first item
+                                     self.mainImageView.image = image
+                                     self.documentTextView.text = self.imageDocList[0].imageDesc
+                                 }
+                                 
+                             }
+                             
+                             self.collectionView.reloadData()
+                             
+                         }
+                         
+                         self.selectedCell = 0
+                    }
                 }
                             
                 self.collectionView.reloadData()

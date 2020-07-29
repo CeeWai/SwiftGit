@@ -12,9 +12,11 @@ import UIKit
 struct DocImage {
     var image: UIImage?
     var imageDesc: String?
+    var objPredictions: [String]?
 
-    internal init(image: UIImage?, imageDesc: String?) {
+    internal init(image: UIImage?, imageDesc: String?, objPredictions: [String]?) {
         self.image = image
         self.imageDesc = imageDesc
+        self.objPredictions = objPredictions
     }
 }

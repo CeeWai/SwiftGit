@@ -9,14 +9,15 @@
 import Foundation
 
 struct DocImageStore: Codable {
-    internal init(docID: String? = nil, imageDesc: String? = nil, imageLink: String? = nil) {
+    internal init(docID: String?, imageDesc: String?, imageLink: String?, objPredictions: [String]?) {
         self.docID = docID
         self.imageDesc = imageDesc
         self.imageLink = imageLink
+        self.objPredictions = objPredictions
     }
     
     var docID: String?
     var imageDesc: String?
     var imageLink: String?
-
+    var objPredictions: [String]?
 }
