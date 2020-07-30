@@ -24,6 +24,7 @@
 		5CD1433324CA922500DB5915 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */; };
 		5CD1433424CA922500DB5915 /* addPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432F24CA922500DB5915 /* addPost.swift */; };
 		5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1433724CA92B100DB5915 /* WXViewController.swift */; };
+		89019B8024D2731000BBB6FB /* ImageLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89019B7F24D2731000BBB6FB /* ImageLink.swift */; };
 		8903D05D24D18A97000C42BF /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8903D05C24D18A97000C42BF /* Resnet50.mlmodel */; };
 		8906484924B4C8AC00325C5B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		89101E1924CEE4590036CE86 /* DocImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89101E1824CEE4590036CE86 /* DocImageStore.swift */; };
@@ -194,6 +195,7 @@
 		5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		5CD1432F24CA922500DB5915 /* addPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addPost.swift; sourceTree = "<group>"; };
 		5CD1433724CA92B100DB5915 /* WXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXViewController.swift; sourceTree = "<group>"; };
+		89019B7F24D2731000BBB6FB /* ImageLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLink.swift; sourceTree = "<group>"; };
 		8903D05C24D18A97000C42BF /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		89101E1824CEE4590036CE86 /* DocImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocImageStore.swift; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				8944BB2524CC239800A7484F /* SpecialCell.swift */,
 				89651AA024CDA2470088CF49 /* Levenshtein.swift */,
 				89101E1824CEE4590036CE86 /* DocImageStore.swift */,
+				89019B7F24D2731000BBB6FB /* ImageLink.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				5CD1430824CA8CDF00DB5915 /* BERTOutput.swift in Sources */,
 				9EFFB67B24C5F3950073CE59 /* addtask1ViewController.swift in Sources */,
+				89019B8024D2731000BBB6FB /* ImageLink.swift in Sources */,
 				9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,

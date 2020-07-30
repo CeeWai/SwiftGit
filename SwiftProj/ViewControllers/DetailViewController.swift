@@ -30,6 +30,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     var imageDocList: [DocImage] = []
     var newimageDocStoreList: [DocImageStore] = []
     //var imageDocStoreList: [DocImageStore] = []
+    var imgLinkList: [ImageLink] = []
 
     var placeIndexPath = NSIndexPath(item: 0, section: 0)
 
@@ -525,48 +526,53 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 
                 if let dItems = self.detailItem?.docImages {
                     if dItems.count > 0 {
-                         let storage = Storage.storage()
-                         //var reference: StorageReference!
-                         var count = 0
-                         let storageRef = storage.reference()
-                         for img in 0...dItems.count - 1 {
-                             let ref = storageRef.child(docImgStoreList[count].imageLink!)
-                             //imageList.append(ref)
-                             //reference = storage.reference(forURL: "gs://\(img)")
-                             
-                             ref.downloadURL { (url, error) in
-                                 if let error = error {
-                                     print(error)
-                                     return
-                                 }
-                                 
-                                 let data = NSData(contentsOf: url!)
-                                 let image = UIImage(data: data! as Data)
-                                 self.imageList.append(image!)
-                                 
-                                 self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc, objPredictions: docImgStoreList[count].objPredictions))
-                    
-                                 self.collectionView.reloadData()
-                                 
-                                 count += 1
-                                 
-                                 if count == 1 { // set all the environments for the first item
-                                     self.mainImageView.image = image
-                                     self.documentTextView.text = self.imageDocList[0].imageDesc
-                                 }
-                                 
-                             }
-                             
-                             self.collectionView.reloadData()
-                             
-                         }
-                         
-                         self.selectedCell = 0
+                        let storage = Storage.storage()
+                        //var reference: StorageReference!
+                        var count = 0
+                        var anotherCount = 0
+                        
+                        let storageRef = storage.reference()
+                        for img in 0...dItems.count - 1 {
+                            let ref = storageRef.child(docImgStoreList[anotherCount].imageLink!)
+                            anotherCount += 1
+                            ref.downloadURL { (url, error) in
+                                if let error = error {
+                                    print(error)
+                                    return
+                                }
+                                
+                                let data = NSData(contentsOf: url!)
+                                let image = UIImage(data: data! as Data)
+                                
+                                self.imageList.append(image!)
+                                self.imgLinkList.append(ImageLink(image: image!, imgLink: url?.lastPathComponent))
+                                self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc, objPredictions: docImgStoreList[count].objPredictions))
+                                
+                                self.collectionView.reloadData()
+                                
+                                count += 1
+                                
+                                if count == 1 { // set all the environments for the first item
+                                    self.mainImageView.image = image
+                                    self.documentTextView.text = self.imageDocList[0].imageDesc
+                                }
+                                
+                                if count == self.detailItem?.docImages?.count {
+                                    self.sortImageDocList()
+                                }
+                                
+                            }
+                            
+                            self.collectionView.reloadData()
+                            
+                        }
+                        
+                        self.selectedCell = 0
                     }
                 }
-                            
+                
                 self.collectionView.reloadData()
-
+                
             })
         } else {
             if !UIImagePickerController.isSourceTypeAvailable(.camera) { // handle if device has no camera
@@ -590,6 +596,34 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         }
         
 
+    }
+    
+    // Because downloadURL is async in nature, we wil have to
+    // sort the imageDocList and imagelists after appending the images.
+    //
+    func sortImageDocList() {
+        var formatLink = self.detailItem!.docImages!
+        var imgL = self.imgLinkList
+        var hardCodedList: [ImageLink] = []
+        for fLink in formatLink {
+            for link in imgL {
+                if fLink == link.imgLink {
+                    hardCodedList.append(link)
+                }
+            }
+        }
+        
+        for i in 0...hardCodedList.count - 1 {
+            var hardCodedImage = hardCodedList[i]
+            self.imageList[i] = hardCodedImage.image!
+            self.imgLinkList[i] = ImageLink(image: hardCodedImage.image, imgLink: hardCodedImage.imgLink)
+            var imgDoc = self.imageDocList[i]
+            self.imageDocList[i] = DocImage(image: hardCodedImage.image, imageDesc: imgDoc.imageDesc, objPredictions: imgDoc.objPredictions)
+            print("THE VALUE OF LINK IMAGE IS \(hardCodedImage.imgLink)")
+        }
+        
+        self.mainImageView.image = hardCodedList[0].image
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -651,3 +685,4 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                        completion: nil)
     }
 }
+
