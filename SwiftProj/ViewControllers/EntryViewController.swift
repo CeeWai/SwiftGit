@@ -356,7 +356,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 if taskListFromFirestore != nil {
                     taskListLength = taskListFromFirestore.count
                 }
-                var task = Task(taskID: user!.uid + "\(taskListLength)", taskName: self.titleTextField.text!, taskDesc: self.descTextView.text, taskStartTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!, importance: self.importanceLabel.text!, subject: self.subjectTextField.text!, lastStartDelayedTime: nil, lastEndDelayedTime: nil)
+                var task = Task(taskID: "", taskName: self.titleTextField.text!, taskDesc: self.descTextView.text, taskStartTime: dateStartCurrent!, taskEndTime: dateEndCurrent!, repeatType: self.chosenRepeatLabel.text!, taskOwner: (user?.email)!, importance: self.importanceLabel.text!, subject: self.subjectTextField.text!, lastStartDelayedTime: nil, lastEndDelayedTime: nil)
                 
                 if self.editTask != nil {
                     task.taskID = self.editTask!.taskID

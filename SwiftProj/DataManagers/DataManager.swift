@@ -101,13 +101,11 @@ class DataManager: NSObject {
                         
                         if let startTime = document.data()["taskStartTime"] as? Timestamp {
                             let date = startTime.dateValue()
-                            //print(date)
                             task.taskStartTime = date
                         }
                         
                         if let endtime = document.data()["taskEndTime"] as? Timestamp {
                             let date = endtime.dateValue()
-                            //print(date)
                             task.taskEndTime = date
                         }
                         
@@ -204,9 +202,7 @@ class DataManager: NSObject {
                     if let subject = document.data()["subject"] as? String {
                         task.subject = subject
                     }
-                    
-                    //print(task)
-                    
+                                        
                     if task != nil {
                         taskList.append(task)
                     }
@@ -222,16 +218,138 @@ class DataManager: NSObject {
     // Inserts or replaces an existing Task
     // into Firestore.
     //
+//    static func insertOrReplaceTask(_ task: Task) {
+//        try? db.collection("tasks")
+//            .document("\(task.taskID)")
+//            .setData(from: task, encoder: Firestore.Encoder()) {
+//                err in
+//                if let err = err {
+//                    print("Error adding document: \(err)")
+//                } else {
+//                    print("Document successfully added!")
+//                }
+//        }
+//    }
+    
     static func insertOrReplaceTask(_ task: Task) {
-        try? db.collection("tasks")
-            .document("\(task.taskID)")
-            .setData(from: task, encoder: Firestore.Encoder()) {
-                err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document successfully added!")
-                }
+        print("TASK ID IS \(task.taskID)")
+        if task.taskID != nil && task.taskID != "" { // exists in the firebase
+            try? db.collection("tasks")
+                .document(task.taskID)
+                .setData(from: task, encoder: Firestore.Encoder()) {
+                    err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        print("Task successfully added!")
+                    }
+            }
+        } else {
+            try? db.collection("tasks")
+                .document()
+                .setData(from: task, encoder: Firestore.Encoder()) {
+                    err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        print("Task successfully added!")
+                    }
+                    
+                    let user = Auth.auth().currentUser
+                    if let user = user {
+                        let uid = user.uid
+                        let email = user.email
+                    }
+                    
+                    if user != nil {
+                        db.collection("tasks").whereField("taskOwner", isEqualTo: user!.email!).getDocuments {
+                            (querySnapshot, err) in
+                            
+                            if let err = err
+                            {
+                                print("Error getting documents: \(err)")
+                            } else {
+                                for document in querySnapshot!.documents
+                                {
+                                    var task1 = Task(taskID: "", taskName: "", taskDesc: "", taskStartTime: Date(), taskEndTime: Date(), repeatType: "", taskOwner: "", importance: "", subject: "", lastStartDelayedTime: Date(), lastEndDelayedTime: Date())
+                                    
+                                    if let id = document.documentID as? String {
+                                        //print("document ID: \(document.documentID)")
+                                        task1.taskID = id
+                                    }
+                                    
+                                    if let name = document.data()["taskName"] as? String {
+                                        task1.taskName = name
+                                    }
+                                    
+                                    if let description = document.data()["taskDesc"] as? String {
+                                        task1.taskDesc = description
+                                    }
+                                    
+                                    if let startTime = document.data()["taskStartTime"] as? Timestamp {
+                                        let date = startTime.dateValue()
+                                        task1.taskStartTime = date
+                                    }
+                                    
+                                    if let endtime = document.data()["taskEndTime"] as? Timestamp {
+                                        let date = endtime.dateValue()
+                                        task1.taskEndTime = date
+                                    }
+                                    
+                                    if let repeatType = document.data()["repeatType"] as? String {
+                                        task1.repeatType = repeatType
+                                    }
+                                    
+                                    if let taskOwner = document.data()["taskOwner"] as? String {
+                                        task1.taskOwner = taskOwner
+                                    }
+                                    
+                                    if let importance = document.data()["importance"] as? String {
+                                        task1.importance = importance
+                                    }
+                                    
+                                    if let subject = document.data()["subject"] as? String {
+                                        task1.subject = subject
+                                    }
+                                    
+                                    if let lastStartDelayedTime = document.data()["lastStartDelayedTime"] as? Timestamp {
+                                        let date = lastStartDelayedTime.dateValue()
+                                        task1.lastStartDelayedTime = date
+                                    }
+                                    
+                                    if let lastEndDelayedTime = document.data()["lastEndDelayedTime"] as? Timestamp {
+                                        let date = lastEndDelayedTime.dateValue()
+                                        task1.lastEndDelayedTime = date
+                                    }
+                                    
+                                    if task1.taskName == task.taskName {
+                                        if task1.taskDesc == task.taskDesc {
+                                            if task1.taskStartTime == task.taskStartTime {
+//                                                print("\(task1.taskName) and \(task.taskName)")
+//                                                try? db.collection("tasks")
+//                                                    .document(task1.taskID)
+//                                                    .setData(from: task1, encoder: Firestore.Encoder()) {
+//                                                        err in
+//                                                        if let err = err {
+//                                                            print("Error adding document: \(err)")
+//                                                        } else {
+//                                                            print("Task successfully added!")
+//                                                        }
+//                                                }
+                                                self.insertOrReplaceTask(task1)
+                                            }
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                            }
+                                                    
+                        }
+                    }
+                    
+            }
+
         }
     }
     
