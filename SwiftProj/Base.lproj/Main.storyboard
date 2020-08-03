@@ -983,7 +983,7 @@
             </objects>
             <point key="canvasLocation" x="1094" y="258"/>
         </scene>
-        <!--Documents-->
+        <!--Materials-->
         <scene sceneID="5pV-cO-MCu">
             <objects>
                 <collectionViewController id="NsM-KA-prf" customClass="IndexerCollectionViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
@@ -1061,7 +1061,7 @@
                             <outlet property="delegate" destination="NsM-KA-prf" id="Pfn-Ia-QWt"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Documents" id="C2W-5e-uCI">
+                    <navigationItem key="navigationItem" title="Materials" id="C2W-5e-uCI">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="7G9-BL-mPn">
                             <connections>
                                 <segue destination="Yym-oE-Rsn" kind="show" identifier="addDocSegue" id="xoB-qR-yoO"/>
