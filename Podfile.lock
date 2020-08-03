@@ -408,6 +408,7 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - PRTween (0.1.0)
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
@@ -425,6 +426,7 @@ DEPENDENCIES:
   - FirebaseUI
   - FSCalendar
   - GoogleSignIn
+  - PRTween
   - SideMenu
   - TesseractOCRiOS
 
@@ -459,6 +461,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - PRTween
     - SDWebImage
     - SideMenu
     - TesseractOCRiOS
@@ -493,10 +496,11 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  PRTween: 6c58c7e32ebcf31e33e6a6e6bc727ebef3b668ef
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
 
-PODFILE CHECKSUM: 27427d1371584a900cb9e983741d386101437cac
+PODFILE CHECKSUM: 37f3bf3b37f622fe5aff81acdc1cb4194a66fcbf
 
 COCOAPODS: 1.9.1

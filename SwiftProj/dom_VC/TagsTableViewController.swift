@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TagsTableViewController: UITableViewController {
     var prevNote : dom_note?
     var tagList : [dom_tag] = []
-    var isAddNote : Bool?
+    var isAddNote : Bool = true
     let fsdbManager = dom_FireStoreDataManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,13 @@ class TagsTableViewController: UITableViewController {
         fsdbManager.loadTagsDB(){tagList in
             self.tagList = tagList
             //print("tagList Count:", tagList.count)
-            if self.isAddNote != nil && !self.isAddNote!{ // if its existing note check for duplicate tag and remove it so they cant select it again
+            if !self.isAddNote{ // if its from existing note check for duplicate tag and remove it so they cant select it again
                 var counter = 0
                 self.tagList.forEach(){tag in
+                     print(tag.tagTitle! + " vs " + (self.prevNote?.noteTags)!)
                     if tag.tagTitle == self.prevNote?.noteTags{
                         self.tagList.remove(at: counter)//remove the dup tag that's already selected
-                        //print(tag.tagTitle! + " vs " + (self.prevNote?.noteTags)!)
+                       
                     }
                     counter+=1
                 }
@@ -43,6 +45,44 @@ class TagsTableViewController: UITableViewController {
         self.tableView.dataSource = self
     }
     
+    @IBAction func addTagsButnPressed(_ sender: Any) {
+        let addTagAlert = UIAlertController(title: "Add Tag", message: "Add a new tag to the list of tags.", preferredStyle: UIAlertController.Style.alert)
+        addTagAlert.addTextField { (textField) in
+            textField.placeholder = "Tag name"
+        }
+        addTagAlert.addAction(UIAlertAction(title: "Add Tag", style: .default, handler: { (action: UIAlertAction!) in
+                var userID = ""
+                let textField = addTagAlert.textFields![0]
+                let user = Auth.auth().currentUser
+                       if let user = user {
+                           userID = user.uid
+                       }
+                self.fsdbManager.addTag(titleStr: textField.text, uid: userID)
+                self.fsdbManager.loadTagsDB(){tagList in
+                    self.tagList = []
+                    self.tagList = tagList
+                    //print("tagList Count:", tagList.count)
+                    if !self.isAddNote{ // if its from existing note check for duplicate tag and remove it so they cant select it again
+                        var counter = 0
+                        self.tagList.forEach(){tag in
+                            if tag.tagTitle == self.prevNote?.noteTags{
+                                self.tagList.remove(at: counter)//remove the dup tag that's already selected
+                                //print(tag.tagTitle! + " vs " + (self.prevNote?.noteTags)!)
+                            }
+                            counter+=1
+                        }
+                    }
+self.tableView.reloadData()
+                    
+                }
+            }))
+        
+        addTagAlert.addAction(UIAlertAction(title: "cancel", style: .destructive, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(addTagAlert, animated: true, completion: nil)
+    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,7 +107,7 @@ class TagsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // print(tagList[indexPath.row].tagTitle)
         print(self.isAddNote)
-        if self.isAddNote != nil && self.isAddNote!{
+        if self.isAddNote{
             UserDefaults.standard.set(tagList[indexPath.row].tagTitle, forKey: "addNoteTag")
         }
         else{

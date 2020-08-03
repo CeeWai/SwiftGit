@@ -149,6 +149,14 @@
 		9EFFB68224C5F3950073CE59 /* addtaskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */; };
 		9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */; };
 		D7276B2D849A8B6E2CD8D851 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		F269636724D6A65900B138A2 /* RecordingMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F269636624D6A65900B138A2 /* RecordingMainViewController.swift */; };
+		F269636B24D6B26400B138A2 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F269636A24D6B26400B138A2 /* RecordingsViewController.swift */; };
+		F26C3F1E24D662C3001B016F /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C3F1D24D662C3001B016F /* RecorderViewController.swift */; };
+		F26C3F2124D6631E001B016F /* RecordButtonKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C3F1F24D6631E001B016F /* RecordButtonKit.swift */; };
+		F26C3F2224D6631E001B016F /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C3F2024D6631E001B016F /* RecordButton.swift */; };
+		F26C3F2524D66387001B016F /* StopRecording.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F26C3F2324D66387001B016F /* StopRecording.aiff */; };
+		F26C3F2624D66387001B016F /* StartRecording.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F26C3F2424D66387001B016F /* StartRecording.aiff */; };
+		F26C3F2824D663FA001B016F /* AudioVisualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C3F2724D663FA001B016F /* AudioVisualizerView.swift */; };
 		F272C1CC24BB68F900CCD185 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F28A1FAB24C5315900F1D0DB /* IndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FAA24C5315900F1D0DB /* IndexCell.swift */; };
 		F28A1FAE24C531C200F1D0DB /* dom_note.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FAC24C531C200F1D0DB /* dom_note.swift */; };
@@ -318,6 +326,14 @@
 		9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtaskmemberTableViewCell.swift; sourceTree = "<group>"; };
 		9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Seb_Main.storyboard; sourceTree = "<group>"; };
 		D12CB7282E4BEF5FB337CA01 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
+		F269636624D6A65900B138A2 /* RecordingMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingMainViewController.swift; sourceTree = "<group>"; };
+		F269636A24D6B26400B138A2 /* RecordingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
+		F26C3F1D24D662C3001B016F /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
+		F26C3F1F24D6631E001B016F /* RecordButtonKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButtonKit.swift; sourceTree = "<group>"; };
+		F26C3F2024D6631E001B016F /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		F26C3F2324D66387001B016F /* StopRecording.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = StopRecording.aiff; sourceTree = "<group>"; };
+		F26C3F2424D66387001B016F /* StartRecording.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = StartRecording.aiff; sourceTree = "<group>"; };
+		F26C3F2724D663FA001B016F /* AudioVisualizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizerView.swift; sourceTree = "<group>"; };
 		F28A1FAA24C5315900F1D0DB /* IndexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
 		F28A1FAC24C531C200F1D0DB /* dom_note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dom_note.swift; sourceTree = "<group>"; };
 		F28A1FAD24C531C200F1D0DB /* dom_tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dom_tag.swift; sourceTree = "<group>"; };
@@ -470,6 +486,7 @@
 				89F8DA9B2464FEF700B54354 /* Models */,
 				898646E82464626F00A5C752 /* SceneDelegate.swift */,
 				898646E62464626F00A5C752 /* AppDelegate.swift */,
+				F2F5A4FA24C542A3009295E4 /* Dom_Storyboard.storyboard */,
 				898646EC2464626F00A5C752 /* Main.storyboard */,
 				5CD1432724CA91DD00DB5915 /* wx.storyboard */,
 				898646F22464627000A5C752 /* Assets.xcassets */,
@@ -482,7 +499,6 @@
 				89921956246E46870029BFF5 /* BridgingHeader.h */,
 				89921957246E46870029BFF5 /* BridgingHeader.m */,
 				89921955246E46870029BFF5 /* SwiftProj-Bridging-Header.h */,
-				F2F5A4FA24C542A3009295E4 /* Dom_Storyboard.storyboard */,
 			);
 			path = SwiftProj;
 			sourceTree = "<group>";
@@ -618,10 +634,18 @@
 		F24BC02824B266BA00B8D1ED /* dom_VC */ = {
 			isa = PBXGroup;
 			children = (
+				F26C3F2424D66387001B016F /* StartRecording.aiff */,
+				F26C3F2324D66387001B016F /* StopRecording.aiff */,
+				F26C3F2024D6631E001B016F /* RecordButton.swift */,
+				F26C3F1F24D6631E001B016F /* RecordButtonKit.swift */,
 				F28A1FBD24C53B0A00F1D0DB /* NotesTableViewController.swift */,
 				F28A1FBE24C53B0A00F1D0DB /* SideMenuTableViewController.swift */,
 				F28A1FBC24C53B0A00F1D0DB /* AddNoteViewController.swift */,
 				F28A1FBB24C53B0A00F1D0DB /* TagsTableViewController.swift */,
+				F26C3F1D24D662C3001B016F /* RecorderViewController.swift */,
+				F269636A24D6B26400B138A2 /* RecordingsViewController.swift */,
+				F269636624D6A65900B138A2 /* RecordingMainViewController.swift */,
+				F26C3F2724D663FA001B016F /* AudioVisualizerView.swift */,
 			);
 			path = dom_VC;
 			sourceTree = "<group>";
@@ -710,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F28FFD7C24CE8F5A00935127 /* student-colour-1200px.png in Resources */,
+				F26C3F2524D66387001B016F /* StopRecording.aiff in Resources */,
 				F28FFD7B24CE8F5A00935127 /* student-colour-800px.png in Resources */,
 				F28FFD8524CE8F5A00935127 /* business-woman-colour.psd in Resources */,
 				F28FFD7A24CE8F5A00935127 /* entryway-colour-1200px.png in Resources */,
@@ -718,6 +743,7 @@
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
 				F28FFD7824CE8F5A00935127 /* business-woman-colour-400px.png in Resources */,
 				F28FFD8424CE8F5A00935127 /* startScreenVid.mp4 in Resources */,
+				F26C3F2624D66387001B016F /* StartRecording.aiff in Resources */,
 				5CD1432924CA91DD00DB5915 /* wx.storyboard in Resources */,
 				F28FFD7F24CE8F5A00935127 /* business-woman-colour.svg in Resources */,
 				F28FFD7E24CE8F5A00935127 /* unlock-monochrome-1200px.png in Resources */,
@@ -821,6 +847,7 @@
 				9E62D92524BE1AF0003462F1 /* (null) in Sources */,
 				89921950246E459C0029BFF5 /* SQLiteDB.swift in Sources */,
 				9EFFB67824C5F3950073CE59 /* projectnotificationViewController.swift in Sources */,
+				F26C3F2124D6631E001B016F /* RecordButtonKit.swift in Sources */,
 				9EFFB67124C5F3950073CE59 /* projectdetail1ViewController.swift in Sources */,
 				9E62D98224BE1BBC003462F1 /* (null) in Sources */,
 				5CD142EF24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift in Sources */,
@@ -855,6 +882,7 @@
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
 				89770CD224CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift in Sources */,
 				9EFFB67724C5F3950073CE59 /* addtask2ViewController.swift in Sources */,
+				F26C3F2824D663FA001B016F /* AudioVisualizerView.swift in Sources */,
 				F28A1FAE24C531C200F1D0DB /* dom_note.swift in Sources */,
 				9E62D97D24BE1BBC003462F1 /* (null) in Sources */,
 				F28A1FC024C53B0A00F1D0DB /* AddNoteViewController.swift in Sources */,
@@ -903,6 +931,7 @@
 				F28A1FBA24C5336100F1D0DB /* dom_FireStoreDataManager.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
 				89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */,
+				F269636724D6A65900B138A2 /* RecordingMainViewController.swift in Sources */,
 				9EFFB67024C5F3950073CE59 /* ProjecttaskmemberViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
 				89517C81247233AC00503219 /* BreakViewController.swift in Sources */,
@@ -913,6 +942,8 @@
 				89770CD424CA8D7200EB21D2 /* memberdetailViewController.swift in Sources */,
 				9E62D97824BE1BBB003462F1 /* (null) in Sources */,
 				F28A1FC224C53B0A00F1D0DB /* SideMenuTableViewController.swift in Sources */,
+				F269636B24D6B26400B138A2 /* RecordingsViewController.swift in Sources */,
+				F26C3F2224D6631E001B016F /* RecordButton.swift in Sources */,
 				9E62D91F24BE1A0C003462F1 /* (null) in Sources */,
 				9EFFB66F24C5F3950073CE59 /* projectmemberTableViewCell.swift in Sources */,
 				9E62D92124BE1A38003462F1 /* (null) in Sources */,
@@ -922,6 +953,7 @@
 				5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */,
 				5CD1430624CA8CDF00DB5915 /* BERTInput.swift in Sources */,
 				89921948246E45290029BFF5 /* SavedCountry.swift in Sources */,
+				F26C3F1E24D662C3001B016F /* RecorderViewController.swift in Sources */,
 				8903D05D24D18A97000C42BF /* Resnet50.mlmodel in Sources */,
 				5CD142EE24CA8C7800DB5915 /* ProjectTaskDataManager.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,

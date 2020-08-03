@@ -18,5 +18,6 @@ target 'SwiftProj' do
   pod 'TesseractOCRiOS'
   pod 'Firebase/Storage'
   pod 'FirebaseUI'
+  pod 'PRTween'
 
 end

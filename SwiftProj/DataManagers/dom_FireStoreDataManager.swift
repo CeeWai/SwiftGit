@@ -73,6 +73,7 @@ var tagList : [dom_tag] = []
                     print("Error reading document: \(error)")
                 }
              else{
+                self.tagList = []
               for doc in (snapshot?.documents)!{
                 let currentTag = dom_tag(tagtitle: doc.get("title") as? String)
                   self.tagList.append(currentTag)
@@ -106,6 +107,16 @@ var tagList : [dom_tag] = []
             }
         }
         }
+    
+    func addTag(titleStr:String?, uid:String?){
+        fStore.collection("notes_tags").addDocument(data: ["title":titleStr , "uID":uid]){ err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        }
   
     
     func updateNote(noteID:String?, titleStr:String?, bodyStr:String?, tagStr:String?){
@@ -118,5 +129,17 @@ var tagList : [dom_tag] = []
                 }
             })
         }
+    
+    func deleteNote(noteID:String?){
+         let noteRef = self.fStore.collection("notes").document(noteID!)
+        noteRef.delete( completion: { (err) in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully removed")
+            }
+            
+        })
+    }
 
 }

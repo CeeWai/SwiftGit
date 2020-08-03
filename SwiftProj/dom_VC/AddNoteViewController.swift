@@ -116,16 +116,9 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         let deleteAlert = UIAlertController(title: "Delete", message: "All data will be lost.", preferredStyle: UIAlertController.Style.alert)
         if currentNote != nil{
             deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-                self.fStore?.collection("notes").document((self.currentNote?.noteID)!).delete() { err in
-                    if let err = err {
-                        print("Error removing document: \(err)")
-                    } else {
-                        print("Document successfully removed!")
-                        self.isDeleting = true
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
-                
+                self.fsdbManager.deleteNote(noteID: self.currentNote?.noteID)
+                self.isDeleting = true
+                self.navigationController?.popViewController(animated: true)
             }))
         }
         else{
@@ -151,6 +144,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
          {
             let TagViewController = segue.destination as! TagsTableViewController
             if !(addNoteBool != nil && addNoteBool == true){
+                TagViewController.isAddNote = false
                 TagViewController.prevNote = currentNote
             }
             else{

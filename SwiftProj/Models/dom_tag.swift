@@ -10,10 +10,11 @@ import UIKit
 
 class dom_tag: NSObject {
         var tagTitle: String?
-        init(tagtitle: String?)
-         
+    var tagUID: String?
+        init(tagtitle: String?, taguid: String? = "")
     {
         self.tagTitle = tagtitle
+        self.tagUID = taguid
         }
          
 
