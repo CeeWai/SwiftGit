@@ -274,6 +274,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //
 //        }
     }
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            taskList.remove(at: indexPath.row)
+//            self.tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            if editingStyle == .delete {
+                if indexPath.section == 0 {
+                    //print("INDEX PATH ROW IS \(indexPath.row) and the item is \(indexPath.section)")
+                    DataManager.deleteTask(completedTaskList[indexPath.row])
+                    completedTaskList.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                } else if indexPath.section == 1 {
+                    //print("INDEX PATH ROW IS \(indexPath.row) and the item is \(indexPath.section)")
+                    DataManager.deleteTask(currentTaskList[indexPath.row])
+                    currentTaskList.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                } else if indexPath.section == 2 {
+                    //print("INDEX PATH ROW IS \(indexPath.row) and the item is \(indexPath.section)")
+                    DataManager.deleteTask(upcomingTaskList[indexPath.row])
+                    upcomingTaskList.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
+        }
+    }
+    
         
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
         
