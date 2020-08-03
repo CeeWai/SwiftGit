@@ -22,13 +22,12 @@ protocol RecordingsViewControllerDelegate: class {
 }
 
 class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource {
-    
-    //MARK:- Properties
+  
     private var recordings: [Recording] = []
     private var audioPlayer: AVAudioPlayer?
     weak var delegate: RecordingsViewControllerDelegate?
 
-    //MARK:- Outlets
+  
     
     @IBOutlet weak var fadeView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -43,7 +42,7 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let result = self.recordings.count
-        print("recording count2: " + String(result))
+        //print("recording count2: " + String(result))
         if result > 0 {
             self.tableView.isHidden = false
         }
@@ -79,7 +78,7 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
         }
     }
     
-    //MARK:- Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate=self;
@@ -99,12 +98,12 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
         super.viewWillDisappear(animated)
     }
     
-    //MARK:- Setup Methods
+
     fileprivate func setupTableView() {
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 180, right: 0)
     }
 
-    // MARK:- Data
+    //  Data
     func loadRecordings() {
         self.recordings.removeAll()
         let filemanager = FileManager.default
@@ -115,14 +114,14 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
                 let recording = Recording(name: path.lastPathComponent, path: path)
                 self.recordings.append(recording)
             }
-            print("recording count: " + String(recordings.count))
+           // print("recording count: " + String(recordings.count))
             self.tableView.reloadData()
         } catch {
             print(error)
         }
     }
     
-    // MARK:- Playback
+    // Playback funcs
     private func play(url: URL) {
         if let d = self.delegate {
             d.didStartPlayback()

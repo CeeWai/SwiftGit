@@ -47,6 +47,7 @@ class RecorderViewController: UIViewController {
     var audioView = AudioVisualizerView()
     let settings = [AVFormatIDKey: kAudioFormatLinearPCM, AVLinearPCMBitDepthKey: 16, AVLinearPCMIsFloatKey: true, AVSampleRateKey: Float64(44100), AVNumberOfChannelsKey: 1] as [String : Any]
     let audioEngine = AVAudioEngine()
+    let fsdbManager = dom_FireStoreDataManager()
     private var renderTs: Double = 0
     private var recordingTs: Double = 0
     private var silenceTs: Double = 0
@@ -242,9 +243,9 @@ class RecorderViewController: UIViewController {
                 if self.audioFile == nil {
                     self.audioFile = self.createAudioRecordFile()
                 }
-                if let f = self.audioFile {
+                if let currentAudioFile = self.audioFile {
                     do {
-                        try f.write(from: buffer)
+                        try currentAudioFile.write(from: buffer)
                     } catch let error as NSError {
                         print(error.localizedDescription)
                     }
@@ -265,7 +266,10 @@ class RecorderViewController: UIViewController {
         if let d = self.delegate {
             d.didFinishRecording()
         }
-        
+        guard let fileName = self.createAudioFileName() else {
+            return
+        }
+        self.fsdbManager.addAudioLog(fileName: fileName, url: self.audioFile!.url)
         self.audioFile = nil
         self.audioEngine.inputNode.removeTap(onBus: 0)
         self.audioEngine.stop()
@@ -319,10 +323,17 @@ class RecorderViewController: UIViewController {
     private func createAudioRecordPath() -> URL? {
         let format = DateFormatter()
         format.dateFormat="yyyy-MM-dd-SSS"
-        let currentFileName = "recording-\(format.string(from: Date()))" + ".wav"
+        let currentFileName = "memo-\(format.string(from: Date()))" + ".wav"
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let url = documentsDirectory.appendingPathComponent(currentFileName)
         return url
+    }
+    
+    private func createAudioFileName() -> String? {
+        let format = DateFormatter()
+        format.dateFormat="yyyy-MM-dd-SSS"
+        let currentFileName = "memo-\(format.string(from: Date()))" + ".wav"
+        return currentFileName
     }
     
     private func createAudioRecordFile() -> AVAudioFile? {
@@ -331,6 +342,7 @@ class RecorderViewController: UIViewController {
         }
         do {
             let file = try AVAudioFile(forWriting: path, settings: self.settings, commonFormat: .pcmFormatFloat32, interleaved: true)
+            
             return file
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -338,7 +350,7 @@ class RecorderViewController: UIViewController {
         }
     }
     
-    // MARK:- Handle interruption
+    // Handle interruption
     @objc func handleInterruption(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         guard let key = userInfo[AVAudioSessionInterruptionTypeKey] as? NSNumber
