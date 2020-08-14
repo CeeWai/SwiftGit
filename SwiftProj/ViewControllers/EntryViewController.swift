@@ -12,6 +12,11 @@ import AVKit
 import FirebaseAuth
 import TesseractOCR
 import UserNotifications
+import Foundation
+import NaturalLanguage
+import CoreML
+import SwiftCSV
+import Reductio
 
 protocol CanReceiveReload {
     func passReloadDataBack(data: Date)
@@ -107,6 +112,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     let speechSynthesizer = SpeechSynthesizer()
     @IBOutlet weak var startCameraRecognitionButton: UIButton!
     var editTask: Task?
+    @IBOutlet weak var suggestLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -446,8 +452,88 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         var hpt = predictHoursPerTask()
+        var dataTextStr: [[String]] = []
+        print(descTextView.text!)
+        let filepath = URL(fileURLWithPath: Bundle.main.path(forResource: "topicText", ofType: "csv")!)
+        
+        do {
+            let csv = try CSV(url: filepath)
+            let rows = csv.namedRows
 
+            for i in 0...rows.count - 1 {
+                //print(rows[i])
+                var text = rows[i]["text"]!
+                var stopwords = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "one", "two", "three", "four", "five", "1", "2", "3", "4", "5", "6", "7", "8", "9", "it's", "join", "using", "final", "subjects"]
+                var set = CharacterSet.punctuationCharacters
+
+                var searchTxtList = text.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+                searchTxtList = uniqueElementsFrom(array: searchTxtList)
+                let stringRepresentation = searchTxtList.joined(separator:" ")
+
+                for word in stopwords { // Removing stopwords from search text
+                    for txt in searchTxtList {
+                        if txt.lowercased() == word.lowercased() {
+                            searchTxtList.remove(at: searchTxtList.firstIndex(of: txt)!)
+                        }
+                    }
+                }
+                Reductio.keywords(from: stringRepresentation, count: 1) { words in
+                    print(words)
+                    dataTextStr.append(words)
+                }
+                
+            }
+            
+            Reductio.keywords(from: self.titleTextField.text! + " " + self.descTextView.text!, count: 2) { words in
+                var topSuggestionsList: [Suggestion] = []
+
+                for word in words {
+                    for txtList in dataTextStr {
+                        for txt in txtList {
+                            if let embedding = NLEmbedding.wordEmbedding(for: .english) {
+
+                                let eDistance = embedding.distance(between: txt, and: word)
+                                
+                                topSuggestionsList.append(Suggestion(text: txt, textDistance: eDistance))
+                                //print("\(txt)")
+                            }
+                        }
+                    }
+                }
+                
+
+                var topSuggestionSortedList = topSuggestionsList.sorted(by: { Int($0.textDistance!) < Int($1.textDistance!) })
+
+                print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
+                
+                
+                self.suggestLabel.text = "Related: 1. \(topSuggestionSortedList[0].text!), 2. \(topSuggestionSortedList[1].text!), 3. \(topSuggestionSortedList[2].text!), 4. \(topSuggestionSortedList[3].text!), 5. \(topSuggestionSortedList[4].text!) "
+                
+                self.suggestLabel.isHidden = false
+                
+            }
+            //print(rows)
+        } catch { // handles when dataset not found
+            print("File not found")
+        }
         return true
+    }
+    
+    func uniqueElementsFrom(array: [String]) -> [String] {
+      //Create an empty Set to track unique items
+      var set = Set<String>()
+      let result = array.filter {
+        guard !set.contains($0) else {
+          //If the set already contains this object, return false
+          //so we skip it
+          return false
+        }
+        //Add this item to the set since it will now be in the array
+        set.insert($0)
+        //Return true so that filtered array will contain this item.
+        return true
+      }
+      return result
     }
     
     @IBAction func subjectEditingChanged(_ sender: Any) {
@@ -457,6 +543,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 subjectPredictionLabel.text = ""
             } else {
                 predictHoursPerTask()
+            
             }
         } catch {
             print("PREDICTION ERR FOR: \(titleTextField.text) \(descTextView.text)")
@@ -555,6 +642,23 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
 
     }
     
+    func textViewDidChange(_ textView: UITextView) { //Handle the text changes here
+
+    }
     
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }
 

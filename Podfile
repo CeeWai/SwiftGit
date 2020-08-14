@@ -19,5 +19,7 @@ target 'SwiftProj' do
   pod 'Firebase/Storage'
   pod 'FirebaseUI'
   pod 'PRTween'
+  pod 'SwiftCSV'
+  pod 'Reductio'
 
 end

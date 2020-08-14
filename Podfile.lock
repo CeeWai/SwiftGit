@@ -409,10 +409,12 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
   - PRTween (0.1.0)
+  - Reductio (1.4.0)
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
   - SideMenu (6.4.8)
+  - SwiftCSV (0.5.6)
   - TesseractOCRiOS (5.0.1)
 
 DEPENDENCIES:
@@ -427,7 +429,9 @@ DEPENDENCIES:
   - FSCalendar
   - GoogleSignIn
   - PRTween
+  - Reductio
   - SideMenu
+  - SwiftCSV
   - TesseractOCRiOS
 
 SPEC REPOS:
@@ -462,8 +466,10 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PRTween
+    - Reductio
     - SDWebImage
     - SideMenu
+    - SwiftCSV
     - TesseractOCRiOS
 
 SPEC CHECKSUMS:
@@ -497,10 +503,12 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   PRTween: 6c58c7e32ebcf31e33e6a6e6bc727ebef3b668ef
+  Reductio: bb6fe437dc1025f766d1c39161029efad2220cc9
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
+  SwiftCSV: efb4a15dd7f2f1212b3d6986f97a3369ff6c5100
   TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
 
-PODFILE CHECKSUM: 37f3bf3b37f622fe5aff81acdc1cb4194a66fcbf
+PODFILE CHECKSUM: 42cbb60d75d34ad4a19c5fe897b9e89006608222
 
 COCOAPODS: 1.9.1

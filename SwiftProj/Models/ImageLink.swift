@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-import Foundation
 import UIKit
 struct ImageLink {
     var image: UIImage?

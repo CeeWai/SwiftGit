@@ -28,6 +28,7 @@
 		8903D05D24D18A97000C42BF /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8903D05C24D18A97000C42BF /* Resnet50.mlmodel */; };
 		8906484924B4C8AC00325C5B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		89101E1924CEE4590036CE86 /* DocImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89101E1824CEE4590036CE86 /* DocImageStore.swift */; };
+		89155BDB24E6EFD4009F0B35 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89155BDA24E6EFD4009F0B35 /* Suggestion.swift */; };
 		8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */; };
 		8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000124A642CC00EE47FA /* EndTimeViewController.swift */; };
 		8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920000724A75ACC00EE47FA /* MainViewController.swift */; };
@@ -206,6 +207,7 @@
 		89019B7F24D2731000BBB6FB /* ImageLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLink.swift; sourceTree = "<group>"; };
 		8903D05C24D18A97000C42BF /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		89101E1824CEE4590036CE86 /* DocImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocImageStore.swift; sourceTree = "<group>"; };
+		89155BDA24E6EFD4009F0B35 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		8920000124A642CC00EE47FA /* EndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTimeViewController.swift; sourceTree = "<group>"; };
 		8920000724A75ACC00EE47FA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8920FFFF24A641E000EE47FA /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				89651AA024CDA2470088CF49 /* Levenshtein.swift */,
 				89101E1824CEE4590036CE86 /* DocImageStore.swift */,
 				89019B7F24D2731000BBB6FB /* ImageLink.swift */,
+				89155BDA24E6EFD4009F0B35 /* Suggestion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 				9EFFB68024C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift in Sources */,
 				89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */,
 				9E62D97C24BE1BBC003462F1 /* (null) in Sources */,
+				89155BDB24E6EFD4009F0B35 /* Suggestion.swift in Sources */,
 				F28A1FAF24C531C200F1D0DB /* dom_tag.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
 				9EFFB64824C5F2980073CE59 /* Projectgroup.swift in Sources */,
