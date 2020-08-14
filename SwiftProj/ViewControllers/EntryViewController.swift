@@ -11,6 +11,7 @@ import AVFoundation
 import AVKit
 import FirebaseAuth
 import TesseractOCR
+import UserNotifications
 
 protocol CanReceiveReload {
     func passReloadDataBack(data: Date)
@@ -160,6 +161,8 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
 
             }
         }
+        
+        
     }
     
     @IBAction func cameraRecognitionPressed(_ sender: Any) {
@@ -366,6 +369,38 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 // Insert task into firebase
                 DataManager.insertOrReplaceTask(task)
                 self.taskViewController?.tableView.reloadData() // reload the tableview before popping back
+                
+                // Prepare Notification center
+                let center = UNUserNotificationCenter.current()
+                let content = UNMutableNotificationContent()
+                content.title = "Your task is starting soonlk: \(self.titleTextField.text!)"
+                content.body = "Description for your \(self.subjectTextField.text!) task: \(self.descTextView!.text!)"
+                content.categoryIdentifier = "task"
+                content.sound = UNNotificationSound.default
+                content.userInfo = ["taskFromNotif": "\(self.titleTextField.text!)"]
+                var repeatNotif = false
+                var comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: dateStartCurrent!)
+
+                if self.chosenRepeatLabel.text! != "Never" {
+                    repeatNotif = true
+                }
+                
+                if self.chosenRepeatLabel.text! != "Daily" {
+                    comps = Calendar.current.dateComponents([.hour, .minute], from: dateStartCurrent!)
+                }
+                
+                if self.chosenRepeatLabel.text! != "Weekly" {
+                    comps = Calendar.current.dateComponents([.weekday, .hour, .minute], from: dateStartCurrent!)
+                }
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: repeatNotif)
+                
+                let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: repeatNotif)
+
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger2)
+                
+                center.add(request)
+                print("Notification Added here!")
                 
                 if self.editTask != nil {
                     let homeViewController = (self.storyboard?.instantiateViewController(identifier: "MainController"))
