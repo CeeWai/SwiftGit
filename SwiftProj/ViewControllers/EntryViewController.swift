@@ -455,52 +455,57 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         var dataTextStr: [[String]] = []
         print(descTextView.text!)
         let filepath = URL(fileURLWithPath: Bundle.main.path(forResource: "topicText", ofType: "csv")!)
+        var boolCategory = true
         
         do {
             let csv = try CSV(url: filepath)
             let rows = csv.namedRows
-
             for i in 0...rows.count - 1 {
                 //print(rows[i])
-                var text = rows[i]["text"]!
-                var stopwords = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "one", "two", "three", "four", "five", "1", "2", "3", "4", "5", "6", "7", "8", "9", "it's", "join", "using", "final", "subjects"]
-                var set = CharacterSet.punctuationCharacters
+                let prediction = try self.model.prediction(text: "\(titleTextField.text) \(descTextView.text)" ?? "")
 
-                var searchTxtList = text.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
-                searchTxtList = uniqueElementsFrom(array: searchTxtList)
+                if rows[i]["category"] == prediction.label {
+                    var text = rows[i]["text"]!
+                    var stopwords = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "one", "two", "three", "four", "five", "1", "2", "3", "4", "5", "6", "7", "8", "9", "it's", "join", "using", "final", "subjects"]
+                    var set = CharacterSet.punctuationCharacters
 
-                for word in stopwords { // Removing stopwords from search text
-                    for txt in searchTxtList {
-                        if txt.lowercased() == word.lowercased() {
-                            searchTxtList.remove(at: searchTxtList.firstIndex(of: txt)!)
+                    var searchTxtList = text.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+                    searchTxtList = uniqueElementsFrom(array: searchTxtList)
+
+                    for word in stopwords { // Removing stopwords from search text
+                        for txt in searchTxtList {
+                            if txt.lowercased() == word.lowercased() {
+                                searchTxtList.remove(at: searchTxtList.firstIndex(of: txt)!)
+                            }
                         }
                     }
-                }
-                
-                let stringRepresentation = searchTxtList.joined(separator:" ")
+                    
+                    let stringRepresentation = searchTxtList.joined(separator:" ")
 
-                // Get only Verbs from the data
-                var stringToRecognize = stringRepresentation
-                let range = stringToRecognize.startIndex ..< stringToRecognize.endIndex
-                let tagger = NLTagger(tagSchemes: [.lexicalClass])
-                tagger.string = stringToRecognize
-                
-                var textRep = ""
-                
-                tagger.enumerateTags(in: range, unit: .word, scheme: .lexicalClass) { (tag, range) -> Bool in
-                    print("Word [\(stringToRecognize[range])] : \(tag!.rawValue)")
-                    if tag!.rawValue == "Verb" {
-                        print("VERB FOUND")
-                        textRep = textRep + "\(stringToRecognize[range]) "
+                    // Get only Verbs from the data
+                    var stringToRecognize = stringRepresentation
+                    let range = stringToRecognize.startIndex ..< stringToRecognize.endIndex
+                    let tagger = NLTagger(tagSchemes: [.lexicalClass])
+                    tagger.string = stringToRecognize
+                    
+                    var textRep = ""
+                    
+                    tagger.enumerateTags(in: range, unit: .word, scheme: .lexicalClass) { (tag, range) -> Bool in
+                        //print("Word [\(stringToRecognize[range])] : \(tag!.rawValue)")
+                        if tag!.rawValue == "Verb" {
+                            print("VERB FOUND")
+                            textRep = textRep + "\(stringToRecognize[range]) "
+                        }
+                      return true
                     }
-                  return true
+                    
+                    Reductio.keywords(from: textRep, count: 1) { words in
+                        //print(words)
+                        dataTextStr.append(words)
+                    }
+                    
                 }
-                
-                Reductio.keywords(from: textRep, count: 1) { words in
-                    //print(words)
-                    dataTextStr.append(words)
-                }
-                
+
             }
             
             Reductio.keywords(from: self.titleTextField.text! + " " + self.descTextView.text!, count: 2) { words in
@@ -520,18 +525,23 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                     }
                 }
                 
+                if topSuggestionsList.count > 4 {
+                    var topSuggestionSortedList = topSuggestionsList.sorted(by: { Int($0.textDistance!) < Int($1.textDistance!) })
+                    print(topSuggestionSortedList.count)
+                    print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
+                    
+                    self.suggestLabel.text = "Related to Subject and Input: 1. \(topSuggestionSortedList[0].text!), 2. \(topSuggestionSortedList[1].text!), 3. \(topSuggestionSortedList[2].text!), 4. \(topSuggestionSortedList[3].text!), 5. \(topSuggestionSortedList[4].text!) "
+                    
+                    self.suggestLabel.isHidden = false
+                } else {
+                    self.suggestLabel.isHidden = true
+                }
 
-                var topSuggestionSortedList = topSuggestionsList.sorted(by: { Int($0.textDistance!) < Int($1.textDistance!) })
-
-                print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
-                
-                
-                self.suggestLabel.text = "Related: 1. \(topSuggestionSortedList[0].text!), 2. \(topSuggestionSortedList[1].text!), 3. \(topSuggestionSortedList[2].text!), 4. \(topSuggestionSortedList[3].text!), 5. \(topSuggestionSortedList[4].text!) "
-                
-                self.suggestLabel.isHidden = false
                 
             }
             //print(rows)
+            
+
         } catch { // handles when dataset not found
             print("File not found")
         }

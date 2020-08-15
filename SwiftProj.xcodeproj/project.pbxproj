@@ -43,6 +43,7 @@
 		895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895EE02E247696B400F2C109 /* TimeViewController.swift */; };
 		89651AA124CDA2470088CF49 /* Levenshtein.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89651AA024CDA2470088CF49 /* Levenshtein.swift */; };
 		89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89672C04247E34EA008F3C13 /* startScreenViewController.swift */; };
+		8967CD0324E7DDBD00FDDDDE /* delivery.json in Resources */ = {isa = PBXBuildFile; fileRef = 8967CD0224E7DDBD00FDDDDE /* delivery.json */; };
 		896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */; };
 		89770CD024CA8A2500EB21D2 /* ProjectTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */; };
 		89770CD224CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */; };
@@ -230,6 +231,7 @@
 		895EE02E247696B400F2C109 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		89651AA024CDA2470088CF49 /* Levenshtein.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levenshtein.swift; sourceTree = "<group>"; };
 		89672C04247E34EA008F3C13 /* startScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startScreenViewController.swift; sourceTree = "<group>"; };
+		8967CD0224E7DDBD00FDDDDE /* delivery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = delivery.json; sourceTree = "<group>"; };
 		896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TopicsClassifier.mlmodel; sourceTree = "<group>"; };
 		89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskDataManager.swift; sourceTree = "<group>"; };
 		89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskMemberDataManager.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 		F28FFD6924CE8F3800935127 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				8967CD0224E7DDBD00FDDDDE /* delivery.json */,
 				F28FFD6A24CE8F5600935127 /* business-woman-colour-400px.png */,
 				F28FFD7524CE8F5900935127 /* business-woman-colour-800px.png */,
 				F28FFD6F24CE8F5700935127 /* business-woman-colour-1200px.png */,
@@ -744,6 +747,7 @@
 				F28FFD8324CE8F5A00935127 /* business-woman-colour-800px.png in Resources */,
 				9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
+				8967CD0324E7DDBD00FDDDDE /* delivery.json in Resources */,
 				F28FFD7824CE8F5A00935127 /* business-woman-colour-400px.png in Resources */,
 				F28FFD8424CE8F5A00935127 /* startScreenVid.mp4 in Resources */,
 				F26C3F2624D66387001B016F /* StartRecording.aiff in Resources */,
