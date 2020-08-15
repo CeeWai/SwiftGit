@@ -468,7 +468,6 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
 
                 var searchTxtList = text.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
                 searchTxtList = uniqueElementsFrom(array: searchTxtList)
-                let stringRepresentation = searchTxtList.joined(separator:" ")
 
                 for word in stopwords { // Removing stopwords from search text
                     for txt in searchTxtList {
@@ -477,8 +476,28 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                         }
                     }
                 }
-                Reductio.keywords(from: stringRepresentation, count: 1) { words in
-                    print(words)
+                
+                let stringRepresentation = searchTxtList.joined(separator:" ")
+
+                // Get only Verbs from the data
+                var stringToRecognize = stringRepresentation
+                let range = stringToRecognize.startIndex ..< stringToRecognize.endIndex
+                let tagger = NLTagger(tagSchemes: [.lexicalClass])
+                tagger.string = stringToRecognize
+                
+                var textRep = ""
+                
+                tagger.enumerateTags(in: range, unit: .word, scheme: .lexicalClass) { (tag, range) -> Bool in
+                    print("Word [\(stringToRecognize[range])] : \(tag!.rawValue)")
+                    if tag!.rawValue == "Verb" {
+                        print("VERB FOUND")
+                        textRep = textRep + "\(stringToRecognize[range]) "
+                    }
+                  return true
+                }
+                
+                Reductio.keywords(from: textRep, count: 1) { words in
+                    //print(words)
                     dataTextStr.append(words)
                 }
                 
