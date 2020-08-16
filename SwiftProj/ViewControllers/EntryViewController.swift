@@ -530,7 +530,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                     print(topSuggestionSortedList.count)
                     print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
                     
-                    self.suggestLabel.text = "Related to Subject and Input: 1. \(topSuggestionSortedList[0].text!), 2. \(topSuggestionSortedList[1].text!), 3. \(topSuggestionSortedList[2].text!), 4. \(topSuggestionSortedList[3].text!), 5. \(topSuggestionSortedList[4].text!) "
+                    self.suggestLabel.text = "Related to Subject and Input: 1. \(topSuggestionSortedList[0].text!), 2. \(topSuggestionSortedList[1].text!), 3. \(topSuggestionSortedList[2].text!) "
                     
                     self.suggestLabel.isHidden = false
                 } else {

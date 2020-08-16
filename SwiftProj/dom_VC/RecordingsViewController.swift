@@ -71,6 +71,9 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
                     let dateText = "Edited: \(dateslash), \(hourAndMin)"
                     self.fsdbManager.addNote(titleStr: recording.name, bodyStr: result.bestTranscription.formattedString , tagStr: "", uid: self.user?.uid, noteUpdateDate: dateText)
                     let alert = UIAlertController(title: "Memo Transcribed", message: "The selected voice memo has been transcribed to a written Note with the same title as the memo", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { (action) -> Void in
+                        
+                    }))
                     self.present(alert, animated: true)
                 }
             } else {
