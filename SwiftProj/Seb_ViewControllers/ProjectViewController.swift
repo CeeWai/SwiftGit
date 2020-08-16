@@ -32,7 +32,9 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
         let currentuser = Auth.auth().currentUser
         if (currentuser != nil) {
-        projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: currentuser!.uid)
+            projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser!.uid)
+        
+        //projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: currentuser!.uid)
         if projectgroupList.isEmpty{
         }
         else{
