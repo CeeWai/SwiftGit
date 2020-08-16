@@ -17,13 +17,27 @@
 		5CD1430A24CA8CDF00DB5915 /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1430324CA8CDF00DB5915 /* TokenizedString.swift */; };
 		5CD1430B24CA8CDF00DB5915 /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1430424CA8CDF00DB5915 /* BERT.swift */; };
 		5CD1430C24CA8CDF00DB5915 /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1430524CA8CDF00DB5915 /* bert-base-uncased-vocab.txt */; };
-		5CD1432924CA91DD00DB5915 /* wx.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CD1432724CA91DD00DB5915 /* wx.storyboard */; };
-		5CD1433024CA922500DB5915 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432B24CA922400DB5915 /* Post.swift */; };
-		5CD1433124CA922500DB5915 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432C24CA922400DB5915 /* PostCell.swift */; };
-		5CD1433224CA922500DB5915 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432D24CA922400DB5915 /* DismissSegue.swift */; };
-		5CD1433324CA922500DB5915 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */; };
-		5CD1433424CA922500DB5915 /* addPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1432F24CA922500DB5915 /* addPost.swift */; };
-		5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1433724CA92B100DB5915 /* WXViewController.swift */; };
+		5CD50E7324E94D9300161277 /* business-woman-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6624E94D9200161277 /* business-woman-colour-400px.png */; };
+		5CD50E7424E94D9300161277 /* student-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6724E94D9200161277 /* student-colour-800px.png */; };
+		5CD50E7524E94D9300161277 /* student-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6824E94D9200161277 /* student-colour-1200px.png */; };
+		5CD50E7624E94D9300161277 /* business-woman-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6924E94D9200161277 /* business-woman-colour-1200px.png */; };
+		5CD50E7724E94D9300161277 /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6A24E94D9200161277 /* startScreenVid.mp4.zip */; };
+		5CD50E7824E94D9300161277 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6B24E94D9300161277 /* student-colour-400px.png */; };
+		5CD50E7924E94D9300161277 /* unlock-monochrome-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6C24E94D9300161277 /* unlock-monochrome-1200px.png */; };
+		5CD50E7A24E94D9300161277 /* business-woman-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6D24E94D9300161277 /* business-woman-colour.svg */; };
+		5CD50E7B24E94D9300161277 /* business-woman-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6E24E94D9300161277 /* business-woman-colour-800px.png */; };
+		5CD50E7C24E94D9300161277 /* student-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E6F24E94D9300161277 /* student-colour.svg */; };
+		5CD50E7D24E94D9300161277 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E7024E94D9300161277 /* startScreenVid.mp4 */; };
+		5CD50E7E24E94D9300161277 /* entryway-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E7124E94D9300161277 /* entryway-colour-1200px.png */; };
+		5CD50E7F24E94D9300161277 /* business-woman-colour.psd in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E7224E94D9300161277 /* business-woman-colour.psd */; };
+		5CD50E8124E9555D00161277 /* wx.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CD50E8024E9555D00161277 /* wx.storyboard */; };
+		5CD50E8624E955DF00161277 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD50E8224E955DD00161277 /* Post.swift */; };
+		5CD50E8724E955DF00161277 /* ForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD50E8324E955DD00161277 /* ForumViewController.swift */; };
+		5CD50E8824E955DF00161277 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD50E8424E955DE00161277 /* PostCell.swift */; };
+		5CD50E8924E955DF00161277 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD50E8524E955DF00161277 /* PostDetailViewController.swift */; };
+		5CD50E8B24E955E900161277 /* FullPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD50E8A24E955E900161277 /* FullPostViewController.swift */; };
+		5CD50E8D24E955F800161277 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD50E8C24E955F800161277 /* CommentsCell.swift */; };
+		5CD50E8F24E9561100161277 /* ForumDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD50E8E24E9561100161277 /* ForumDataManager.swift */; };
 		89019B8024D2731000BBB6FB /* ImageLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89019B7F24D2731000BBB6FB /* ImageLink.swift */; };
 		8903D05D24D18A97000C42BF /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8903D05C24D18A97000C42BF /* Resnet50.mlmodel */; };
 		8906484924B4C8AC00325C5B /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -205,7 +219,6 @@
 		F28FFD7F24CE8F5A00935127 /* business-woman-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7124CE8F5800935127 /* business-woman-colour.svg */; };
 		F28FFD8024CE8F5A00935127 /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7224CE8F5800935127 /* startScreenVid.mp4.zip */; };
 		F28FFD8124CE8F5A00935127 /* student-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7324CE8F5800935127 /* student-colour-400px.png */; };
-		F28FFD8224CE8F5A00935127 /* default_image.png in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7424CE8F5800935127 /* default_image.png */; };
 		F28FFD8324CE8F5A00935127 /* business-woman-colour-800px.png in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7524CE8F5900935127 /* business-woman-colour-800px.png */; };
 		F28FFD8424CE8F5A00935127 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7624CE8F5900935127 /* startScreenVid.mp4 */; };
 		F28FFD8524CE8F5A00935127 /* business-woman-colour.psd in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7724CE8F5900935127 /* business-woman-colour.psd */; };
@@ -226,13 +239,27 @@
 		5CD1430324CA8CDF00DB5915 /* TokenizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
 		5CD1430424CA8CDF00DB5915 /* BERT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
 		5CD1430524CA8CDF00DB5915 /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
-		5CD1432824CA91DD00DB5915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/wx.storyboard; sourceTree = "<group>"; };
-		5CD1432B24CA922400DB5915 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		5CD1432C24CA922400DB5915 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		5CD1432D24CA922400DB5915 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
-		5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
-		5CD1432F24CA922500DB5915 /* addPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addPost.swift; sourceTree = "<group>"; };
-		5CD1433724CA92B100DB5915 /* WXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXViewController.swift; sourceTree = "<group>"; };
+		5CD50E6624E94D9200161277 /* business-woman-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-400px.png"; sourceTree = "<group>"; };
+		5CD50E6724E94D9200161277 /* student-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-800px.png"; sourceTree = "<group>"; };
+		5CD50E6824E94D9200161277 /* student-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-1200px.png"; sourceTree = "<group>"; };
+		5CD50E6924E94D9200161277 /* business-woman-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-1200px.png"; sourceTree = "<group>"; };
+		5CD50E6A24E94D9200161277 /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
+		5CD50E6B24E94D9300161277 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
+		5CD50E6C24E94D9300161277 /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
+		5CD50E6D24E94D9300161277 /* business-woman-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "business-woman-colour.svg"; sourceTree = "<group>"; };
+		5CD50E6E24E94D9300161277 /* business-woman-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-800px.png"; sourceTree = "<group>"; };
+		5CD50E6F24E94D9300161277 /* student-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "student-colour.svg"; sourceTree = "<group>"; };
+		5CD50E7024E94D9300161277 /* startScreenVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startScreenVid.mp4; sourceTree = "<group>"; };
+		5CD50E7124E94D9300161277 /* entryway-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "entryway-colour-1200px.png"; sourceTree = "<group>"; };
+		5CD50E7224E94D9300161277 /* business-woman-colour.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "business-woman-colour.psd"; sourceTree = "<group>"; };
+		5CD50E8024E9555D00161277 /* wx.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = wx.storyboard; sourceTree = "<group>"; };
+		5CD50E8224E955DD00161277 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		5CD50E8324E955DD00161277 /* ForumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumViewController.swift; sourceTree = "<group>"; };
+		5CD50E8424E955DE00161277 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		5CD50E8524E955DF00161277 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		5CD50E8A24E955E900161277 /* FullPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPostViewController.swift; sourceTree = "<group>"; };
+		5CD50E8C24E955F800161277 /* CommentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
+		5CD50E8E24E9561100161277 /* ForumDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumDataManager.swift; sourceTree = "<group>"; };
 		89019B7F24D2731000BBB6FB /* ImageLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLink.swift; sourceTree = "<group>"; };
 		8903D05C24D18A97000C42BF /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		89101E1824CEE4590036CE86 /* DocImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocImageStore.swift; sourceTree = "<group>"; };
@@ -412,7 +439,6 @@
 		F28FFD7124CE8F5800935127 /* business-woman-colour.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "business-woman-colour.svg"; sourceTree = "<group>"; };
 		F28FFD7224CE8F5800935127 /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
 		F28FFD7324CE8F5800935127 /* student-colour-400px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "student-colour-400px.png"; sourceTree = "<group>"; };
-		F28FFD7424CE8F5800935127 /* default_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_image.png; sourceTree = "<group>"; };
 		F28FFD7524CE8F5900935127 /* business-woman-colour-800px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-800px.png"; sourceTree = "<group>"; };
 		F28FFD7624CE8F5900935127 /* startScreenVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startScreenVid.mp4; sourceTree = "<group>"; };
 		F28FFD7724CE8F5900935127 /* business-woman-colour.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "business-woman-colour.psd"; sourceTree = "<group>"; };
@@ -450,12 +476,12 @@
 		5CD1432A24CA91F000DB5915 /* WX_ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5CD1433724CA92B100DB5915 /* WXViewController.swift */,
-				5CD1432F24CA922500DB5915 /* addPost.swift */,
-				5CD1432D24CA922400DB5915 /* DismissSegue.swift */,
-				5CD1432B24CA922400DB5915 /* Post.swift */,
-				5CD1432C24CA922400DB5915 /* PostCell.swift */,
-				5CD1432E24CA922400DB5915 /* PostDetailViewController.swift */,
+				5CD50E8324E955DD00161277 /* ForumViewController.swift */,
+				5CD50E8224E955DD00161277 /* Post.swift */,
+				5CD50E8424E955DE00161277 /* PostCell.swift */,
+				5CD50E8A24E955E900161277 /* FullPostViewController.swift */,
+				5CD50E8524E955DF00161277 /* PostDetailViewController.swift */,
+				5CD50E8C24E955F800161277 /* CommentsCell.swift */,
 			);
 			path = WX_ViewControllers;
 			sourceTree = "<group>";
@@ -592,10 +618,10 @@
 				8928F3272466C41F0087C59F /* Fonts */,
 				89F8DA9B2464FEF700B54354 /* Models */,
 				898646E82464626F00A5C752 /* SceneDelegate.swift */,
+				5CD50E8024E9555D00161277 /* wx.storyboard */,
 				898646E62464626F00A5C752 /* AppDelegate.swift */,
 				F2F5A4FA24C542A3009295E4 /* Dom_Storyboard.storyboard */,
 				898646EC2464626F00A5C752 /* Main.storyboard */,
-				5CD1432724CA91DD00DB5915 /* wx.storyboard */,
 				898646F22464627000A5C752 /* Assets.xcassets */,
 				9E567DC024AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard */,
 				9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */,
@@ -617,6 +643,7 @@
 				9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */,
 				89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */,
 				89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */,
+				5CD50E8E24E9561100161277 /* ForumDataManager.swift */,
 				9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */,
 				9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */,
 				5CD142EC24CA8C7800DB5915 /* ProjectTaskDataManager.swift */,
@@ -775,12 +802,24 @@
 		F28FFD6924CE8F3800935127 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				5CD50E6624E94D9200161277 /* business-woman-colour-400px.png */,
+				5CD50E6E24E94D9300161277 /* business-woman-colour-800px.png */,
+				5CD50E6924E94D9200161277 /* business-woman-colour-1200px.png */,
+				5CD50E7224E94D9300161277 /* business-woman-colour.psd */,
+				5CD50E6D24E94D9300161277 /* business-woman-colour.svg */,
+				5CD50E7124E94D9300161277 /* entryway-colour-1200px.png */,
+				5CD50E7024E94D9300161277 /* startScreenVid.mp4 */,
+				5CD50E6A24E94D9200161277 /* startScreenVid.mp4.zip */,
+				5CD50E6B24E94D9300161277 /* student-colour-400px.png */,
+				5CD50E6724E94D9200161277 /* student-colour-800px.png */,
+				5CD50E6824E94D9200161277 /* student-colour-1200px.png */,
+				5CD50E6F24E94D9300161277 /* student-colour.svg */,
+				5CD50E6C24E94D9300161277 /* unlock-monochrome-1200px.png */,
 				F28FFD6A24CE8F5600935127 /* business-woman-colour-400px.png */,
 				F28FFD7524CE8F5900935127 /* business-woman-colour-800px.png */,
 				F28FFD6F24CE8F5700935127 /* business-woman-colour-1200px.png */,
 				F28FFD7724CE8F5900935127 /* business-woman-colour.psd */,
 				F28FFD7124CE8F5800935127 /* business-woman-colour.svg */,
-				F28FFD7424CE8F5800935127 /* default_image.png */,
 				F28FFD6C24CE8F5600935127 /* entryway-colour-1200px.png */,
 				F28FFD7624CE8F5900935127 /* startScreenVid.mp4 */,
 				F28FFD7224CE8F5800935127 /* startScreenVid.mp4.zip */,
@@ -855,30 +894,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD50E7C24E94D9300161277 /* student-colour.svg in Resources */,
+				5CD50E7524E94D9300161277 /* student-colour-1200px.png in Resources */,
+				5CD50E7424E94D9300161277 /* student-colour-800px.png in Resources */,
 				896A089F24E91D2500E5121D /* EventCell.xib in Resources */,
+				5CD50E7B24E94D9300161277 /* business-woman-colour-800px.png in Resources */,
 				F28FFD7C24CE8F5A00935127 /* student-colour-1200px.png in Resources */,
+				5CD50E7F24E94D9300161277 /* business-woman-colour.psd in Resources */,
 				F26C3F2524D66387001B016F /* StopRecording.aiff in Resources */,
 				F28FFD7B24CE8F5A00935127 /* student-colour-800px.png in Resources */,
 				F28FFD8524CE8F5A00935127 /* business-woman-colour.psd in Resources */,
+				5CD50E7924E94D9300161277 /* unlock-monochrome-1200px.png in Resources */,
 				F28FFD7A24CE8F5A00935127 /* entryway-colour-1200px.png in Resources */,
 				F28FFD8324CE8F5A00935127 /* business-woman-colour-800px.png in Resources */,
+				5CD50E8124E9555D00161277 /* wx.storyboard in Resources */,
+				5CD50E7D24E94D9300161277 /* startScreenVid.mp4 in Resources */,
 				9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
 				F28FFD7824CE8F5A00935127 /* business-woman-colour-400px.png in Resources */,
+				5CD50E7A24E94D9300161277 /* business-woman-colour.svg in Resources */,
 				F28FFD8424CE8F5A00935127 /* startScreenVid.mp4 in Resources */,
 				F26C3F2624D66387001B016F /* StartRecording.aiff in Resources */,
-				5CD1432924CA91DD00DB5915 /* wx.storyboard in Resources */,
 				F28FFD7F24CE8F5A00935127 /* business-woman-colour.svg in Resources */,
 				896A084F24E91D0500E5121D /* ExpandableHeaderView.xib in Resources */,
+				5CD50E7E24E94D9300161277 /* entryway-colour-1200px.png in Resources */,
 				896A085124E91D0500E5121D /* OptionsTableViewCell.xib in Resources */,
 				F28FFD7E24CE8F5A00935127 /* unlock-monochrome-1200px.png in Resources */,
 				F28FFD7924CE8F5A00935127 /* student-colour.svg in Resources */,
 				F2F5A4FB24C542A3009295E4 /* Dom_Storyboard.storyboard in Resources */,
-				F28FFD8224CE8F5A00935127 /* default_image.png in Resources */,
 				F28FFD8024CE8F5A00935127 /* startScreenVid.mp4.zip in Resources */,
 				898646F62464627000A5C752 /* LaunchScreen.storyboard in Resources */,
+				5CD50E7724E94D9300161277 /* startScreenVid.mp4.zip in Resources */,
 				89FDD3A524B4D0A700DEBD96 /* topicText.csv in Resources */,
 				8954EE2D24C0751700039BDF /* BottomSheetViewController.xib in Resources */,
+				5CD50E7324E94D9300161277 /* business-woman-colour-400px.png in Resources */,
+				5CD50E7824E94D9300161277 /* student-colour-400px.png in Resources */,
 				5CD1430C24CA8CDF00DB5915 /* bert-base-uncased-vocab.txt in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
 				896A084724E91CFE00E5121D /* LongPressEventCell.xib in Resources */,
@@ -886,6 +936,7 @@
 				89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
 				F28FFD8124CE8F5A00935127 /* student-colour-400px.png in Resources */,
+				5CD50E7624E94D9300161277 /* business-woman-colour-1200px.png in Resources */,
 				898646EE2464626F00A5C752 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -957,7 +1008,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				896A085224E91D0500E5121D /* OptionsTableViewCell.swift in Sources */,
+				5CD50E8924E955DF00161277 /* PostDetailViewController.swift in Sources */,
 				8954EE2924C06F8400039BDF /* IndividualTaskViewController.swift in Sources */,
+				5CD50E8B24E955E900161277 /* FullPostViewController.swift in Sources */,
 				8954EE2B24C06FE300039BDF /* BottomSheetViewController.swift in Sources */,
 				8944BB2224CB3C8B00A7484F /* DocImage.swift in Sources */,
 				896A088B24E91D2500E5121D /* createprojectViewController.swift in Sources */,
@@ -989,16 +1042,15 @@
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				9E62D97624BE1BBB003462F1 /* (null) in Sources */,
 				896A088624E91D2500E5121D /* DefaultViewController2.swift in Sources */,
-				5CD1433424CA922500DB5915 /* addPost.swift in Sources */,
 				9E62D97424BE1BBB003462F1 /* (null) in Sources */,
 				9EFFB64924C5F2980073CE59 /* Role.swift in Sources */,
 				9E62D97E24BE1BBC003462F1 /* (null) in Sources */,
 				9E62D97124BE1BBB003462F1 /* (null) in Sources */,
 				89651AA124CDA2470088CF49 /* Levenshtein.swift in Sources */,
 				9EFFB64F24C5F2FD0073CE59 /* ProjectDataManager.swift in Sources */,
-				5CD1433024CA922500DB5915 /* Post.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
 				897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */,
+				5CD50E8F24E9561100161277 /* ForumDataManager.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				5CD1430824CA8CDF00DB5915 /* BERTOutput.swift in Sources */,
 				89019B8024D2731000BBB6FB /* ImageLink.swift in Sources */,
@@ -1038,8 +1090,6 @@
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
 				896A089D24E91D2500E5121D /* MemberTableViewCell.swift in Sources */,
-				5CD1433124CA922500DB5915 /* PostCell.swift in Sources */,
-				5CD1433224CA922500DB5915 /* DismissSegue.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */,
 				896A089524E91D2500E5121D /* DefaultWeekView.swift in Sources */,
@@ -1048,6 +1098,7 @@
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
 				896A088824E91D2500E5121D /* addtask1ViewController.swift in Sources */,
 				896A088E24E91D2500E5121D /* EventCell.swift in Sources */,
+				5CD50E8724E955DF00161277 /* ForumViewController.swift in Sources */,
 				896A088F24E91D2500E5121D /* ProjectCellTableViewCell.swift in Sources */,
 				896A089124E91D2500E5121D /* projectdetail2ViewController.swift in Sources */,
 				896A08A024E91D2500E5121D /* taskmemberTableViewCell.swift in Sources */,
@@ -1065,7 +1116,6 @@
 				89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */,
 				896A089324E91D2500E5121D /* ProjecttaskmemberViewController.swift in Sources */,
 				5CD1430724CA8CDF00DB5915 /* BERTVocabulary.swift in Sources */,
-				5CD1433324CA922500DB5915 /* PostDetailViewController.swift in Sources */,
 				F28A1FAB24C5315900F1D0DB /* IndexCell.swift in Sources */,
 				896A088C24E91D2500E5121D /* Toast.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
@@ -1102,10 +1152,11 @@
 				896A089C24E91D2500E5121D /* projectdetail1ViewController.swift in Sources */,
 				896A089924E91D2500E5121D /* DefaultWeekView2.swift in Sources */,
 				9E62D96F24BE1BBB003462F1 /* (null) in Sources */,
-				5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */,
 				5CD1430624CA8CDF00DB5915 /* BERTInput.swift in Sources */,
+				5CD50E8D24E955F800161277 /* CommentsCell.swift in Sources */,
 				89921948246E45290029BFF5 /* SavedCountry.swift in Sources */,
 				F26C3F1E24D662C3001B016F /* RecorderViewController.swift in Sources */,
+				5CD50E8624E955DF00161277 /* Post.swift in Sources */,
 				8903D05D24D18A97000C42BF /* Resnet50.mlmodel in Sources */,
 				5CD142EE24CA8C7800DB5915 /* ProjectTaskDataManager.swift in Sources */,
 				896A088324E91D2500E5121D /* DefaultViewModel.swift in Sources */,
@@ -1114,6 +1165,7 @@
 				9E62D97B24BE1BBB003462F1 /* (null) in Sources */,
 				8944BB2424CC219900A7484F /* ImageCell.swift in Sources */,
 				9E62D97A24BE1BBB003462F1 /* (null) in Sources */,
+				5CD50E8824E955DF00161277 /* PostCell.swift in Sources */,
 				89FD652924C3085B005A7BEA /* MasterViewController.swift in Sources */,
 				9E62D98024BE1BBC003462F1 /* (null) in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
@@ -1132,14 +1184,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5CD1432724CA91DD00DB5915 /* wx.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5CD1432824CA91DD00DB5915 /* Base */,
-			);
-			name = wx.storyboard;
-			sourceTree = "<group>";
-		};
 		898646EC2464626F00A5C752 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

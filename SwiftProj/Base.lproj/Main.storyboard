@@ -1421,19 +1421,40 @@
                         <segue destination="Z6F-VX-Knu" kind="relationship" relationship="viewControllers" id="LVR-pe-blf"/>
                         <segue destination="gr7-Mx-JBB" kind="relationship" relationship="viewControllers" id="Be6-xz-Wpc"/>
                         <segue destination="G56-99-Gf5" kind="relationship" relationship="viewControllers" id="pSd-f9-gmw"/>
-                        <segue destination="pKh-fi-3ds" kind="relationship" relationship="viewControllers" id="2bR-kE-Xyo"/>
                         <segue destination="ksr-ae-gia" kind="relationship" relationship="viewControllers" id="Tfc-Pl-w9b"/>
+                        <segue destination="UXj-V0-gcy" kind="relationship" relationship="viewControllers" id="ueI-yb-Y5g"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75v-vX-MCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-957" y="-473"/>
         </scene>
+        <!--Forum-->
+        <scene sceneID="QHU-gl-GaM">
+            <objects>
+                <navigationController id="UXj-V0-gcy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Forum" image="book.circle.fill" catalog="system" id="o0F-El-Nmn"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="db1-Ng-VGG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vuC-tS-B3M">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="pKh-fi-3ds" kind="relationship" relationship="rootViewController" id="xAo-MU-UYz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4A-qU-nse" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-93" y="-886"/>
+        </scene>
         <!--wx-->
         <scene sceneID="W5Z-8p-ksB">
             <objects>
                 <viewControllerPlaceholder storyboardName="wx" id="pKh-fi-3ds" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="mxD-n0-RTk"/>
+                    <navigationItem key="navigationItem" id="CXQ-Az-O6r"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNe-gv-l8T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2016,7 +2037,6 @@
         <!--Project-->
         <scene sceneID="KFy-Il-6P9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ewt-D1-0gq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController navigationBarHidden="YES" id="ksr-ae-gia" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Project" image="person.3" catalog="system" id="ZPf-55-C4S"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6pf-Iz-npu">
@@ -2026,6 +2046,7 @@
                         <segue destination="0J1-rs-JOi" kind="relationship" relationship="rootViewController" id="jTq-1Y-Qma"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ewt-D1-0gq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-264" y="264"/>
         </scene>
@@ -2403,6 +2424,7 @@
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="book.circle.fill" catalog="system" width="128" height="121"/>
         <image name="camera" catalog="system" width="128" height="96"/>
         <image name="default_image.png" width="735" height="552"/>
         <image name="doc.text" catalog="system" width="115" height="128"/>
