@@ -453,6 +453,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         var hpt = predictHoursPerTask()
         var dataTextStr: [[String]] = []
+        var idxList: [Int] = []
         print(descTextView.text!)
         let filepath = URL(fileURLWithPath: Bundle.main.path(forResource: "topicText", ofType: "csv")!)
         var boolCategory = true
@@ -469,7 +470,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                     var stopwords = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "one", "two", "three", "four", "five", "1", "2", "3", "4", "5", "6", "7", "8", "9", "it's", "join", "using", "final", "subjects"]
                     var set = CharacterSet.punctuationCharacters
 
-                    var searchTxtList = text.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+                    var searchTxtList = text.components(separatedBy: " ")
                     searchTxtList = uniqueElementsFrom(array: searchTxtList)
 
                     for word in stopwords { // Removing stopwords from search text
@@ -501,7 +502,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                     
                     Reductio.keywords(from: textRep, count: 1) { words in
                         //print(words)
+                        print(textRep)
                         dataTextStr.append(words)
+                        idxList.append(i)
                     }
                     
                 }
@@ -510,16 +513,18 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
             
             Reductio.keywords(from: self.titleTextField.text! + " " + self.descTextView.text!, count: 2) { words in
                 var topSuggestionsList: [Suggestion] = []
-
+                //print(idxList)
                 for word in words {
                     for txtList in dataTextStr {
+                        var passageIndex = dataTextStr.firstIndex(of: txtList)
+//                        print("PASSAGE IS = \(csv.namedRows[idxList[dataTextStr.firstIndex(of: txtList)!]]["text"])")
+//                        print("THE T LIST IS = \(txtList)")
                         for txt in txtList {
+                            //print("each text is = \(txt)")
                             if let embedding = NLEmbedding.wordEmbedding(for: .english) {
-
+                                //print("AND THE WORD IS \(txt)")
                                 let eDistance = embedding.distance(between: txt, and: word)
-                                
-                                topSuggestionsList.append(Suggestion(text: txt, textDistance: eDistance))
-                                //print("\(txt)")
+                                topSuggestionsList.append(Suggestion(text: txt, textDistance: eDistance, passage: csv.namedRows[idxList[dataTextStr.firstIndex(of: txtList)!]]["text"]))
                             }
                         }
                     }
@@ -527,10 +532,60 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 
                 if topSuggestionsList.count > 4 {
                     var topSuggestionSortedList = topSuggestionsList.sorted(by: { Int($0.textDistance!) < Int($1.textDistance!) })
-                    print(topSuggestionSortedList.count)
-                    print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
+                    //print(topSuggestionSortedList.count)
+                    //print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
+                    var suggestList: [String] = []
+                    var stopwords = ["we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "from", "in", "out", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "it's"]
                     
-                    self.suggestLabel.text = "Related to Subject and Input: 1. \(topSuggestionSortedList[0].text!), 2. \(topSuggestionSortedList[1].text!), 3. \(topSuggestionSortedList[2].text!) "
+                    for i in 0...2 {
+                        var tempStrList: [String] = []
+                        
+                        var tPassage = topSuggestionSortedList[i].passage!.lowercased()
+                        
+                        var txtList = tPassage.components(separatedBy: " ")
+                        
+                        var firstidx = txtList.firstIndex(of: topSuggestionSortedList[i].text!)
+                        print("THE TXT \(topSuggestionSortedList[i].text!)")
+                        print("firstidx = \(firstidx)")
+                        print("txtList = \(txtList)")
+                        
+                        for j in firstidx!...txtList.endIndex {
+                            print("the index is \(j) and endidx = \(txtList.endIndex)")
+                            
+                            if (j == txtList.count) {
+                                break
+                            }
+                            
+                            if (j <= txtList.endIndex) {
+                                if (stopwords.contains(txtList[j].lowercased())) {
+                                    print("STOPWORDS")
+                                    break
+                                }
+                                
+                                tempStrList.append(txtList[j])
+                                
+                                if (txtList[j].contains(".") || txtList[j].contains(",")) {
+                                    break
+                                } else if (j == txtList.endIndex) {
+                                    
+                                    break
+                                }
+                            }
+                        }
+                        
+                        var tempStrPassage = tempStrList.joined(separator: " ")
+                        if (suggestList.contains(tempStrPassage)) {
+                            
+                        } else {
+                            suggestList.append(tempStrPassage)
+                        }
+                    }
+
+                    self.suggestLabel.text = "See what others are doing: "
+
+                    for suggestion in suggestList {
+                        self.suggestLabel.text = self.suggestLabel.text! + "\(suggestList.firstIndex(of: suggestion)! + 1). \(suggestion) "
+                    }
                     
                     self.suggestLabel.isHidden = false
                 } else {

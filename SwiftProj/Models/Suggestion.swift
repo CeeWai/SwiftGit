@@ -8,12 +8,14 @@
 
 import Foundation
 struct Suggestion {
-    internal init(text: String?, textDistance: Double?) {
+    internal init(text: String?, textDistance: Double?, passage: String?) {
         self.text = text
         self.textDistance = textDistance
+        self.passage = passage
     }
     
     var text: String?
     var textDistance: Double?
+    var passage: String?
 
 }

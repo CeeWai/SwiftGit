@@ -56,19 +56,7 @@ class PostDetailViewController: UIViewController {
         if (currentuser != nil) {
             postItem!.author = currentuser!.displayName!
         }
-        else {
-            let alert = UIAlertController(
-                title: "Login Required!",
-                message: "",
-                preferredStyle:
-                .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK",
-                                          style: .default,
-                                          handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-        }
+        
         
         if (postItem!.commentCount != 0)
         {
