@@ -18,6 +18,9 @@ class ProjecttaskmemberViewController: UIViewController,UITableViewDelegate, UIT
         navtitle.title = projectItem?.projectName!
         taskmember = ProjectTaskMemberDataManager.loadprojecttaskidandprojectid(taskid: (projecttask?.taskid!)!, projectid: (projectItem?.projectId!)!, assign: 1)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden=true
+    }
     func tableView(_ tableView: UITableView,
     numberOfRowsInSection section: Int) -> Int {
     return taskmember.count

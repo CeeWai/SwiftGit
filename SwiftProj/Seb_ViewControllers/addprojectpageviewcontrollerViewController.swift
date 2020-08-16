@@ -19,12 +19,14 @@ class addprojectpageviewcontrollerViewController: UIPageViewController, UIPageVi
         return [self.newVc(viewController: "addproject1"),
                 self.newVc(viewController: "addproject2")]
     }()
-    
+    override func viewDidAppear(_ animated: Bool) {
+            self.navigationController?.isNavigationBarHidden=true
+       }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
-        
+        self.navigationController?.isNavigationBarHidden=true
         
         
         // This sets up the first view that will show up on our page control

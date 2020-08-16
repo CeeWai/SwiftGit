@@ -25,10 +25,13 @@ class ProjectCellTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        contentview.layer.borderWidth = 2;
-        contentview.layer.borderColor = UIColor.systemRed.cgColor
+        //contentview.layer.borderWidth = 2;
+        //contentview.layer.borderColor = UIColor.systemRed.cgColor
         projectnameLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-
+        let bottomline = CALayer()
+        bottomline.frame = CGRect(x:0,y:contentview.frame.height - 2, width: contentview.frame.width,height: 1)
+        bottomline.backgroundColor = UIColor.systemRed.cgColor
+        contentview.layer.addSublayer(bottomline)
         // Configure the view for the selected state
     }
 

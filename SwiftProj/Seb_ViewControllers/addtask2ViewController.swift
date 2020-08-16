@@ -29,7 +29,6 @@ class addtask2ViewController: UIViewController , UITableViewDelegate, UITableVie
         var valid: Int = projecttaskItem!.valid!
         var strstartdate :String = String("\(startdate)".dropLast(6))
         var strenddate :String = String("\(enddate)".dropLast(6))
-        newprojecttaskItem = ProjectTaskDataManager.loadtaskbytask(task: ProjectTask(taskid: 0, projectid: projectid, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: startdate, enddate: enddate, status: status, valid: valid), startdate: strstartdate, enddate: strenddate)
         searchfield.addTarget(self, action: #selector(addmemberViewController.searchfieldDidchange(_:)),for: .editingChanged)
     }
     

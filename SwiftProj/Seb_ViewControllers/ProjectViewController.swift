@@ -7,25 +7,31 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var projectList : [Project] = []
     var projectgroupList : [Projectgroup] = []
     var inviteList : [Projectgroup] = []
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet weak var addbtn: UIButton!
     @IBOutlet var bell: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden=true
+        addbtn.layer.backgroundColor = UIColor.black.cgColor
+        addbtn.layer.borderColor = UIColor.red.cgColor
+        addbtn.layer.borderWidth = 1
         RoleDataManager.createDatabase()
         ProjectDataManager.createDatabase()
         ProjectgroupDataManager.createDatabase()
         ProjectTaskDataManager.createDatabase()
         ProjectTaskMemberDataManager.createDatabase()
+        ProjectEventDataManager.createDatabase()
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
-        projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
+        let currentuser = Auth.auth().currentUser
+        projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: currentuser!.uid)
         if projectgroupList.isEmpty{
         }
         else{
@@ -34,13 +40,15 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
                 projectList.append(projectitem[0])
             }
         }
-        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
+        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser!.uid)
         
         if inviteList.count > 0{
             
         }
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden=true
+    }
     override func viewDidDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden=false
     }
@@ -57,7 +65,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         as! ProjectCellTableViewCell
         let p = projectList[indexPath.row]
         cell.projectnameLabel.text = p.projectName
-        cell.projectleaderLabel.text = ""
+        cell.projectleaderLabel.text = p.projectLeader
         let dataDecoded:NSData = NSData(base64Encoded:p.imageName!, options: .ignoreUnknownCharacters)!
         let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
         cell.projectImageView.image = decodedimage

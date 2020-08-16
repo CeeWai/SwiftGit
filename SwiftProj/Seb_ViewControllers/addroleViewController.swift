@@ -32,9 +32,12 @@ class addroleViewController: UIViewController {
     var invitemember=1
     var removemember=1
     var manageproject=1
-    
+    override func viewDidAppear(_ animated: Bool) {
+            self.navigationController?.isNavigationBarHidden=true
+       }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden=true
         let bottomline = CALayer()
                    bottomline.frame = CGRect(x:0,y:rolenamefield.frame.height - 2, width: rolenamefield.frame.width,height: 2)
                    bottomline.backgroundColor =         UIColor.systemRed.cgColor

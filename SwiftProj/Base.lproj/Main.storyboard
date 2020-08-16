@@ -889,7 +889,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahR-bZ-8qT">
-                                                    <rect key="frame" x="20" y="11" width="0.0" height="40"/>
+                                                    <rect key="frame" x="8" y="11" width="0.0" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1421,8 +1421,8 @@
                         <segue destination="Z6F-VX-Knu" kind="relationship" relationship="viewControllers" id="LVR-pe-blf"/>
                         <segue destination="gr7-Mx-JBB" kind="relationship" relationship="viewControllers" id="Be6-xz-Wpc"/>
                         <segue destination="G56-99-Gf5" kind="relationship" relationship="viewControllers" id="pSd-f9-gmw"/>
-                        <segue destination="0J1-rs-JOi" kind="relationship" relationship="viewControllers" id="zyW-i8-m21"/>
                         <segue destination="pKh-fi-3ds" kind="relationship" relationship="viewControllers" id="2bR-kE-Xyo"/>
+                        <segue destination="ksr-ae-gia" kind="relationship" relationship="viewControllers" id="Tfc-Pl-w9b"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75v-vX-MCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1537,7 +1537,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjy-4b-aWL">
-                                <rect key="frame" x="27" y="144" width="360" height="506"/>
+                                <rect key="frame" x="27" y="144" width="360" height="516"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entryway" translatesAutoresizingMaskIntoConstraints="NO" id="sY5-OK-aaa">
                                         <rect key="frame" x="8" y="8" width="352" height="400"/>
@@ -1546,7 +1546,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can't set a task at the last minute of the day!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xj8-TA-8EH">
-                                        <rect key="frame" x="63" y="416" width="234" height="45"/>
+                                        <rect key="frame" x="63" y="416" width="234" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1726,7 +1726,7 @@
                                 </constraints>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyW-Ur-2KV">
-                                <rect key="frame" x="27" y="163" width="360" height="472"/>
+                                <rect key="frame" x="27" y="163" width="360" height="516"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entryway" translatesAutoresizingMaskIntoConstraints="NO" id="aa5-eC-aTf">
                                         <rect key="frame" x="0.0" y="8" width="352" height="400"/>
@@ -1735,7 +1735,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can't set a task at the last minute of the day!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTn-cE-kzH">
-                                        <rect key="frame" x="63" y="416" width="234" height="11"/>
+                                        <rect key="frame" x="63" y="416" width="234" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -2011,7 +2011,23 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rdy-pt-21Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-323" y="60"/>
+            <point key="canvasLocation" x="-291" y="678"/>
+        </scene>
+        <!--Project-->
+        <scene sceneID="KFy-Il-6P9">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ewt-D1-0gq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="ksr-ae-gia" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Project" image="person.3" catalog="system" id="ZPf-55-C4S"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6pf-Iz-npu">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0J1-rs-JOi" kind="relationship" relationship="rootViewController" id="jTq-1Y-Qma"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-264" y="264"/>
         </scene>
         <!--Notes-->
         <scene sceneID="B3N-kh-ckT">
@@ -2030,7 +2046,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejk-VW-YA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="448" y="258"/>
+            <point key="canvasLocation" x="432" y="264"/>
         </scene>
         <!--Subject Table View Controller-->
         <scene sceneID="E4y-MO-GZ4">
@@ -2398,6 +2414,7 @@
         <image name="mic" catalog="system" width="108" height="128"/>
         <image name="n.square" catalog="system" width="128" height="114"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="student-icon" width="400" height="506.66665649414062"/>
         <image name="trash" catalog="system" width="121" height="128"/>

@@ -13,18 +13,21 @@ class projecttaskdetailViewController: UIViewController, UIPickerViewDelegate, U
     var projectItem : Project?
     var selectedpickervalue = ""
     var selectedpickerrow = 0
-    @IBOutlet var startdatelabel: UILabel!
-    @IBOutlet var enddatelabel: UILabel!
     var projecttask : ProjectTask?
+    @IBOutlet weak var duedate: UILabel!
     @IBOutlet var taskgoal: UITextView!
     @IBOutlet var statuslabel: UILabel!
     @IBOutlet var navtitile: UINavigationItem!
     @IBOutlet var editstatusbtn: UIButton!
+    var popoverstatus = 0
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     var statuslist : [String] = ["Pending","Ongoing","Complete"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden=true
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismisspopover")
+        view.addGestureRecognizer(tap)
         navtitile.title=projectItem?.projectName!
         taskname.text = projecttask?.taskname!
         print(projecttask?.status)
@@ -36,16 +39,69 @@ class projecttaskdetailViewController: UIViewController, UIPickerViewDelegate, U
         }else{
             statuslabel.text = "Complete"
         }
+        
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-      //  print(projecttask?.taskgoal)
-        startdatelabel.text = formatter.string(from: (projecttask?.startdate)!)
-        enddatelabel.text = formatter.string(from: (projecttask?.enddate)!)
+        
+         
+      if projecttask?.enddate != nil{
+                             var duedates = projecttask?.enddate!
+                             duedate.text = formatter.string(from: duedates!)
+                            }else{
+                             duedate.text = ""
+        }
         taskgoal.text = projecttask!.taskgoal!
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden=true
+    }
+    @objc func dismisspopover() {
+        popover.removeFromSuperview()
+        if popover.isDescendant(of: view){
+            popover.removeFromSuperview()
+        }
+    }
+    @IBOutlet var popover: UIView!
+    @IBAction func popoverpressed(_ sender: Any) {
+        if popoverstatus == 1{
+                                 self.popover.removeFromSuperview()
+                                 popoverstatus = 0
+                             }
+                             if popoverstatus == 0{
+                                 self.view.addSubview(popover)
+                                 let superView = self.view.superview
+                                 superView!.addSubview(popover)
+                                 popover.translatesAutoresizingMaskIntoConstraints = false
 
+                                 NSLayoutConstraint.activate([
+
+                                         // 5
+                                         NSLayoutConstraint(item: popover, attribute: .top, relatedBy: .equal, toItem: superView, attribute: .top, multiplier: 1.0, constant: 60),
+
+                                         // 6
+                                         NSLayoutConstraint(item: popover, attribute: .right, relatedBy: .equal, toItem: superView, attribute: .right, multiplier: 1.0, constant: 160),
+
+                                         // 7
+                                         popover.heightAnchor.constraint(equalToConstant:80),
+                             
+                                         //8
+                                         popover.widthAnchor.constraint(equalToConstant: 300)
+                                     ])
+                                 popoverstatus = 1
+    }
+    }
+    
+    @IBAction func deletetask(_ sender: Any) {
+        ProjectTaskDataManager.delete(projecttask: projecttask!)
+        guard let optionsVC = UIStoryboard(name: "Seb_Main", bundle: nil).instantiateViewController(withIdentifier: "detailtodo") as? projectdetail1ViewController else {
+            return
+        }
+        optionsVC.projectItem = projectItem
+        optionsVC.modalPresentationStyle = .fullScreen
+        self.present(optionsVC, animated: true, completion: nil)
+        
+    }
     @IBAction func pressededitstatus(_ sender: Any) {
         picker = UIPickerView.init()
            picker.delegate = self
@@ -109,5 +165,13 @@ class projecttaskdetailViewController: UIViewController, UIPickerViewDelegate, U
          projectdetail1ViewController
             detailViewController.projectItem = self.projectItem
         }
+        if(segue.identifier == "seguetoeditmemo")
+                {
+               let detailViewController = segue.destination as!
+                addtask1ViewController
+                   detailViewController.projectItem = self.projectItem
+                   detailViewController.projecttask = self.projecttask
+                   detailViewController.seguetype = "update"
+               }
     }
 }

@@ -7,21 +7,26 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class projectnotificationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var inviteList : [Projectgroup] = []
     var projectList : [Project] = []
     var projectItem : Project?
-
+    var currentuser = ""
     @IBOutlet var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
+        self.navigationController?.isNavigationBarHidden=true
+        currentuser = Auth.auth().currentUser?.uid as! String
+        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser)
         // Do any additional setup after loading the view.
         self.tableview.reloadData()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden=true
+    }
     func refresh(){
-        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: "1nC1S8cngKXT2da4CmaiV2sb4Ia2")
+        inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser)
         // Do any additional setup after loading the view.
         self.tableview.reloadData()
     }

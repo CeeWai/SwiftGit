@@ -13,63 +13,105 @@ UITableViewDelegate, UITableViewDataSource{
     var taskList : [ProjectTask] = []
     @IBOutlet var tableview1: UITableView!
     @IBOutlet var addtask: UIButton!
-    @IBOutlet var board: UIButton!
-    @IBOutlet var ganttchart: UIButton!
+
     @IBOutlet var btn1: UIButton!
     @IBOutlet var btn3: UIButton!
     @IBOutlet var btn2: UIButton!
     @IBOutlet var navtitle: UINavigationItem!
     var popoverstatus = 0;
     var projectItem : Project?
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden=true
+         navtitle.title = "Board"
+               addtask.layer.cornerRadius = 40
+               addtask.layer.borderColor = UIColor.systemRed.cgColor
+               addtask.layer.borderWidth = 2;
+               addtask.layer.backgroundColor = UIColor.black.cgColor
+               addtask.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+       
+          
+               btn1.layer.cornerRadius = 10
+               btn1.layer.borderColor = UIColor.systemRed.cgColor
+               btn1.layer.borderWidth = 2;
+       
+               btn2.layer.cornerRadius = 10
+               btn2.layer.borderColor = UIColor.systemRed.cgColor
+               btn2.layer.borderWidth = 0;
+             
+               btn3.layer.cornerRadius = 10
+               btn3.layer.borderColor = UIColor.systemRed.cgColor
+               btn3.layer.borderWidth = 0;
+     
+               print(projectItem?.projectId!)
+               taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
+               if (self.restorationIdentifier == "detailtodo"){
+                   btn1.layer.cornerRadius = 10
+                   btn1.layer.borderColor = UIColor.systemRed.cgColor
+                   btn1.layer.borderWidth = 2;
+              
+                   taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
+               }
+               if (self.restorationIdentifier == "detailongoing"){
+                   btn2.layer.cornerRadius = 10
+                   btn2.layer.borderColor = UIColor.systemRed.cgColor
+                   btn2.layer.borderWidth = 2;
+                 
+                   taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 1)
+               }
+               if (self.restorationIdentifier == "detailcomplete"){
+                   btn3.layer.cornerRadius = 10
+                   btn3.layer.borderColor = UIColor.systemRed.cgColor
+                   btn3.layer.borderWidth = 2;
+
+                   taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 2)
+               }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        navtitle.title=projectItem?.projectName
-        addtask.layer.cornerRadius = 40
-        addtask.layer.borderColor = UIColor.systemRed.cgColor
-        addtask.layer.borderWidth = 2;
-        addtask.layer.backgroundColor = UIColor.black.cgColor
-        addtask.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        board.layer.borderWidth = 2;
-        board.layer.cornerRadius = 0
-        board.layer.borderColor = UIColor.systemRed.cgColor
-        ganttchart.layer.borderWidth = 0;
-        ganttchart.layer.cornerRadius = 0
-        ganttchart.layer.borderColor = UIColor.systemRed.cgColor
-        btn1.layer.cornerRadius = 10
-        btn1.layer.borderColor = UIColor.systemRed.cgColor
-        btn1.layer.borderWidth = 2;
-        btn1.layer.backgroundColor = UIColor.black.cgColor
-        btn2.layer.cornerRadius = 10
-        btn2.layer.borderColor = UIColor.systemRed.cgColor
-        btn2.layer.borderWidth = 0;
-        btn2.layer.backgroundColor = UIColor.black.cgColor
-        btn3.layer.cornerRadius = 10
-        btn3.layer.borderColor = UIColor.systemRed.cgColor
-        btn3.layer.borderWidth = 0;
-        btn3.layer.backgroundColor = UIColor.black.cgColor
-        taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
-        if (self.restorationIdentifier == "detailtodo"){
-            btn1.layer.cornerRadius = 10
-            btn1.layer.borderColor = UIColor.systemRed.cgColor
-            btn1.layer.borderWidth = 2;
-            btn1.layer.backgroundColor = UIColor.black.cgColor
-            taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
-        }
-        if (self.restorationIdentifier == "detailongoing"){
-            btn2.layer.cornerRadius = 10
-            btn2.layer.borderColor = UIColor.systemRed.cgColor
-            btn2.layer.borderWidth = 2;
-            btn2.layer.backgroundColor = UIColor.black.cgColor
-            taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 1)
-        }
-        if (self.restorationIdentifier == "detailcomplete"){
-            btn3.layer.cornerRadius = 10
-            btn3.layer.borderColor = UIColor.systemRed.cgColor
-            btn3.layer.borderWidth = 2;
-            btn3.layer.backgroundColor = UIColor.black.cgColor
-            taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 2)
-        }
+        self.navigationController?.isNavigationBarHidden=true
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismisspopover")
+        view.addGestureRecognizer(tap)
+        navtitle.title = "Board"
+               addtask.layer.cornerRadius = 40
+               addtask.layer.borderColor = UIColor.systemRed.cgColor
+               addtask.layer.borderWidth = 2;
+               addtask.layer.backgroundColor = UIColor.black.cgColor
+               addtask.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+               btn1.layer.cornerRadius = 10
+               btn1.layer.borderColor = UIColor.systemRed.cgColor
+               btn1.layer.borderWidth = 2;
+       
+               btn2.layer.cornerRadius = 10
+               btn2.layer.borderColor = UIColor.systemRed.cgColor
+               btn2.layer.borderWidth = 0;
+           
+               btn3.layer.cornerRadius = 10
+               btn3.layer.borderColor = UIColor.systemRed.cgColor
+               btn3.layer.borderWidth = 0;
+           
+               print(projectItem?.projectId!)
+               taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
+               if (self.restorationIdentifier == "detailtodo"){
+                   btn1.layer.cornerRadius = 10
+                   btn1.layer.borderColor = UIColor.systemRed.cgColor
+                   btn1.layer.borderWidth = 2;
         
+                   taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
+               }
+               if (self.restorationIdentifier == "detailongoing"){
+                   btn2.layer.cornerRadius = 10
+                   btn2.layer.borderColor = UIColor.systemRed.cgColor
+                   btn2.layer.borderWidth = 2;
+             
+                   taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 1)
+               }
+               if (self.restorationIdentifier == "detailcomplete"){
+                   btn3.layer.cornerRadius = 10
+                   btn3.layer.borderColor = UIColor.systemRed.cgColor
+                   btn3.layer.borderWidth = 2;
+        	
+                   taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 2)
+               }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,7 +144,12 @@ UITableViewDelegate, UITableViewDataSource{
     @IBOutlet var popover: UIView!
     @IBOutlet var popover2: UIView!
     @IBOutlet var popover3: UIView!
-    
+    @objc func dismisspopover() {
+        popover.removeFromSuperview()
+        if popover.isDescendant(of: view){
+            popover.removeFromSuperview()
+        }
+    }
     @IBAction func popovermenu(_ sender: Any) {
         //popover.frame.origin.x = CGFloat(10.0)
         //popover.frame.origin.x = CGFloat(44.0)
@@ -126,7 +173,7 @@ UITableViewDelegate, UITableViewDataSource{
                         NSLayoutConstraint(item: popover, attribute: .right, relatedBy: .equal, toItem: superView, attribute: .right, multiplier: 1.0, constant: 160),
 
                         // 7
-                        popover.heightAnchor.constraint(equalToConstant:110),
+                        popover.heightAnchor.constraint(equalToConstant:70),
             
                         //8
                         popover.widthAnchor.constraint(equalToConstant: 300)
@@ -140,7 +187,7 @@ UITableViewDelegate, UITableViewDataSource{
         btn1.layer.borderWidth = 2;
         btn2.layer.borderWidth = 0;
         btn3.layer.borderWidth = 0;
-        btn1.layer.backgroundColor = UIColor.black.cgColor
+        
         taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 0)
         tableview1.reloadData()
     }
@@ -149,7 +196,7 @@ UITableViewDelegate, UITableViewDataSource{
         btn1.layer.borderWidth = 0;
         btn2.layer.borderWidth = 2;
         btn3.layer.borderWidth = 0;
-        btn1.layer.backgroundColor = UIColor.black.cgColor
+ 
         taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 1)
         tableview1.reloadData()
         
@@ -158,7 +205,7 @@ UITableViewDelegate, UITableViewDataSource{
         btn1.layer.borderWidth = 0;
         btn2.layer.borderWidth = 0;
         btn3.layer.borderWidth = 2;
-        btn1.layer.backgroundColor = UIColor.black.cgColor
+
         taskList = ProjectTaskDataManager.loadtaskbystatusandprojectid(projectid: (projectItem?.projectId!)!, status: 2)
         tableview1.reloadData()
         
@@ -174,11 +221,12 @@ UITableViewDelegate, UITableViewDataSource{
          MemberViewController
             detailViewController.projectItem = self.projectItem
         }
-        if(segue.identifier == "seguetoaddtask")
+        if(segue.identifier == "seguetoaddmemo")
          {
         let detailViewController = segue.destination as!
          addtask1ViewController
             detailViewController.projectItem = self.projectItem
+            detailViewController.seguetype = "add"
         }
         if(segue.identifier == "seguetoongoing")
          {
@@ -198,8 +246,15 @@ UITableViewDelegate, UITableViewDataSource{
          projectdetail1ViewController
             detailViewController.projectItem = self.projectItem
         }
+        if(segue.identifier == "seguetocalender")
+         {
+        let detailViewController = segue.destination as!
+         DefaultViewController1
+            detailViewController.projectItem = self.projectItem
+        }
         if(segue.identifier == "seguetotask")
         {
+        
             let detailViewController =
                 segue.destination as!
             projecttaskdetailViewController

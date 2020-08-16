@@ -7,93 +7,135 @@
 //
 
 import UIKit
-
-class addtask1ViewController: UIViewController {
+import FirebaseAuth
+class addtask1ViewController: UIViewController,UITextViewDelegate{
 
 
     @IBOutlet var name: UITextField!
-    @IBOutlet var startdate: UITextField!
     @IBOutlet var goal: UITextView!
-    @IBOutlet var enddate: UITextField!
+    var toolBar = UIToolbar()
     var startdateraw :Date?
     var enddateraw :Date?
-    let datePicker = UIDatePicker()
-    var userid = "BKAoYyXFsBUzr8tKDViHw4tRrog2"
+    var datePicker = UIDatePicker()
+    var currentuser = Auth.auth().currentUser
+    var userid = ""
     var taskgoal = ""
     var projectItem : Project?
+    var seguetype : String = ""
+    @IBOutlet weak var add_update: UIButton!
+    var projecttask : ProjectTask?
+    @IBOutlet weak var enddate: UIButton!
     @IBOutlet var nextbtn: UIButton!
+    var date : Date?
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden=true
         super.viewDidLoad()
+        userid = currentuser!.uid
+        goal.delegate = self
         let bottomline = CALayer()
-        bottomline.frame = CGRect(x:0,y:name.frame.height - 2, width: name.frame.width,height: 2)
+        bottomline.frame = CGRect(x:0,y:name.frame.height - 2, width: name.frame.width,height: 0.5)
         bottomline.backgroundColor = UIColor.systemRed.cgColor
         let bottomline2 = CALayer()
-        bottomline2.frame = CGRect(x:0,y:name.frame.height - 2, width: name.frame.width,height: 2)
+        bottomline2.frame = CGRect(x:0,y:name.frame.height - 2, width: name.frame.width,height: 0.5)
         bottomline2.backgroundColor = UIColor.systemRed.cgColor
         let bottomline3 = CALayer()
-        bottomline3.frame = CGRect(x:0,y:name.frame.height - 2, width: name.frame.width,height: 2)
+        bottomline3.frame = CGRect(x:0,y:name.frame.height - 2, width: name.frame.width,height: 0.5)
         bottomline3.backgroundColor = UIColor.systemRed.cgColor
         name.borderStyle = .none
         name.layer.addSublayer(bottomline2)
-        startdate.borderStyle = .none
-        startdate.layer.addSublayer(bottomline3)
-        enddate.borderStyle = .none
-        enddate.layer.addSublayer(bottomline)
-        goal.layer.borderWidth = 2;
+        name.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemRed])
+        goal.text = "Description"
+        goal.textColor = UIColor.lightGray
+        goal.layer.borderWidth = 0.5;
         goal.layer.cornerRadius = 7
         goal.layer.borderColor = UIColor.systemRed.cgColor
-        createDatePicker()
         // Do any additional setup after loading the view.
     }
-    func createDatePicker(){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([doneBtn], animated: true)
-        let toolbar2 = UIToolbar()
-        toolbar2.sizeToFit()
-        let doneBtn2 = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed2))
-        toolbar.setItems([doneBtn], animated: true)
-        toolbar2.setItems([doneBtn2], animated: true)
-        startdate.inputAccessoryView = toolbar
-        startdate.inputView = datePicker
-        enddate.inputAccessoryView = toolbar2
-        enddate.inputView = datePicker
-        datePicker.datePickerMode = .date
+    override func viewDidAppear(_ animated: Bool) {
+        if seguetype == "add" {
+            add_update.setTitle("Add Memo", for: .normal)
+            self.navigationController?.isNavigationBarHidden=true
+        }
+        if seguetype == "update" {
+            add_update.setTitle("Update Memo", for: .normal)
+            self.navigationController?.isNavigationBarHidden=true
+            name.text = projecttask?.taskname
+            goal.text = projecttask?.taskgoal
+            date = projecttask?.enddate
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+               if projecttask?.enddate != nil{
+                     enddate.setTitle(dateFormatter.string(from: date!), for: .normal)
+                     enddateraw = date!
+                     }else{
+                         enddate.setTitle("", for: .normal)
+                     }
+                     
+        }
     }
-    @objc func donePressed(){
-        startdateraw = datePicker.date
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        startdate.text = formatter.string(from: datePicker.date)
-        self.view.endEditing(true)
-        
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if goal.textColor == UIColor.lightGray{
+            goal.text = ""
+            goal.textColor = UIColor.systemRed
+        }
     }
-    @objc func donePressed2(){
-           enddateraw = datePicker.date
-           let formatter = DateFormatter()
-           formatter.dateStyle = .medium
-           formatter.timeStyle = .none
-           enddate.text = formatter.string(from: datePicker.date)
-           self.view.endEditing(true)
-           
-    }
-
-    
     @IBAction func pressednextbtn(_ sender: Any) {
         var taskname = name.text
-        userid = "1nC1S8cngKXT2da4CmaiV2sb4Ia2"
         taskgoal = goal.text
-        ProjectTaskDataManager.insertOrReplace(projecttask: ProjectTask(taskid: 0, projectid: projectItem?.projectId!, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: startdateraw, enddate: enddateraw,status: 0, valid: 1))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let now = Date()
+        let dateString = formatter.string(from: now)
+        let datenow = formatter.date(from: dateString)
+        if seguetype == "add" {
+                    //ProjectTaskDataManager.insertOrReplace(projecttask: ProjectTask(taskid: 0, projectid: projectItem?.projectId!, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: datenow, enddate: enddateraw,status: 0, valid: 1))
+        }
+        if seguetype == "update" {
+            //ProjectTaskDataManager.updatememo(taskid: (projecttask?.taskid)!, taskname: taskname!, taskgoal: taskgoal, enddate: enddateraw!)
+            
+        }
     }
-    
+    @IBAction func duedatepressed(_ sender: Any) {
+        datePicker = UIDatePicker.init()
+            datePicker.backgroundColor = UIColor.systemBackground
+            //datePicker.setValue(UIColor.systemRed.cgColor, forKeyPath: "textColor")
+        
+            datePicker.autoresizingMask = .flexibleWidth
+            datePicker.datePickerMode = .date
+
+            datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+            datePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            self.view.addSubview(datePicker)
+
+            toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.barStyle = .blackTranslucent
+            toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
+            toolBar.sizeToFit()
+            self.view.addSubview(toolBar)
+        }
+
+        @objc func dateChanged(_ sender: UIDatePicker?) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+
+            date = sender?.date
+                enddate.setTitle(dateFormatter.string(from: datePicker.date), for: .normal)
+                print(date)
+                enddateraw = date!
+            
+        }
+
+        @objc func onDoneButtonClick() {
+            toolBar.removeFromSuperview()
+            datePicker.removeFromSuperview()
+        }
     override func prepare(for segue: UIStoryboardSegue,
         sender: Any?){
         if(segue.identifier == "seguetoassignmember")
          {
             var taskname = name.text
-            userid = "1nC1S8cngKXT2da4CmaiV2sb4Ia2"
             taskgoal = goal.text
         let detailViewController = segue.destination as! addtask2ViewController
             detailViewController.projecttaskItem = ProjectTask(taskid: 0, projectid: projectItem?.projectId!, userid: userid, taskname: taskname!, taskgoal: taskgoal, startdate: startdateraw!, enddate: enddateraw!,status: 0, valid: 1)
@@ -104,6 +146,33 @@ class addtask1ViewController: UIViewController {
         let detailViewController = segue.destination as!
          projectdetail1ViewController
             detailViewController.projectItem = self.projectItem
+        }
+        if(segue.identifier == "seguetotaskdetail")
+         {
+            var taskname = name.text
+              userid = "1nC1S8cngKXT2da4CmaiV2sb4Ia2"
+              taskgoal = goal.text
+              let formatter = DateFormatter()
+              formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+              let now = Date()
+              let dateString = formatter.string(from: now)
+              let datenow = formatter.date(from: dateString)
+        let detailViewController = segue.destination as!
+         projecttaskdetailViewController
+            detailViewController.projectItem = self.projectItem
+            if seguetype == "add" {
+  
+                            ProjectTaskDataManager.insertOrReplace(projecttask: ProjectTask(taskid: 0, projectid: projectItem?.projectId!, userid: userid, taskname: taskname, taskgoal: taskgoal, startdate: datenow, enddate: enddateraw,status: 0, valid: 1))
+                var id = ProjectTaskDataManager.loadtaskbytask() 
+   
+                    detailViewController.projecttask = ProjectTaskDataManager.loadtaskbyid(taskid: id)[0]
+            
+            }
+            if seguetype == "update" {
+                 ProjectTaskDataManager.updatememo(taskid: (projecttask?.taskid)!, taskname: taskname!, taskgoal: taskgoal, enddate: enddateraw!)
+                detailViewController.projecttask = ProjectTaskDataManager.loadtaskbyid(taskid: (projecttask?.taskid!)!)[0]
+                
+            }
         }
     }
 }

@@ -43,10 +43,62 @@
 		895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895EE02E247696B400F2C109 /* TimeViewController.swift */; };
 		89651AA124CDA2470088CF49 /* Levenshtein.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89651AA024CDA2470088CF49 /* Levenshtein.swift */; };
 		89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89672C04247E34EA008F3C13 /* startScreenViewController.swift */; };
+		896A083B24E91CF600E5121D /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A083924E91CF600E5121D /* ToastUtil.swift */; };
+		896A083C24E91CF600E5121D /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A083A24E91CF600E5121D /* Extentions.swift */; };
+		896A084324E91CFE00E5121D /* AllDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A083D24E91CFD00E5121D /* AllDayViewModel.swift */; };
+		896A084424E91CFE00E5121D /* LongPressEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A083E24E91CFD00E5121D /* LongPressEventCell.swift */; };
+		896A084524E91CFE00E5121D /* AllDayEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A083F24E91CFE00E5121D /* AllDayEvent.swift */; };
+		896A084624E91CFE00E5121D /* LongPressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A084024E91CFE00E5121D /* LongPressViewController.swift */; };
+		896A084724E91CFE00E5121D /* LongPressEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896A084124E91CFE00E5121D /* LongPressEventCell.xib */; };
+		896A084824E91CFE00E5121D /* LongPressWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A084224E91CFE00E5121D /* LongPressWeekView.swift */; };
+		896A084F24E91D0500E5121D /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896A084924E91D0500E5121D /* ExpandableHeaderView.xib */; };
+		896A085024E91D0500E5121D /* ExampleOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A084A24E91D0500E5121D /* ExampleOptionsViewController.swift */; };
+		896A085124E91D0500E5121D /* OptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896A084B24E91D0500E5121D /* OptionsTableViewCell.xib */; };
+		896A085224E91D0500E5121D /* OptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A084C24E91D0500E5121D /* OptionsTableViewCell.swift */; };
+		896A085324E91D0500E5121D /* OptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A084D24E91D0500E5121D /* OptionViewModel.swift */; };
+		896A085424E91D0500E5121D /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A084E24E91D0500E5121D /* ExpandableHeaderView.swift */; };
+		896A085A24E91D0E00E5121D /* HourRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A085524E91D0E00E5121D /* HourRowHeader.swift */; };
+		896A085B24E91D0E00E5121D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A085624E91D0E00E5121D /* CustomViewController.swift */; };
+		896A085C24E91D0E00E5121D /* CurrentTimelineAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A085724E91D0E00E5121D /* CurrentTimelineAll.swift */; };
+		896A085D24E91D0E00E5121D /* CustomWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A085824E91D0E00E5121D /* CustomWeekView.swift */; };
+		896A085E24E91D0E00E5121D /* BlackGridLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A085924E91D0E00E5121D /* BlackGridLine.swift */; };
+		896A088024E91D2500E5121D /* addmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A085F24E91D2200E5121D /* addmemberViewController.swift */; };
+		896A088124E91D2500E5121D /* addtaskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086024E91D2200E5121D /* addtaskmemberTableViewCell.swift */; };
+		896A088224E91D2500E5121D /* invitationnotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086124E91D2200E5121D /* invitationnotiTableViewCell.swift */; };
+		896A088324E91D2500E5121D /* DefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086224E91D2300E5121D /* DefaultViewModel.swift */; };
+		896A088424E91D2500E5121D /* DefaultEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086324E91D2300E5121D /* DefaultEvent.swift */; };
+		896A088524E91D2500E5121D /* DefaultViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086424E91D2300E5121D /* DefaultViewController1.swift */; };
+		896A088624E91D2500E5121D /* DefaultViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086524E91D2300E5121D /* DefaultViewController2.swift */; };
+		896A088724E91D2500E5121D /* projecttaskdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086624E91D2300E5121D /* projecttaskdetailViewController.swift */; };
+		896A088824E91D2500E5121D /* addtask1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086724E91D2300E5121D /* addtask1ViewController.swift */; };
+		896A088924E91D2500E5121D /* projectmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086824E91D2300E5121D /* projectmemberTableViewCell.swift */; };
+		896A088A24E91D2500E5121D /* addroleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086924E91D2300E5121D /* addroleViewController.swift */; };
+		896A088B24E91D2500E5121D /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086A24E91D2300E5121D /* createprojectViewController.swift */; };
+		896A088C24E91D2500E5121D /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086B24E91D2300E5121D /* Toast.swift */; };
+		896A088D24E91D2500E5121D /* memberdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086C24E91D2300E5121D /* memberdetailViewController.swift */; };
+		896A088E24E91D2500E5121D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086D24E91D2300E5121D /* EventCell.swift */; };
+		896A088F24E91D2500E5121D /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086E24E91D2400E5121D /* ProjectCellTableViewCell.swift */; };
+		896A089024E91D2500E5121D /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A086F24E91D2400E5121D /* addprojectpageviewcontrollerViewController.swift */; };
+		896A089124E91D2500E5121D /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087024E91D2400E5121D /* projectdetail2ViewController.swift */; };
+		896A089224E91D2500E5121D /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087124E91D2400E5121D /* ProjectViewController.swift */; };
+		896A089324E91D2500E5121D /* ProjecttaskmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087224E91D2400E5121D /* ProjecttaskmemberViewController.swift */; };
+		896A089424E91D2500E5121D /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087324E91D2400E5121D /* MemberViewController.swift */; };
+		896A089524E91D2500E5121D /* DefaultWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087424E91D2400E5121D /* DefaultWeekView.swift */; };
+		896A089624E91D2500E5121D /* addmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087524E91D2400E5121D /* addmemberTableViewCell.swift */; };
+		896A089724E91D2500E5121D /* addtask2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087624E91D2400E5121D /* addtask2ViewController.swift */; };
+		896A089824E91D2500E5121D /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087724E91D2400E5121D /* createproject2ViewController.swift */; };
+		896A089924E91D2500E5121D /* DefaultWeekView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087824E91D2400E5121D /* DefaultWeekView2.swift */; };
+		896A089A24E91D2500E5121D /* projectnotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087924E91D2500E5121D /* projectnotificationViewController.swift */; };
+		896A089B24E91D2500E5121D /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087A24E91D2500E5121D /* RoleTableViewCell.swift */; };
+		896A089C24E91D2500E5121D /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087B24E91D2500E5121D /* projectdetail1ViewController.swift */; };
+		896A089D24E91D2500E5121D /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087C24E91D2500E5121D /* MemberTableViewCell.swift */; };
+		896A089E24E91D2500E5121D /* taskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087D24E91D2500E5121D /* taskTableViewCell.swift */; };
+		896A089F24E91D2500E5121D /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896A087E24E91D2500E5121D /* EventCell.xib */; };
+		896A08A024E91D2500E5121D /* taskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A087F24E91D2500E5121D /* taskmemberTableViewCell.swift */; };
+		896A08A224E91E8D00E5121D /* ProjecteventDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896A08A124E91E8D00E5121D /* ProjecteventDataManager.swift */; };
 		896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */; };
 		89770CD024CA8A2500EB21D2 /* ProjectTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */; };
 		89770CD224CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */; };
-		89770CD424CA8D7200EB21D2 /* memberdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89770CD324CA8D7200EB21D2 /* memberdetailViewController.swift */; };
 		897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982B24B8989C00730930 /* SpeechSynthesizer.swift */; };
 		897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897E982F24B89BC800730930 /* SpeechRecognizer.swift */; };
 		898646E72464626F00A5C752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898646E62464626F00A5C752 /* AppDelegate.swift */; };
@@ -125,29 +177,6 @@
 		9EFFB64F24C5F2FD0073CE59 /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */; };
 		9EFFB65224C5F2FD0073CE59 /* RoleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */; };
 		9EFFB65324C5F2FD0073CE59 /* ProjectgroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */; };
-		9EFFB66C24C5F3950073CE59 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */; };
-		9EFFB66D24C5F3950073CE59 /* taskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65524C5F3920073CE59 /* taskmemberTableViewCell.swift */; };
-		9EFFB66E24C5F3950073CE59 /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65624C5F3920073CE59 /* RoleTableViewCell.swift */; };
-		9EFFB66F24C5F3950073CE59 /* projectmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65724C5F3920073CE59 /* projectmemberTableViewCell.swift */; };
-		9EFFB67024C5F3950073CE59 /* ProjecttaskmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65824C5F3930073CE59 /* ProjecttaskmemberViewController.swift */; };
-		9EFFB67124C5F3950073CE59 /* projectdetail1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65924C5F3930073CE59 /* projectdetail1ViewController.swift */; };
-		9EFFB67224C5F3950073CE59 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65A24C5F3930073CE59 /* ProjectViewController.swift */; };
-		9EFFB67324C5F3950073CE59 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65B24C5F3930073CE59 /* MemberTableViewCell.swift */; };
-		9EFFB67424C5F3950073CE59 /* invitationnotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65C24C5F3930073CE59 /* invitationnotiTableViewCell.swift */; };
-		9EFFB67524C5F3950073CE59 /* createprojectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65D24C5F3930073CE59 /* createprojectViewController.swift */; };
-		9EFFB67624C5F3950073CE59 /* projecttaskdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65E24C5F3930073CE59 /* projecttaskdetailViewController.swift */; };
-		9EFFB67724C5F3950073CE59 /* addtask2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB65F24C5F3930073CE59 /* addtask2ViewController.swift */; };
-		9EFFB67824C5F3950073CE59 /* projectnotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66024C5F3940073CE59 /* projectnotificationViewController.swift */; };
-		9EFFB67924C5F3950073CE59 /* createproject2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66124C5F3940073CE59 /* createproject2ViewController.swift */; };
-		9EFFB67A24C5F3950073CE59 /* addmemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66224C5F3940073CE59 /* addmemberViewController.swift */; };
-		9EFFB67B24C5F3950073CE59 /* addtask1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66324C5F3940073CE59 /* addtask1ViewController.swift */; };
-		9EFFB67C24C5F3950073CE59 /* addmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66424C5F3940073CE59 /* addmemberTableViewCell.swift */; };
-		9EFFB67D24C5F3950073CE59 /* taskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66524C5F3940073CE59 /* taskTableViewCell.swift */; };
-		9EFFB67E24C5F3950073CE59 /* addroleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66624C5F3940073CE59 /* addroleViewController.swift */; };
-		9EFFB67F24C5F3950073CE59 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66724C5F3950073CE59 /* MemberViewController.swift */; };
-		9EFFB68024C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */; };
-		9EFFB68124C5F3950073CE59 /* projectdetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */; };
-		9EFFB68224C5F3950073CE59 /* addtaskmemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */; };
 		9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */; };
 		D7276B2D849A8B6E2CD8D851 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F269636724D6A65900B138A2 /* RecordingMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F269636624D6A65900B138A2 /* RecordingMainViewController.swift */; };
@@ -230,10 +259,62 @@
 		895EE02E247696B400F2C109 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		89651AA024CDA2470088CF49 /* Levenshtein.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levenshtein.swift; sourceTree = "<group>"; };
 		89672C04247E34EA008F3C13 /* startScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startScreenViewController.swift; sourceTree = "<group>"; };
+		896A083924E91CF600E5121D /* ToastUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
+		896A083A24E91CF600E5121D /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		896A083D24E91CFD00E5121D /* AllDayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDayViewModel.swift; sourceTree = "<group>"; };
+		896A083E24E91CFD00E5121D /* LongPressEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressEventCell.swift; sourceTree = "<group>"; };
+		896A083F24E91CFE00E5121D /* AllDayEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDayEvent.swift; sourceTree = "<group>"; };
+		896A084024E91CFE00E5121D /* LongPressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressViewController.swift; sourceTree = "<group>"; };
+		896A084124E91CFE00E5121D /* LongPressEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongPressEventCell.xib; sourceTree = "<group>"; };
+		896A084224E91CFE00E5121D /* LongPressWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressWeekView.swift; sourceTree = "<group>"; };
+		896A084924E91D0500E5121D /* ExpandableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandableHeaderView.xib; sourceTree = "<group>"; };
+		896A084A24E91D0500E5121D /* ExampleOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleOptionsViewController.swift; sourceTree = "<group>"; };
+		896A084B24E91D0500E5121D /* OptionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsTableViewCell.xib; sourceTree = "<group>"; };
+		896A084C24E91D0500E5121D /* OptionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableViewCell.swift; sourceTree = "<group>"; };
+		896A084D24E91D0500E5121D /* OptionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewModel.swift; sourceTree = "<group>"; };
+		896A084E24E91D0500E5121D /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		896A085524E91D0E00E5121D /* HourRowHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourRowHeader.swift; sourceTree = "<group>"; };
+		896A085624E91D0E00E5121D /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		896A085724E91D0E00E5121D /* CurrentTimelineAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTimelineAll.swift; sourceTree = "<group>"; };
+		896A085824E91D0E00E5121D /* CustomWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomWeekView.swift; sourceTree = "<group>"; };
+		896A085924E91D0E00E5121D /* BlackGridLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackGridLine.swift; sourceTree = "<group>"; };
+		896A085F24E91D2200E5121D /* addmemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addmemberViewController.swift; sourceTree = "<group>"; };
+		896A086024E91D2200E5121D /* addtaskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtaskmemberTableViewCell.swift; sourceTree = "<group>"; };
+		896A086124E91D2200E5121D /* invitationnotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = invitationnotiTableViewCell.swift; sourceTree = "<group>"; };
+		896A086224E91D2300E5121D /* DefaultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewModel.swift; sourceTree = "<group>"; };
+		896A086324E91D2300E5121D /* DefaultEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultEvent.swift; sourceTree = "<group>"; };
+		896A086424E91D2300E5121D /* DefaultViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewController1.swift; sourceTree = "<group>"; };
+		896A086524E91D2300E5121D /* DefaultViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewController2.swift; sourceTree = "<group>"; };
+		896A086624E91D2300E5121D /* projecttaskdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projecttaskdetailViewController.swift; sourceTree = "<group>"; };
+		896A086724E91D2300E5121D /* addtask1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtask1ViewController.swift; sourceTree = "<group>"; };
+		896A086824E91D2300E5121D /* projectmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectmemberTableViewCell.swift; sourceTree = "<group>"; };
+		896A086924E91D2300E5121D /* addroleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addroleViewController.swift; sourceTree = "<group>"; };
+		896A086A24E91D2300E5121D /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
+		896A086B24E91D2300E5121D /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		896A086C24E91D2300E5121D /* memberdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberdetailViewController.swift; sourceTree = "<group>"; };
+		896A086D24E91D2300E5121D /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		896A086E24E91D2400E5121D /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
+		896A086F24E91D2400E5121D /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
+		896A087024E91D2400E5121D /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
+		896A087124E91D2400E5121D /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		896A087224E91D2400E5121D /* ProjecttaskmemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjecttaskmemberViewController.swift; sourceTree = "<group>"; };
+		896A087324E91D2400E5121D /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		896A087424E91D2400E5121D /* DefaultWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultWeekView.swift; sourceTree = "<group>"; };
+		896A087524E91D2400E5121D /* addmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addmemberTableViewCell.swift; sourceTree = "<group>"; };
+		896A087624E91D2400E5121D /* addtask2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtask2ViewController.swift; sourceTree = "<group>"; };
+		896A087724E91D2400E5121D /* createproject2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createproject2ViewController.swift; sourceTree = "<group>"; };
+		896A087824E91D2400E5121D /* DefaultWeekView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultWeekView2.swift; sourceTree = "<group>"; };
+		896A087924E91D2500E5121D /* projectnotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectnotificationViewController.swift; sourceTree = "<group>"; };
+		896A087A24E91D2500E5121D /* RoleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
+		896A087B24E91D2500E5121D /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
+		896A087C24E91D2500E5121D /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		896A087D24E91D2500E5121D /* taskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = taskTableViewCell.swift; sourceTree = "<group>"; };
+		896A087E24E91D2500E5121D /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		896A087F24E91D2500E5121D /* taskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = taskmemberTableViewCell.swift; sourceTree = "<group>"; };
+		896A08A124E91E8D00E5121D /* ProjecteventDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjecteventDataManager.swift; sourceTree = "<group>"; };
 		896EF72B24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TopicsClassifier.mlmodel; sourceTree = "<group>"; };
 		89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskDataManager.swift; sourceTree = "<group>"; };
 		89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskMemberDataManager.swift; sourceTree = "<group>"; };
-		89770CD324CA8D7200EB21D2 /* memberdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberdetailViewController.swift; sourceTree = "<group>"; };
 		897E982B24B8989C00730930 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		897E982F24B89BC800730930 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		898646E32464626F00A5C752 /* SwiftProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -303,29 +384,6 @@
 		9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
 		9EFFB64D24C5F2FC0073CE59 /* RoleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleDataManager.swift; sourceTree = "<group>"; };
 		9EFFB64E24C5F2FD0073CE59 /* ProjectgroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectgroupDataManager.swift; sourceTree = "<group>"; };
-		9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB65524C5F3920073CE59 /* taskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = taskmemberTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB65624C5F3920073CE59 /* RoleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB65724C5F3920073CE59 /* projectmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectmemberTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB65824C5F3930073CE59 /* ProjecttaskmemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjecttaskmemberViewController.swift; sourceTree = "<group>"; };
-		9EFFB65924C5F3930073CE59 /* projectdetail1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail1ViewController.swift; sourceTree = "<group>"; };
-		9EFFB65A24C5F3930073CE59 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
-		9EFFB65B24C5F3930073CE59 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB65C24C5F3930073CE59 /* invitationnotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = invitationnotiTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB65D24C5F3930073CE59 /* createprojectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createprojectViewController.swift; sourceTree = "<group>"; };
-		9EFFB65E24C5F3930073CE59 /* projecttaskdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projecttaskdetailViewController.swift; sourceTree = "<group>"; };
-		9EFFB65F24C5F3930073CE59 /* addtask2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtask2ViewController.swift; sourceTree = "<group>"; };
-		9EFFB66024C5F3940073CE59 /* projectnotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectnotificationViewController.swift; sourceTree = "<group>"; };
-		9EFFB66124C5F3940073CE59 /* createproject2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createproject2ViewController.swift; sourceTree = "<group>"; };
-		9EFFB66224C5F3940073CE59 /* addmemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addmemberViewController.swift; sourceTree = "<group>"; };
-		9EFFB66324C5F3940073CE59 /* addtask1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtask1ViewController.swift; sourceTree = "<group>"; };
-		9EFFB66424C5F3940073CE59 /* addmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addmemberTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB66524C5F3940073CE59 /* taskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = taskTableViewCell.swift; sourceTree = "<group>"; };
-		9EFFB66624C5F3940073CE59 /* addroleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addroleViewController.swift; sourceTree = "<group>"; };
-		9EFFB66724C5F3950073CE59 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
-		9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addprojectpageviewcontrollerViewController.swift; sourceTree = "<group>"; };
-		9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = projectdetail2ViewController.swift; sourceTree = "<group>"; };
-		9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addtaskmemberTableViewCell.swift; sourceTree = "<group>"; };
 		9EFFB68424C5F3DA0073CE59 /* Seb_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Seb_Main.storyboard; sourceTree = "<group>"; };
 		D12CB7282E4BEF5FB337CA01 /* Pods-SwiftProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftProj.debug.xcconfig"; path = "Target Support Files/Pods-SwiftProj/Pods-SwiftProj.debug.xcconfig"; sourceTree = "<group>"; };
 		F269636624D6A65900B138A2 /* RecordingMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingMainViewController.swift; sourceTree = "<group>"; };
@@ -448,6 +506,53 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		896A083524E91C3300E5121D /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				896A085924E91D0E00E5121D /* BlackGridLine.swift */,
+				896A085724E91D0E00E5121D /* CurrentTimelineAll.swift */,
+				896A085624E91D0E00E5121D /* CustomViewController.swift */,
+				896A085824E91D0E00E5121D /* CustomWeekView.swift */,
+				896A085524E91D0E00E5121D /* HourRowHeader.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		896A083624E91C4300E5121D /* ExampleOptionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				896A084A24E91D0500E5121D /* ExampleOptionsViewController.swift */,
+				896A084E24E91D0500E5121D /* ExpandableHeaderView.swift */,
+				896A084924E91D0500E5121D /* ExpandableHeaderView.xib */,
+				896A084C24E91D0500E5121D /* OptionsTableViewCell.swift */,
+				896A084B24E91D0500E5121D /* OptionsTableViewCell.xib */,
+				896A084D24E91D0500E5121D /* OptionViewModel.swift */,
+			);
+			path = ExampleOptionsViewController;
+			sourceTree = "<group>";
+		};
+		896A083724E91C5800E5121D /* LongPressViews */ = {
+			isa = PBXGroup;
+			children = (
+				896A083F24E91CFE00E5121D /* AllDayEvent.swift */,
+				896A083D24E91CFD00E5121D /* AllDayViewModel.swift */,
+				896A083E24E91CFD00E5121D /* LongPressEventCell.swift */,
+				896A084124E91CFE00E5121D /* LongPressEventCell.xib */,
+				896A084024E91CFE00E5121D /* LongPressViewController.swift */,
+				896A084224E91CFE00E5121D /* LongPressWeekView.swift */,
+			);
+			path = LongPressViews;
+			sourceTree = "<group>";
+		};
+		896A083824E91C6E00E5121D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				896A083A24E91CF600E5121D /* Extentions.swift */,
+				896A083924E91CF600E5121D /* ToastUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		898646DA2464626F00A5C752 = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +613,7 @@
 		8992193D246E44E00029BFF5 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				896A08A124E91E8D00E5121D /* ProjecteventDataManager.swift */,
 				9EFFB64A24C5F2FC0073CE59 /* ProjectDataManager.swift */,
 				89770CCE24CA8A2400EB21D2 /* ProjectTaskDataManager.swift */,
 				89770CD124CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift */,
@@ -597,30 +703,43 @@
 		9E567DAB24AAF8C400DE6CDA /* Seb_ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9EFFB66424C5F3940073CE59 /* addmemberTableViewCell.swift */,
-				9EFFB66224C5F3940073CE59 /* addmemberViewController.swift */,
-				9EFFB66824C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift */,
-				9EFFB66624C5F3940073CE59 /* addroleViewController.swift */,
-				9EFFB66324C5F3940073CE59 /* addtask1ViewController.swift */,
-				9EFFB65F24C5F3930073CE59 /* addtask2ViewController.swift */,
-				9EFFB66A24C5F3950073CE59 /* addtaskmemberTableViewCell.swift */,
-				9EFFB66124C5F3940073CE59 /* createproject2ViewController.swift */,
-				9EFFB65D24C5F3930073CE59 /* createprojectViewController.swift */,
-				9EFFB65C24C5F3930073CE59 /* invitationnotiTableViewCell.swift */,
-				89770CD324CA8D7200EB21D2 /* memberdetailViewController.swift */,
-				9EFFB65B24C5F3930073CE59 /* MemberTableViewCell.swift */,
-				9EFFB66724C5F3950073CE59 /* MemberViewController.swift */,
-				9EFFB65424C5F3920073CE59 /* ProjectCellTableViewCell.swift */,
-				9EFFB65924C5F3930073CE59 /* projectdetail1ViewController.swift */,
-				9EFFB66924C5F3950073CE59 /* projectdetail2ViewController.swift */,
-				9EFFB65724C5F3920073CE59 /* projectmemberTableViewCell.swift */,
-				9EFFB66024C5F3940073CE59 /* projectnotificationViewController.swift */,
-				9EFFB65E24C5F3930073CE59 /* projecttaskdetailViewController.swift */,
-				9EFFB65824C5F3930073CE59 /* ProjecttaskmemberViewController.swift */,
-				9EFFB65A24C5F3930073CE59 /* ProjectViewController.swift */,
-				9EFFB65624C5F3920073CE59 /* RoleTableViewCell.swift */,
-				9EFFB65524C5F3920073CE59 /* taskmemberTableViewCell.swift */,
-				9EFFB66524C5F3940073CE59 /* taskTableViewCell.swift */,
+				896A087524E91D2400E5121D /* addmemberTableViewCell.swift */,
+				896A085F24E91D2200E5121D /* addmemberViewController.swift */,
+				896A086F24E91D2400E5121D /* addprojectpageviewcontrollerViewController.swift */,
+				896A086924E91D2300E5121D /* addroleViewController.swift */,
+				896A086724E91D2300E5121D /* addtask1ViewController.swift */,
+				896A087624E91D2400E5121D /* addtask2ViewController.swift */,
+				896A086024E91D2200E5121D /* addtaskmemberTableViewCell.swift */,
+				896A087724E91D2400E5121D /* createproject2ViewController.swift */,
+				896A086A24E91D2300E5121D /* createprojectViewController.swift */,
+				896A086324E91D2300E5121D /* DefaultEvent.swift */,
+				896A086424E91D2300E5121D /* DefaultViewController1.swift */,
+				896A086524E91D2300E5121D /* DefaultViewController2.swift */,
+				896A086224E91D2300E5121D /* DefaultViewModel.swift */,
+				896A087424E91D2400E5121D /* DefaultWeekView.swift */,
+				896A087824E91D2400E5121D /* DefaultWeekView2.swift */,
+				896A086D24E91D2300E5121D /* EventCell.swift */,
+				896A087E24E91D2500E5121D /* EventCell.xib */,
+				896A086124E91D2200E5121D /* invitationnotiTableViewCell.swift */,
+				896A086C24E91D2300E5121D /* memberdetailViewController.swift */,
+				896A087C24E91D2500E5121D /* MemberTableViewCell.swift */,
+				896A087324E91D2400E5121D /* MemberViewController.swift */,
+				896A086E24E91D2400E5121D /* ProjectCellTableViewCell.swift */,
+				896A087B24E91D2500E5121D /* projectdetail1ViewController.swift */,
+				896A087024E91D2400E5121D /* projectdetail2ViewController.swift */,
+				896A086824E91D2300E5121D /* projectmemberTableViewCell.swift */,
+				896A087924E91D2500E5121D /* projectnotificationViewController.swift */,
+				896A086624E91D2300E5121D /* projecttaskdetailViewController.swift */,
+				896A087224E91D2400E5121D /* ProjecttaskmemberViewController.swift */,
+				896A087124E91D2400E5121D /* ProjectViewController.swift */,
+				896A087A24E91D2500E5121D /* RoleTableViewCell.swift */,
+				896A087F24E91D2500E5121D /* taskmemberTableViewCell.swift */,
+				896A087D24E91D2500E5121D /* taskTableViewCell.swift */,
+				896A086B24E91D2300E5121D /* Toast.swift */,
+				896A083824E91C6E00E5121D /* Utils */,
+				896A083724E91C5800E5121D /* LongPressViews */,
+				896A083624E91C4300E5121D /* ExampleOptionsViewController */,
+				896A083524E91C3300E5121D /* CustomViews */,
 			);
 			path = Seb_ViewControllers;
 			sourceTree = "<group>";
@@ -736,6 +855,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896A089F24E91D2500E5121D /* EventCell.xib in Resources */,
 				F28FFD7C24CE8F5A00935127 /* student-colour-1200px.png in Resources */,
 				F26C3F2524D66387001B016F /* StopRecording.aiff in Resources */,
 				F28FFD7B24CE8F5A00935127 /* student-colour-800px.png in Resources */,
@@ -749,6 +869,8 @@
 				F26C3F2624D66387001B016F /* StartRecording.aiff in Resources */,
 				5CD1432924CA91DD00DB5915 /* wx.storyboard in Resources */,
 				F28FFD7F24CE8F5A00935127 /* business-woman-colour.svg in Resources */,
+				896A084F24E91D0500E5121D /* ExpandableHeaderView.xib in Resources */,
+				896A085124E91D0500E5121D /* OptionsTableViewCell.xib in Resources */,
 				F28FFD7E24CE8F5A00935127 /* unlock-monochrome-1200px.png in Resources */,
 				F28FFD7924CE8F5A00935127 /* student-colour.svg in Resources */,
 				F2F5A4FB24C542A3009295E4 /* Dom_Storyboard.storyboard in Resources */,
@@ -759,6 +881,7 @@
 				8954EE2D24C0751700039BDF /* BottomSheetViewController.xib in Resources */,
 				5CD1430C24CA8CDF00DB5915 /* bert-base-uncased-vocab.txt in Resources */,
 				89E17014247A55CE004C3F45 /* GoogleService-Info.plist in Resources */,
+				896A084724E91CFE00E5121D /* LongPressEventCell.xib in Resources */,
 				F28FFD7D24CE8F5A00935127 /* business-woman-colour-1200px.png in Resources */,
 				89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */,
 				898646F32464627000A5C752 /* Assets.xcassets in Resources */,
@@ -833,125 +956,151 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896A085224E91D0500E5121D /* OptionsTableViewCell.swift in Sources */,
 				8954EE2924C06F8400039BDF /* IndividualTaskViewController.swift in Sources */,
 				8954EE2B24C06FE300039BDF /* BottomSheetViewController.swift in Sources */,
 				8944BB2224CB3C8B00A7484F /* DocImage.swift in Sources */,
+				896A088B24E91D2500E5121D /* createprojectViewController.swift in Sources */,
 				9E62D98324BE1BBC003462F1 /* (null) in Sources */,
-				9EFFB66C24C5F3950073CE59 /* ProjectCellTableViewCell.swift in Sources */,
 				9E62D92924BE1B5A003462F1 /* (null) in Sources */,
 				8992194D246E45760029BFF5 /* HTTP.swift in Sources */,
 				F28A1FBF24C53B0A00F1D0DB /* TagsTableViewController.swift in Sources */,
 				89921942246E450A0029BFF5 /* CaseDataManager.swift in Sources */,
-				9EFFB67F24C5F3950073CE59 /* MemberViewController.swift in Sources */,
 				89FD652B24C3085F005A7BEA /* DetailViewController.swift in Sources */,
 				9E62D97324BE1BBB003462F1 /* (null) in Sources */,
+				896A088124E91D2500E5121D /* addtaskmemberTableViewCell.swift in Sources */,
 				898646EB2464626F00A5C752 /* ViewController.swift in Sources */,
 				898646FE2464651C00A5C752 /* EntryViewController.swift in Sources */,
 				9E62D92524BE1AF0003462F1 /* (null) in Sources */,
 				89921950246E459C0029BFF5 /* SQLiteDB.swift in Sources */,
-				9EFFB67824C5F3950073CE59 /* projectnotificationViewController.swift in Sources */,
 				F26C3F2124D6631E001B016F /* RecordButtonKit.swift in Sources */,
-				9EFFB67124C5F3950073CE59 /* projectdetail1ViewController.swift in Sources */,
+				896A085324E91D0500E5121D /* OptionViewModel.swift in Sources */,
 				9E62D98224BE1BBC003462F1 /* (null) in Sources */,
 				5CD142EF24CA8C7800DB5915 /* ProjectTaskMemberDataManager.swift in Sources */,
 				89101E1924CEE4590036CE86 /* DocImageStore.swift in Sources */,
 				9E62D98124BE1BBC003462F1 /* (null) in Sources */,
 				5CD1430A24CA8CDF00DB5915 /* TokenizedString.swift in Sources */,
-				9EFFB67324C5F3950073CE59 /* MemberTableViewCell.swift in Sources */,
+				896A089E24E91D2500E5121D /* taskTableViewCell.swift in Sources */,
 				89770CD024CA8A2500EB21D2 /* ProjectTaskDataManager.swift in Sources */,
 				89FD655A24C3448B005A7BEA /* IndexerCollectionViewController.swift in Sources */,
 				9E62D92324BE1A88003462F1 /* (null) in Sources */,
+				896A089A24E91D2500E5121D /* projectnotificationViewController.swift in Sources */,
+				896A088224E91D2500E5121D /* invitationnotiTableViewCell.swift in Sources */,
 				895EE02F247696B400F2C109 /* TimeViewController.swift in Sources */,
 				9E62D97624BE1BBB003462F1 /* (null) in Sources */,
+				896A088624E91D2500E5121D /* DefaultViewController2.swift in Sources */,
 				5CD1433424CA922500DB5915 /* addPost.swift in Sources */,
 				9E62D97424BE1BBB003462F1 /* (null) in Sources */,
 				9EFFB64924C5F2980073CE59 /* Role.swift in Sources */,
 				9E62D97E24BE1BBC003462F1 /* (null) in Sources */,
-				9EFFB67A24C5F3950073CE59 /* addmemberViewController.swift in Sources */,
 				9E62D97124BE1BBB003462F1 /* (null) in Sources */,
 				89651AA124CDA2470088CF49 /* Levenshtein.swift in Sources */,
 				9EFFB64F24C5F2FD0073CE59 /* ProjectDataManager.swift in Sources */,
 				5CD1433024CA922500DB5915 /* Post.swift in Sources */,
 				898646E72464626F00A5C752 /* AppDelegate.swift in Sources */,
-				9EFFB67224C5F3950073CE59 /* ProjectViewController.swift in Sources */,
-				9EFFB67E24C5F3950073CE59 /* addroleViewController.swift in Sources */,
 				897E983024B89BC800730930 /* SpeechRecognizer.swift in Sources */,
 				89672C05247E34EA008F3C13 /* startScreenViewController.swift in Sources */,
 				5CD1430824CA8CDF00DB5915 /* BERTOutput.swift in Sources */,
-				9EFFB67B24C5F3950073CE59 /* addtask1ViewController.swift in Sources */,
 				89019B8024D2731000BBB6FB /* ImageLink.swift in Sources */,
 				9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */,
+				896A085024E91D0500E5121D /* ExampleOptionsViewController.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
 				89770CD224CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift in Sources */,
-				9EFFB67724C5F3950073CE59 /* addtask2ViewController.swift in Sources */,
+				896A084424E91CFE00E5121D /* LongPressEventCell.swift in Sources */,
 				F26C3F2824D663FA001B016F /* AudioVisualizerView.swift in Sources */,
 				F28A1FAE24C531C200F1D0DB /* dom_note.swift in Sources */,
 				9E62D97D24BE1BBC003462F1 /* (null) in Sources */,
+				896A085A24E91D0E00E5121D /* HourRowHeader.swift in Sources */,
 				F28A1FC024C53B0A00F1D0DB /* AddNoteViewController.swift in Sources */,
-				9EFFB68024C5F3950073CE59 /* addprojectpageviewcontrollerViewController.swift in Sources */,
+				896A085B24E91D0E00E5121D /* CustomViewController.swift in Sources */,
 				89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */,
+				896A084324E91CFE00E5121D /* AllDayViewModel.swift in Sources */,
 				9E62D97C24BE1BBC003462F1 /* (null) in Sources */,
 				89155BDB24E6EFD4009F0B35 /* Suggestion.swift in Sources */,
 				F28A1FAF24C531C200F1D0DB /* dom_tag.swift in Sources */,
 				898646F12464626F00A5C752 /* SwiftProj.xcdatamodeld in Sources */,
 				9EFFB64824C5F2980073CE59 /* Projectgroup.swift in Sources */,
+				896A088524E91D2500E5121D /* DefaultViewController1.swift in Sources */,
+				896A084824E91CFE00E5121D /* LongPressWeekView.swift in Sources */,
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
+				896A089B24E91D2500E5121D /* RoleTableViewCell.swift in Sources */,
 				8944BB2624CC239800A7484F /* SpecialCell.swift in Sources */,
+				896A089224E91D2500E5121D /* ProjectViewController.swift in Sources */,
+				896A089024E91D2500E5121D /* addprojectpageviewcontrollerViewController.swift in Sources */,
+				896A088D24E91D2500E5121D /* memberdetailViewController.swift in Sources */,
 				9E62D97524BE1BBB003462F1 /* (null) in Sources */,
 				898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */,
-				9EFFB66E24C5F3950073CE59 /* RoleTableViewCell.swift in Sources */,
 				89A67B40249BB35C006241C5 /* ProfileViewController.swift in Sources */,
 				9EFFB65324C5F2FD0073CE59 /* ProjectgroupDataManager.swift in Sources */,
+				896A084524E91CFE00E5121D /* AllDayEvent.swift in Sources */,
 				89C8AEFA247FE45300F3F614 /* TaskCommentViewController.swift in Sources */,
 				89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */,
+				896A089D24E91D2500E5121D /* MemberTableViewCell.swift in Sources */,
 				5CD1433124CA922500DB5915 /* PostCell.swift in Sources */,
 				5CD1433224CA922500DB5915 /* DismissSegue.swift in Sources */,
 				89921945246E450A0029BFF5 /* CountryDataManager.swift in Sources */,
 				897E982C24B8989C00730930 /* SpeechSynthesizer.swift in Sources */,
+				896A089524E91D2500E5121D /* DefaultWeekView.swift in Sources */,
 				8906484924B4C8AC00325C5B /* (null) in Sources */,
 				896EF72C24BC0B1200A4D7B0 /* TopicsClassifier.mlmodel in Sources */,
 				892B0B4324750E2800D3FE7E /* CalendarViewController.swift in Sources */,
+				896A088824E91D2500E5121D /* addtask1ViewController.swift in Sources */,
+				896A088E24E91D2500E5121D /* EventCell.swift in Sources */,
+				896A088F24E91D2500E5121D /* ProjectCellTableViewCell.swift in Sources */,
+				896A089124E91D2500E5121D /* projectdetail2ViewController.swift in Sources */,
+				896A08A024E91D2500E5121D /* taskmemberTableViewCell.swift in Sources */,
 				8992194E246E45760029BFF5 /* SwiftyJSON.swift in Sources */,
-				9EFFB66D24C5F3950073CE59 /* taskmemberTableViewCell.swift in Sources */,
+				896A088924E91D2500E5121D /* projectmemberTableViewCell.swift in Sources */,
 				89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */,
+				896A08A224E91E8D00E5121D /* ProjecteventDataManager.swift in Sources */,
 				89A94E0524C023C600287A03 /* IndividualCollectionViewCell.swift in Sources */,
-				9EFFB68124C5F3950073CE59 /* projectdetail2ViewController.swift in Sources */,
 				9EFFB65224C5F2FD0073CE59 /* RoleDataManager.swift in Sources */,
+				896A085D24E91D0E00E5121D /* CustomWeekView.swift in Sources */,
 				89921952246E45CB0029BFF5 /* MapViewController.swift in Sources */,
-				9EFFB68224C5F3950073CE59 /* addtaskmemberTableViewCell.swift in Sources */,
 				5CD1430B24CA8CDF00DB5915 /* BERT.swift in Sources */,
-				9EFFB67924C5F3950073CE59 /* createproject2ViewController.swift in Sources */,
+				896A083C24E91CF600E5121D /* Extentions.swift in Sources */,
 				9E62D97224BE1BBB003462F1 /* (null) in Sources */,
 				89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */,
+				896A089324E91D2500E5121D /* ProjecttaskmemberViewController.swift in Sources */,
 				5CD1430724CA8CDF00DB5915 /* BERTVocabulary.swift in Sources */,
 				5CD1433324CA922500DB5915 /* PostDetailViewController.swift in Sources */,
 				F28A1FAB24C5315900F1D0DB /* IndexCell.swift in Sources */,
+				896A088C24E91D2500E5121D /* Toast.swift in Sources */,
 				89921944246E450A0029BFF5 /* DataManager.swift in Sources */,
+				896A089424E91D2500E5121D /* MemberViewController.swift in Sources */,
 				9E62D98524BE1BBC003462F1 /* (null) in Sources */,
-				9EFFB67D24C5F3950073CE59 /* taskTableViewCell.swift in Sources */,
+				896A088424E91D2500E5121D /* DefaultEvent.swift in Sources */,
+				896A085C24E91D0E00E5121D /* CurrentTimelineAll.swift in Sources */,
+				896A083B24E91CF600E5121D /* ToastUtil.swift in Sources */,
+				896A088024E91D2500E5121D /* addmemberViewController.swift in Sources */,
 				F28A1FBA24C5336100F1D0DB /* dom_FireStoreDataManager.swift in Sources */,
 				8920000224A642CC00EE47FA /* EndTimeViewController.swift in Sources */,
+				896A084624E91CFE00E5121D /* LongPressViewController.swift in Sources */,
+				896A085E24E91D0E00E5121D /* BlackGridLine.swift in Sources */,
 				89FDD3A924B632BD00DEBD96 /* SubjectTableViewController.swift in Sources */,
 				F269636724D6A65900B138A2 /* RecordingMainViewController.swift in Sources */,
-				9EFFB67024C5F3950073CE59 /* ProjecttaskmemberViewController.swift in Sources */,
 				89FE2A5D246477720006F595 /* Task.swift in Sources */,
 				89517C81247233AC00503219 /* BreakViewController.swift in Sources */,
+				896A089824E91D2500E5121D /* createproject2ViewController.swift in Sources */,
+				896A085424E91D0500E5121D /* ExpandableHeaderView.swift in Sources */,
 				9E62D97924BE1BBB003462F1 /* (null) in Sources */,
+				896A089624E91D2500E5121D /* addmemberTableViewCell.swift in Sources */,
 				9EFFB64724C5F2980073CE59 /* ProjectTaskMember.swift in Sources */,
 				9E62D97F24BE1BBC003462F1 /* (null) in Sources */,
 				8920000024A641E000EE47FA /* RepeatTableViewController.swift in Sources */,
-				89770CD424CA8D7200EB21D2 /* memberdetailViewController.swift in Sources */,
 				9E62D97824BE1BBB003462F1 /* (null) in Sources */,
 				F28A1FC224C53B0A00F1D0DB /* SideMenuTableViewController.swift in Sources */,
 				F269636B24D6B26400B138A2 /* RecordingsViewController.swift in Sources */,
 				F26C3F2224D6631E001B016F /* RecordButton.swift in Sources */,
 				9E62D91F24BE1A0C003462F1 /* (null) in Sources */,
-				9EFFB66F24C5F3950073CE59 /* projectmemberTableViewCell.swift in Sources */,
+				896A088724E91D2500E5121D /* projecttaskdetailViewController.swift in Sources */,
 				9E62D92124BE1A38003462F1 /* (null) in Sources */,
 				9E62D98424BE1BBC003462F1 /* (null) in Sources */,
 				5CD1430924CA8CDF00DB5915 /* BERTQAFP16.mlmodel in Sources */,
+				896A089C24E91D2500E5121D /* projectdetail1ViewController.swift in Sources */,
+				896A089924E91D2500E5121D /* DefaultWeekView2.swift in Sources */,
 				9E62D96F24BE1BBB003462F1 /* (null) in Sources */,
 				5CD1433824CA92B200DB5915 /* WXViewController.swift in Sources */,
 				5CD1430624CA8CDF00DB5915 /* BERTInput.swift in Sources */,
@@ -959,6 +1108,8 @@
 				F26C3F1E24D662C3001B016F /* RecorderViewController.swift in Sources */,
 				8903D05D24D18A97000C42BF /* Resnet50.mlmodel in Sources */,
 				5CD142EE24CA8C7800DB5915 /* ProjectTaskDataManager.swift in Sources */,
+				896A088324E91D2500E5121D /* DefaultViewModel.swift in Sources */,
+				896A088A24E91D2500E5121D /* addroleViewController.swift in Sources */,
 				898647002464653600A5C752 /* TaskViewController.swift in Sources */,
 				9E62D97B24BE1BBB003462F1 /* (null) in Sources */,
 				8944BB2424CC219900A7484F /* ImageCell.swift in Sources */,
@@ -966,17 +1117,14 @@
 				89FD652924C3085B005A7BEA /* MasterViewController.swift in Sources */,
 				9E62D98024BE1BBC003462F1 /* (null) in Sources */,
 				89921958246E46870029BFF5 /* BridgingHeader.m in Sources */,
-				9EFFB67524C5F3950073CE59 /* createprojectViewController.swift in Sources */,
 				89E17010247A538A004C3F45 /* User.swift in Sources */,
 				89FD652724C30852005A7BEA /* Document.swift in Sources */,
-				9EFFB67424C5F3950073CE59 /* invitationnotiTableViewCell.swift in Sources */,
 				9E62D97724BE1BBB003462F1 /* (null) in Sources */,
 				F2DEF82D24E7FC54004F337B /* NotesTableViewController.swift in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
-				9EFFB67C24C5F3950073CE59 /* addmemberTableViewCell.swift in Sources */,
+				896A089724E91D2500E5121D /* addtask2ViewController.swift in Sources */,
 				F272C1CC24BB68F900CCD185 /* (null) in Sources */,
 				F2DE2A9E24C2C61F006EC81F /* (null) in Sources */,
-				9EFFB67624C5F3950073CE59 /* projecttaskdetailViewController.swift in Sources */,
 				9EFFB64624C5F2980073CE59 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

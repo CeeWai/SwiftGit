@@ -30,7 +30,6 @@ UITableViewDelegate, UITableViewDataSource ,UIPickerViewDelegate, UIPickerViewDa
         membernamelabel.text = projectgroup?.username!
         rolelabel.text = projectgroup?.role!
         selectedpickervalue = (projectgroup?.role!)!
-        tasklist = ProjectTaskMemberDataManager.loadbyprojecttaskmemberwhenprojectidanduserid(projectid: (projectItem?.projectId!)!, userid: (projectgroup?.userid!)!)
         for item in tasklist{
             singletasklist = ProjectTaskDataManager.loadtaskbyid(taskid: item.taskid!)
             ongoingtasklist.append(singletasklist[0])
@@ -41,6 +40,9 @@ UITableViewDelegate, UITableViewDataSource ,UIPickerViewDelegate, UIPickerViewDa
         if rolelist.isEmpty{
             
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden=true
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            var listcount : Int = 0

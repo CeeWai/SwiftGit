@@ -111,25 +111,6 @@ class ProjectTaskMemberDataManager: NSObject {
                ]
                )
            }
-                   static func loadbyprojecttaskmemberwhenprojectidanduserid(projectid:Int,userid:String) -> [ProjectTaskMember]
-            {
-                let projecttaskmemberRows = SQLiteDB.sharedInstance.query(sql:
-                   "SELECT taskgroupid, projectid,taskid, " + "userid, username, assign, valid" + " FROM ProjectTaskMember WHERE projectid = \(projectid) and userid = '\(userid)' and assign = 1 and valid = 1")
-            var projecttaskmember : [ProjectTaskMember] = []
-                for row in projecttaskmemberRows
-            {
-            projecttaskmember.append(ProjectTaskMember(
-            taskgroupid: row["taskgroupid"] as! Int,
-            projectid: row["projectid"] as! Int,
-            taskid: row["taskid"] as! Int,
-            userid: row["userid"] as! String,
-            username: row["username"] as! String,
-            assign: row["assign"] as! Int,
-            valid: row["valid"] as! Int))
-            }
-                return projecttaskmember;
-            }
-        
            static func insertOrReplace(projecttaskmember: ProjectTaskMember)
            {
            SQLiteDB.sharedInstance.execute(sql:

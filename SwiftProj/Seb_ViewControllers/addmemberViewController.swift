@@ -18,8 +18,13 @@ class addmemberViewController: UIViewController , UITableViewDelegate, UITableVi
     var projectItem : Project?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden=true
         loaduser()        // Do any additional setup after loading the view.
         searchfield.addTarget(self, action: #selector(addmemberViewController.searchfieldDidchange(_:)),for: .editingChanged)
+        print(projectItem?.projectId)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+         self.navigationController?.isNavigationBarHidden=true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

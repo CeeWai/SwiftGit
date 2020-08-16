@@ -111,8 +111,28 @@ class ProjectgroupDataManager: NSObject {
     invited: row["invited"] as! Int,
     subscribe: row["subscribe"] as! Int))
     }
+        
         return projectgroups;
     }
+    static func loadbyprojectprojectidwhensubscribe1(projectid:String) -> [Projectgroup]
+       {
+           let projectgroupRows = SQLiteDB.sharedInstance.query(sql:
+               "SELECT groupid, projectid, " + "userid,username,role, invited, subscribe" + " FROM Projectgroup WHERE projectid = '\(projectid)' and invited = 1 and subscribe = 1")
+       var projectgroups : [Projectgroup] = []
+           for row in projectgroupRows
+       {
+       projectgroups.append(Projectgroup(
+       groupid: row["groupid"] as! Int,
+       projectid: row["projectid"] as! Int,
+       userid: row["userid"] as! String,
+       username: row["username"] as! String,
+       role: row["role"] as! String,
+       invited: row["invited"] as! Int,
+       subscribe: row["subscribe"] as! Int))
+       }
+           
+           return projectgroups;
+       }
         static func Replaceinvitedorsubscribe(projectgroup: Projectgroup)
         {
         SQLiteDB.sharedInstance.execute(sql:

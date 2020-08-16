@@ -21,5 +21,5 @@ target 'SwiftProj' do
   pod 'PRTween'
   pod 'SwiftCSV'
   pod 'Reductio'
-
+  pod 'JZCalendarWeekView', '~> 0.3'
 end

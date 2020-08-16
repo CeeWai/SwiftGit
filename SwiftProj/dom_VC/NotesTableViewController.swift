@@ -94,7 +94,7 @@ class NotesTableViewController: UITableViewController{
     @objc func refreshTB(){
         category = UserDefaults.standard.string(forKey: "dom_tag_category")
         if let category = category{
-            print("current tag: " + category)
+            //print("current tag: " + category)
             self.noteList = []
             if (category == "All Notes"){
                 noteListTabBar.title = ("Notes")
