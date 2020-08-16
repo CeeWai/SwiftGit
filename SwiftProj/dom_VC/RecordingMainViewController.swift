@@ -73,9 +73,8 @@ extension RecordMainViewController: RecorderViewControllerDelegate {
             }, completion: { (finished) in
                 if finished {
                     recordings.fadeView.isHidden = true
-                    DispatchQueue.main.async {
                         recordings.loadRecordings()
-                    }
+                    
                 }
             })
         }

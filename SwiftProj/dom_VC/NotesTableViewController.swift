@@ -11,6 +11,12 @@ import Firebase
 import FirebaseAuth
 import SideMenu
 
+class NoteTableViewCell: UITableViewCell {
+    @IBOutlet weak var titlelabel: UILabel!
+    @IBOutlet weak var bodylabel: UILabel!
+    @IBOutlet weak var taglabel: UILabel!
+}
+
 class NotesTableViewController: UITableViewController{
     var fStore : Firestore?
     let fsdbManager = dom_FireStoreDataManager()
@@ -19,9 +25,13 @@ class NotesTableViewController: UITableViewController{
     var noteList : [dom_note] = []
     var category: String?
     let name = Notification.Name("didReceiveData")
+    let user = Auth.auth().currentUser
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fStore = Firestore.firestore()
+        //dont uncomment this, for testing purpose only - dom14/8/20
+        //UserDefaults.standard.set([],forKey: ("voicememo" + user!.uid))
         UserDefaults.standard.set("All Notes",  forKey: "dom_tag_category") // reset title on 1st load
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -56,7 +66,8 @@ class NotesTableViewController: UITableViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fStore = Firestore.firestore()
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTB), name: NSNotification.Name(rawValue: "updateNoteTable"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTB_mainmenu), name: NSNotification.Name(rawValue: "updateNoteTableTagMenu"), object: nil) //update tb from tageditbtn -> tag main menu
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTB), name: NSNotification.Name(rawValue: "updateNoteTable"), object: nil) // update tb from tag sidemenu
         noteList = []
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -83,13 +94,13 @@ class NotesTableViewController: UITableViewController{
     @objc func refreshTB(){
         category = UserDefaults.standard.string(forKey: "dom_tag_category")
         if let category = category{
-            print("catTitle: " + category)
+            print("current tag: " + category)
             self.noteList = []
             if (category == "All Notes"){
                 noteListTabBar.title = ("Notes")
                 fsdbManager.loadNotesDB(){notesList in
                     self.noteList = notesList
-                    print("noteList count (normal):" + String(self.noteList.count))
+                    //print("noteList count (normal):" + String(self.noteList.count))
                     self.tableView.reloadData()
                 }
             }
@@ -97,10 +108,25 @@ class NotesTableViewController: UITableViewController{
                 noteListTabBar.title = ("Notes - " + category)
                 fsdbManager.loadSelectedNotes(filter:category){ noteList2 in
                     self.noteList = noteList2
-                    print("noteList count (filtered):" + String(self.noteList.count))
+                    //print("noteList count (filtered):" + String(self.noteList.count))
                     self.tableView.reloadData()
                 }
             }
+        }
+    }
+    
+    @objc func refreshTB_mainmenu(){
+        category = UserDefaults.standard.string(forKey: "dom_tag_category_mainmenu")
+        if let category = category{
+            //print("current tag: " + category)
+            self.noteList = []
+                fsdbManager.loadSelectedNotes(filter:category){ noteList2 in
+                    self.noteList = noteList2
+                    //print("noteList count (filtered):" + String(self.noteList.count))
+                      self.noteListTabBar.title = ("Notes - " + category)
+                    self.tableView.reloadData()
+                }
+            
         }
     }
 
@@ -110,6 +136,8 @@ class NotesTableViewController: UITableViewController{
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -118,8 +146,12 @@ class NotesTableViewController: UITableViewController{
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath)
-        cell.textLabel!.text = self.noteList[indexPath.row].noteTitle
+        let cell = tableView.dequeueReusableCell(withIdentifier: "noteCID", for: indexPath) as! NoteTableViewCell
+        cell.titlelabel.text = self.noteList[indexPath.row].noteTitle
+        cell.bodylabel.text = self.noteList[indexPath.row].noteBody
+        if let tag = self.noteList[indexPath.row].noteTags{
+            cell.taglabel.text = "Tag: " + tag
+        }
         
         // Configure the cell...
 

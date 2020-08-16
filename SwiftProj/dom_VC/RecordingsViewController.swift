@@ -10,6 +10,8 @@ let cellid = "cell"
 
 import UIKit
 import AVFoundation
+import FirebaseAuth
+import Speech
 
 struct Recording {
     var name: String
@@ -26,18 +28,61 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
     private var recordings: [Recording] = []
     private var audioPlayer: AVAudioPlayer?
     weak var delegate: RecordingsViewControllerDelegate?
-
-  
+    let user = Auth.auth().currentUser
+    let fsdbManager = dom_FireStoreDataManager()
     
     @IBOutlet weak var fadeView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.isPlaying() {
-            self.stopPlay()
-        }
         let recording = self.recordings[indexPath.row]
-        self.play(url: recording.path)
+        let actionsheet = UIAlertController(title: "Voice memo Options", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        if self.isPlaying() {
+            actionsheet.addAction(UIAlertAction(title: "Stop current playback", style: UIAlertAction.Style.default, handler: { (action) -> Void in
+                self.stopPlay()
+            }))
+        }
+        else{
+            actionsheet.addAction(UIAlertAction(title: "Play memo", style: UIAlertAction.Style.default, handler: { (action) -> Void in
+                self.play(url: recording.path)
+            }))
+        }
+        
+        actionsheet.addAction(UIAlertAction(title: "Transcribe to Note", style: UIAlertAction.Style.default, handler: { (action) -> Void in
+            let audioURL = recording.path
+
+            let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+            let request = SFSpeechURLRecognitionRequest(url: audioURL)
+
+            request.shouldReportPartialResults = false
+
+            if (recognizer?.isAvailable)! {
+
+                recognizer?.recognitionTask(with: request) { result, error in
+                    guard error == nil else { print("Error: \(error!)"); return }
+                    guard let result = result else { print("No result!"); return }
+
+                    print(result.bestTranscription.formattedString)
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "hh:mm" // "a" prints "pm" or "am"
+                    let hourAndMin = formatter.string(from: Date()) // "12 AM"
+                    formatter.dateFormat =  "dd/MM/yyyy"
+                    let dateslash = formatter.string(from: Date())
+                    let dateText = "Edited: \(dateslash), \(hourAndMin)"
+                    self.fsdbManager.addNote(titleStr: recording.name, bodyStr: result.bestTranscription.formattedString , tagStr: "", uid: self.user?.uid, noteUpdateDate: dateText)
+                    let alert = UIAlertController(title: "Memo Transcribed", message: "The selected voice memo has been transcribed to a written Note with the same title as the memo", preferredStyle: .alert)
+                    self.present(alert, animated: true)
+                }
+            } else {
+                print("error doing speech recognition")
+            }
+        }))
+        
+        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
+            
+        }))
+        present(actionsheet, animated: true, completion: nil)
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +104,7 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
         }
         let recording = self.recordings[indexPath.row]
         cell?.textLabel?.text = recording.name
-        cell?.detailTextLabel?.text = recording.path.absoluteString
+        //cell?.detailTextLabel?.text = recording.path.absoluteString
         return cell!
         
     }
@@ -71,6 +116,10 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
             do {
                 try filemanager.removeItem(at: recording.path)
                 self.recordings.remove(at: indexPath.row)
+                var userVoiceMemo = UserDefaults.standard.stringArray(forKey: ("voicememo" + user!.uid))
+                userVoiceMemo = userVoiceMemo?.filter{ $0 !=  recording.name}
+                UserDefaults.standard.set(userVoiceMemo, forKey: ("voicememo" + user!.uid))
+                fsdbManager.deleteAudioLog(memoName: recording.name)
                 self.tableView.reloadData()
             }catch(let err){
                 print("Error while deleteing \(err)")
@@ -107,15 +156,23 @@ class RecordingsViewController: UIViewController, AVAudioPlayerDelegate, UITable
     func loadRecordings() {
         self.recordings.removeAll()
         let filemanager = FileManager.default
-        let documentsDirectory = filemanager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        //var memodata : URL?
+        //let documentsDirectory = filemanager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
-            let paths = try filemanager.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
-            for path in paths {
-                let recording = Recording(name: path.lastPathComponent, path: path)
+            //let paths = try filemanager.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
+            var userVoiceMemo = UserDefaults.standard.stringArray(forKey: ("voicememo" + user!.uid))
+            //print(userVoiceMemo)
+            userVoiceMemo?.forEach(){ memo in
+                fsdbManager.retrieveAudioLog(memoName: memo){memoURL in
+                }
+                let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                let localURL = documentsDirectory.appendingPathComponent(memo)
+                let recording = Recording(name: memo, path: localURL)
                 self.recordings.append(recording)
+                self.tableView.reloadData()
             }
            // print("recording count: " + String(recordings.count))
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
         } catch {
             print(error)
         }

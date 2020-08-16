@@ -166,7 +166,6 @@
 		F28A1FBA24C5336100F1D0DB /* dom_FireStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FB924C5336100F1D0DB /* dom_FireStoreDataManager.swift */; };
 		F28A1FBF24C53B0A00F1D0DB /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FBB24C53B0A00F1D0DB /* TagsTableViewController.swift */; };
 		F28A1FC024C53B0A00F1D0DB /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FBC24C53B0A00F1D0DB /* AddNoteViewController.swift */; };
-		F28A1FC124C53B0A00F1D0DB /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FBD24C53B0A00F1D0DB /* NotesTableViewController.swift */; };
 		F28A1FC224C53B0A00F1D0DB /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FBE24C53B0A00F1D0DB /* SideMenuTableViewController.swift */; };
 		F28FFD7824CE8F5A00935127 /* business-woman-colour-400px.png in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD6A24CE8F5600935127 /* business-woman-colour-400px.png */; };
 		F28FFD7924CE8F5A00935127 /* student-colour.svg in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD6B24CE8F5600935127 /* student-colour.svg */; };
@@ -183,6 +182,7 @@
 		F28FFD8424CE8F5A00935127 /* startScreenVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7624CE8F5900935127 /* startScreenVid.mp4 */; };
 		F28FFD8524CE8F5A00935127 /* business-woman-colour.psd in Resources */ = {isa = PBXBuildFile; fileRef = F28FFD7724CE8F5900935127 /* business-woman-colour.psd */; };
 		F2DE2A9E24C2C61F006EC81F /* (null) in Sources */ = {isa = PBXBuildFile; };
+		F2DEF82D24E7FC54004F337B /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28A1FBD24C53B0A00F1D0DB /* NotesTableViewController.swift */; };
 		F2F5A4FB24C542A3009295E4 /* Dom_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F5A4FA24C542A3009295E4 /* Dom_Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -903,7 +903,6 @@
 				89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */,
 				8920000824A75ACC00EE47FA /* MainViewController.swift in Sources */,
 				8944BB2624CC239800A7484F /* SpecialCell.swift in Sources */,
-				F28A1FC124C53B0A00F1D0DB /* NotesTableViewController.swift in Sources */,
 				9E62D97524BE1BBB003462F1 /* (null) in Sources */,
 				898646E92464626F00A5C752 /* SceneDelegate.swift in Sources */,
 				9EFFB66E24C5F3950073CE59 /* RoleTableViewCell.swift in Sources */,
@@ -976,6 +975,7 @@
 				89FD652724C30852005A7BEA /* Document.swift in Sources */,
 				9EFFB67424C5F3950073CE59 /* invitationnotiTableViewCell.swift in Sources */,
 				9E62D97724BE1BBB003462F1 /* (null) in Sources */,
+				F2DEF82D24E7FC54004F337B /* NotesTableViewController.swift in Sources */,
 				89C8AEFD247FE66B00F3F614 /* CommentCell.swift in Sources */,
 				9EFFB67C24C5F3950073CE59 /* addmemberTableViewCell.swift in Sources */,
 				F272C1CC24BB68F900CCD185 /* (null) in Sources */,

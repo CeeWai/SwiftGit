@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Accelerate
+import FirebaseAuth
 
 enum RecorderState {
     case recording
@@ -41,6 +42,7 @@ extension Double {
 
 class RecorderViewController: UIViewController {
     
+    let user = Auth.auth().currentUser
     var handleView = UIView()
     var recordButton = RecordButton()
     var timeLabel = UILabel()
@@ -241,6 +243,7 @@ class RecorderViewController: UIViewController {
             let write = true
             if write {
                 if self.audioFile == nil {
+                   
                     self.audioFile = self.createAudioRecordFile()
                 }
                 if let currentAudioFile = self.audioFile {
@@ -263,14 +266,30 @@ class RecorderViewController: UIViewController {
     }
     
     private func stopRecording() {
-        if let d = self.delegate {
-            d.didFinishRecording()
-        }
+
         guard let fileName = self.createAudioFileName() else {
             return
         }
-        self.fsdbManager.addAudioLog(fileName: fileName, url: self.audioFile!.url)
+        if var userVoiceMemo = UserDefaults.standard.stringArray(forKey: ("voicememo" + user!.uid)){
+            // userdefault for the voicememo list exist, append
+            userVoiceMemo.append(fileName)
+            UserDefaults.standard.set(userVoiceMemo,  forKey:  ("voicememo" + user!.uid))
+        }
+        else{
+            // userdefault for the voicememo list dont exist, create
+            UserDefaults.standard.set([fileName],  forKey:  ("voicememo" + user!.uid))
+        }
+
+            self.fsdbManager.addAudioLog(fileName: fileName, url: self.audioFile!.url){ URL in
+                print("finished recording...")
+                    if let d = self.delegate {
+                        d.didFinishRecording()
+                }
+
+                // leave url here just in case i want display
+        }
         self.audioFile = nil
+        
         self.audioEngine.inputNode.removeTap(onBus: 0)
         self.audioEngine.stop()
         do {
@@ -337,6 +356,7 @@ class RecorderViewController: UIViewController {
     }
     
     private func createAudioRecordFile() -> AVAudioFile? {
+         print("created audiofile and url")
         guard let path = self.createAudioRecordPath() else {
             return nil
         }
