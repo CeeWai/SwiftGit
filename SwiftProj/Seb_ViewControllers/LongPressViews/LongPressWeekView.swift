@@ -54,8 +54,8 @@ class LongPressWeekView: JZLongPressWeekView {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let selectedEvent = getCurrentEvent(with: indexPath) as? AllDayEvent {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "sendtolongpressview"), object: nil,userInfo: ["eventid":selectedEvent.id])
             print("asdasd")
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "sendtolongpressview"), object: nil,userInfo: ["eventid":selectedEvent.id])
         }
     }
 }

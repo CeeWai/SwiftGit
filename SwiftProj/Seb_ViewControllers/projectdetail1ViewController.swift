@@ -26,7 +26,7 @@ UITableViewDelegate, UITableViewDataSource{
                addtask.layer.cornerRadius = 40
                addtask.layer.borderColor = UIColor.systemRed.cgColor
                addtask.layer.borderWidth = 2;
-               addtask.layer.backgroundColor = UIColor.black.cgColor
+               addtask.layer.backgroundColor = UIColor.systemBackground.cgColor
                addtask.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
        
           

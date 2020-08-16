@@ -20,9 +20,11 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden=true
-        addbtn.layer.backgroundColor = UIColor.black.cgColor
-        addbtn.layer.borderColor = UIColor.red.cgColor
-        addbtn.layer.borderWidth = 1
+        addbtn.layer.cornerRadius = 40
+        addbtn.layer.borderColor = UIColor.systemRed.cgColor
+        addbtn.layer.borderWidth = 2;
+        addbtn.layer.backgroundColor = UIColor.systemBackground.cgColor
+        addbtn.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         RoleDataManager.createDatabase()
         ProjectDataManager.createDatabase()
         ProjectgroupDataManager.createDatabase()
@@ -32,9 +34,9 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
         //projectList.append(Project(projectId: "d", projectName: "d", projectLeader: "d", projectDescription:"d", imageName: "d"))
         let currentuser = Auth.auth().currentUser
         if (currentuser != nil) {
-            projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser!.uid)
+            //projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser!.uid)
         
-        //projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: currentuser!.uid)
+        projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: currentuser!.uid)
         if projectgroupList.isEmpty{
         }
         else{
