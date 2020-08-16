@@ -402,7 +402,6 @@ PODS:
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
   - leveldb-library (1.22)
-  - lottie-ios (3.1.8)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -429,7 +428,6 @@ DEPENDENCIES:
   - FirebaseUI
   - FSCalendar
   - GoogleSignIn
-  - lottie-ios
   - PRTween
   - Reductio
   - SideMenu
@@ -465,7 +463,6 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - leveldb-library
-    - lottie-ios
     - nanopb
     - PromisesObjC
     - PRTween
@@ -503,7 +500,6 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   PRTween: 6c58c7e32ebcf31e33e6a6e6bc727ebef3b668ef
@@ -513,6 +509,6 @@ SPEC CHECKSUMS:
   SwiftCSV: efb4a15dd7f2f1212b3d6986f97a3369ff6c5100
   TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
 
-PODFILE CHECKSUM: 70625ea3fae71c82fa738b1416f78364c34feffe
+PODFILE CHECKSUM: 42cbb60d75d34ad4a19c5fe897b9e89006608222
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
