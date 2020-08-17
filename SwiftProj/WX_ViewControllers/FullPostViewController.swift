@@ -20,10 +20,14 @@ class FullPostViewController: UIViewController,  UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : CommentCell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+        let cell : CommentsCell = tableView.dequeueReusableCell(withIdentifier: "CommentsCell", for: indexPath) as! CommentsCell
+        
+        let comment = postItem!.comment[indexPath.row]
+        let array = comment.split(separator: ",")
         
         let p = postItem!.comment[indexPath.row]
-        cell.commentLabel.text = String(postItem!.comment[indexPath.row])
+        cell.commentLabel.text = String(array[1])
+        cell.commentAuthor.text = String(array[0])
         
         return cell
     }
@@ -85,9 +89,11 @@ class FullPostViewController: UIViewController,  UITableViewDelegate, UITableVie
         let comment = commentInput.text!
         postItem!.commentCount += 1
         
+        let currentuser = Auth.auth().currentUser
+        
         let comments = FullPostViewController.db.collection("posts").document(postItem!.postTitle)
         comments.updateData([
-            "comment" : FieldValue.arrayUnion([comment]),
+            "comment" : FieldValue.arrayUnion([currentuser!.displayName! + "," + comment]),
             "commentCount" : postItem!.commentCount
         ])
         

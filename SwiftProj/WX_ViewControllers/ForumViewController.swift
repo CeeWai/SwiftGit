@@ -12,7 +12,7 @@ import Firebase
 
 class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    @IBOutlet weak var editBtn: UIBarButtonItem!
+    //@IBOutlet weak var editBtn: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addBtn: UIBarButtonItem!
     
@@ -28,18 +28,18 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
-    @IBAction func editPressed(_ sender: Any) {
-        self.postView.setEditing(!postView.isEditing, animated: true)
-        
-        if postView.isEditing
-        {
-            self.editBtn.title = "Done"
-        }
-        else
-        {
-            self.editBtn.title = "Edit"
-        }
-    }
+//    @IBAction func editPressed(_ sender: Any) {
+//        self.postView.setEditing(!postView.isEditing, animated: true)
+//        
+//        if postView.isEditing
+//        {
+//            self.editBtn.title = "Done"
+//        }
+//        else
+//        {
+//            self.editBtn.title = "Edit"
+//        }
+//    }
     
     var postList : [Post] = []
 
@@ -113,17 +113,6 @@ class ForumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete
-        {
-            let post = postList[indexPath.row]
-            postList.remove(at: indexPath.row)
-            
-            ForumDataManager.deletePost(post)
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue,
                           sender: Any?)
