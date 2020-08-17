@@ -535,7 +535,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                     //print(topSuggestionSortedList.count)
                     //print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
                     var suggestList: [String] = []
-                    var stopwords = ["we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "from", "in", "out", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "it's"]
+                    var stopwords = ["we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "from", "in", "out", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "it's"]
                     
                     for i in 0...2 {
                         var tempStrList: [String] = []
@@ -544,7 +544,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                         
                         var txtList = tPassage.components(separatedBy: " ")
                         
-                        var firstidx = txtList.firstIndex(of: topSuggestionSortedList[i].text!)
+                        var reftxtList = tPassage.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: " ")
+                        
+                        var firstidx = reftxtList.firstIndex(of: topSuggestionSortedList[i].text!)
                         print("THE TXT \(topSuggestionSortedList[i].text!)")
                         print("firstidx = \(firstidx)")
                         print("txtList = \(txtList)")
