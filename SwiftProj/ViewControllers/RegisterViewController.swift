@@ -38,6 +38,10 @@ class RegisterViewController: UIViewController {
             return "Please fill in all fields."
         }
         
+        if passwordField != cfmPasswordField {
+            return "Passwords do not match!"
+        }
+        
         //Check if the password is secure
         let cleanedPassword = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         

@@ -132,6 +132,7 @@
 		89E17016247A58BD004C3F45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17015247A58BD004C3F45 /* LoginViewController.swift */; };
 		89E17018247A58DE004C3F45 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E17017247A58DE004C3F45 /* RegisterViewController.swift */; };
 		89EDABFA24AEFF8B00EBDF2C /* ImportanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */; };
+		89EE035F24EAD36F00F36C9D /* default_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EE035E24EAD36F00F36C9D /* default_image.png */; };
 		89F6535124B1D56D003C2B0A /* forgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */; };
 		89F8DA9D2464FF1E00B54354 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8DA9C2464FF1E00B54354 /* TaskCell.swift */; };
 		89FBBC9E24B8D3A9001D0EFD /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 89FBBC9D24B8D3A8001D0EFD /* tessdata */; };
@@ -367,6 +368,7 @@
 		89E17015247A58BD004C3F45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		89E17017247A58DE004C3F45 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		89EDABF924AEFF8B00EBDF2C /* ImportanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceTableViewController.swift; sourceTree = "<group>"; };
+		89EE035E24EAD36F00F36C9D /* default_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_image.png; sourceTree = "<group>"; };
 		89F6534E24B1D522003C2B0A /* unlock-monochrome-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock-monochrome-1200px.png"; sourceTree = "<group>"; };
 		89F6535024B1D56D003C2B0A /* forgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgotPasswordViewController.swift; sourceTree = "<group>"; };
 		89F8DA9C2464FF1E00B54354 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -783,6 +785,7 @@
 		F28FFD6924CE8F3800935127 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				89EE035E24EAD36F00F36C9D /* default_image.png */,
 				9E7B80B324E9F02600C3E671 /* business-woman-colour-400px.png */,
 				9E7B80B424E9F02600C3E671 /* business-woman-colour-800px.png */,
 				9E7B80BC24E9F02600C3E671 /* business-woman-colour-1200px.png */,
@@ -873,6 +876,7 @@
 				5CD50E8124E9555D00161277 /* wx.storyboard in Resources */,
 				9E7B80C924E9F02600C3E671 /* business-woman-colour-1200px.png in Resources */,
 				9E7B80BF24E9F02600C3E671 /* unlock-monochrome-1200px.png in Resources */,
+				89EE035F24EAD36F00F36C9D /* default_image.png in Resources */,
 				9EFFB68524C5F3DA0073CE59 /* Seb_Main.storyboard in Resources */,
 				9E567DC324AAFC3200DE6CDA /* Seb_LaunchScreen.storyboard in Resources */,
 				9E7B80C624E9F02600C3E671 /* student-colour-1200px.png in Resources */,

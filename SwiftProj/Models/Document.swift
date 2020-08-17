@@ -28,4 +28,9 @@ struct Document: Codable {
         self.docOwner = docOwner
         self.docImages = docImages
     }
+    
+    mutating func setEmptyDocImages() {
+        self.docImages = []
+    }
+    
 }

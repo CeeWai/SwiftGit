@@ -170,7 +170,21 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                     self.mainImageView.image = chosenImage
                 }
                 
+                if (self.detailItem?.docImages == nil) {
+                    self.detailItem?.setEmptyDocImages()
+                    self.detailItem?.docImages = []
+                    let user = Auth.auth().currentUser
+
+                    if let user = user {
+                        let uid = user.uid
+                        let email = user.email
+                    }
+                    
+                    self.detailItem = Document(docID: detailItem?.docID, title: self.titleTextField.text, body: tesseract.recognizedText, docOwner: user?.email, docImages: [])
+                }
+                
                 self.detailItem?.docImages!.append(url.lastPathComponent)
+                print("DETAIL ITEM DOC IMAGES IS \(self.detailItem?.docImages!) and url.lastPathComponent is \(url.lastPathComponent)")
                 
                 var cImage = CIImage(cgImage: chosenImage.cgImage!)
                 
@@ -376,6 +390,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 if set.count == 1 {
                     DispatchQueue.main.async {
                         textField.text = "We did not get that. Ask another question instead!"
+                        //print(set)
                         textField.placeholder = placeholder
                     }
                 } else {
@@ -600,14 +615,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             }
         }
         
-        for i in 0...hardCodedList.count - 1 {
-            var hardCodedImage = hardCodedList[i]
-            self.imageList[i] = hardCodedImage.image!
-            self.imgLinkList[i] = ImageLink(image: hardCodedImage.image, imgLink: hardCodedImage.imgLink)
-            var imgDoc = self.imageDocList[i]
-            self.imageDocList[i] = DocImage(image: hardCodedImage.image, imageDesc: imgDoc.imageDesc, objPredictions: imgDoc.objPredictions)
-            print("THE VALUE OF LINK IMAGE IS \(hardCodedImage.imgLink)")
+        if hardCodedList.count > 0 {
+            for i in 0...hardCodedList.count - 1 {
+                var hardCodedImage = hardCodedList[i]
+                self.imageList[i] = hardCodedImage.image!
+                self.imgLinkList[i] = ImageLink(image: hardCodedImage.image, imgLink: hardCodedImage.imgLink)
+                var imgDoc = self.imageDocList[i]
+                self.imageDocList[i] = DocImage(image: hardCodedImage.image, imageDesc: imgDoc.imageDesc, objPredictions: imgDoc.objPredictions)
+                print("THE VALUE OF LINK IMAGE IS \(hardCodedImage.imgLink)")
+            }
         }
+
         
         self.mainImageView.image = hardCodedList[0].image
         
