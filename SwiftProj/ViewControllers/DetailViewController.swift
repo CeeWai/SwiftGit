@@ -323,6 +323,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             var c = 0 // check for images
             var found = false
             for iDoc in self.imageDocList {
+                print("self.imagedl \(self.imageDocList)")
+
                 var idvIDocPred = iDoc.objPredictions!
                 for pred in idvIDocPred {
                     print("pred: \(pred)")
@@ -387,7 +389,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 // computes using the bert model if otherwise
                 //
                 let set = NSSet(array: similarityList)
-                if set.count == 1 {
+                if set.count == 0 {
                     DispatchQueue.main.async {
                         textField.text = "We did not get that. Ask another question instead!"
                         //print(set)
