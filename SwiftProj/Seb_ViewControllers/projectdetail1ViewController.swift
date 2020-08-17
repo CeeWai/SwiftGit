@@ -252,6 +252,12 @@ UITableViewDelegate, UITableViewDataSource{
          DefaultViewController1
             detailViewController.projectItem = self.projectItem
         }
+        if(segue.identifier == "seguetoinfomation")
+         {
+        let detailViewController = segue.destination as!
+         projectinformationViewController
+            detailViewController.projectItem = self.projectItem
+        }
         if(segue.identifier == "seguetotask")
         {
         

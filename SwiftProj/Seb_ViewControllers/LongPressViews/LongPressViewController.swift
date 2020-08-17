@@ -48,7 +48,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
     var selecttaskid = 0
     var pickertype = 0;
     var deleteevent = "";
-    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissviewall(_:)))
+    //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissviewall(_:)))
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden=true
@@ -56,7 +56,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
         addevent.layer.cornerRadius = 40
         addevent.layer.borderColor = UIColor.systemRed.cgColor
         addevent.layer.borderWidth = 2;
-        addevent.layer.backgroundColor = UIColor.black.cgColor
+        addevent.layer.backgroundColor = UIColor.systemBackground.cgColor
         addevent.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         var projectevents : [AllDayEvent] = []
         var users = ProjectgroupDataManager.loadsubscribed(projectid: (projectItem?.projectId!)!)
@@ -104,7 +104,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
              bottomline3.frame = CGRect(x:0,y:taskhoursview.frame.height - 2, width: taskhoursview.frame.width,height: 0.5)
              bottomline3.backgroundColor =         UIColor.gray.cgColor
              taskhoursview.layer.addSublayer(bottomline3)
-                                    view.addGestureRecognizer(tap)
+                                  //  view.addGestureRecognizer(tap)
              let bottomline4 = CALayer()
              bottomline4.frame = CGRect(x:0,y:titlefield.frame.height - 2, width: titlefield.frame.width,height: 1)
              bottomline4.backgroundColor =         UIColor.systemRed.cgColor
@@ -119,7 +119,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
              bottomline6.frame = CGRect(x:0,y:taskhourview2.frame.height - 2, width: taskhourview2.frame.width,height: 0.5)
              bottomline6.backgroundColor =         UIColor.gray.cgColor
              taskhourview2.layer.addSublayer(bottomline6)
-                               view.addGestureRecognizer(tap)
+                              // view.addGestureRecognizer(tap)
     }
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden=true
@@ -127,7 +127,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
                addevent.layer.cornerRadius = 40
                addevent.layer.borderColor = UIColor.systemRed.cgColor
                addevent.layer.borderWidth = 2;
-               addevent.layer.backgroundColor = UIColor.black.cgColor
+               addevent.layer.backgroundColor = UIColor.systemBackground.cgColor
                addevent.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
                var projectevents : [AllDayEvent] = []
                var users = ProjectgroupDataManager.loadsubscribed(projectid: (projectItem?.projectId!)!)
@@ -163,7 +163,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
     @objc func sendtolongpressview(_ notification: Notification) {
         print("dsda")
         let data = notification.userInfo!["eventid"]!
-        view.addGestureRecognizer(tap)
+       // view.addGestureRecognizer(tap)
         deleteevent = data as! String
           if popoverstatus2 == 1{
                              self.popover2.removeFromSuperview()
@@ -567,7 +567,7 @@ extension LongPressViewController: JZLongPressViewDelegate, JZLongPressViewDataS
             viewModel.eventsByDate[startDate.startOfDay] = [AllDayEvent]()
         }
         viewModel.events.append(newEvent)
-                    print(viewModel.events.count)
+                    //print(viewModel.events.count)
         viewModel.events = ProjectEventDataManager.loadProjecteventsbyprojectid(projectid: (projectItem?.projectId!)!)
         viewModel.eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: viewModel.events)
         weekView.forceReload(reloadEvents: viewModel.eventsByDate)

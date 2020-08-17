@@ -183,6 +183,7 @@
 		9E7B80C824E9F02600C3E671 /* entryway-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7B80BB24E9F02600C3E671 /* entryway-colour-1200px.png */; };
 		9E7B80C924E9F02600C3E671 /* business-woman-colour-1200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7B80BC24E9F02600C3E671 /* business-woman-colour-1200px.png */; };
 		9E7B80CA24E9F02600C3E671 /* startScreenVid.mp4.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9E7B80BD24E9F02600C3E671 /* startScreenVid.mp4.zip */; };
+		9E7B80CC24E9FCA700C3E671 /* projectinformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7B80CB24E9FCA700C3E671 /* projectinformationViewController.swift */; };
 		9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64024C5F2980073CE59 /* ProjectTask.swift */; };
 		9EFFB64624C5F2980073CE59 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64124C5F2980073CE59 /* Project.swift */; };
 		9EFFB64724C5F2980073CE59 /* ProjectTaskMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFB64224C5F2980073CE59 /* ProjectTaskMember.swift */; };
@@ -392,6 +393,7 @@
 		9E7B80BB24E9F02600C3E671 /* entryway-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "entryway-colour-1200px.png"; sourceTree = "<group>"; };
 		9E7B80BC24E9F02600C3E671 /* business-woman-colour-1200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-woman-colour-1200px.png"; sourceTree = "<group>"; };
 		9E7B80BD24E9F02600C3E671 /* startScreenVid.mp4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = startScreenVid.mp4.zip; sourceTree = "<group>"; };
+		9E7B80CB24E9FCA700C3E671 /* projectinformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectinformationViewController.swift; sourceTree = "<group>"; };
 		9EFFB64024C5F2980073CE59 /* ProjectTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTask.swift; sourceTree = "<group>"; };
 		9EFFB64124C5F2980073CE59 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		9EFFB64224C5F2980073CE59 /* ProjectTaskMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTaskMember.swift; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 				896A083724E91C5800E5121D /* LongPressViews */,
 				896A083624E91C4300E5121D /* ExampleOptionsViewController */,
 				896A083524E91C3300E5121D /* CustomViews */,
+				9E7B80CB24E9FCA700C3E671 /* projectinformationViewController.swift */,
 			);
 			path = Seb_ViewControllers;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				89019B8024D2731000BBB6FB /* ImageLink.swift in Sources */,
 				9EFFB64524C5F2980073CE59 /* ProjectTask.swift in Sources */,
 				896A085024E91D0500E5121D /* ExampleOptionsViewController.swift in Sources */,
+				9E7B80CC24E9FCA700C3E671 /* projectinformationViewController.swift in Sources */,
 				89921943246E450A0029BFF5 /* FullCaseDataManager.swift in Sources */,
 				89921949246E45290029BFF5 /* Case.swift in Sources */,
 				89770CD224CA8B5800EB21D2 /* ProjectTaskMemberDataManager.swift in Sources */,
