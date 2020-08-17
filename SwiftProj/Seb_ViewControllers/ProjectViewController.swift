@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import UserNotifications
 class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var projectList : [Project] = []
     var projectgroupList : [Projectgroup] = []
@@ -16,7 +17,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var addbtn: UIButton!
     @IBOutlet var bell: UIBarButtonItem!
-    
+    var counter:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden=true
@@ -46,6 +47,87 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
             }
         }
         inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser!.uid)
+            var projectgroupList : [Projectgroup] = []
+                          var projectList : [Project] = []
+                          var projectevents  : [DefaultEvent] = []
+                           projectgroupList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe1(userid: currentuser!.uid)
+                          if projectgroupList.isEmpty{
+                          }
+                          else{
+                              for project in projectgroupList{
+                                  var projectitem: [Project] = ProjectDataManager.loadProjectsbyid(projectid: project.projectid!)
+                                  projectList.append(projectitem[0])
+                              }
+                          }
+                          var stringquery = ""
+                          for item in projectList{
+                              
+                                 stringquery = stringquery + String(item.projectId!) + ","
+                          }
+                          var lastremoved = String(stringquery.dropLast())
+                          print(lastremoved)
+                          var itemlist = ProjectEventDataManager.loadProjecteventsbyprojectidindefault(projectid: lastremoved)
+                          projectevents.append(contentsOf: itemlist)
+            if counter == nil{
+            var currentdate = Date()
+            var daycounter1 = 0
+            var daycounter2 = 0
+            for item in projectevents{
+                let calendar = Calendar.current
+                let component = calendar.dateComponents([.day], from: currentdate, to: item.startDate)
+                if (component.day == 1){
+                        daycounter1 = daycounter1 + 1
+                }
+                if (component.day == 2){
+                  daycounter2 = daycounter2 + 1
+                }
+            }
+            if daycounter1 > 0{
+                let center = UNUserNotificationCenter.current()
+                                        
+                                        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                                        }
+                                        let content = UNMutableNotificationContent()
+                                        content.title = "Taskr"
+                                        content.body = "You have project schedule tomorrow"
+                                        
+                                        var date = Date().addingTimeInterval(1600)
+                                        
+                                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+                                        
+                                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                                        
+                                        let uuidString = UUID().uuidString
+                                        
+                                        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+
+                                        center.add(request) { (error) in
+                                        }
+            }
+            if daycounter2 > 0{
+                        let center = UNUserNotificationCenter.current()
+                                  
+                                  center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                                  }
+                                  let content = UNMutableNotificationContent()
+                                  content.title = "Taskr"
+                                  content.body = "You have project schedule tomorrow"
+                                  
+                                  let date = currentdate.add(component: .day, value: 1)
+                                  
+                                  let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+                                  
+                                  let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                                  
+                                  let uuidString = UUID().uuidString
+                                  
+                                  let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+
+                                  center.add(request) { (error) in
+                                  }
+            }
+        }
+            counter == 2
         }
         if inviteList.count > 0{
             
