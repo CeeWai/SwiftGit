@@ -15,7 +15,8 @@ class dom_note: NSObject {
     var noteID: String?
     var noteTags : String?
     var noteUpdateDate: String?
-    init(notetitle: String?, notebody: String?, notetags: String?, noteUserid: String?, noteid: String?, noteupdateDate:String?)
+    var noteImgUrl:String?
+    init(notetitle: String?, notebody: String?, notetags: String?, noteUserid: String?, noteid: String?, noteupdateDate:String?,noteimgUrl:String?)
         
     {
         self.noteTitle = notetitle
@@ -24,6 +25,7 @@ class dom_note: NSObject {
         self.noteID = noteid
         self.noteTags = notetags
         self.noteUpdateDate = noteupdateDate
+        self.noteImgUrl = noteimgUrl
     }
     
     

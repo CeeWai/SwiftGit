@@ -95,7 +95,7 @@ class dom_FireStoreDataManager: NSObject {
             else{
                 self.noteList = []
                 for doc in (snapshot?.documents)!{
-                    let currentNote = dom_note(notetitle:  doc.get("title") as? String, notebody:doc.get("body") as? String, notetags:doc.get("tags") as? String, noteUserid: doc.get("uID") as? String, noteid: doc.documentID, noteupdateDate: doc.get("noteUpdateDate") as? String)
+                    let currentNote = dom_note(notetitle:  doc.get("title") as? String, notebody:doc.get("body") as? String, notetags:doc.get("tags") as? String, noteUserid: doc.get("uID") as? String, noteid: doc.documentID, noteupdateDate: doc.get("noteUpdateDate") as? String, noteimgUrl: doc.get("noteImg") as? String)
                     //print("current Note: " + currentNote.noteTitle! + ", body:" +   currentNote.noteBody!)
                     self.noteList.append(currentNote)
                 }
@@ -114,7 +114,7 @@ class dom_FireStoreDataManager: NSObject {
             else{
                 self.noteList = []
                 for doc in (snapshot?.documents)!{
-                    let currentNote = dom_note(notetitle:  doc.get("title") as? String, notebody:doc.get("body") as? String, notetags:doc.get("tags") as? String, noteUserid: doc.get("uID") as? String, noteid: doc.documentID, noteupdateDate: doc.get("noteUpdateDate") as? String)
+                    let currentNote = dom_note(notetitle:  doc.get("title") as? String, notebody:doc.get("body") as? String, notetags:doc.get("tags") as? String, noteUserid: doc.get("uID") as? String, noteid: doc.documentID, noteupdateDate: doc.get("noteUpdateDate") as? String, noteimgUrl: doc.get("noteImg") as? String)
                     print("current note tag comparison: ", currentNote.noteTags! + " vs " + filter!)
                     self.noteList.append(currentNote)
                 }
@@ -167,15 +167,7 @@ class dom_FireStoreDataManager: NSObject {
     
     
     
-    func addNote(titleStr:String?, bodyStr:String?, tagStr:String?, uid:String?, noteUpdateDate:String?){
-        fStore.collection("notes").addDocument(data: ["title":titleStr , "body":bodyStr, "tags": tagStr  , "uID":uid, "noteUpdateDate":noteUpdateDate]){ err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
-    }
+
     
     func addTag(titleStr:String?, uid:String?){
         fStore.collection("notes_tags").addDocument(data: ["title":titleStr , "uID":uid]){ err in
@@ -187,9 +179,39 @@ class dom_FireStoreDataManager: NSObject {
         }
     }
     
+    func addNote(titleStr:String?, bodyStr:String?, tagStr:String?, uid:String?, noteUpdateDate:String?, noteImageURL:String?){
+        if let noteimgurl = noteImageURL{
+            fStore.collection("notes").addDocument(data: ["title":titleStr , "body":bodyStr, "tags": tagStr  , "uID":uid, "noteUpdateDate":noteUpdateDate, "noteImg":noteimgurl]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+
+        }
+        else{
+            fStore.collection("notes").addDocument(data: ["title":titleStr , "body":bodyStr, "tags": tagStr  , "uID":uid, "noteUpdateDate":noteUpdateDate, "noteImg":""]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        }
+    }
     
-    func updateNote(noteID:String?, titleStr:String?, bodyStr:String?, tagStr:String?, noteUpdateDate:String?){
+    func updateNote(noteID:String?, titleStr:String?, bodyStr:String?, tagStr:String?, noteUpdateDate:String?, noteImageURL:String?){
         let noteRef = self.fStore.collection("notes").document(noteID!)
+        if let noteimgurl = noteImageURL{
+            noteRef.updateData(["title": titleStr , "body":bodyStr, "tags":tagStr, "noteUpdateDate":noteUpdateDate, "noteImg":noteimgurl ], completion: { (err) in
+                if let err = err {
+                    print("Error updating Note: \(err)")
+                } else {
+                    print("Note successfully updated")
+                }
+            })
+        }
         noteRef.updateData(["title": titleStr , "body":bodyStr, "tags":tagStr, "noteUpdateDate":noteUpdateDate ], completion: { (err) in
             if let err = err {
                 print("Error updating Note: \(err)")

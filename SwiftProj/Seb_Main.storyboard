@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sio-5b-cFw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sio-5b-cFw">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -186,17 +186,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPz-An-6OC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPz-An-6OC">
                                 <rect key="frame" x="0.0" y="264" width="414" height="36"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Create Project"/>
                                 <connections>
                                     <action selector="onclickcreate:" destination="xcA-P9-N1R" eventType="touchUpInside" id="x7s-ql-WyI"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="yZ7-ud-eKI"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="passproject" id="yZ7-ud-eKI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-74-oTQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-74-oTQ">
                                 <rect key="frame" x="0.0" y="206" width="414" height="36"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -242,10 +242,14 @@
                         <constraints>
                             <constraint firstItem="zPz-An-6OC" firstAttribute="top" secondItem="krZ-74-oTQ" secondAttribute="bottom" constant="22" id="9ln-al-ygd"/>
                             <constraint firstItem="ROI-yt-5ov" firstAttribute="leading" secondItem="Xi0-7k-D79" secondAttribute="leading" id="CaW-sQ-F68"/>
+                            <constraint firstItem="zPz-An-6OC" firstAttribute="trailing" secondItem="Xi0-7k-D79" secondAttribute="trailing" id="GeJ-JF-f8v"/>
                             <constraint firstItem="ROI-yt-5ov" firstAttribute="trailing" secondItem="Xi0-7k-D79" secondAttribute="trailing" id="MYB-wD-uP6"/>
                             <constraint firstItem="ROI-yt-5ov" firstAttribute="top" secondItem="Xi0-7k-D79" secondAttribute="top" id="ZL0-U8-EAa"/>
+                            <constraint firstItem="krZ-74-oTQ" firstAttribute="trailing" secondItem="Xi0-7k-D79" secondAttribute="trailing" id="cnW-OT-ETM"/>
+                            <constraint firstItem="zPz-An-6OC" firstAttribute="leading" secondItem="Xi0-7k-D79" secondAttribute="leading" id="nNf-K5-vvd"/>
                             <constraint firstItem="cN3-ev-zDU" firstAttribute="top" secondItem="oBK-RP-vn9" secondAttribute="bottom" constant="8" id="pcB-4R-8LR"/>
                             <constraint firstItem="krZ-74-oTQ" firstAttribute="top" secondItem="cN3-ev-zDU" secondAttribute="bottom" constant="37" id="qfk-03-ZLF"/>
+                            <constraint firstItem="krZ-74-oTQ" firstAttribute="leading" secondItem="Xi0-7k-D79" secondAttribute="leading" id="sgW-Gu-k9Z"/>
                             <constraint firstItem="oBK-RP-vn9" firstAttribute="top" secondItem="ROI-yt-5ov" secondAttribute="bottom" constant="37" id="yD4-aW-awB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xi0-7k-D79"/>
@@ -1485,7 +1489,7 @@
             <objects>
                 <viewController storyboardIdentifier="DefaultViewController2" id="Flz-Zh-A39" customClass="DefaultViewController2" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zBq-bc-7hG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PmA-ha-k7s">
@@ -1499,11 +1503,6 @@
                                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="RxA-VR-0BN">
                                             <connections>
                                                 <segue destination="BYZ-38-t0r" kind="show" id="Dwe-rV-BKx"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="wcc-JX-YRc">
-                                            <connections>
-                                                <action selector="popoverpressed:" destination="y0l-Ai-3pY" id="xVd-NY-imW"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1683,7 +1682,7 @@
         <segue reference="U2D-R5-ysk"/>
         <segue reference="YYV-Ig-AAD"/>
         <segue reference="WN6-qn-iVv"/>
-        <segue reference="vUH-4g-yo4"/>
+        <segue reference="Dwe-rV-BKx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>

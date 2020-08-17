@@ -75,7 +75,7 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
                       NSLayoutConstraint.activate([
 
                               // 5
-                              NSLayoutConstraint(item: popover, attribute: .top, relatedBy: .equal, toItem: superView, attribute: .top, multiplier: 1.0, constant: 740),
+                              NSLayoutConstraint(item: popover, attribute: .top, relatedBy: .equal, toItem: superView, attribute: .top, multiplier: 1.0, constant: 700),
 
                               // 6
                               NSLayoutConstraint(item: popover, attribute: .right, relatedBy: .equal, toItem: superView, attribute: .right, multiplier: 1.0, constant: 0),
@@ -114,34 +114,18 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
         let strBase64 = imagedata.base64EncodedString(options: .lineLength64Characters)
         strimage = strBase64
         picker.dismiss(animated: true)
+        popover.removeFromSuperview()
     }
     func imagePickerControllerDidCancel(
     _ picker: UIImagePickerController)
     {
-    picker.dismiss(animated: true)
-        popover.removeFromSuperview()
-    }
-    @IBAction func onclickcreate(_ sender: Any) {
-        let image : UIImage = UIImage(systemName:"photo.fill")!
-        let imagedata:NSData = image.pngData()! as NSData
-        if strimage == ""{
-                  strimage = imagedata.base64EncodedString(options: .lineLength64Characters)
-        }
-        let currentuser = Auth.auth().currentUser
-        var currentusername = ""
-        for i in userList{
-            if i.uid == currentuser?.uid{
-                currentusername = i.username
-            }
-        }
-        newproject =  Project(projectId: 0, projectName: titlefield.text!, projectLeader: currentusername, projectLeaderid: currentuser?.uid, projectDescription: descriptionfield.text!, imageName: strimage)
-        var recentid = ProjectDataManager.loadrecentindex()
-        ProjectgroupDataManager.insertOrReplace(projectgroup: Projectgroup(groupid: 0, projectid: recentid, userid: currentuser?.uid, username: currentusername, role: "Founder", invited: 1, subscribe: 1))
-        RoleDataManager.insertOrReplaceMovie(role: Role(roleid: 0, rolename: "Founder", projectid: recentid, manageowntask: 1, removealltask: 1, editalltask: 1, invitemember: 1, removemember: 1, manageproject: 1))
-        RoleDataManager.insertOrReplaceMovie(role: Role(roleid: 0, rolename: "Default", projectid: recentid, manageowntask: 1, removealltask: 0, editalltask: 0, invitemember: 1, removemember: 0, manageproject: 0))
-        ProjectDataManager.insertOrReplaceMovie(project: newproject)
+   // picker.dismiss(animated: true)
+   //     popover.removeFromSuperview()
     }
     
+    @IBAction func onclickcreate(_ sender: Any) {
+       
+    }
     func loaduser()
        {
        // This is a special way to call loadMovies. //
@@ -165,9 +149,24 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
     sender: Any?){
     if(segue.identifier == "passproject")
      {
-    let detailViewController = segue.destination as!
-     createproject2ViewController
-     detailViewController.projectitem = newproject
+        let image : UIImage = UIImage(systemName:"photo.fill")!
+               let imagedata:NSData = image.pngData()! as NSData
+               if strimage == ""{
+                         strimage = imagedata.base64EncodedString(options: .lineLength64Characters)
+               }
+               let currentuser = Auth.auth().currentUser
+               var currentusername = ""
+               for i in userList{
+                   if i.uid == currentuser?.uid{
+                       currentusername = i.username
+                   }
+               }
+               newproject =  Project(projectId: 0, projectName: titlefield.text!, projectLeader: currentusername, projectLeaderid: currentuser?.uid, projectDescription: descriptionfield.text!, imageName: strimage)
+               var recentid = ProjectDataManager.loadrecentindex()
+               ProjectgroupDataManager.insertOrReplace(projectgroup: Projectgroup(groupid: 0, projectid: recentid, userid: currentuser?.uid, username: currentusername, role: "Founder", invited: 1, subscribe: 1))
+               RoleDataManager.insertOrReplaceMovie(role: Role(roleid: 0, rolename: "Founder", projectid: recentid, manageowntask: 1, removealltask: 1, editalltask: 1, invitemember: 1, removemember: 1, manageproject: 1))
+               RoleDataManager.insertOrReplaceMovie(role: Role(roleid: 0, rolename: "Default", projectid: recentid, manageowntask: 1, removealltask: 0, editalltask: 0, invitemember: 1, removemember: 0, manageproject: 0))
+                ProjectDataManager.insertOrReplaceMovie(project: newproject)
     }
      
 }

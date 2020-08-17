@@ -15,6 +15,7 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var titlelabel: UILabel!
     @IBOutlet weak var bodylabel: UILabel!
     @IBOutlet weak var taglabel: UILabel!
+    @IBOutlet weak var noteImageView: UIImageView!
 }
 
 class NotesTableViewController: UITableViewController{
@@ -137,7 +138,18 @@ class NotesTableViewController: UITableViewController{
         return 1
     }
     
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
 
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -152,7 +164,21 @@ class NotesTableViewController: UITableViewController{
         if let tag = self.noteList[indexPath.row].noteTags{
             cell.taglabel.text = "Tag: " + tag
         }
-        
+
+        let session = URLSession(configuration: .default)
+        let PictureURL = URL(string: self.noteList[indexPath.row].noteImgUrl!)
+        if let pictureurl = PictureURL{
+            let data = try? Data(contentsOf: PictureURL!)
+
+            if let imageData = data {
+                cell.noteImageView.image = resizeImage(image: UIImage(data: data!)!, newWidth: cell.noteImageView.fs_width)
+            }
+            else{
+                print("error loading image")
+            }
+        }
+
+       
         // Configure the cell...
 
         return cell
@@ -165,7 +191,7 @@ class NotesTableViewController: UITableViewController{
             let myIndexPath = self.tableView.indexPathForSelectedRow
             if(myIndexPath != nil) {
                 let note = noteList[myIndexPath!.row]
-                print("Selected row: " + String(myIndexPath!.row))
+                //print("Selected row: " + String(myIndexPath!.row))
                 addNoteViewController.currentNote = note
             }
          }

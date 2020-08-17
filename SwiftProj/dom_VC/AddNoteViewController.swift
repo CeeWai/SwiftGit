@@ -28,30 +28,31 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
     var fStore : Firestore?
     var userID : String?
     var userEmail : String?
-//    var currentNoteTag : dom_tag?
-//    var loadedNote : dom_note?
-//    var tagList : [dom_tag] = []
+    //    var currentNoteTag : dom_tag?
+    //    var loadedNote : dom_note?
+    //    var tagList : [dom_tag] = []
     var currentNote : dom_note?
     var updatedNote : dom_note?
     var addNoteBool : Bool?
     var isDeleting : Bool?
     let fsdbManager = dom_FireStoreDataManager()
     let synth = AVSpeechSynthesizer()
+    var currentImgURL:String = ""
     
     func initNotificationSetupCheck() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
         { (success, error) in
             if success {
-                print("Permission Granted")
+                //                print("Permission Granted")
             } else {
-                print("There was a problem!")
+                //                print("There was a problem!")
             }
         }
     }
     
     
     @IBAction func reminderBtn(_ sender: Any) {
-                let reminderAlert = UIAlertController(title: "Set up reminder", message: "Please type in how long this reminder should wait before triggering (in minutes)", preferredStyle: UIAlertController.Style.alert)
+        let reminderAlert = UIAlertController(title: "Set up reminder", message: "Please type in how long this reminder should wait before triggering (in minutes)", preferredStyle: UIAlertController.Style.alert)
         reminderAlert.addTextField { (textField) in
             textField.placeholder = "Enter time here"
             textField.keyboardType = .numberPad
@@ -69,7 +70,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
                 //print(textField.text)
                 let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval:dom_timer, repeats: false)
                 let request = UNNotificationRequest(identifier: "dom_notification1", content: notification, trigger: notificationTrigger)
-
+                
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             }
             else{
@@ -79,7 +80,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
                 }))
                 self.present(reminderAlertError, animated: true, completion: nil)
             }
-
+            
         }))
         present(reminderAlert, animated: true, completion: nil)
     }
@@ -117,17 +118,17 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         self.isDeleting = false
         let label = UILabel()
         label.textColor = UIColor.systemGray
-//        let date = Date()
-//        let calendar = Calendar.current
-//        let day = calendar.component(.day, from: date)
-//        let month = calendar.component(.month, from: date)
-//        let monthName = DateFormatter().monthSymbols[month - 1]
-//        let year = calendar.component(.year, from: date)
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "hh:mm" // "a" prints "pm" or "am"
-//        let hourAndMin = formatter.string(from: Date()) // "12 AM"
-//        formatter.dateFormat =  "MM/dd/yyyy"
-//        let dateslash = formatter.string(from: Date())
+        //        let date = Date()
+        //        let calendar = Calendar.current
+        //        let day = calendar.component(.day, from: date)
+        //        let month = calendar.component(.month, from: date)
+        //        let monthName = DateFormatter().monthSymbols[month - 1]
+        //        let year = calendar.component(.year, from: date)
+        //        let formatter = DateFormatter()
+        //        formatter.dateFormat = "hh:mm" // "a" prints "pm" or "am"
+        //        let hourAndMin = formatter.string(from: Date()) // "12 AM"
+        //        formatter.dateFormat =  "MM/dd/yyyy"
+        //        let dateslash = formatter.string(from: Date())
         lastEditBBI.tintColor = UIColor.white
         lastEditBBI.isEnabled = false
         UserDefaults.standard.set("", forKey: "addNoteTag")
@@ -152,7 +153,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
                 self.tagsLabel.text! = "Tag: " + addNoteTag!
             }
         }
-
+        
         
     }
     
@@ -162,15 +163,56 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
     @IBAction func optionsBtnPressed(_ sender: Any) {
         let actionsheet = UIAlertController(title: "Additional Options", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
-        actionsheet.addAction(UIAlertAction(title: "Add/Edit Tag", style: UIAlertAction.Style.default, handler: presentTagsVC))
+        actionsheet.addAction(UIAlertAction(title: "Add/Change Tag", style: UIAlertAction.Style.default, handler: presentTagsVC))
         actionsheet.addAction(UIAlertAction(title: "Read Note out loud", style: UIAlertAction.Style.default, handler: { (action) -> Void in
             let TTSstring = "Title text; " + self.titleTF.text! + " ;Body text;" + self.bodyTV.text
             let utterance = AVSpeechUtterance(string: TTSstring)
             utterance.voice = AVSpeechSynthesisVoice(language: "US-EN")
             self.synth.speak(utterance)
         }))
-//        actionsheet.addAction(UIAlertAction(title: "Add Photos", style: UIAlertAction.Style.default, handler: { (action) -> Void in
-//        }))
+        actionsheet.addAction(UIAlertAction(title: "Add a google Image", style: UIAlertAction.Style.default, handler: { (action) -> Void in
+            //        014331032632211638537:vfplaxzyp30 my google CSE important dont del -dom
+            let imageSearchAlert = UIAlertController(title: "Delete", message: "All data will be lost.", preferredStyle: UIAlertController.Style.alert)
+            imageSearchAlert.addTextField { (textField) in
+                textField.placeholder = "Image name"
+            }
+            imageSearchAlert.addAction(UIAlertAction(title: "Google Search Image", style: .default, handler: { (action: UIAlertAction!) in
+                let textField = imageSearchAlert.textFields![0]
+                var imgURLString = ""
+
+                imgURLString = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCKrTNk2p3ieGHQGQzPVzcihNKNBfff0p8&cx=014331032632211638537:vfplaxzyp30&q=" + (textField.text?.replacingOccurrences(of: " ", with: ""))!
+                
+                
+                let url = URL(string: imgURLString)
+                print(url)
+                
+                let task = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if let error = error {
+                        print("Error accessing " + String(url!.absoluteString))
+                        return
+                    }
+                    guard let httpResponse = response as? HTTPURLResponse,
+                        (200...299).contains(httpResponse.statusCode) else {
+                            print("Error with the response, unexpected status code: \(response)")
+                            return
+                    }
+                    
+                    if let data = data{
+                        let jsonData = JSON.init(data: data)
+                        let imgSrcURL = jsonData["items"][0]["pagemap"]["cse_image"][0]["src"]
+                        self.currentImgURL = imgSrcURL.stringValue
+                        print(imgSrcURL)
+                    }
+                })
+                task.resume()
+            }))
+            
+             
+            imageSearchAlert.addAction(UIAlertAction(title: "back", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(imageSearchAlert, animated: true, completion: nil)
+        }))
         actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
             
         }))
@@ -190,7 +232,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
                 self.navigationController?.popViewController(animated: true)
             }))
         }
-
+        
         
         deleteAlert.addAction(UIAlertAction(title: "Wait go back!", style: .cancel, handler: { (action: UIAlertAction!) in
             
@@ -208,7 +250,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "TagsSegue")
-         {
+        {
             let TagViewController = segue.destination as! TagsTableViewController
             if !(addNoteBool != nil && addNoteBool == true){
                 TagViewController.isAddNote = false
@@ -218,7 +260,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
                 TagViewController.isAddNote = true
             }
             
-         }
+        }
     }
     
     @IBOutlet weak var notesBody: UITextView!
@@ -239,42 +281,42 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         let request = SFSpeechAudioBufferRecognitionRequest()
         if (audioEngine.isRunning){
             audioEngine.stop()
-             audioEngine.inputNode.removeTap(onBus: 0)
+            audioEngine.inputNode.removeTap(onBus: 0)
             print("Stopped recording...")
-    }
-    else{
+        }
+        else{
             print("Started recording...")
-        let node = audioEngine.inputNode
-        let recordingFormat = node.outputFormat(forBus: 0)
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
-            request.append(buffer)
-        }
-        audioEngine.prepare()
-        do{
-            try audioEngine.start()
-        }catch{
-            return print(error)
-        }
-        
-        guard let myRecogniser = SFSpeechRecognizer() else{
-            /// prob add alert here
-            return
-        }
-        
-        if !myRecogniser.isAvailable{
-            // same here
-            return
-        }
-        
-        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
-            if let result = result{
-                let speechString = result.bestTranscription.formattedString
-                self.bodyTV.text = speechString
-            } else if let error = error {
-                print(error)
+            let node = audioEngine.inputNode
+            let recordingFormat = node.outputFormat(forBus: 0)
+            node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
+                request.append(buffer)
             }
-        })
-    }
+            audioEngine.prepare()
+            do{
+                try audioEngine.start()
+            }catch{
+                return print(error)
+            }
+            
+            guard let myRecogniser = SFSpeechRecognizer() else{
+                /// prob add alert here
+                return
+            }
+            
+            if !myRecogniser.isAvailable{
+                // same here
+                return
+            }
+            
+            recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
+                if let result = result{
+                    let speechString = result.bestTranscription.formattedString
+                    self.bodyTV.text = speechString
+                } else if let error = error {
+                    print(error)
+                }
+            })
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -296,19 +338,19 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
             }
             else{
                 if let CurrentNote = currentNote{
-//                    if (currentNote?.noteTitle == loadedNote?.noteTitle && currentNote?.noteBody == loadedNote?.noteBody && currentNote?.noteTags == loadedNote?.noteTags){
-                       //checked for changes, no changes to note, so don't update
-//                    }
+                    //                    if (currentNote?.noteTitle == loadedNote?.noteTitle && currentNote?.noteBody == loadedNote?.noteBody && currentNote?.noteTags == loadedNote?.noteTags){
+                    //checked for changes, no changes to note, so don't update
+                    //                    }
                     //else{
-                        // do update here dom 15/7/2020
-                       // print("current note ID: " + CurrentNote.noteUserID!)
-                    if (currentNote?.noteTitle == titleTF.text && currentNote?.noteBody == bodyTV.text && CurrentNote.noteTags == tagStr2){
+                    // do update here dom 15/7/2020
+                    // print("current note ID: " + CurrentNote.noteUserID!)
+                    if (currentNote?.noteTitle == titleTF.text && currentNote?.noteBody == bodyTV.text && CurrentNote.noteTags == tagStr2 && currentImgURL == ""){
                         // no editing done, no need to update :)
                     }
                     else{
-                        fsdbManager.updateNote(noteID: currentNote?.noteID, titleStr: titleTF.text, bodyStr: bodyTV.text, tagStr: tagStr2, noteUpdateDate: dateText)
+                        fsdbManager.updateNote(noteID: currentNote?.noteID, titleStr: titleTF.text, bodyStr: bodyTV.text, tagStr: tagStr2, noteUpdateDate: dateText, noteImageURL: currentImgURL)
                     }
-                   // }
+                    // }
                 }
                 else{
                     // make new note since it's not an existing one
@@ -316,8 +358,8 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
                         print("Empty note")
                     }
                     else{
-
-                        fsdbManager.addNote(titleStr: titleTF.text, bodyStr: bodyTV.text, tagStr:  tagStr2, uid: userID, noteUpdateDate: dateText)
+                        
+                        fsdbManager.addNote(titleStr: titleTF.text, bodyStr: bodyTV.text, tagStr:  tagStr2, uid: userID, noteUpdateDate: dateText, noteImageURL: currentImgURL)
                     }
                 }
             }

@@ -44,6 +44,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
             for project in projectgroupList{
                 var projectitem: [Project] = ProjectDataManager.loadProjectsbyid(projectid: project.projectid!)
                 projectList.append(projectitem[0])
+                
             }
         }
         inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser!.uid)
