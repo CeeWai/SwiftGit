@@ -13,10 +13,23 @@ import GoogleSignIn
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var loginBttn: UIBarButtonItem!
-    
+    @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var username: UILabel!
+    var userList : [User] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var currentuser = Auth.auth().currentUser
+        var currentusername = ""
+        for i in userList{
+            if i.uid == currentuser?.uid{
+                currentusername = i.username
+            }
+        }
+        username.text = currentusername
+        imageview.layer.cornerRadius = 64
+        imageview.layer.borderColor = UIColor.systemRed.cgColor
+        imageview.layer.borderWidth = 1;
+        //imageview.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         // Do any additional setup after loading the view.
     }
     @IBAction func buttonPressed(_ sender: Any) {
@@ -37,5 +50,23 @@ class ProfileViewController: UIViewController {
             print("Failed to sign out with error...", error)
         }
     }
-
+    func loaduser()
+       {
+       // This is a special way to call loadMovies. //
+       // Even if loadMovies accepts a closure as a
+       // parameter, I can pass that parameter after
+       // the round brackets. In a way it is
+       // easier to read.
+       DataManager.loadUsers() {
+           userListFromFirestore in
+       // This is a closure. //
+       // This block of codes is executed when the
+       // async loading from Firestore is complete.
+       // What it is to reassigned the new list loaded
+       // from Firestore.
+       
+           self.userList = userListFromFirestore
+       // Once done, call on the Table View to reload // all its contents
+           }
+    }
 }

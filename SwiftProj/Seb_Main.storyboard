@@ -1096,7 +1096,7 @@
             <objects>
                 <viewController id="9i7-gG-7tb" customClass="projectinformationViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aww-Ib-nm0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLI-FU-CMI">
@@ -1189,7 +1189,7 @@
             <objects>
                 <viewController id="ak8-jN-mGq" customClass="MemberViewController" customModule="SwiftProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dM3-Ma-MlJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" backIndicatorImage="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1c2-Si-zJN">
@@ -1679,7 +1679,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="F4l-cH-J3A"/>
         <segue reference="LXq-jq-hPN"/>
-        <segue reference="U2D-R5-ysk"/>
+        <segue reference="yZ3-X5-9bD"/>
         <segue reference="YYV-Ig-AAD"/>
         <segue reference="WN6-qn-iVv"/>
         <segue reference="Dwe-rV-BKx"/>
