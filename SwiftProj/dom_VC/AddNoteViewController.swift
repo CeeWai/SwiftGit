@@ -68,7 +68,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
             let textField = reminderAlert.textFields![0]
             if let dom_timer = Double(textField.text!){
                 //print(textField.text)
-                let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval:dom_timer, repeats: false)
+                let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval:dom_timer*60, repeats: false)
                 let request = UNNotificationRequest(identifier: "dom_notification1", content: notification, trigger: notificationTrigger)
                 
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)

@@ -38,7 +38,7 @@ class RegisterViewController: UIViewController {
             return "Please fill in all fields."
         }
         
-        if passwordField != cfmPasswordField {
+        if passwordField.text != cfmPasswordField.text {
             return "Passwords do not match!"
         }
         

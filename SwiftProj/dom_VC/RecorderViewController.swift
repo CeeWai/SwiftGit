@@ -47,7 +47,7 @@ class RecorderViewController: UIViewController {
     var recordButton = RecordButton()
     var timeLabel = UILabel()
     var audioView = AudioVisualizerView()
-    let settings = [AVFormatIDKey: kAudioFormatLinearPCM, AVLinearPCMBitDepthKey: 16, AVLinearPCMIsFloatKey: true, AVSampleRateKey: Float64(48000), AVNumberOfChannelsKey: 1] as [String : Any]
+    let settings = [AVFormatIDKey: kAudioFormatLinearPCM, AVLinearPCMBitDepthKey: 16, AVLinearPCMIsFloatKey: true, AVSampleRateKey: Float64(44100), AVNumberOfChannelsKey: 1] as [String : Any]
     let audioEngine = AVAudioEngine()
     let fsdbManager = dom_FireStoreDataManager()
     private var renderTs: Double = 0
