@@ -48,7 +48,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageDocList.count + 1
+        return imageDocList.count + 1 // + 1 for the '+' collection view
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -72,6 +72,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("INDEXPATH @ \(indexPath)")
+        // set text view and image view to the selected one
         self.mainImageView.image = self.imageDocList[indexPath.row].image
         self.documentTextView.text = self.imageDocList[indexPath.row].imageDesc
         self.selectedCell = indexPath.row
@@ -80,9 +81,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     func setupCell(cell: UICollectionViewCell, indexPath: IndexPath, type: String) {
         switch(type) {
-        case "normalCell":
+        case "normalCell": // image collection view
             setupImageCell(cell: cell as! ImageCell, indexPath: indexPath)
-        case "specialCell":
+        case "specialCell": // the '+' collection view
             setupSpecialCell(cell: cell as! SpecialCell, indexPath: indexPath)
         default:
             break
@@ -170,7 +171,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                     self.mainImageView.image = chosenImage
                 }
                 
-                if (self.detailItem?.docImages == nil) {
+                if (self.detailItem?.docImages == nil) { // check if docimages is empty
                     self.detailItem?.setEmptyDocImages()
                     self.detailItem?.docImages = []
                     let user = Auth.auth().currentUser
@@ -245,6 +246,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
     }
     
+    // Upload to firebase storage
     func uploadToCloud(fileURL: URL) {
         let storage = Storage.storage()
         let data = Data()
@@ -465,7 +467,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
         var userDoc = Document(docID: "", title: "", body: "", docOwner: "", docImages: [])
         
-        if self.detailItem?.docID != nil && self.detailItem?.docID != "" {
+        if self.detailItem?.docID != nil && self.detailItem?.docID != "" { // set the variables for the document obj
             userDoc = Document(docID: detailItem?.docID, title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email, docImages: self.detailItem?.docImages)
         } else {
             userDoc = Document(docID: "", title: self.titleTextField.text, body: self.documentTextView.text, docOwner: user?.email, docImages: self.detailItem?.docImages)

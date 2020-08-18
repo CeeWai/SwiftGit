@@ -19,7 +19,7 @@ class TimeViewController: UIViewController {
     var data = ""
     var userCurrentDate: Date?
     
-    // Making my own movie theater timing slot booking THINGY IDK
+    // Making my own movie theater timing slot booking THINGY IDK spagetti code
     //
     @IBOutlet weak var hiddenView: UIView!
     @IBOutlet weak var buttonStackView1: UIStackView!
@@ -53,7 +53,7 @@ class TimeViewController: UIViewController {
     var stack12Count = 0
     var stack13Count = 0
 
-    // For testing only
+    // Array for testing only
     //
     var myButtonTestArray: [String] = ["1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM", "1:00 AM"]
     @IBOutlet weak var titleCardLabel: UILabel!
@@ -155,6 +155,8 @@ class TimeViewController: UIViewController {
                     return button
                 };()
                 
+                // Manually adding each button into each subview
+                //
                 if self.stack1Count < 4 {
                     self.buttonStackView1.addArrangedSubview(oneBtn)
                     self.stack1Count += 1
@@ -206,6 +208,7 @@ class TimeViewController: UIViewController {
     }
     
     @IBAction func buttonAction(sender: UIButton!) {
+        // pass back action
         var txtTime = ""
         if let text: String = sender.titleLabel!.text {
            txtTime = text
@@ -237,7 +240,7 @@ class TimeViewController: UIViewController {
             } else {
                 newDate = calendar.date(bySettingHour: calendar.component(.hour, from: date) + 1, minute: 0, second: 0, of: date)
             }
-            if newDate == nil {
+            if newDate == nil { // check if the user is adding task last minute
                 titleCardLabel.isHidden = false
                 titleCardLabel.text = "You can't set a last minute task for today!"
                 return

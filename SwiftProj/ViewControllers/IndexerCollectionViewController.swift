@@ -48,7 +48,6 @@ class IndexerCollectionViewController: UICollectionViewController, UINavigationC
                 for i in 0...self.docList.count - 1 {
                     if let dList = self.docList[i].docImages {
                         if dList.count > 0 {
-                            // TODO FIX THIS ASYNC SHTUFF
                             let ref = storageRef.child(self.docList[i].docImages![0])
                             ref.downloadURL { (url, error) in
                                 if let error = error {
@@ -86,7 +85,7 @@ class IndexerCollectionViewController: UICollectionViewController, UINavigationC
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! IndexCell
-        // Configure the cell
+        // Configure the individual cell
         //print(docList[indexPath.row].title)
         cell.titleLabel.text = docList[indexPath.row].title
         //cell.textView.text = docList[indexPath.row].body

@@ -21,7 +21,10 @@ class forgotPasswordViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    // VALIDATION
+    // Check if email is empty before
+    // Sending out the Reset Password method
+    //
     @IBAction func resetPassword(_ sender: Any) {
         if emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" { // Check if input empty
             errorLabel.text = "The email field is empty!"

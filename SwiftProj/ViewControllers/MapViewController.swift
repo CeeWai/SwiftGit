@@ -24,6 +24,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         DataManager.createDatabase()
         
+        // Sphagetti Code
         loadCase()
         lm = CLLocationManager()
         lm?.delegate = self

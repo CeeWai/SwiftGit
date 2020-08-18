@@ -140,6 +140,9 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
             tesseract.delegate = self
         }
         
+        // Check if detailItem is empty
+        // Sets textfields and views based on the detailItem's attributes
+        //
         if editTask != nil {
             titleTextField.text = editTask!.taskName
             descTextView.text = editTask!.taskDesc
@@ -324,6 +327,8 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         return true
     }
     
+    // Function that saves each task in the Firebase
+    //
     @IBAction func saveTask() {
         let user = Auth.auth().currentUser
         if let user = user {
@@ -332,18 +337,19 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
         }
                 
         // Validation of inputs
+        // In hindsight, perhaps maybe I should have made an independent function
+        // to validate inputs ._.
         //
-        
         if titleTextField.text!.isEmpty || descTextView.text!.isEmpty || descTextView.text == "Your description goes here!" || chosenStartTimeLabel.text!.isEmpty || chosenEndTimeLabel.text!.isEmpty || chosenRepeatLabel.text!.isEmpty || importanceLabel.text!.isEmpty || subjectTextField.text!.isEmpty {
                 errLabel.text = "Enter all fields!"
                 errLabel.isHidden = false
-        } else
-        {
+        } else {
             //print(user!.email)
             DataManager.loadTasks() {
                 taskListFromFirestore in
                 //print("\(taskListFromFirestore)")
                 
+                // Format dates from the input
                 let now = self.userCurrentDate!
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy "
@@ -387,6 +393,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 var repeatNotif = false
                 var comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: dateStartCurrent!)
 
+                // Check Notificaion Repeat
                 if self.chosenRepeatLabel.text! != "Never" {
                     repeatNotif = true
                 }
@@ -408,12 +415,11 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 center.add(request)
                 print("Notification Added here!")
                 
-                if self.editTask != nil {
+                if self.editTask != nil { // Go back into the home view.
                     let homeViewController = (self.storyboard?.instantiateViewController(identifier: "MainController"))
                     self.view.window?.rootViewController = homeViewController
                     self.present(homeViewController!, animated: true)
                 } else {
-                    
                     self.delegate?.passReloadDataBack(data: self.userCurrentDate!)
                     self.dismiss(animated: true, completion: nil)
                     self.navigationController?.popViewController(animated: true)
@@ -451,14 +457,14 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        var hpt = predictHoursPerTask()
+        var hpt = predictHoursPerTask() // Call function to find average time each person spends on each task
         var dataTextStr: [[String]] = []
         var idxList: [Int] = []
         print(descTextView.text!)
         let filepath = URL(fileURLWithPath: Bundle.main.path(forResource: "topicText", ofType: "csv")!)
         var boolCategory = true
         
-        do {
+        do { // Get user suggestions
             let csv = try CSV(url: filepath)
             let rows = csv.namedRows
             for i in 0...rows.count - 1 {
@@ -500,6 +506,8 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                       return true
                     }
                     
+                    // Find the 'gist' of desc
+                    //
                     Reductio.keywords(from: textRep, count: 1) { words in
                         //print(words)
                         print(textRep)
@@ -511,6 +519,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
 
             }
             
+            // Find the 'gist' of user input
             Reductio.keywords(from: self.titleTextField.text! + " " + self.descTextView.text!, count: 2) { words in
                 var topSuggestionsList: [Suggestion] = []
                 //print(idxList)
@@ -522,7 +531,7 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                         for txt in txtList {
                             //print("each text is = \(txt)")
                             if let embedding = NLEmbedding.wordEmbedding(for: .english) {
-                                //print("AND THE WORD IS \(txt)")
+                                // Find the distance between the two 'gist' words
                                 let eDistance = embedding.distance(between: txt, and: word)
                                 topSuggestionsList.append(Suggestion(text: txt, textDistance: eDistance, passage: csv.namedRows[idxList[dataTextStr.firstIndex(of: txtList)!]]["text"]))
                             }
@@ -531,12 +540,14 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                 }
                 
                 if topSuggestionsList.count > 4 {
+                    // Sort by Descending order
                     var topSuggestionSortedList = topSuggestionsList.sorted(by: { Int($0.textDistance!) < Int($1.textDistance!) })
                     //print(topSuggestionSortedList.count)
                     //print("The number one Suggestion is \(topSuggestionSortedList[0].text) with dist of \(topSuggestionSortedList[0].textDistance) and the size of the list is \(topSuggestionSortedList.count)")
                     var suggestList: [String] = []
                     var stopwords = ["we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "from", "in", "out", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "\n", "whose", "it's"]
                     
+                    // Top 3 Results
                     for i in 0...2 {
                         var tempStrList: [String] = []
                         
@@ -559,14 +570,14 @@ class EntryViewController: UITableViewController, UITextFieldDelegate, UITextVie
                             }
                             
                             if (j <= txtList.endIndex) {
-                                if (stopwords.contains(txtList[j].lowercased())) {
+                                if (stopwords.contains(txtList[j].lowercased())) { // Stops at stopword
                                     print("STOPWORDS")
                                     break
                                 }
                                 
                                 tempStrList.append(txtList[j])
                                 
-                                if (txtList[j].contains(".") || txtList[j].contains(",")) {
+                                if (txtList[j].contains(".") || txtList[j].contains(",")) { // Stops at a Punctionation
                                     break
                                 } else if (j == txtList.endIndex) {
                                     

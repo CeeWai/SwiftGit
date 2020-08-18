@@ -52,11 +52,7 @@ class ProfileViewController: UIViewController {
     }
     func loaduser()
        {
-       // This is a special way to call loadMovies. //
-       // Even if loadMovies accepts a closure as a
-       // parameter, I can pass that parameter after
-       // the round brackets. In a way it is
-       // easier to read.
+
        DataManager.loadUsers() {
            userListFromFirestore in
        // This is a closure. //

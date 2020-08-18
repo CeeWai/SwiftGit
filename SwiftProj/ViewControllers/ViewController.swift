@@ -51,8 +51,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.isTranslucent = true
         
         tableView.layer.cornerRadius = 10;
-        
         tableView.tableFooterView = UIView()
+        
+        // Set Calendar Settings
         calendar.scope = .week
         self.calendar.today = nil
         self.calendar.select(Date())
@@ -73,7 +74,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         calendar.dataSource = self
         tableView.delegate = self
         // instantiate default tasks (today's task)
-        
         loadTaskListFromDate(date: Date())
         //loadTaskInAdvance()
 
@@ -112,16 +112,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         var p: Task? = nil
 
-        if indexPath.section == 0 {
+        if indexPath.section == 0 { // Completed Tasks
             if self.completedTaskList.count > 0 {
                 p = self.completedTaskList[indexPath.row]
             }
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 1 { // Current Tasks
             if self.currentTaskList.count > 0 {
                 p = self.currentTaskList[indexPath.row]
             }
         } else {
-            if self.upcomingTaskList.count > 0 {
+            if self.upcomingTaskList.count > 0 { // Upcoming Tasks
                 p = self.upcomingTaskList[indexPath.row]
             }
         }
@@ -235,7 +235,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Calendar on date change function
     //
-    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         //print("This Ran")
@@ -249,7 +248,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Check if the date pressed is the same as today and then proceed with UI changes
         //
-        
         if Calendar.current.isDate(date, inSameDayAs: Date()) {
             print("Same Day")
             //breakButton.isEnabled = true
@@ -289,17 +287,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             if editingStyle == .delete {
-                if indexPath.section == 0 {
+                if indexPath.section == 0 { // Completed Row
                     //print("INDEX PATH ROW IS \(indexPath.row) and the item is \(indexPath.section)")
                     DataManager.deleteTask(completedTaskList[indexPath.row])
                     completedTaskList.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
-                } else if indexPath.section == 1 {
+                } else if indexPath.section == 1 { // Current Row
                     //print("INDEX PATH ROW IS \(indexPath.row) and the item is \(indexPath.section)")
                     DataManager.deleteTask(currentTaskList[indexPath.row])
                     currentTaskList.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
-                } else if indexPath.section == 2 {
+                } else if indexPath.section == 2 { // Upcoming Row
                     //print("INDEX PATH ROW IS \(indexPath.row) and the item is \(indexPath.section)")
                     DataManager.deleteTask(upcomingTaskList[indexPath.row])
                     upcomingTaskList.remove(at: indexPath.row)
@@ -372,6 +370,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         currentWeekDayFormatter.dateFormat = "EEEE"
         let currentWeekDayString = currentWeekDayFormatter.string(from: date)
         
+        // Load user's tasks
         DataManager.loadTasks { fullUserTaskList in
             //userTaskList = fullUserTaskList
             self.taskList = []
@@ -388,7 +387,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 // Code for if the task is due to call daily or if its the same day for weekly
                 //
-                
                 if Calendar.current.isDate(date, inSameDayAs: task.taskStartTime) || task.repeatType == "Daily" { // check if daily
                     //print("\(date) is the same day as \(task.taskStartTime)")
                     self.taskList.append(task)
