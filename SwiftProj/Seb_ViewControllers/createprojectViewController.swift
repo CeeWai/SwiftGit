@@ -64,7 +64,7 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
         }
     }
 
-    
+    //display popover
     @IBOutlet var popover: UIView!
     @IBAction func pressedimage(_ sender: Any) {
         self.view.addSubview(popover)
@@ -167,6 +167,7 @@ UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
                RoleDataManager.insertOrReplaceMovie(role: Role(roleid: 0, rolename: "Founder", projectid: recentid, manageowntask: 1, removealltask: 1, editalltask: 1, invitemember: 1, removemember: 1, manageproject: 1))
                RoleDataManager.insertOrReplaceMovie(role: Role(roleid: 0, rolename: "Default", projectid: recentid, manageowntask: 1, removealltask: 0, editalltask: 0, invitemember: 1, removemember: 0, manageproject: 0))
                 ProjectDataManager.insertOrReplaceMovie(project: newproject)
+        //create project and initiate role and group
     }
      
 }

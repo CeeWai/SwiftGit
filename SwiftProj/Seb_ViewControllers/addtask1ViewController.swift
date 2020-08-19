@@ -114,7 +114,7 @@ class addtask1ViewController: UIViewController,UITextViewDelegate{
             toolBar.sizeToFit()
             self.view.addSubview(toolBar)
         }
-
+// display date picker
         @objc func dateChanged(_ sender: UIDatePicker?) {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -173,7 +173,7 @@ class addtask1ViewController: UIViewController,UITextViewDelegate{
                 detailViewController.projecttask = ProjectTaskDataManager.loadtaskbyid(taskid: (projecttask?.taskid!)!)[0]
                 
             }
-        }
+        } //segue and action for add and update
     }
 }
 

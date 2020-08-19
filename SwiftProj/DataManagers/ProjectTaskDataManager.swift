@@ -72,11 +72,11 @@ class ProjectTaskDataManager: NSObject {
        let formmater = DateFormatter()
                    let startdateString  = row["startdate"] as? String
                    let enddateString  = row["enddate"] as? String
-                   formmater.dateFormat = "yyyy-mm-dd HH:mm:ss"
+                   formmater.dateFormat = "yyyy-MM-dd HH:mm:ss"
                    var strstatus = row["status"]! as! String
                    var intstatus : Int = Int(strstatus)!
                projecttasks.append(ProjectTask(
-                   taskid: row["taskid"] as? Int, projectid: row["projectid"] as? Int,userid: row["userid"] as? String, taskname: row["taskname"] as? String, taskgoal: row["taskgoal"] as? String, startdate: formmater.date(from: startdateString!)as? Date, enddate: formmater.date(from: enddateString!) as? Date,status: intstatus as? Int, valid: row["valid"] as? Int))
+                taskid: row["taskid"] as? Int, projectid: row["projectid"] as? Int,userid: row["userid"] as? String, taskname: row["taskname"] as? String, taskgoal: row["taskgoal"] as? String, startdate: formmater.date(from: startdateString!)as? Date, enddate: formmater.date(from: enddateString!) as? Date,status: intstatus as? Int, valid: row["valid"] as? Int))
                }
                    return projecttasks;
                }

@@ -26,13 +26,16 @@ class DefaultViewController1: UIViewController {
         setupBasic()
         setupCalendarView()
     }
+    //set up calendar and load event data
     override func viewDidAppear(_ animated: Bool) {
            NotificationCenter.default.addObserver(self, selector: #selector(sendtodefaultview(_:)), name: Notification.Name(rawValue: "sendtodefaultview"), object: nil)
+        //recieved notificationcenter from defaultweekview to act as a listener for on click
             viewModel.events = ProjectEventDataManager.loadProjecteventsbyprojectiddefault(projectid: (projectItem?.projectId!)!)
                   viewModel.eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: viewModel.events)
                   setupBasic()
                   setupCalendarView()
        }
+    // setup the calendar
     @objc func sendtodefaultview(_ notification: Notification) {
            let data = notification.userInfo!["taskid"]! as! Int
         if (ProjectTaskDataManager.loadtaskbyid(taskid: data).isEmpty == false){
@@ -123,7 +126,7 @@ class DefaultViewController1: UIViewController {
     private func setupCalendarView() {
         calendarWeekView.baseDelegate = self
 
-        // For example only
+   
         if viewModel.currentSelectedData != nil {
             setupCalendarViewWithSelectedData()
             return
@@ -136,8 +139,8 @@ class DefaultViewController1: UIViewController {
         // Optional
         calendarWeekView.updateFlowLayout(JZWeekViewFlowLayout(hourGridDivision: JZHourGridDivision.noneDiv))
     }
+//setup calendar and the default setting
 
-    /// For example only
     private func setupCalendarViewWithSelectedData() {
         guard let selectedData = viewModel.currentSelectedData else { return }
         calendarWeekView.setupCalendar(numOfDays: selectedData.numOfDays,
@@ -148,14 +151,14 @@ class DefaultViewController1: UIViewController {
         calendarWeekView.updateFlowLayout(JZWeekViewFlowLayout(hourGridDivision: selectedData.hourGridDivision))
     }
 }
-
+//get selected data
 extension DefaultViewController1: JZBaseViewDelegate {
     func initDateDidChange(_ weekView: JZBaseWeekView, initDate: Date) {
         updateNaviBarTitle()
     }
 }
 
-// For example only
+
 extension DefaultViewController1: OptionsViewDelegate {
 
     func setupBasic() {

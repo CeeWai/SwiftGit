@@ -47,6 +47,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
                 
             }
         }
+            //get user's project by searching for the group data
         inviteList = ProjectgroupDataManager.loadbyprojectuseridwhensubscribe0(userid: currentuser!.uid)
             var projectgroupList : [Projectgroup] = []
                           var projectList : [Project] = []
@@ -69,6 +70,7 @@ class ProjectViewController: UIViewController,UITableViewDelegate, UITableViewDa
                           print(lastremoved)
                           var itemlist = ProjectEventDataManager.loadProjecteventsbyprojectidindefault(projectid: lastremoved)
                           projectevents.append(contentsOf: itemlist)
+            //notification to notify user the project before a days
             if counter == nil{
             var currentdate = Date()
             var daycounter1 = 0

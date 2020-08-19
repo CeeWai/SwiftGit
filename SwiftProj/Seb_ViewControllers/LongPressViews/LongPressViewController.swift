@@ -77,11 +77,13 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
                   }
             projectevents.append(contentsOf: itemlist)
         }
+        //display event of every group member project and current project events
         viewModel.events = projectevents
         viewModel.eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: viewModel.events)
         setupBasic()
         setupCalendarView()
         //setupNaviBar()
+        //code below is to display add existing/new/delete event  popover
         let gesture = UITapGestureRecognizer(target: self, action: #selector(titleaction))
         tasktitleview.addGestureRecognizer(gesture)
         let gesture2 = UITapGestureRecognizer(target: self, action: #selector(dayaction))
@@ -153,6 +155,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
                setupBasic()
                setupCalendarView()
         NotificationCenter.default.addObserver(self, selector: #selector(sendtolongpressview(_:)), name: Notification.Name(rawValue: "sendtolongpressview"), object: nil)
+        // notifcation listener for delete onclick from longpressweekview
     }
     @objc func dismissviewall(_ sender:UITapGestureRecognizer) {
         if popover2.isDescendant(of: view){
@@ -209,6 +212,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
         weekView.forceReload(reloadEvents: viewModel.eventsByDate)
         
     }
+    //objc functions to display popover with gesture
     @objc func titleaction(sender:UITapGestureRecognizer){
          popover.removeFromSuperview()
          pickertype = 1
@@ -414,6 +418,7 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
     @IBAction func addnew(_ sender: Any) {
         popoverinitnew()
     }
+    //objc function for setting data to add
     @objc func onDoneButtonTapped() {
                toolBar.removeFromSuperview()
                picker.removeFromSuperview()
@@ -523,12 +528,12 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
         calendarWeekView.longPressDataSource = self
         calendarWeekView.longPressTypes = [.addNew, .move]
 
-        // Optional
+     
         calendarWeekView.addNewDurationMins = 120
         calendarWeekView.moveTimeMinInterval = 15
     }
+// set up calender default setting and delegate
 
-    /// For example only
     private func setupCalendarViewWithSelectedData() {
         guard let selectedData = viewModel.currentSelectedData else { return }
         calendarWeekView.setupCalendar(numOfDays: selectedData.numOfDays,
@@ -539,16 +544,16 @@ class LongPressViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
         calendarWeekView.updateFlowLayout(JZWeekViewFlowLayout(hourGridDivision: selectedData.hourGridDivision))
     }
 }
-
+// set selecteddata
 extension LongPressViewController: JZBaseViewDelegate {
     func initDateDidChange(_ weekView: JZBaseWeekView, initDate: Date) {
         updateNaviBarTitle()
     }
 }
-
+// update nav bar
 // LongPress core
 extension LongPressViewController: JZLongPressViewDelegate, JZLongPressViewDataSource {
-
+    // code for adding the event when long pressing the empty space
     func weekView(_ weekView: JZLongPressWeekView, didEndAddNewLongPressAt startDate: Date) {
         if addeventbool == 1{
         var message = ""
@@ -573,6 +578,7 @@ extension LongPressViewController: JZLongPressViewDelegate, JZLongPressViewDataS
         weekView.forceReload(reloadEvents: viewModel.eventsByDate)
         }
     }
+    // code for editing the event by longpressing the event
     func weekView(_ weekView: JZLongPressWeekView, editingEvent: JZBaseEvent, didEndMoveLongPressAt startDate: Date) {
         guard let event = editingEvent as? AllDayEvent else { return }
         let duration = Calendar.current.dateComponents([.minute], from: event.startDate, to: event.endDate).minute!
@@ -585,7 +591,7 @@ extension LongPressViewController: JZLongPressViewDelegate, JZLongPressViewDataS
         viewModel.eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: viewModel.events)
         weekView.forceReload(reloadEvents: viewModel.eventsByDate)
     }
-
+    // the start animation of adding event longpress and to set up what data to show in the animation
     func weekView(_ weekView: JZLongPressWeekView, viewForAddNewLongPressAt startDate: Date) -> UIView {
         if addeventbool == 1{
         
@@ -618,7 +624,7 @@ extension LongPressViewController {
           toastLabel.removeFromSuperview()
       })
   } }
-// For example only
+// toast but i stop using it
 extension LongPressViewController: OptionsViewDelegate {
 
     func setupBasic() {
@@ -638,7 +644,7 @@ extension LongPressViewController: OptionsViewDelegate {
         optionsButton.addTarget(self, action: #selector(presentOptionsVC), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
     }
-
+    //update nav gar
     @objc func presentOptionsVC() {
         guard let optionsVC = UIStoryboard(name: "Seb_Main", bundle: nil).instantiateViewController(withIdentifier: "OptionsViewController") as? ExampleOptionsViewController else {
             return
@@ -649,7 +655,7 @@ extension LongPressViewController: OptionsViewDelegate {
         let navigationVC = UINavigationController(rootViewController: optionsVC)
         self.present(navigationVC, animated: true, completion: nil)
     }
-
+    // show a new long press viewcontroller when you change the setting of the calendar
     private func getSelectedData() -> OptionsSelectedData {
         let numOfDays = calendarWeekView.numOfDays!
         let firstDayOfWeek = numOfDays == 7 ? calendarWeekView.firstDayOfWeek : nil
@@ -662,7 +668,7 @@ extension LongPressViewController: OptionsViewDelegate {
                                                             scrollableRange: calendarWeekView.scrollableRange)
         return viewModel.currentSelectedData
     }
-
+// get the data from the optioncontroller
     func finishUpdate(selectedData: OptionsSelectedData) {
 
         // Update numOfDays

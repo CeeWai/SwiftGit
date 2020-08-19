@@ -47,7 +47,8 @@ class projecttaskdetailViewController: UIViewController, UIPickerViewDelegate, U
          
       if projecttask?.enddate != nil{
                              var duedates = projecttask?.enddate!
-                             duedate.text = formatter.string(from: duedates!)
+                            
+        duedate.text = formatter.string(from: duedates!.add(component: .month, value: 7))
                             }else{
                              duedate.text = ""
         }

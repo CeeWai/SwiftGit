@@ -8,7 +8,7 @@
 
 import Foundation
 import JZCalendarWeekView
-
+//event model for default view controller
 class DefaultEvent: JZBaseEvent {
 
     var location: String

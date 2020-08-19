@@ -11,7 +11,7 @@ import JZCalendarWeekView
 import FirebaseAuth
 class DefaultViewController2: UIViewController {
 
-
+    // similar to default viewcontroller 2
     var projectItem : Project?
     @IBOutlet weak var calendarWeekView: DefaultWeekView!
     let viewModel = DefaultViewModel()
