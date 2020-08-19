@@ -457,6 +457,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             
             return
         }
+        
         let user = Auth.auth().currentUser
         if let user = user {
             let uid = user.uid
@@ -474,8 +475,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         if self.detailItem?.docID != nil && self.detailItem?.docID != ""{
             print("DOCID = \(self.detailItem?.docID)")
 
-            //print("Found that docID is empty \(self.detailItem?.docID)")
             //userDoc.docID = self.detailItem?.docID
+            print("NEW IMAGE DOC STORE LIST \(self.newimageDocStoreList)")
             DataManager.insertOrReplaceDoc(userDoc, self.newimageDocStoreList)
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
@@ -484,6 +485,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 //print("Found that docID is NOT empty \(self.detailItem?.docID)")
                 self.errLabel.isHidden = true
                 //userDoc.docID = "\(user!.uid)D\(fullUserDocList.count)"
+                print("NEW IMAGE DOC STORE LIST \(self.newimageDocStoreList)")
+
                 DataManager.insertOrReplaceDoc(userDoc, self.newimageDocStoreList)
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)

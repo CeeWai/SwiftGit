@@ -102,10 +102,18 @@ class IndexerCollectionViewController: UICollectionViewController, UINavigationC
 //                }
 //            }
 //        }
+        
+
         print("\(imageLinkList.count) and \(docList.count)")
         if imageLinkList.count == docList.count {
             print("\(imageLinkList.reversed()[indexPath.row].imgLink) was found")
             cell.bgImg.image = imageLinkList.reversed()[indexPath.row].image
+        }
+        
+        for imageLink in imageLinkList {
+            if docList[indexPath.row].docImages![0] == imageLink.imgLink {
+                cell.bgImg.image = imageLink.image
+            }
         }
 
         return cell
@@ -126,6 +134,7 @@ class IndexerCollectionViewController: UICollectionViewController, UINavigationC
             detailDocViewController.newimageDocStoreList = []
             detailDocViewController.imageDocStoreList = []
             detailDocViewController.imgLinkList = []
+            detailDocViewController.detailItem?.docImages = []
         }
     }
 

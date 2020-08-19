@@ -479,7 +479,7 @@ class DataManager: NSObject {
                             var doc = Document(docID: "", title: "", body: "", docOwner: "", docImages: [])
                             
                             if let docID = document.documentID as? String {
-                                //print("document ID: \(document.documentID)")
+                                print("document ID: \(document.documentID)")
                                 doc.docID = docID
                             }
 
@@ -513,13 +513,13 @@ class DataManager: NSObject {
                                                 print("Document successfully added!")
                                             }
                                         }
+                                        
+                                        for docImg in docImgStoreList {
+                                            var newDocImg = DocImageStore(docID: doc.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink, objPredictions: docImg.objPredictions)
+                                            self.insertOrReplaceDocImageStore(newDocImg)
+                                        }
                                     }
                                 }
-                            }
-
-                            for docImg in docImgStoreList {
-                                var newDocImg = DocImageStore(docID: doc.docID, imageDesc: docImg.imageDesc, imageLink: docImg.imageLink, objPredictions: docImg.objPredictions)
-                                self.insertOrReplaceDocImageStore(newDocImg)
                             }
                             
                         }
