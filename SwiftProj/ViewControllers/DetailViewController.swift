@@ -29,7 +29,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     var imageList: [UIImage] = []
     var imageDocList: [DocImage] = []
     var newimageDocStoreList: [DocImageStore] = []
-    //var imageDocStoreList: [DocImageStore] = []
+    var imageDocStoreList: [DocImageStore] = []
     var imgLinkList: [ImageLink] = []
     var imageTaken: Bool = false
     var placeIndexPath = NSIndexPath(item: 0, section: 0)
@@ -432,17 +432,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     func simpleSimilarityBetween(sentence: String, searchStr: String)-> Double {
         var similarityMetric: Double = 0
         let searchStrList = searchStr.components(separatedBy: " ")
-        let sentenceStrList = sentence.components(separatedBy: " ")
+        let sentenceStrList = sentence.lowercased().components(separatedBy: " ")
 
         for searchWord in searchStrList {
- 
+            print("SEARCH WORD IS \(searchWord)")
             if sentenceStrList.contains(searchWord) {
-                similarityMetric += 2
+                similarityMetric += 3
             } else {
                 similarityMetric -= 0.1
             }
         }
-        
+        print("SIMILARITY IN \(sentence) is \(similarityMetric)")
         return Double(similarityMetric)
     }
     
@@ -542,6 +542,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                                 let ref = storageRef.child(docImgStoreList[anotherCount].imageLink!)
                                 anotherCount += 1
                                 ref.downloadURL { (url, error) in
+                                    print("URL OF THE IMAGE IS \(url)")
                                     if let error = error {
                                         print(error)
                                         return
@@ -553,7 +554,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                                     self.imageList.append(image!)
                                     self.imgLinkList.append(ImageLink(image: image!, imgLink: url?.lastPathComponent))
                                     self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc, objPredictions: docImgStoreList[count].objPredictions))
-                                    
+                                    self.imageDocStoreList.append(DocImageStore(docID: "", imageDesc: docImgStoreList[count].imageDesc, imageLink: url?.lastPathComponent, objPredictions: docImgStoreList[count].objPredictions))
+
                                     self.collectionView.reloadData()
                                     
                                     count += 1
@@ -608,30 +610,42 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     // sort the imageDocList and imagelists after appending the images.
     //
     func sortImageDocList() {
+        self.imageDocStoreList = self.imageDocStoreList.reversed()
+        
         var formatLink = self.detailItem!.docImages!
         var imgL = self.imgLinkList
         var hardCodedList: [ImageLink] = []
-        for fLink in formatLink {
-            for link in imgL {
-                if fLink == link.imgLink {
-                    hardCodedList.append(link)
+        var imgDocListPre: [DocImage] = []
+        for fLink in 0...formatLink.count - 1 {
+            for link in 0...imgL.count - 1 {
+                print("imgLINK \(imgL[link].imgLink)")
+                if formatLink[fLink] == imgL[link].imgLink {
+                    hardCodedList.append(imgL[link])
                 }
             }
         }
-        
         if hardCodedList.count > 0 {
             for i in 0...hardCodedList.count - 1 {
                 var hardCodedImage = hardCodedList[i]
                 self.imageList[i] = hardCodedImage.image!
                 self.imgLinkList[i] = ImageLink(image: hardCodedImage.image, imgLink: hardCodedImage.imgLink)
-                var imgDoc = self.imageDocList[i]
-                self.imageDocList[i] = DocImage(image: hardCodedImage.image, imageDesc: imgDoc.imageDesc, objPredictions: imgDoc.objPredictions)
-                print("THE VALUE OF LINK IMAGE IS \(hardCodedImage.imgLink)")
+
+                for iDS in self.imageDocStoreList {
+                    if iDS.imageLink == hardCodedImage.imgLink {
+                        print(iDS.imageLink, hardCodedImage.imgLink)
+                        print(iDS.imageDesc)
+                        self.imageDocList[i] = DocImage(image: hardCodedImage.image, imageDesc: iDS.imageDesc, objPredictions: iDS.objPredictions)
+                        print("THE VALUE OF LINK IMAGE IS \(hardCodedImage.imgLink)")
+                    }
+                }
+
+            
             }
         }
 
         
         self.mainImageView.image = hardCodedList[0].image
+        self.documentTextView.text = self.imageDocList[0].imageDesc
         
     }
     
