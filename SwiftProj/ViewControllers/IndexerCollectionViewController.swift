@@ -88,6 +88,7 @@ class IndexerCollectionViewController: UICollectionViewController, UINavigationC
         // Configure the individual cell
         //print(docList[indexPath.row].title)
         cell.titleLabel.text = docList[indexPath.row].title
+        print("DOCLIST \(docList[indexPath.row].title), \(docList[indexPath.row].docImages)")
         //cell.textView.text = docList[indexPath.row].body
         //cell.bgImg.image =
 
@@ -118,7 +119,13 @@ class IndexerCollectionViewController: UICollectionViewController, UINavigationC
             detailDocViewController.detailItem = self.docList[myIndexPath!.row]
             detailDocViewController.deleteDoc.isEnabled = true
         } else if segue.identifier == "addDocSegue" {
+            let detailDocViewController = segue.destination as! DetailViewController
 
+            detailDocViewController.imageList = []
+            detailDocViewController.imageDocList = []
+            detailDocViewController.newimageDocStoreList = []
+            detailDocViewController.imageDocStoreList = []
+            detailDocViewController.imgLinkList = []
         }
     }
 

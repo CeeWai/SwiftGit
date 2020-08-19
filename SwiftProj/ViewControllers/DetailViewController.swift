@@ -239,7 +239,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         // This saves the image selected / shot by the user
         //
         //UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil)
-
         // This closes the picker
         //
         picker.dismiss(animated: true)
@@ -416,7 +415,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                         self.documentTextView.text = self.imageDocList[similarityList.firstIndex(of: similarityList.max()!)!].imageDesc
                         //self.changeColorOfCellForIndexPath(item: 0, section: similarityList.firstIndex(of: similarityList.max()!)!)
                         // TODO add the highlighted color of the collectionview
-
                         self.selectedCell = similarityList.firstIndex(of: similarityList.max()!)!
                         
                         self.collectionView.reloadData()
@@ -484,7 +482,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         } else {
             DataManager.loadDocs{ fullUserDocList in
                 //print("Found that docID is NOT empty \(self.detailItem?.docID)")
-
                 self.errLabel.isHidden = true
                 //userDoc.docID = "\(user!.uid)D\(fullUserDocList.count)"
                 DataManager.insertOrReplaceDoc(userDoc, self.newimageDocStoreList)
@@ -526,6 +523,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         collectionView.dataSource = self
         
         if imageTaken == false {
+            self.imageList = []
+            self.imgLinkList = []
+            self.imageDocList = []
+            self.imageDocStoreList = []
             if let theDocID = self.detailItem?.docID { // handle if the user is trying to ADD a new material
                 DataManager.loadDocImageStoreById((self.detailItem?.docID!)!, onComplete: {
                     docImgStoreList in
@@ -541,6 +542,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                             for img in 0...dItems.count - 1 {
                                 let ref = storageRef.child(docImgStoreList[anotherCount].imageLink!)
                                 anotherCount += 1
+                                var dImageStore = DocImageStore(docID: "", imageDesc: docImgStoreList[img].imageDesc, imageLink: docImgStoreList[img].imageLink!, objPredictions: docImgStoreList[img].objPredictions)
                                 ref.downloadURL { (url, error) in
                                     print("URL OF THE IMAGE IS \(url)")
                                     if let error = error {
@@ -554,7 +556,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                                     self.imageList.append(image!)
                                     self.imgLinkList.append(ImageLink(image: image!, imgLink: url?.lastPathComponent))
                                     self.imageDocList.append(DocImage(image: image!, imageDesc: docImgStoreList[count].imageDesc, objPredictions: docImgStoreList[count].objPredictions))
-                                    self.imageDocStoreList.append(DocImageStore(docID: "", imageDesc: docImgStoreList[count].imageDesc, imageLink: url?.lastPathComponent, objPredictions: docImgStoreList[count].objPredictions))
+                                    //dImageStore.imageLink = url?.lastPathComponent
+                                    self.imageDocStoreList.append(dImageStore)
 
                                     self.collectionView.reloadData()
                                     
@@ -635,7 +638,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                         print(iDS.imageLink, hardCodedImage.imgLink)
                         print(iDS.imageDesc)
                         self.imageDocList[i] = DocImage(image: hardCodedImage.image, imageDesc: iDS.imageDesc, objPredictions: iDS.objPredictions)
-                        print("THE VALUE OF LINK IMAGE IS \(hardCodedImage.imgLink)")
                     }
                 }
 
@@ -708,4 +710,3 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                        completion: nil)
     }
 }
-
